@@ -1052,6 +1052,58 @@ img,svg{max-width:100%;height:auto}
   .compact-variation .undefined{font-size:10px}
 }
 </style>
+
+<style id="small-sign-table-fix">
+.sign-table-wrap{
+  width:100%;
+  overflow-x:auto;
+  margin:12px 0 18px;
+}
+.small-sign-table{
+  width:620px !important;
+  max-width:100%;
+  margin:0 !important;
+  table-layout:fixed;
+  border-collapse:collapse;
+  font-size:11px !important;
+}
+.small-sign-table th,
+.small-sign-table td{
+  height:27px !important;
+  padding:3px 4px !important;
+  text-align:center;
+  vertical-align:middle;
+}
+.small-sign-table th{
+  width:105px;
+  font-weight:500;
+}
+.small-sign-table .bar{
+  width:16px;
+  border-left:1px solid #cfd8dc;
+  border-right:1px solid #cfd8dc;
+}
+.small-sign-table .sign{
+  font-size:12px !important;
+}
+.small-sign-table .zero{
+  font-size:11px !important;
+}
+@media(max-width:560px){
+  .small-sign-table{
+    width:540px !important;
+    font-size:10px !important;
+  }
+  .small-sign-table th,
+  .small-sign-table td{
+    height:24px !important;
+    padding:2px 3px !important;
+  }
+  .small-sign-table th{width:88px}
+  .small-sign-table .bar{width:12px}
+}
+</style>
+
 </head>
 
 <body>
@@ -1163,17 +1215,61 @@ x^2-4=(x-2)(x+2)=0
 <p>Ces valeurs déterminent les trois intervalles \(]-\infty,-2[\), \(]-2,2[\) et \(]2,+\infty[\).</p>
 </section>
 
-<section id="morceaux" class="step"><h2>3. Écrire \(f\) sans valeur absolue</h2>
-<table class="compact-sign"><tr><th>\(x\)</th><td>\(-\infty\)</td><td></td><td>\(-2\)</td><td></td><td>\(2\)</td><td></td><td>\(+\infty\)</td></tr>
-<tr><th>\(x^2-4\)</th><td>+</td><td></td><td>0</td><td>−</td><td>0</td><td></td><td>+</td></tr></table>
-<div class="formula">\[
-\boxed{f(x)=\begin{cases}
-x^2-4&\text{si }x\le-2,\\
-4-x^2&\text{si }-2\le x\le2,\\
-x^2-4&\text{si }x\ge2.
+<section id="morceaux" class="step">
+<h2>3. Écrire \(f\) sans valeur absolue</h2>
+
+<p>On étudie le signe de :</p>
+
+<div class="formula">
+\[
+x^2-4=(x-2)(x+2).
+\]
+</div>
+
+<div class="sign-table-wrap">
+<table class="small-sign-table">
+  <tr>
+    <th>\(x\)</th>
+    <td>\(-\infty\)</td>
+    <td class="bar"></td>
+    <td>\(-2\)</td>
+    <td class="bar"></td>
+    <td>\(2\)</td>
+    <td class="bar"></td>
+    <td>\(+\infty\)</td>
+  </tr>
+  <tr>
+    <th>\(x^2-4\)</th>
+    <td class="sign">+</td>
+    <td></td>
+    <td class="zero">0</td>
+    <td class="sign">−</td>
+    <td class="zero">0</td>
+    <td></td>
+    <td class="sign">+</td>
+  </tr>
+</table>
+</div>
+
+<div class="formula">
+\[
+\boxed{
+f(x)=
+\begin{cases}
+x^2-4 & \text{si }x\leq-2,\\
+4-x^2 & \text{si }-2\leq x\leq2,\\
+x^2-4 & \text{si }x\geq2.
 \end{cases}}
-\]</div>
-<div class="doc-box note"><strong>Idée essentielle :</strong> lorsque \(u(x)<0\), \(|u(x)|=-u(x)\).</div>
+\]
+</div>
+
+<div class="doc-box note">
+<strong>À retenir :</strong>
+entre \(-2\) et \(2\), \(x^2-4<0\), donc
+\[
+|x^2-4|=-(x^2-4)=4-x^2.
+\]
+</div>
 </section>
 
 <section id="derivee" class="step"><h2>4. Continuité et dérivée</h2>
@@ -1296,7 +1392,7 @@ f'>0\text{ sur }]-2,0[\cup]2,+\infty[.
 </section>
 
 <nav class="page-navigation" aria-label="Navigation des pages">
-<a class="nav-button" href="exercice02.html"><span class="nav-arrow">←</span><span><small>Précédent</small><strong>Exercice 2</strong></span></a>
+<a class="nav-button" href="exercice02.html"><span class="nav-arrow">←</span><span><small>Précédent</small><strong>Exercice 1</strong></span></a>
 <a class="nav-button center" href="../index.html"><span class="nav-arrow">↑</span><span><small>Retour à</small><strong>Index du chapitre 1</strong></span></a>
 <a class="nav-button disabled" href="#" aria-disabled="true" onclick="return false;"><span><small>Prochain</small><strong>Exercice 4</strong></span><span class="nav-arrow">→</span></a>
 </nav>
