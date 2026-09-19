@@ -1,0 +1,1684 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4ème — Chapitre 1 — Exercice 2 : Étude de fonctions | Révision Bac 2027</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --green:#6db33f;
+  --green-dark:#4f8f2c;
+  --ink:#263238;
+  --muted:#607d8b;
+  --line:#dfe5e8;
+  --soft:#f6f8f9;
+  --link:#2f7d32;
+  --note:#f8fbf6;
+  --max:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:#fff;
+  font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.7;
+}
+.topbar{
+  height:64px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  padding:0 28px;
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.spring-mark{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  color:#4f8f2c;
+  font-size:20px;
+}
+.spring-mark .dot{
+  width:14px;height:14px;border-radius:50%;
+  border:3px solid var(--green);
+  position:relative;
+}
+.spring-mark .dot:after{
+  content:"";
+  position:absolute;
+  width:4px;height:4px;border-radius:50%;
+  background:var(--green);
+  top:2px;left:2px;
+}
+.topnav{
+  margin-left:auto;
+  display:flex;
+  gap:24px;
+  font-size:14px;
+}
+.topnav a{
+  color:#455a64;
+  text-decoration:none;
+}
+.topnav a:hover{color:var(--green-dark)}
+
+.page{
+  max-width:var(--max);
+  margin:auto;
+  display:grid;
+  grid-template-columns:250px minmax(0,760px) 180px;
+  gap:42px;
+  padding:36px 28px 70px;
+}
+.sidebar{
+  position:sticky;
+  top:92px;
+  align-self:start;
+  max-height:calc(100vh - 120px);
+  overflow:auto;
+  border-right:1px solid var(--line);
+  padding-right:22px;
+}
+.sidebar .label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#78909c;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.sidebar a{
+  display:block;
+  padding:6px 8px;
+  margin:1px 0;
+  color:#455a64;
+  text-decoration:none;
+  border-left:2px solid transparent;
+  font-size:14px;
+}
+.sidebar a:hover{
+  color:var(--green-dark);
+  border-left-color:var(--green);
+  background:#fafcf9;
+}
+.sidebar .current{
+  color:var(--green-dark);
+  font-weight:600;
+  border-left-color:var(--green);
+}
+
+.content{min-width:0}
+.kicker{
+  color:var(--green-dark);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+h1{
+  font-size:38px;
+  line-height:1.2;
+  font-weight:500;
+  margin:0 0 14px;
+  color:#263238;
+}
+h2{
+  font-size:26px;
+  line-height:1.3;
+  font-weight:500;
+  margin:42px 0 14px;
+  padding-top:6px;
+}
+h3{
+  font-size:20px;
+  font-weight:600;
+  margin:28px 0 10px;
+}
+p{margin:0 0 17px}
+a{color:var(--link)}
+.lead{
+  font-size:18px;
+  color:#546e7a;
+  margin-bottom:30px;
+}
+.rule{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:28px 0;
+}
+.doc-box{
+  border:1px solid var(--line);
+  background:var(--soft);
+  padding:18px 20px;
+  margin:22px 0;
+}
+.doc-box.note{
+  border-left:4px solid var(--green);
+  background:var(--note);
+}
+.doc-box.warning{
+  border-left:4px solid #e6a23c;
+  background:#fffaf2;
+}
+.doc-box strong{
+  color:#37474f;
+}
+.example{
+  margin:26px 0;
+  border-top:3px solid var(--green);
+  padding-top:15px;
+}
+.example-title{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+.variation{display:table}
+.formula{
+  padding:14px 10px;
+  margin:14px 0;
+  overflow-x:auto;
+  text-align:center;
+}
+.step{
+  margin:28px 0;
+}
+.step-title{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:7px;
+}
+ol,ul{padding-left:26px}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:20px 0 26px;
+  font-size:15px;
+}
+th,td{
+  border:1px solid #cfd8dc;
+  padding:10px 9px;
+  text-align:center;
+}
+th{
+  background:#f4f7f8;
+  font-weight:600;
+}
+.result{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 0;
+  margin:25px 0;
+}
+.toc-right{
+  position:sticky;
+  top:92px;
+  align-self:start;
+  border-left:1px solid var(--line);
+  padding-left:18px;
+  font-size:13px;
+  color:#78909c;
+}
+.toc-right a{
+  display:block;
+  text-decoration:none;
+  color:#607d8b;
+  margin:5px 0;
+}
+.toc-right a:hover{color:var(--green-dark)}
+footer{
+  border-top:1px solid var(--line);
+  padding:25px 28px;
+  color:#78909c;
+  font-size:13px;
+}
+.mobile-menu{
+  display:none;
+}
+@media(max-width:1050px){
+  .page{
+    grid-template-columns:220px minmax(0,1fr);
+    gap:28px;
+  }
+  .toc-right{display:none}
+}
+@media(max-width:760px){
+  .topbar{
+    height:auto;
+    min-height:58px;
+    padding:10px 15px;
+    flex-wrap:wrap;
+    gap:8px 18px;
+  }
+  .topnav{
+    width:100%;
+    margin-left:0;
+    gap:18px;
+    overflow-x:auto;
+    padding-bottom:2px;
+  }
+  .page{
+    display:block;
+    padding:20px 16px 50px;
+  }
+  .sidebar{
+    position:relative;
+    top:auto;
+    max-height:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:0 0 10px;
+    margin-bottom:28px;
+    white-space:nowrap;
+  }
+  .sidebar .label{
+    display:inline-block;
+    margin-right:10px;
+  }
+  .sidebar a{
+    display:inline-block;
+    border-left:0;
+    border-bottom:2px solid transparent;
+    padding:5px 7px;
+  }
+  .sidebar .current{
+    border-left:0;
+    border-bottom-color:var(--green);
+  }
+  h1{font-size:30px}
+  h2{font-size:23px;margin-top:34px}
+  .lead{font-size:17px}
+  table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+}
+
+.geo-container{
+  width:100%;
+  max-width:812px;
+  margin:24px auto;
+  border:1px solid #dfe5e8;
+  background:#fff;
+  overflow:hidden;
+}
+.geo-figure{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:78vh;
+}
+@media(max-width:760px){
+  .geo-container{
+    margin-left:-2px;
+    margin-right:-2px;
+    width:calc(100% + 4px);
+  }
+}
+@media print{
+  .topbar,.sidebar,.toc-right{display:none}
+  .page{display:block;padding:0;max-width:none}
+  body{font-size:12pt}
+  h1{font-size:25pt}
+  h2{font-size:18pt}
+  .doc-box,.example{break-inside:avoid}
+}
+
+.exercise-statement{
+  margin:32px 0 40px;
+  padding:24px 26px;
+  border:1px solid #dfe5e8;
+  border-left:4px solid #6db33f;
+  background:#fff;
+}
+.exercise-label{
+  color:#5b9634;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  margin-bottom:4px;
+}
+.exercise-statement h2{
+  margin:0 0 18px;
+  padding:0;
+  font-size:27px;
+}
+.exercise-statement p{
+  margin-bottom:13px;
+}
+@media(max-width:760px){
+  .exercise-statement{
+    padding:20px 16px;
+  }
+}
+
+.manual-graph{
+  max-width:560px;
+  margin:24px auto 18px;
+  border:0;
+  background:#fff;
+}
+.manual-graph svg{
+  width:100%;
+  height:auto;
+}
+
+.popup-btn{
+  margin-left:10px;
+  border:1px solid #cfd8dc;
+  background:#fff;
+  color:#4f8f2c;
+  border-radius:4px;
+  padding:5px 9px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+.popup-btn:hover{background:#f6faf4}
+dialog{
+  width:min(620px,calc(100% - 32px));
+  border:1px solid #dfe5e8;
+  border-top:4px solid #6db33f;
+  padding:24px 26px;
+  color:#263238;
+  box-shadow:0 18px 50px rgba(38,50,56,.18);
+}
+dialog::backdrop{background:rgba(38,50,56,.28)}
+dialog h3{margin:0 0 10px}
+dialog p{margin-bottom:12px}
+.close-btn{
+  border:1px solid #cfd8dc;background:#fff;padding:7px 12px;
+  border-radius:4px;cursor:pointer;
+}
+
+
+/* ===== Version bureau + mobile ===== */
+.topbar{height:auto;min-height:64px;padding:0}
+.topbar-inner{
+  width:100%;max-width:1280px;min-height:64px;margin:auto;
+  padding:0 28px;display:flex;align-items:center;gap:20px
+}
+.home-link{text-decoration:none;flex:0 0 auto}
+.topnav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.topnav a{padding:8px 10px;border-radius:5px;white-space:nowrap}
+.topnav a:hover{background:#f5f8f5}
+.menu-toggle{
+  display:none;margin-left:auto;border:1px solid var(--line);background:#fff;
+  color:var(--ink);border-radius:6px;padding:6px 10px;font-size:18px;cursor:pointer
+}
+.mobile-nav{display:none}
+.breadcrumbs{
+  display:flex;align-items:center;flex-wrap:wrap;gap:7px;
+  margin:0 0 20px;color:#78909c;font-size:13px
+}
+.breadcrumbs a{color:var(--green-dark);text-decoration:none}
+.breadcrumbs strong{color:#455a64}
+
+/* Tables plus petites et lisibles */
+table{
+  width:100%;
+  font-size:13px;
+  margin:15px 0 20px;
+}
+th,td{
+  padding:6px 5px;
+}
+#chemin table{
+  font-size:12px;
+}
+#chemin th,#chemin td{
+  padding:5px 6px;
+}
+.tunisian-variation{
+  font-size:15px;
+  min-width:620px;
+}
+.tunisian-variation th,
+.tunisian-variation td{
+  padding:4px 5px;
+}
+.tunisian-variation .x-row td{height:40px}
+.tunisian-variation .sign-row td{height:34px}
+.tunisian-variation .variation-row td{height:62px}
+.tunisian-variation .arrow{font-size:27px}
+.tunisian-variation .value{font-size:16px}
+.tunisian-variation .sign{font-size:16px}
+.tunisian-variation .zero{font-size:16px}
+
+/* Navigation en bas */
+.page-navigation{
+  margin:45px 0 5px;padding-top:22px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:10px
+}
+.nav-button{
+  min-width:0;display:flex;align-items:center;justify-content:space-between;
+  gap:10px;border:1px solid var(--line);border-radius:6px;padding:11px 13px;
+  background:#fff;color:#455a64;text-decoration:none
+}
+.nav-button:hover{background:#fafcf9;border-color:#b9c9b2}
+.nav-button small{display:block;color:#78909c;font-size:10px}
+.nav-button strong{display:block;color:var(--green-dark);font-size:13px}
+.nav-arrow{color:var(--green-dark);font-size:17px}
+.nav-button.center{justify-content:center;text-align:center}
+.nav-button.disabled{opacity:.5;cursor:default}
+
+.formula{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+img,svg{max-width:100%;height:auto}
+
+@media(max-width:1050px){
+  .page{grid-template-columns:210px minmax(0,1fr);gap:25px}
+  .topnav a{font-size:13px;padding:7px 8px}
+}
+
+@media(max-width:760px){
+  .topbar-inner{min-height:58px;padding:8px 15px}
+  .topnav{display:none}
+  .menu-toggle{display:block}
+  .mobile-nav{
+    border-top:1px solid var(--line);background:#fff;padding:7px 15px 12px
+  }
+  .mobile-nav.open{
+    display:grid;grid-template-columns:1fr 1fr;gap:2px 7px
+  }
+  .mobile-nav a{
+    display:block;padding:8px 6px;border-radius:5px;
+    color:#455a64;text-decoration:none;font-size:12.5px
+  }
+  .page{display:block;padding:18px 15px 45px}
+  .sidebar{
+    position:relative;top:auto;max-height:none;overflow-x:auto;overflow-y:hidden;
+    border-right:0;border-bottom:1px solid var(--line);
+    padding:0 0 8px;margin-bottom:22px;white-space:nowrap
+  }
+  .sidebar .label{display:inline-block;margin-right:6px}
+  .sidebar a{
+    display:inline-block;border-left:0;border-bottom:2px solid transparent;
+    padding:5px 7px
+  }
+  .sidebar .current{border-left:0;border-bottom-color:var(--green)}
+  .breadcrumbs{font-size:12px}
+  h1{font-size:28px}
+  h2{font-size:22px;margin-top:31px}
+  h3{font-size:18px}
+  .lead{font-size:16px}
+  .exercise-statement{padding:18px 15px}
+  .exercise-statement h2{font-size:22px}
+  .doc-box{padding:14px 15px}
+  table{
+    display:block;overflow-x:auto;white-space:nowrap;
+    -webkit-overflow-scrolling:touch;font-size:12px
+  }
+  #chemin table{font-size:11px}
+  th,td{padding:5px 4px}
+  .variation-wrap{overflow-x:auto}
+  .tunisian-variation{min-width:600px;font-size:14px}
+  .page-navigation{grid-template-columns:1fr;gap:8px}
+  .nav-button,.nav-button.center{justify-content:space-between;text-align:left}
+  .toc-right{display:none}
+}
+
+@media(max-width:430px){
+  .topbar-inner{padding:8px 12px}
+  .spring-mark{font-size:18px}
+  .mobile-nav.open{grid-template-columns:1fr}
+  .page{padding-left:12px;padding-right:12px}
+  h1{font-size:26px}
+  h2{font-size:21px}
+  .formula{font-size:14px}
+  #chemin table{font-size:10.5px}
+  .tunisian-variation{min-width:560px;font-size:13px}
+}
+@media print{
+  .topbar,.mobile-nav,.sidebar,.toc-right,.page-navigation,.breadcrumbs{display:none!important}
+  .page{display:block;padding:0;max-width:none}
+  table{font-size:11pt}
+}
+
+
+/* ===== Correction responsive : aucun chevauchement ===== */
+@media (max-width:760px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    padding:18px 15px 45px !important;
+  }
+
+  /* Sur téléphone, le menu latéral devient le menu ☰ du haut.
+     On le masque pour laisser toute la largeur au contenu. */
+  .page > .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    margin:0 !important;
+  }
+
+  .breadcrumbs{
+    width:100%;
+    margin-bottom:18px;
+  }
+
+  .exercise-statement,
+  .doc-box,
+  .example,
+  .step{
+    width:100%;
+    max-width:100%;
+  }
+
+  .formula{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+
+  .page-navigation{
+    width:100%;
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (min-width:761px){
+  .mobile-nav{display:none !important;}
+}
+
+@media (max-width:430px){
+  .page{
+    padding-left:12px !important;
+    padding-right:12px !important;
+  }
+  h1{font-size:26px !important;}
+  h2{font-size:21px !important;}
+}
+
+
+/* ===== Final correction : tablette / petits écrans ===== */
+@media (max-width:1050px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    padding:22px 18px 55px !important;
+  }
+
+  .page > .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:900px !important;
+    margin:0 auto !important;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+
+  .topnav{
+    display:none !important;
+  }
+
+  .menu-toggle{
+    display:block !important;
+  }
+
+  .mobile-nav{
+    border-top:1px solid var(--line);
+    background:#fff;
+    padding:7px 15px 12px;
+  }
+
+  .mobile-nav.open{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px 8px;
+  }
+
+  .mobile-nav a{
+    display:block;
+    padding:9px 7px;
+    border-radius:5px;
+    color:#455a64;
+    text-decoration:none;
+    font-size:13px;
+  }
+
+  .breadcrumbs{
+    width:100%;
+    margin-bottom:20px;
+  }
+
+  .exercise-statement,
+  .doc-box,
+  .example,
+  .step{
+    width:100%;
+    max-width:100%;
+  }
+
+  .formula{
+    max-width:100%;
+    overflow-x:auto;
+  }
+
+  .page-navigation{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (min-width:1051px){
+  .menu-toggle,
+  .mobile-nav{
+    display:none !important;
+  }
+}
+
+@media (max-width:560px){
+  .page{
+    padding:18px 12px 45px !important;
+  }
+
+  .mobile-nav.open{
+    grid-template-columns:1fr;
+  }
+
+  h1{font-size:27px !important}
+  h2{font-size:21px !important}
+}
+
+</style>
+
+<style id="final-responsive-fix">
+/* ===== DERNIÈRE COUCHE RESPONSIVE — priorité maximale ===== */
+
+/* Ordinateur */
+@media (min-width:1051px){
+  .page{
+    display:grid !important;
+    grid-template-columns:250px minmax(0,760px) 180px !important;
+  }
+  .page > .sidebar{display:block !important;}
+  .toc-right{display:block !important;}
+  .menu-toggle,.mobile-nav{display:none !important;}
+}
+
+/* Tablette + téléphone : une seule colonne */
+@media (max-width:1050px){
+  html,body{
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:hidden !important;
+  }
+
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:20px 18px 50px !important;
+  }
+
+  .page > .sidebar{
+    display:none !important;
+    width:0 !important;
+    height:0 !important;
+    overflow:hidden !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    max-width:900px !important;
+    min-width:0 !important;
+    margin:0 auto !important;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+
+  .topbar{
+    width:100% !important;
+    height:auto !important;
+  }
+
+  .topbar-inner{
+    width:100% !important;
+    min-height:58px !important;
+    padding:8px 15px !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+
+  .topnav{
+    display:none !important;
+  }
+
+  .menu-toggle{
+    display:block !important;
+    margin-left:auto !important;
+  }
+
+  .mobile-nav{
+    display:none !important;
+    width:100% !important;
+  }
+
+  .mobile-nav.open{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+  }
+
+  .breadcrumbs{
+    width:100% !important;
+    max-width:100% !important;
+    margin-bottom:20px !important;
+  }
+
+  .exercise-statement,
+  .step,
+  .example,
+  .doc-box,
+  .result{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .formula{
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:auto !important;
+  }
+
+  .variation-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:auto !important;
+  }
+
+  .page-navigation{
+    width:100% !important;
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* Téléphone */
+@media (max-width:560px){
+  .page{
+    padding:16px 12px 42px !important;
+  }
+
+  .mobile-nav.open{
+    grid-template-columns:1fr !important;
+  }
+
+  h1{font-size:27px !important;}
+  h2{font-size:21px !important;}
+
+  table{
+    font-size:11px !important;
+  }
+
+  th,td{
+    padding:4px !important;
+  }
+
+  .tunisian-variation{
+    min-width:560px !important;
+    font-size:13px !important;
+  }
+}
+</style>
+
+
+<style id="bureau-layout-correction">
+/* ===== Correction du problème visible sur écran bureau =====
+   La grille précédente était plus large que la fenêtre :
+   250 + 760 + 180 + les espacements dépassaient la largeur disponible.
+   Le contenu central se retrouvait donc écrasé à droite.
+*/
+
+/* Bureau : grille qui tient réellement dans l'écran */
+@media (min-width:1051px){
+  .page{
+    width:100% !important;
+    max-width:1240px !important;
+    margin:0 auto !important;
+    display:grid !important;
+    grid-template-columns:220px minmax(0,1fr) 165px !important;
+    gap:28px !important;
+    padding:32px 24px 65px !important;
+  }
+
+  .sidebar{
+    width:220px !important;
+    min-width:0 !important;
+    padding-right:18px !important;
+  }
+
+  .content{
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+  }
+
+  .toc-right{
+    width:165px !important;
+    min-width:0 !important;
+  }
+
+  .content h1{
+    max-width:760px !important;
+  }
+
+  .lead{
+    max-width:760px !important;
+  }
+}
+
+/* Très grand écran : on garde une largeur confortable */
+@media (min-width:1400px){
+  .page{
+    max-width:1320px !important;
+    grid-template-columns:230px minmax(0,1fr) 180px !important;
+    gap:34px !important;
+  }
+  .sidebar{width:230px !important}
+  .toc-right{width:180px !important}
+}
+
+/* Tablette/téléphone : une seule colonne */
+@media (max-width:1050px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:20px 18px 55px !important;
+  }
+
+  .page > .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    max-width:900px !important;
+    min-width:0 !important;
+    margin:0 auto !important;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="structural-layout-fix">
+.page{
+  box-sizing:border-box;
+}
+@media (min-width:1051px){
+  .page{
+    display:grid !important;
+    grid-template-columns:minmax(190px,220px) minmax(0,1fr) minmax(145px,165px) !important;
+    gap:28px !important;
+    width:100% !important;
+    max-width:1240px !important;
+    margin:0 auto !important;
+    padding:32px 24px 65px !important;
+  }
+  .page > .sidebar{grid-column:1;display:block !important;min-width:0 !important;}
+  .page > .content{grid-column:2;display:block !important;min-width:0 !important;width:100% !important;margin:0 !important;}
+  .page > .toc-right{grid-column:3;display:block !important;min-width:0 !important;width:100% !important;}
+}
+@media (max-width:1050px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:20px 18px 55px !important;
+  }
+  .page > .sidebar,
+  .page > .toc-right{display:none !important;}
+  .page > .content{
+    display:block !important;
+    width:100% !important;
+    max-width:900px !important;
+    min-width:0 !important;
+    margin:0 auto !important;
+  }
+}
+</style>
+
+
+<style id="exercise02-compact">
+.compact-sign{
+  font-size:13px;
+  margin:14px 0 20px;
+}
+.compact-sign th,.compact-sign td{
+  padding:5px 6px;
+}
+@media(max-width:560px){
+  .compact-sign{
+    font-size:11px !important;
+  }
+  .compact-sign th,.compact-sign td{
+    padding:4px !important;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="spring-mark home-link" href="../../index.html" aria-label="Accueil">
+      <span class="dot"></span><span>Mathématiques</span>
+    </a>
+    <nav class="topnav" aria-label="Navigation principale">
+      <a href="../../index.html">Accueil</a>
+      <a href="../index.html">Chapitre 1</a>
+      <a href="#enonce">Exercice 2</a>
+      <a href="#retenir">À retenir</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false"
+            onclick="toggleMobileMenu()">☰</button>
+  </div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="Menu mobile">
+    <a href="../../index.html">⌂ Accueil</a>
+    <a href="../index.html">← Index du chapitre 1</a>
+    <a href="#enonce">Énoncé</a>
+    <a href="#chemin">Chemin</a>
+    <a href="#objectif">Objectif</a>
+    <a href="#prerequis">Prérequis</a>
+    <a href="#domaine">Domaine</a>
+    <a href="#derivee">Continuité & dérivée</a>
+    <a href="#limites">Limites</a>
+    <a href="#signe">Signe de f′</a>
+    <a href="#variations">Variations</a>
+    <a href="#graphique">Graphe</a>
+    <a href="#image">Image</a>
+    <a href="#extrema">Extrema</a>
+    <a href="#retenir">À retenir</a>
+  </nav>
+</header>
+
+<div class="page">
+
+<aside class="sidebar">
+  <div class="label">4ème · Chapitre 1</div>
+  <a class="current" href="#enonce">Énoncé</a>
+  <a href="#chemin">Chemin de l’étude</a>
+  <a href="#objectif">Objectif</a>
+  <a href="#prerequis">Prérequis</a>
+  <a href="#domaine">1. Domaine</a>
+  <a href="#derivee">2. Continuité & dérivée</a>
+  <a href="#limites">3. Limites</a>
+  <a href="#critiques">4. Nombre critique</a>
+  <a href="#signe">5. Signe de \(f'\)</a>
+  <a href="#variations">6. Variations</a>
+  <a href="#image">7. Image</a>
+  <a href="#extrema">8. Minimum</a>
+  <a href="#graphique">9. Graphe</a>
+  <a href="#retenir">À retenir</a>
+</aside>
+
+<main class="content">
+
+<div class="breadcrumbs" aria-label="Fil d’Ariane">
+  <a href="../../index.html">Accueil</a><span>›</span>
+  <a href="../index.html">4ème · Chapitre 1</a><span>›</span>
+  <strong>Exercice 2</strong>
+</div>
+
+<div class="kicker">4ÈME · CHAPITRE 1 · RÉVISION BAC 2027</div>
+<h1>Exercice 2 — Étude d'une fonction</h1>
+
+<p class="lead">
+  Une nouvelle fonction pour revoir le domaine, la continuité, les limites,
+  la dérivée, les variations, le minimum et l'image.
+</p>
+
+<hr class="rule">
+
+<section id="enonce" class="exercise-statement">
+  <div class="exercise-label">EXERCICE 2 · RÉVISION</div>
+  <h2>Énoncé <button class="popup-btn" type="button" onclick="openComment()">💡 Commentaire</button></h2>
+
+  <p>On considère la fonction \(f\) définie par :</p>
+
+  <div class="formula">
+    \[
+      \boxed{f(x)=\sqrt{x^2+x+1}}
+    \]
+  </div>
+
+  <p><strong>1.</strong> Déterminer le domaine de définition de \(f\).</p>
+
+  <p><strong>2.</strong> Étudier la continuité de \(f\) sur son domaine.</p>
+
+  <p><strong>3.</strong> Calculer les limites de \(f\) en \(-\infty\) et en \(+\infty\).</p>
+
+  <p><strong>4.</strong> Calculer \(f'(x)\) et étudier son signe.</p>
+
+  <p><strong>5.</strong> Dresser le tableau de variations de \(f\).</p>
+
+  <p><strong>6.</strong> Déterminer le minimum de \(f\) et l'image de \(f\).</p>
+
+  <div class="doc-box note">
+    <strong>Objectif de l'étude :</strong>
+    comprendre comment le signe de la dérivée permet de passer du calcul
+    à la variation d'une fonction.
+  </div>
+</section>
+
+<section id="chemin" class="step">
+  <h2>Le chemin d'une étude de fonction</h2>
+  <p>
+    On reprend la même démarche que dans l'exercice précédent, mais la fonction
+    présente ici une racine carrée.
+  </p>
+
+  <table>
+    <tr><th>Étape</th><th>Question</th><th>Pourquoi ?</th></tr>
+    <tr><td>1. Domaine</td><td>Quand la racine existe-t-elle ?</td><td>Définir \(D_f\).</td></tr>
+    <tr><td>2. Continuité</td><td>La fonction est-elle continue ?</td><td>Justifier les théorèmes.</td></tr>
+    <tr><td>3. Limites</td><td>Que se passe-t-il à l'infini ?</td><td>Étudier le comportement.</td></tr>
+    <tr><td>4. Dérivée</td><td>Calculer \(f'(x)\).</td><td>Préparer les variations.</td></tr>
+    <tr><td>5. Signe</td><td>Quel est le signe de \(f'(x)\) ?</td><td>Déduire les variations.</td></tr>
+    <tr><td>6. Image</td><td>Quelles valeurs peut prendre \(f\) ?</td><td>Terminer l'étude.</td></tr>
+  </table>
+</section>
+
+<section id="objectif">
+  <h2>Objectif</h2>
+  <p>À la fin de cette activité, l'élève doit être capable de :</p>
+  <ul>
+    <li>déterminer le domaine d'une fonction contenant une racine carrée ;</li>
+    <li>utiliser la dérivée d'une fonction composée ;</li>
+    <li>étudier le signe de \(f'(x)\) ;</li>
+    <li>construire le tableau de variations ;</li>
+    <li>déterminer un minimum et l'image de la fonction.</li>
+  </ul>
+</section>
+
+<section id="prerequis">
+  <h2>Prérequis</h2>
+  <div class="doc-box note">
+    <strong>Connaissances nécessaires</strong>
+    <ul>
+      <li>Discriminant d'un trinôme du second degré.</li>
+      <li>Dérivée de \(\sqrt{u(x)}\).</li>
+      <li>Signe d'une expression affine.</li>
+      <li>Relation entre le signe de \(f'\) et les variations de \(f\).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="exemple" class="example">
+  <div class="example-title">Étude de la fonction</div>
+  <p>On considère :</p>
+  <div class="formula">
+    \[
+      f(x)=\sqrt{x^2+x+1}.
+    \]
+  </div>
+  <p>
+    Nous allons avancer dans l'ordre : domaine, continuité, limites,
+    dérivée, signe, variations, minimum et image.
+  </p>
+</section>
+
+<section id="domaine" class="step">
+  <h2>1. Domaine de définition</h2>
+
+  <p>Une racine carrée est définie lorsque son radicande est positif ou nul :</p>
+
+  <div class="formula">
+    \[
+      x^2+x+1\geq0.
+    \]
+  </div>
+
+  <p>Étudions le trinôme \(x^2+x+1\).</p>
+
+  <div class="formula">
+    \[
+      \Delta=1^2-4\times1\times1=-3<0.
+    \]
+  </div>
+
+  <p>
+    Comme le coefficient de \(x^2\) est positif et que \(\Delta<0\),
+    le trinôme est strictement positif sur \(\mathbb R\).
+  </p>
+
+  <div class="doc-box">
+    <strong>Donc :</strong>
+    \[
+      \boxed{D_f=\mathbb R}.
+    \]
+  </div>
+</section>
+
+<section id="derivee" class="step">
+  <h2>2. Continuité et dérivée</h2>
+
+  <div class="doc-box note">
+    <strong>Continuité</strong>
+    <p>
+      Le trinôme \(x^2+x+1\) est continu sur \(\mathbb R\) et il est
+      strictement positif. La fonction racine carrée est donc continue
+      sur son domaine.
+    </p>
+    <div class="formula">
+      \[
+        \boxed{f\text{ est continue sur }\mathbb R}.
+      \]
+    </div>
+  </div>
+
+  <h3>Calcul de la dérivée</h3>
+
+  <p>
+    On utilise la dérivée de \(\sqrt{u(x)}\) :
+  </p>
+
+  <div class="formula">
+    \[
+      (\sqrt{u})'=\frac{u'}{2\sqrt{u}}.
+    \]
+  </div>
+
+  <p>Avec \(u(x)=x^2+x+1\), on a \(u'(x)=2x+1\). Donc :</p>
+
+  <div class="formula">
+    \[
+      \boxed{
+      f'(x)=\frac{2x+1}{2\sqrt{x^2+x+1}}
+      }.
+    \]
+  </div>
+
+  <div class="doc-box note">
+    <strong>Idée importante :</strong>
+    le dénominateur est strictement positif sur \(\mathbb R\).
+    Le signe de \(f'(x)\) sera donc celui de \(2x+1\).
+  </div>
+</section>
+
+<section id="limites" class="step">
+  <h2>3. Limites à l'infini</h2>
+
+  <h3>En \(+\infty\)</h3>
+
+  <p>
+    Lorsque \(x\to+\infty\), on a \(x^2+x+1\to+\infty\), donc :
+  </p>
+
+  <div class="formula">
+    \[
+      \boxed{\lim_{x\to+\infty}f(x)=+\infty}.
+    \]
+  </div>
+
+  <h3>En \(-\infty\)</h3>
+
+  <p>
+    Lorsque \(x\to-\infty\), on a également \(x^2+x+1\to+\infty\), donc :
+  </p>
+
+  <div class="formula">
+    \[
+      \boxed{\lim_{x\to-\infty}f(x)=+\infty}.
+    \]
+  </div>
+
+  <div class="doc-box">
+    <strong>Conclusion :</strong>
+    la fonction tend vers \(+\infty\) aux deux extrémités de son domaine.
+  </div>
+</section>
+
+<section id="critiques" class="step">
+  <h2>4. Nombre critique</h2>
+
+  <p>Le dénominateur de \(f'(x)\) est strictement positif. Cherchons donc :</p>
+
+  <div class="formula">
+    \[
+      2x+1=0.
+    \]
+  </div>
+
+  <div class="formula">
+    \[
+      \boxed{x=-\frac12}.
+    \]
+  </div>
+
+  <p>Calculons la valeur correspondante :</p>
+
+  <div class="formula">
+    \[
+      f\left(-\frac12\right)
+      =
+      \sqrt{\frac14-\frac12+1}
+      =
+      \sqrt{\frac34}
+      =
+      \boxed{\frac{\sqrt3}{2}}.
+    \]
+  </div>
+</section>
+
+<section id="signe" class="step">
+  <h2>5. Signe de \(f'(x)\)</h2>
+
+  <p>
+    Puisque
+    \[
+      f'(x)=\frac{2x+1}{2\sqrt{x^2+x+1}},
+    \]
+    et que le dénominateur est strictement positif, on étudie seulement
+    le signe de \(2x+1\).
+  </p>
+
+  <table class="compact-sign">
+    <tr>
+      <th>\(x\)</th>
+      <td>\(-\infty\)</td>
+      <td></td>
+      <td>\(-\frac12\)</td>
+      <td></td>
+      <td>\(+\infty\)</td>
+    </tr>
+    <tr>
+      <th>\(2x+1\)</th>
+      <td>\(-\)</td>
+      <td></td>
+      <td>\(0\)</td>
+      <td></td>
+      <td>\(+\)</td>
+    </tr>
+    <tr>
+      <th>\(f'(x)\)</th>
+      <td>\(-\)</td>
+      <td></td>
+      <td>\(0\)</td>
+      <td></td>
+      <td>\(+\)</td>
+    </tr>
+  </table>
+
+  <div class="doc-box note">
+    <strong>Lecture :</strong>
+    \(f\) décroît avant \(-\frac12\), puis croît après \(-\frac12\).
+  </div>
+</section>
+
+<section id="variations" class="step">
+  <h2>6. Tableau de variations</h2>
+
+  <div class="doc-box note">
+    <strong>Théorème :</strong>
+    si \(f'(x)<0\), \(f\) est décroissante ; si \(f'(x)>0\),
+    \(f\) est croissante.
+  </div>
+
+  <div class="variation-wrap">
+    <table class="variation tunisian-variation">
+      <tr class="x-row">
+        <th>\(x\)</th>
+        <td>\(-\infty\)</td>
+        <td></td>
+        <td>\(-\frac12\)</td>
+        <td></td>
+        <td>\(+\infty\)</td>
+      </tr>
+      <tr class="sign-row">
+        <th>\(f'(x)\)</th>
+        <td></td>
+        <td class="sign">−</td>
+        <td class="zero">0</td>
+        <td class="sign">+</td>
+        <td></td>
+      </tr>
+      <tr class="variation-row">
+        <th>\(f(x)\)</th>
+        <td class="value">+\(\infty\)</td>
+        <td class="arrow">↘</td>
+        <td class="value">\(\frac{\sqrt3}{2}\)</td>
+        <td class="arrow">↗</td>
+        <td class="value">+\(\infty\)</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="doc-box">
+    <strong>Conclusion :</strong>
+    \(f\) admet un minimum au point d'abscisse
+    \[
+      \boxed{-\frac12}.
+    \]
+  </div>
+</section>
+
+<section id="image" class="step">
+  <h2>7. Image de \(f\)</h2>
+
+  <p>
+    Le tableau de variations montre que la plus petite valeur de \(f\) est
+    \(\frac{\sqrt3}{2}\), et que \(f(x)\) tend vers \(+\infty\) aux deux
+    extrémités.
+  </p>
+
+  <div class="result">
+    <strong>Image de la fonction :</strong>
+    <div class="formula">
+      \[
+        \boxed{
+        \operatorname{Im}(f)=
+        \left[\frac{\sqrt3}{2},+\infty\right[
+        }.
+      \]
+    </div>
+  </div>
+</section>
+
+<section id="extrema" class="step">
+  <h2>8. Minimum</h2>
+
+  <p>
+    Comme \(f\) décroît puis croît autour de \(x=-\frac12\), cette valeur
+    correspond à un minimum.
+  </p>
+
+  <div class="doc-box note">
+    <strong>Minimum global :</strong>
+    \[
+      \boxed{
+      f_{\min}=\frac{\sqrt3}{2}
+      }
+    \]
+    atteint pour
+    \[
+      \boxed{x=-\frac12}.
+    \]
+  </div>
+</section>
+
+<section id="graphique" class="step">
+  <h2>9. Représentation graphique</h2>
+
+  <p>
+    La courbe possède un seul minimum en
+    \[
+      \left(-\frac12,\frac{\sqrt3}{2}\right)
+    \]
+    et monte vers \(+\infty\) lorsque \(x\to-\infty\) ou \(x\to+\infty\).
+  </p>
+
+  <div class="manual-graph">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 560 360"
+         role="img"
+         aria-label="Courbe de f(x)=racine de x carré plus x plus 1">
+      <rect width="560" height="360" fill="white"/>
+      <line x1="55" y1="300" x2="525" y2="300" stroke="#222" stroke-width="1.2"/>
+      <polygon points="525,300 517,296 517,304" fill="#222"/>
+      <line x1="280" y1="330" x2="280" y2="25" stroke="#222" stroke-width="1.2"/>
+      <polygon points="280,25 276,33 284,33" fill="#222"/>
+
+      <!-- Courbe approximative de sqrt(x²+x+1) -->
+      <path d="M60,55
+               C105,105 145,150 190,190
+               C220,218 248,236 280,244
+               C312,236 340,218 370,190
+               C415,150 455,105 500,55"
+            fill="none" stroke="#111" stroke-width="2.2"
+            stroke-linecap="round"/>
+
+      <circle cx="280" cy="244" r="4.5" fill="white" stroke="#111" stroke-width="1.5"/>
+
+      <g fill="#222" font-family="Times New Roman, Georgia, serif" font-size="13">
+        <text x="531" y="304" font-style="italic">x</text>
+        <text x="285" y="22" font-style="italic">y</text>
+        <text x="280" y="263" text-anchor="middle">
+          \((-1/2,\sqrt3/2)\)
+        </text>
+        <text x="395" y="90" font-style="italic">\(f(x)\)</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="doc-box">
+    <strong>Lecture graphique :</strong>
+    le point
+    \[
+      \left(-\frac12,\frac{\sqrt3}{2}\right)
+    \]
+    est le minimum de la courbe.
+  </div>
+</section>
+
+<section id="retenir">
+  <h2>À retenir</h2>
+
+  <div class="doc-box note">
+    <strong>Pour une fonction de la forme \(\sqrt{u(x)}\)</strong>
+    <ol>
+      <li>Commencer par \(u(x)\geq0\) pour déterminer le domaine.</li>
+      <li>Pour la dérivée, utiliser
+        \[
+          (\sqrt{u})'=\frac{u'}{2\sqrt{u}}.
+        \]
+      </li>
+      <li>Si le dénominateur est strictement positif, le signe de \(f'\)
+          est celui du numérateur.</li>
+    </ol>
+  </div>
+
+  <h3>Méthode</h3>
+  <ol id="methode">
+    <li>Déterminer le domaine.</li>
+    <li>Justifier la continuité.</li>
+    <li>Étudier les limites.</li>
+    <li>Calculer la dérivée.</li>
+    <li>Étudier son signe.</li>
+    <li>Construire le tableau de variations.</li>
+    <li>Déterminer le minimum et l'image.</li>
+  </ol>
+</section>
+
+<nav class="page-navigation" aria-label="Navigation des pages">
+  <a class="nav-button" href="../../index.html">
+    <span class="nav-arrow">←</span>
+    <span><small>Retour</small><strong>Accueil</strong></span>
+  </a>
+  <a class="nav-button center" href="../index.html">
+    <span class="nav-arrow">↑</span>
+    <span><small>Retour à</small><strong>Index du chapitre 1</strong></span>
+  </a>
+  <a class="nav-button" href="#" aria-disabled="true" onclick="return false;">
+    <span><small>Prochain</small><strong>Exercice 3</strong></span>
+    <span class="nav-arrow">→</span>
+  </a>
+</nav>
+
+</main>
+
+<aside class="toc-right">
+  <strong>Sur cette page</strong>
+  <a href="#objectif">Objectif</a>
+  <a href="#prerequis">Prérequis</a>
+  <a href="#domaine">Domaine</a>
+  <a href="#derivee">Continuité & dérivée</a>
+  <a href="#limites">Limites</a>
+  <a href="#critiques">Nombre critique</a>
+  <a href="#signe">Signe</a>
+  <a href="#variations">Variations</a>
+  <a href="#image">Image</a>
+  <a href="#extrema">Minimum</a>
+  <a href="#graphique">Graphe</a>
+  <a href="#retenir">À retenir</a>
+</aside>
+
+</div>
+
+<footer>
+  Cours de mathématiques · HTML + MathJax · Mise en page responsive
+</footer>
+
+
+<dialog id="commentDialog">
+  <h3>💡 Commentaire pédagogique</h3>
+  <p>
+    Cette fonction est intéressante parce que son domaine est obtenu en étudiant
+    un trinôme placé sous une racine carrée.
+  </p>
+  <p>
+    Ensuite, la dérivée permet de retrouver une étude complète :
+    signe de \(f'\), variations, minimum et image.
+  </p>
+  <button class="close-btn" type="button" onclick="closeComment()">Fermer</button>
+</dialog>
+
+<script>
+function openComment(){
+  document.getElementById('commentDialog').showModal();
+}
+function closeComment(){
+  document.getElementById('commentDialog').close();
+}
+
+function toggleMobileMenu(){
+  const menu=document.getElementById('mobileNav');
+  const button=document.querySelector('.menu-toggle');
+  const open=menu.classList.toggle('open');
+  button.setAttribute('aria-expanded',open?'true':'false');
+  button.textContent=open?'✕':'☰';
+}
+document.querySelectorAll('#mobileNav a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const menu=document.getElementById('mobileNav');
+    const button=document.querySelector('.menu-toggle');
+    menu.classList.remove('open');
+    button.setAttribute('aria-expanded','false');
+    button.textContent='☰';
+  });
+});
+
+</script>
+
+
+<script>
+(function () {
+  function applyResponsiveLayout() {
+    const page = document.querySelector('.page');
+    const sidebar = document.querySelector('.page > .sidebar');
+    const content = document.querySelector('.page > .content');
+    const toc = document.querySelector('.toc-right');
+    const menuButton = document.querySelector('.menu-toggle');
+    const topnav = document.querySelector('.topnav');
+
+    if (!page || !content) return;
+
+    const narrow = window.innerWidth <= 1050;
+
+    if (narrow) {
+      /* Force le mode mobile/tablette, indépendamment des autres CSS. */
+      page.style.display = 'block';
+      page.style.width = '100%';
+      page.style.maxWidth = '100%';
+      page.style.margin = '0';
+      page.style.padding = window.innerWidth <= 560 ? '16px 12px 45px' : '20px 18px 55px';
+
+      content.style.display = 'block';
+      content.style.width = '100%';
+      content.style.maxWidth = '900px';
+      content.style.minWidth = '0';
+      content.style.margin = '0 auto';
+
+      if (sidebar) {
+        sidebar.style.display = 'none';
+      }
+      if (toc) {
+        toc.style.display = 'none';
+      }
+      if (topnav) {
+        topnav.style.display = 'none';
+      }
+      if (menuButton) {
+        menuButton.style.display = 'block';
+      }
+    } else {
+      /* Retour au mode bureau. */
+      page.style.display = '';
+      page.style.width = '';
+      page.style.maxWidth = '';
+      page.style.margin = '';
+      page.style.padding = '';
+
+      content.style.display = '';
+      content.style.width = '';
+      content.style.maxWidth = '';
+      content.style.minWidth = '';
+      content.style.margin = '';
+
+      if (sidebar) sidebar.style.display = '';
+      if (toc) toc.style.display = '';
+      if (topnav) topnav.style.display = '';
+      if (menuButton) menuButton.style.display = '';
+    }
+  }
+
+  window.addEventListener('resize', applyResponsiveLayout);
+  window.addEventListener('orientationchange', applyResponsiveLayout);
+  document.addEventListener('DOMContentLoaded', applyResponsiveLayout);
+  applyResponsiveLayout();
+})();
+</script>
+
+</body>
+</html>
