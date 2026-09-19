@@ -127,23 +127,6 @@ body{
 }
 
 .content{min-width:0}
-
-.breadcrumb{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:22px;
-  font-size:13px;
-  color:#78909c;
-}
-.breadcrumb a{
-  color:var(--green-dark);
-  text-decoration:none;
-}
-.breadcrumb a:hover{text-decoration:underline}
-.breadcrumb strong{color:#455a64;font-weight:600}
-
 .kicker{
   color:var(--green-dark);
   font-size:13px;
@@ -261,25 +244,7 @@ th{
   margin:5px 0;
 }
 .toc-right a:hover{color:var(--green-dark)}
-.page-navigation{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:18px 28px;
-  border-top:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  font-size:14px;
-}
-.page-navigation a{
-  color:var(--green-dark);
-  text-decoration:none;
-  font-weight:600;
-}
-.page-navigation a:hover{text-decoration:underline}
-
-footer{{
+footer{
   border-top:1px solid var(--line);
   padding:25px 28px;
   color:#78909c;
@@ -343,7 +308,6 @@ footer{{
   h1{font-size:30px}
   h2{font-size:23px;margin-top:34px}
   .lead{font-size:17px}
-  .page-navigation{padding:16px}
   table{
     display:block;
     overflow-x:auto;
@@ -448,21 +412,288 @@ dialog p{margin-bottom:12px}
   border-radius:4px;cursor:pointer;
 }
 
+
+/* ===== Navigation et responsive ===== */
+.topbar{
+  height:auto;
+  min-height:64px;
+  padding:0;
+}
+.topbar-inner{
+  width:100%;
+  max-width:1280px;
+  min-height:64px;
+  margin:0 auto;
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.home-link{
+  flex:0 0 auto;
+  text-decoration:none;
+}
+.topnav{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.topnav a{
+  padding:8px 11px;
+  border-radius:5px;
+  white-space:nowrap;
+}
+.topnav a:hover{
+  background:#f5f8f5;
+}
+.menu-toggle{
+  display:none;
+  margin-left:auto;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  border-radius:6px;
+  padding:7px 10px;
+  font-size:19px;
+  cursor:pointer;
+}
+.mobile-nav{
+  display:none;
+}
+.breadcrumbs{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:0 0 22px;
+  color:#78909c;
+  font-size:13px;
+}
+.breadcrumbs a{
+  text-decoration:none;
+  color:var(--green-dark);
+}
+.breadcrumbs a:hover{text-decoration:underline}
+.breadcrumbs strong{color:#455a64}
+
+.page-navigation{
+  margin:50px 0 10px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:1fr 1.25fr 1fr;
+  gap:12px;
+}
+.nav-button{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:13px 15px;
+  background:#fff;
+  color:#455a64;
+  text-decoration:none;
+}
+.nav-button:hover{
+  border-color:#b9c9b2;
+  background:#fafcf9;
+}
+.nav-button small{
+  display:block;
+  color:#78909c;
+  font-size:11px;
+  margin-bottom:1px;
+}
+.nav-button strong{
+  display:block;
+  color:var(--green-dark);
+  font-size:14px;
+}
+.nav-button > span:first-child{
+  color:var(--green-dark);
+  font-size:18px;
+}
+.nav-button.center{justify-content:center;text-align:center}
+.nav-button.next{justify-content:flex-end;text-align:right}
+.nav-button[aria-disabled="true"]{
+  opacity:.55;
+  cursor:default;
+}
+
+/* Tables, formulas and long mathematical content remain scrollable */
+.formula,
+.variation-wrap,
+.exercise-statement,
+.doc-box,
+.example{
+  max-width:100%;
+}
+.formula{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+img,svg{
+  max-width:100%;
+  height:auto;
+}
+button{font:inherit}
+
+@media(max-width:1050px){
+  .page{
+    grid-template-columns:210px minmax(0,1fr);
+    gap:28px;
+  }
+  .topnav{gap:2px}
+  .topnav a{padding:8px 8px;font-size:13px}
+}
+
+@media(max-width:760px){
+  .topbar-inner{
+    min-height:58px;
+    padding:8px 15px;
+  }
+  .topnav{display:none}
+  .menu-toggle{display:block}
+  .mobile-nav{
+    border-top:1px solid var(--line);
+    background:#fff;
+    padding:7px 15px 12px;
+  }
+  .mobile-nav.open{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px 8px;
+  }
+  .mobile-nav a{
+    display:block;
+    padding:9px 7px;
+    border-radius:5px;
+    color:#455a64;
+    text-decoration:none;
+    font-size:13px;
+  }
+  .mobile-nav a:hover{background:#f5f8f5;color:var(--green-dark)}
+
+  .page{
+    display:block;
+    padding:18px 15px 45px;
+  }
+  .sidebar{
+    position:relative;
+    top:auto;
+    max-height:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:0 0 9px;
+    margin-bottom:25px;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+  }
+  .sidebar .label{
+    display:inline-block;
+    margin-right:8px;
+  }
+  .sidebar a{
+    display:inline-block;
+    border-left:0;
+    border-bottom:2px solid transparent;
+    padding:6px 8px;
+    margin:0;
+  }
+  .sidebar .current{
+    border-left:0;
+    border-bottom-color:var(--green);
+  }
+
+  .breadcrumbs{
+    font-size:12px;
+    margin-bottom:18px;
+  }
+  h1{font-size:29px;letter-spacing:-.7px}
+  h2{font-size:23px;margin-top:32px}
+  h3{font-size:18px}
+  .lead{font-size:16px}
+  .exercise-statement{padding:19px 16px}
+  .exercise-statement h2{font-size:23px}
+  .doc-box{padding:15px 16px}
+  table{
+    font-size:14px;
+  }
+  .page-navigation{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+  .nav-button,
+  .nav-button.center,
+  .nav-button.next{
+    justify-content:space-between;
+    text-align:left;
+  }
+}
+
+@media(max-width:430px){
+  .topbar-inner{padding:8px 12px}
+  .spring-mark{font-size:18px}
+  .spring-mark .dot{width:12px;height:12px}
+  .mobile-nav.open{grid-template-columns:1fr}
+  .page{padding-left:12px;padding-right:12px}
+  h1{font-size:27px}
+  h2{font-size:21px}
+  .formula{font-size:14px}
+  .toc-right{display:none}
+}
+
+@media print{
+  .topbar,.mobile-nav,.sidebar,.toc-right,.page-navigation,.breadcrumbs{display:none!important}
+  .page{display:block;padding:0;max-width:none}
+}
+
 </style>
 </head>
 
 <body>
 
 <header class="topbar">
-  <div class="spring-mark">
-    <span class="dot"></span>
-    <span>Mathématiques</span>
+  <div class="topbar-inner">
+    <a class="spring-mark home-link" href="../../index.html" aria-label="Accueil">
+      <span class="dot"></span>
+      <span>Mathématiques</span>
+    </a>
+
+    <nav class="topnav" aria-label="Navigation principale">
+      <a href="../../index.html">Accueil</a>
+      <a href="../index.html">Chapitre 1</a>
+      <a href="#enonce">Exercice</a>
+      <a href="#retenir">À retenir</a>
+    </nav>
+
+    <button class="menu-toggle" type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            onclick="toggleMobileMenu()">☰</button>
   </div>
-  <nav class="topnav">
-    <a href="../../index.html">Accueil</a>
-    <a href="../index.html">Chapitre 1</a>
-    <a href="#objectif">Cours</a>
-    <a href="#exemple">Exemple</a>
+
+  <nav id="mobileNav" class="mobile-nav" aria-label="Menu mobile">
+    <a href="../../index.html">⌂ Accueil</a>
+    <a href="../index.html">← Index du chapitre 1</a>
+    <a href="#enonce">Énoncé</a>
+    <a href="#chemin">Chemin de l'étude</a>
+    <a href="#objectif">Objectif</a>
+    <a href="#prerequis">Prérequis</a>
+    <a href="#domaine">Domaine</a>
+    <a href="#derivee">Continuité & dérivée</a>
+    <a href="#limites">Limites & asymptote</a>
+    <a href="#signe">Signe de f′</a>
+    <a href="#variations">Variations</a>
+    <a href="#graphique">Graphe</a>
+    <a href="#image">Image</a>
+    <a href="#extrema">Extrema</a>
     <a href="#retenir">À retenir</a>
   </nav>
 </header>
@@ -487,15 +718,15 @@ dialog p{margin-bottom:12px}
   <a href="#retenir">À retenir</a>
 </aside>
 
-<main class="content">
-
-<div class="breadcrumb">
-  <a href="../../index.html">← Accueil</a>
+<div class="breadcrumbs" aria-label="Fil d’Ariane">
+  <a href="../../index.html">Accueil</a>
   <span>›</span>
-  <a href="../index.html">Chapitre 1</a>
+  <a href="../index.html">4ème · Chapitre 1</a>
   <span>›</span>
   <strong>Exercice 1</strong>
 </div>
+
+<main class="content">
 
 <div class="kicker">4ÈME · CHAPITRE 1 · RÉVISION BAC 2027</div>
 <h1>Exercice 1 — Étude complète d'une fonction</h1>
@@ -1221,6 +1452,24 @@ Si \(f'\) change de signe de \(+\) vers \(-\) en \(a\), alors
 
 </section>
 
+
+<nav class="page-navigation" aria-label="Navigation entre les pages">
+  <a class="nav-button" href="../../index.html">
+    <span>←</span>
+    <span><small>Retour</small><strong>Accueil</strong></span>
+  </a>
+
+  <a class="nav-button center" href="../index.html">
+    <span>↑</span>
+    <span><small>Retour à</small><strong>Index du chapitre 1</strong></span>
+  </a>
+
+  <a class="nav-button next" href="#" onclick="return false;" aria-disabled="true">
+    <span><small>Prochain</small><strong>Exercice 2</strong></span>
+    <span>→</span>
+  </a>
+</nav>
+
 </main>
 
 <aside class="toc-right">
@@ -1239,11 +1488,6 @@ Si \(f'\) change de signe de \(+\) vers \(-\) en \(a\), alors
   <a href="#extrema">Extrema</a>
 </aside>
 
-</div>
-
-<div class="page-navigation">
-  <a href="../../index.html">← Accueil</a>
-  <a href="../index.html">↑ Index du chapitre 1</a>
 </div>
 
 <footer>
@@ -1273,6 +1517,24 @@ function openComment(){
 function closeComment(){
   document.getElementById('commentDialog').close();
 }
+
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobileNav');
+  const button = document.querySelector('.menu-toggle');
+  const open = menu.classList.toggle('open');
+  button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  button.textContent = open ? '✕' : '☰';
+}
+document.querySelectorAll('#mobileNav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const menu = document.getElementById('mobileNav');
+    const button = document.querySelector('.menu-toggle');
+    menu.classList.remove('open');
+    button.setAttribute('aria-expanded','false');
+    button.textContent = '☰';
+  });
+});
+
 </script>
 
 </body>
