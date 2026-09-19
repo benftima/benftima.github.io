@@ -413,161 +413,260 @@ dialog p{margin-bottom:12px}
 }
 
 
-/* ===== Navigation et responsive ===== */
-.topbar{
-  height:auto;
-  min-height:64px;
-  padding:0;
-}
+/* ===== Version bureau + mobile ===== */
+.topbar{height:auto;min-height:64px;padding:0}
 .topbar-inner{
-  width:100%;
-  max-width:1280px;
-  min-height:64px;
-  margin:0 auto;
-  padding:0 28px;
-  display:flex;
-  align-items:center;
-  gap:20px;
+  width:100%;max-width:1280px;min-height:64px;margin:auto;
+  padding:0 28px;display:flex;align-items:center;gap:20px
 }
-.home-link{
-  flex:0 0 auto;
-  text-decoration:none;
-}
-.topnav{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:4px;
-}
-.topnav a{
-  padding:8px 11px;
-  border-radius:5px;
-  white-space:nowrap;
-}
-.topnav a:hover{
-  background:#f5f8f5;
-}
+.home-link{text-decoration:none;flex:0 0 auto}
+.topnav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.topnav a{padding:8px 10px;border-radius:5px;white-space:nowrap}
+.topnav a:hover{background:#f5f8f5}
 .menu-toggle{
-  display:none;
-  margin-left:auto;
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--ink);
-  border-radius:6px;
-  padding:7px 10px;
-  font-size:19px;
-  cursor:pointer;
+  display:none;margin-left:auto;border:1px solid var(--line);background:#fff;
+  color:var(--ink);border-radius:6px;padding:6px 10px;font-size:18px;cursor:pointer
 }
-.mobile-nav{
-  display:none;
-}
+.mobile-nav{display:none}
 .breadcrumbs{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:7px;
-  margin:0 0 22px;
-  color:#78909c;
-  font-size:13px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:7px;
+  margin:0 0 20px;color:#78909c;font-size:13px
 }
-.breadcrumbs a{
-  text-decoration:none;
-  color:var(--green-dark);
-}
-.breadcrumbs a:hover{text-decoration:underline}
+.breadcrumbs a{color:var(--green-dark);text-decoration:none}
 .breadcrumbs strong{color:#455a64}
 
+/* Tables plus petites et lisibles */
+table{
+  width:100%;
+  font-size:13px;
+  margin:15px 0 20px;
+}
+th,td{
+  padding:6px 5px;
+}
+#chemin table{
+  font-size:12px;
+}
+#chemin th,#chemin td{
+  padding:5px 6px;
+}
+.tunisian-variation{
+  font-size:15px;
+  min-width:620px;
+}
+.tunisian-variation th,
+.tunisian-variation td{
+  padding:4px 5px;
+}
+.tunisian-variation .x-row td{height:40px}
+.tunisian-variation .sign-row td{height:34px}
+.tunisian-variation .variation-row td{height:62px}
+.tunisian-variation .arrow{font-size:27px}
+.tunisian-variation .value{font-size:16px}
+.tunisian-variation .sign{font-size:16px}
+.tunisian-variation .zero{font-size:16px}
+
+/* Navigation en bas */
 .page-navigation{
-  margin:50px 0 10px;
-  padding-top:24px;
-  border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:1fr 1.25fr 1fr;
-  gap:12px;
+  margin:45px 0 5px;padding-top:22px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:10px
 }
 .nav-button{
-  min-width:0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  border:1px solid var(--line);
-  border-radius:6px;
-  padding:13px 15px;
-  background:#fff;
-  color:#455a64;
-  text-decoration:none;
+  min-width:0;display:flex;align-items:center;justify-content:space-between;
+  gap:10px;border:1px solid var(--line);border-radius:6px;padding:11px 13px;
+  background:#fff;color:#455a64;text-decoration:none
 }
-.nav-button:hover{
-  border-color:#b9c9b2;
-  background:#fafcf9;
-}
-.nav-button small{
-  display:block;
-  color:#78909c;
-  font-size:11px;
-  margin-bottom:1px;
-}
-.nav-button strong{
-  display:block;
-  color:var(--green-dark);
-  font-size:14px;
-}
-.nav-button > span:first-child{
-  color:var(--green-dark);
-  font-size:18px;
-}
+.nav-button:hover{background:#fafcf9;border-color:#b9c9b2}
+.nav-button small{display:block;color:#78909c;font-size:10px}
+.nav-button strong{display:block;color:var(--green-dark);font-size:13px}
+.nav-arrow{color:var(--green-dark);font-size:17px}
 .nav-button.center{justify-content:center;text-align:center}
-.nav-button.next{justify-content:flex-end;text-align:right}
-.nav-button[aria-disabled="true"]{
-  opacity:.55;
-  cursor:default;
-}
+.nav-button.disabled{opacity:.5;cursor:default}
 
-/* Tables, formulas and long mathematical content remain scrollable */
-.formula,
-.variation-wrap,
-.exercise-statement,
-.doc-box,
-.example{
-  max-width:100%;
-}
-.formula{
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-}
-img,svg{
-  max-width:100%;
-  height:auto;
-}
-button{font:inherit}
+.formula{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+img,svg{max-width:100%;height:auto}
 
 @media(max-width:1050px){
-  .page{
-    grid-template-columns:210px minmax(0,1fr);
-    gap:28px;
-  }
-  .topnav{gap:2px}
-  .topnav a{padding:8px 8px;font-size:13px}
+  .page{grid-template-columns:210px minmax(0,1fr);gap:25px}
+  .topnav a{font-size:13px;padding:7px 8px}
 }
 
 @media(max-width:760px){
-  .topbar-inner{
-    min-height:58px;
-    padding:8px 15px;
-  }
+  .topbar-inner{min-height:58px;padding:8px 15px}
   .topnav{display:none}
   .menu-toggle{display:block}
+  .mobile-nav{
+    border-top:1px solid var(--line);background:#fff;padding:7px 15px 12px
+  }
+  .mobile-nav.open{
+    display:grid;grid-template-columns:1fr 1fr;gap:2px 7px
+  }
+  .mobile-nav a{
+    display:block;padding:8px 6px;border-radius:5px;
+    color:#455a64;text-decoration:none;font-size:12.5px
+  }
+  .page{display:block;padding:18px 15px 45px}
+  .sidebar{
+    position:relative;top:auto;max-height:none;overflow-x:auto;overflow-y:hidden;
+    border-right:0;border-bottom:1px solid var(--line);
+    padding:0 0 8px;margin-bottom:22px;white-space:nowrap
+  }
+  .sidebar .label{display:inline-block;margin-right:6px}
+  .sidebar a{
+    display:inline-block;border-left:0;border-bottom:2px solid transparent;
+    padding:5px 7px
+  }
+  .sidebar .current{border-left:0;border-bottom-color:var(--green)}
+  .breadcrumbs{font-size:12px}
+  h1{font-size:28px}
+  h2{font-size:22px;margin-top:31px}
+  h3{font-size:18px}
+  .lead{font-size:16px}
+  .exercise-statement{padding:18px 15px}
+  .exercise-statement h2{font-size:22px}
+  .doc-box{padding:14px 15px}
+  table{
+    display:block;overflow-x:auto;white-space:nowrap;
+    -webkit-overflow-scrolling:touch;font-size:12px
+  }
+  #chemin table{font-size:11px}
+  th,td{padding:5px 4px}
+  .variation-wrap{overflow-x:auto}
+  .tunisian-variation{min-width:600px;font-size:14px}
+  .page-navigation{grid-template-columns:1fr;gap:8px}
+  .nav-button,.nav-button.center{justify-content:space-between;text-align:left}
+  .toc-right{display:none}
+}
+
+@media(max-width:430px){
+  .topbar-inner{padding:8px 12px}
+  .spring-mark{font-size:18px}
+  .mobile-nav.open{grid-template-columns:1fr}
+  .page{padding-left:12px;padding-right:12px}
+  h1{font-size:26px}
+  h2{font-size:21px}
+  .formula{font-size:14px}
+  #chemin table{font-size:10.5px}
+  .tunisian-variation{min-width:560px;font-size:13px}
+}
+@media print{
+  .topbar,.mobile-nav,.sidebar,.toc-right,.page-navigation,.breadcrumbs{display:none!important}
+  .page{display:block;padding:0;max-width:none}
+  table{font-size:11pt}
+}
+
+
+/* ===== Correction responsive : aucun chevauchement ===== */
+@media (max-width:760px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    padding:18px 15px 45px !important;
+  }
+
+  /* Sur téléphone, le menu latéral devient le menu ☰ du haut.
+     On le masque pour laisser toute la largeur au contenu. */
+  .page > .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    margin:0 !important;
+  }
+
+  .breadcrumbs{
+    width:100%;
+    margin-bottom:18px;
+  }
+
+  .exercise-statement,
+  .doc-box,
+  .example,
+  .step{
+    width:100%;
+    max-width:100%;
+  }
+
+  .formula{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+
+  .page-navigation{
+    width:100%;
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (min-width:761px){
+  .mobile-nav{display:none !important;}
+}
+
+@media (max-width:430px){
+  .page{
+    padding-left:12px !important;
+    padding-right:12px !important;
+  }
+  h1{font-size:26px !important;}
+  h2{font-size:21px !important;}
+}
+
+
+/* ===== Final correction : tablette / petits écrans ===== */
+@media (max-width:1050px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    padding:22px 18px 55px !important;
+  }
+
+  .page > .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:900px !important;
+    margin:0 auto !important;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+
+  .topnav{
+    display:none !important;
+  }
+
+  .menu-toggle{
+    display:block !important;
+  }
+
   .mobile-nav{
     border-top:1px solid var(--line);
     background:#fff;
     padding:7px 15px 12px;
   }
+
   .mobile-nav.open{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:3px 8px;
   }
+
   .mobile-nav a{
     display:block;
     padding:9px 7px;
@@ -576,82 +675,48 @@ button{font:inherit}
     text-decoration:none;
     font-size:13px;
   }
-  .mobile-nav a:hover{background:#f5f8f5;color:var(--green-dark)}
-
-  .page{
-    display:block;
-    padding:18px 15px 45px;
-  }
-  .sidebar{
-    position:relative;
-    top:auto;
-    max-height:none;
-    overflow-x:auto;
-    overflow-y:hidden;
-    border-right:0;
-    border-bottom:1px solid var(--line);
-    padding:0 0 9px;
-    margin-bottom:25px;
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
-  }
-  .sidebar .label{
-    display:inline-block;
-    margin-right:8px;
-  }
-  .sidebar a{
-    display:inline-block;
-    border-left:0;
-    border-bottom:2px solid transparent;
-    padding:6px 8px;
-    margin:0;
-  }
-  .sidebar .current{
-    border-left:0;
-    border-bottom-color:var(--green);
-  }
 
   .breadcrumbs{
-    font-size:12px;
-    margin-bottom:18px;
+    width:100%;
+    margin-bottom:20px;
   }
-  h1{font-size:29px;letter-spacing:-.7px}
-  h2{font-size:23px;margin-top:32px}
-  h3{font-size:18px}
-  .lead{font-size:16px}
-  .exercise-statement{padding:19px 16px}
-  .exercise-statement h2{font-size:23px}
-  .doc-box{padding:15px 16px}
-  table{
-    font-size:14px;
+
+  .exercise-statement,
+  .doc-box,
+  .example,
+  .step{
+    width:100%;
+    max-width:100%;
   }
+
+  .formula{
+    max-width:100%;
+    overflow-x:auto;
+  }
+
   .page-navigation{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (min-width:1051px){
+  .menu-toggle,
+  .mobile-nav{
+    display:none !important;
+  }
+}
+
+@media (max-width:560px){
+  .page{
+    padding:18px 12px 45px !important;
+  }
+
+  .mobile-nav.open{
     grid-template-columns:1fr;
-    gap:9px;
   }
-  .nav-button,
-  .nav-button.center,
-  .nav-button.next{
-    justify-content:space-between;
-    text-align:left;
-  }
-}
 
-@media(max-width:430px){
-  .topbar-inner{padding:8px 12px}
-  .spring-mark{font-size:18px}
-  .spring-mark .dot{width:12px;height:12px}
-  .mobile-nav.open{grid-template-columns:1fr}
-  .page{padding-left:12px;padding-right:12px}
-  h1{font-size:27px}
-  h2{font-size:21px}
-  .formula{font-size:14px}
-  .toc-right{display:none}
-}
-
-@media print{
-  .topbar,.mobile-nav,.sidebar,.toc-right,.page-navigation,.breadcrumbs{display:none!important}
-  .page{display:block;padding:0;max-width:none}
+  h1{font-size:27px !important}
+  h2{font-size:21px !important}
 }
 
 </style>
@@ -662,33 +727,27 @@ button{font:inherit}
 <header class="topbar">
   <div class="topbar-inner">
     <a class="spring-mark home-link" href="../../index.html" aria-label="Accueil">
-      <span class="dot"></span>
-      <span>Mathématiques</span>
+      <span class="dot"></span><span>Mathématiques</span>
     </a>
-
     <nav class="topnav" aria-label="Navigation principale">
       <a href="../../index.html">Accueil</a>
       <a href="../index.html">Chapitre 1</a>
       <a href="#enonce">Exercice</a>
       <a href="#retenir">À retenir</a>
     </nav>
-
-    <button class="menu-toggle" type="button"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false"
             onclick="toggleMobileMenu()">☰</button>
   </div>
-
   <nav id="mobileNav" class="mobile-nav" aria-label="Menu mobile">
     <a href="../../index.html">⌂ Accueil</a>
     <a href="../index.html">← Index du chapitre 1</a>
     <a href="#enonce">Énoncé</a>
-    <a href="#chemin">Chemin de l'étude</a>
+    <a href="#chemin">Chemin</a>
     <a href="#objectif">Objectif</a>
     <a href="#prerequis">Prérequis</a>
     <a href="#domaine">Domaine</a>
     <a href="#derivee">Continuité & dérivée</a>
-    <a href="#limites">Limites & asymptote</a>
+    <a href="#limites">Limites</a>
     <a href="#signe">Signe de f′</a>
     <a href="#variations">Variations</a>
     <a href="#graphique">Graphe</a>
@@ -719,13 +778,10 @@ button{font:inherit}
 </aside>
 
 <div class="breadcrumbs" aria-label="Fil d’Ariane">
-  <a href="../../index.html">Accueil</a>
-  <span>›</span>
-  <a href="../index.html">4ème · Chapitre 1</a>
-  <span>›</span>
+  <a href="../../index.html">Accueil</a><span>›</span>
+  <a href="../index.html">4ème · Chapitre 1</a><span>›</span>
   <strong>Exercice 1</strong>
 </div>
-
 <main class="content">
 
 <div class="kicker">4ÈME · CHAPITRE 1 · RÉVISION BAC 2027</div>
@@ -1453,20 +1509,15 @@ Si \(f'\) change de signe de \(+\) vers \(-\) en \(a\), alors
 </section>
 
 
-<nav class="page-navigation" aria-label="Navigation entre les pages">
+<nav class="page-navigation" aria-label="Navigation des pages">
   <a class="nav-button" href="../../index.html">
-    <span>←</span>
-    <span><small>Retour</small><strong>Accueil</strong></span>
+    <span class="nav-arrow">←</span><span><small>Retour</small><strong>Accueil</strong></span>
   </a>
-
   <a class="nav-button center" href="../index.html">
-    <span>↑</span>
-    <span><small>Retour à</small><strong>Index du chapitre 1</strong></span>
+    <span class="nav-arrow">↑</span><span><small>Retour à</small><strong>Index du chapitre 1</strong></span>
   </a>
-
-  <a class="nav-button next" href="#" onclick="return false;" aria-disabled="true">
-    <span><small>Prochain</small><strong>Exercice 2</strong></span>
-    <span>→</span>
+  <a class="nav-button disabled" href="#" aria-disabled="true" onclick="return false;">
+    <span><small>Prochain</small><strong>Exercice 2</strong></span><span class="nav-arrow">→</span>
   </a>
 </nav>
 
@@ -1519,19 +1570,19 @@ function closeComment(){
 }
 
 function toggleMobileMenu(){
-  const menu = document.getElementById('mobileNav');
-  const button = document.querySelector('.menu-toggle');
-  const open = menu.classList.toggle('open');
-  button.setAttribute('aria-expanded', open ? 'true' : 'false');
-  button.textContent = open ? '✕' : '☰';
+  const menu=document.getElementById('mobileNav');
+  const button=document.querySelector('.menu-toggle');
+  const open=menu.classList.toggle('open');
+  button.setAttribute('aria-expanded',open?'true':'false');
+  button.textContent=open?'✕':'☰';
 }
-document.querySelectorAll('#mobileNav a').forEach(link => {
-  link.addEventListener('click', () => {
-    const menu = document.getElementById('mobileNav');
-    const button = document.querySelector('.menu-toggle');
+document.querySelectorAll('#mobileNav a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const menu=document.getElementById('mobileNav');
+    const button=document.querySelector('.menu-toggle');
     menu.classList.remove('open');
     button.setAttribute('aria-expanded','false');
-    button.textContent = '☰';
+    button.textContent='☰';
   });
 });
 
