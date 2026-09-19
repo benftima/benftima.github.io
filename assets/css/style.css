@@ -1,0 +1,41 @@
+
+:root{
+  --green:#6db33f;
+  --green-dark:#4f8f2b;
+  --ink:#24313a;
+  --muted:#66727a;
+  --line:#e3e7e9;
+  --bg:#f7f9fa;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.topbar{height:4px;background:var(--green)}
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
+.nav{max-width:1180px;margin:auto;min-height:68px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:1.2rem;font-weight:700}
+.logo span{color:var(--green)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{padding:8px 12px;border-radius:5px;color:#53616a;font-size:.93rem}
+nav a:hover{background:#f0f4f5;color:var(--ink)}
+main{max-width:1180px;margin:auto;padding:65px 24px 80px}
+.eyebrow{font-size:.82rem;text-transform:uppercase;letter-spacing:1.1px;color:var(--green-dark);font-weight:700;margin-bottom:10px}
+h1{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.12;letter-spacing:-1.4px;margin:0 0 15px}
+.intro{max-width:760px;color:var(--muted);font-size:1.05rem;margin-bottom:38px}
+.chapters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.chapter{display:flex;align-items:center;gap:18px;border:1px solid var(--line);border-radius:7px;background:#fff;padding:20px 22px;transition:.15s}
+.chapter:hover{border-color:#b8c7b0;box-shadow:0 7px 20px rgba(30,45,55,.06);transform:translateY(-1px)}
+.num{flex:0 0 46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#f0f6ec;color:var(--green-dark);font-weight:700}
+.chapter h2{font-size:1.08rem;margin:0 0 3px}
+.chapter p{font-size:.9rem;color:var(--muted);margin:0}
+.arrow{margin-left:auto;color:var(--green-dark);font-size:1.15rem}
+.back{display:inline-block;margin-bottom:28px;color:var(--green-dark);font-weight:600}
+footer{border-top:1px solid var(--line);padding:25px 24px;color:#748087;font-size:.86rem;text-align:center}
+@media(max-width:700px){
+  .nav{padding:0 16px}
+  nav a{padding:7px 8px}
+  main{padding:45px 17px 60px}
+  .chapters{grid-template-columns:1fr}
+}
