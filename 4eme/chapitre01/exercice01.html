@@ -127,6 +127,23 @@ body{
 }
 
 .content{min-width:0}
+
+.breadcrumb{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:22px;
+  font-size:13px;
+  color:#78909c;
+}
+.breadcrumb a{
+  color:var(--green-dark);
+  text-decoration:none;
+}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb strong{color:#455a64;font-weight:600}
+
 .kicker{
   color:var(--green-dark);
   font-size:13px;
@@ -244,7 +261,25 @@ th{
   margin:5px 0;
 }
 .toc-right a:hover{color:var(--green-dark)}
-footer{
+.page-navigation{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:18px 28px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  font-size:14px;
+}
+.page-navigation a{
+  color:var(--green-dark);
+  text-decoration:none;
+  font-weight:600;
+}
+.page-navigation a:hover{text-decoration:underline}
+
+footer{{
   border-top:1px solid var(--line);
   padding:25px 28px;
   color:#78909c;
@@ -308,6 +343,7 @@ footer{
   h1{font-size:30px}
   h2{font-size:23px;margin-top:34px}
   .lead{font-size:17px}
+  .page-navigation{padding:16px}
   table{
     display:block;
     overflow-x:auto;
@@ -423,9 +459,10 @@ dialog p{margin-bottom:12px}
     <span>Mathématiques</span>
   </div>
   <nav class="topnav">
+    <a href="../../index.html">Accueil</a>
+    <a href="../index.html">Chapitre 1</a>
     <a href="#objectif">Cours</a>
-    <a href="#exemple">Exemples</a>
-    <a href="#methode">Méthode</a>
+    <a href="#exemple">Exemple</a>
     <a href="#retenir">À retenir</a>
   </nav>
 </header>
@@ -451,6 +488,14 @@ dialog p{margin-bottom:12px}
 </aside>
 
 <main class="content">
+
+<div class="breadcrumb">
+  <a href="../../index.html">← Accueil</a>
+  <span>›</span>
+  <a href="../index.html">Chapitre 1</a>
+  <span>›</span>
+  <strong>Exercice 1</strong>
+</div>
 
 <div class="kicker">4ÈME · CHAPITRE 1 · RÉVISION BAC 2027</div>
 <h1>Exercice 1 — Étude complète d'une fonction</h1>
@@ -1194,6 +1239,11 @@ Si \(f'\) change de signe de \(+\) vers \(-\) en \(a\), alors
   <a href="#extrema">Extrema</a>
 </aside>
 
+</div>
+
+<div class="page-navigation">
+  <a href="../../index.html">← Accueil</a>
+  <a href="../index.html">↑ Index du chapitre 1</a>
 </div>
 
 <footer>
