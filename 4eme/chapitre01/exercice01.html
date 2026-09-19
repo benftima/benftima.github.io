@@ -863,6 +863,130 @@ img,svg{max-width:100%;height:auto}
 }
 </style>
 
+
+<style id="bureau-layout-correction">
+/* ===== Correction du problème visible sur écran bureau =====
+   La grille précédente était plus large que la fenêtre :
+   250 + 760 + 180 + les espacements dépassaient la largeur disponible.
+   Le contenu central se retrouvait donc écrasé à droite.
+*/
+
+/* Bureau : grille qui tient réellement dans l'écran */
+@media (min-width:1051px){
+  .page{
+    width:100% !important;
+    max-width:1240px !important;
+    margin:0 auto !important;
+    display:grid !important;
+    grid-template-columns:220px minmax(0,1fr) 165px !important;
+    gap:28px !important;
+    padding:32px 24px 65px !important;
+  }
+
+  .sidebar{
+    width:220px !important;
+    min-width:0 !important;
+    padding-right:18px !important;
+  }
+
+  .content{
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+  }
+
+  .toc-right{
+    width:165px !important;
+    min-width:0 !important;
+  }
+
+  .content h1{
+    max-width:760px !important;
+  }
+
+  .lead{
+    max-width:760px !important;
+  }
+}
+
+/* Très grand écran : on garde une largeur confortable */
+@media (min-width:1400px){
+  .page{
+    max-width:1320px !important;
+    grid-template-columns:230px minmax(0,1fr) 180px !important;
+    gap:34px !important;
+  }
+  .sidebar{width:230px !important}
+  .toc-right{width:180px !important}
+}
+
+/* Tablette/téléphone : une seule colonne */
+@media (max-width:1050px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:20px 18px 55px !important;
+  }
+
+  .page > .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    max-width:900px !important;
+    min-width:0 !important;
+    margin:0 auto !important;
+  }
+
+  .toc-right{
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="structural-layout-fix">
+.page{
+  box-sizing:border-box;
+}
+@media (min-width:1051px){
+  .page{
+    display:grid !important;
+    grid-template-columns:minmax(190px,220px) minmax(0,1fr) minmax(145px,165px) !important;
+    gap:28px !important;
+    width:100% !important;
+    max-width:1240px !important;
+    margin:0 auto !important;
+    padding:32px 24px 65px !important;
+  }
+  .page > .sidebar{grid-column:1;display:block !important;min-width:0 !important;}
+  .page > .content{grid-column:2;display:block !important;min-width:0 !important;width:100% !important;margin:0 !important;}
+  .page > .toc-right{grid-column:3;display:block !important;min-width:0 !important;width:100% !important;}
+}
+@media (max-width:1050px){
+  .page{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:20px 18px 55px !important;
+  }
+  .page > .sidebar,
+  .page > .toc-right{display:none !important;}
+  .page > .content{
+    display:block !important;
+    width:100% !important;
+    max-width:900px !important;
+    min-width:0 !important;
+    margin:0 auto !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -920,12 +1044,13 @@ img,svg{max-width:100%;height:auto}
   <a href="#retenir">À retenir</a>
 </aside>
 
+<main class="content">
 <div class="breadcrumbs" aria-label="Fil d’Ariane">
   <a href="../../index.html">Accueil</a><span>›</span>
   <a href="../index.html">4ème · Chapitre 1</a><span>›</span>
   <strong>Exercice 1</strong>
 </div>
-<main class="content">
+
 
 <div class="kicker">4ÈME · CHAPITRE 1 · RÉVISION BAC 2027</div>
 <h1>Exercice 1 — Étude complète d'une fonction</h1>
@@ -1729,6 +1854,75 @@ document.querySelectorAll('#mobileNav a').forEach(a=>{
   });
 });
 
+</script>
+
+
+<script>
+(function () {
+  function applyResponsiveLayout() {
+    const page = document.querySelector('.page');
+    const sidebar = document.querySelector('.page > .sidebar');
+    const content = document.querySelector('.page > .content');
+    const toc = document.querySelector('.toc-right');
+    const menuButton = document.querySelector('.menu-toggle');
+    const topnav = document.querySelector('.topnav');
+
+    if (!page || !content) return;
+
+    const narrow = window.innerWidth <= 1050;
+
+    if (narrow) {
+      /* Force le mode mobile/tablette, indépendamment des autres CSS. */
+      page.style.display = 'block';
+      page.style.width = '100%';
+      page.style.maxWidth = '100%';
+      page.style.margin = '0';
+      page.style.padding = window.innerWidth <= 560 ? '16px 12px 45px' : '20px 18px 55px';
+
+      content.style.display = 'block';
+      content.style.width = '100%';
+      content.style.maxWidth = '900px';
+      content.style.minWidth = '0';
+      content.style.margin = '0 auto';
+
+      if (sidebar) {
+        sidebar.style.display = 'none';
+      }
+      if (toc) {
+        toc.style.display = 'none';
+      }
+      if (topnav) {
+        topnav.style.display = 'none';
+      }
+      if (menuButton) {
+        menuButton.style.display = 'block';
+      }
+    } else {
+      /* Retour au mode bureau. */
+      page.style.display = '';
+      page.style.width = '';
+      page.style.maxWidth = '';
+      page.style.margin = '';
+      page.style.padding = '';
+
+      content.style.display = '';
+      content.style.width = '';
+      content.style.maxWidth = '';
+      content.style.minWidth = '';
+      content.style.margin = '';
+
+      if (sidebar) sidebar.style.display = '';
+      if (toc) toc.style.display = '';
+      if (topnav) topnav.style.display = '';
+      if (menuButton) menuButton.style.display = '';
+    }
+  }
+
+  window.addEventListener('resize', applyResponsiveLayout);
+  window.addEventListener('orientationchange', applyResponsiveLayout);
+  document.addEventListener('DOMContentLoaded', applyResponsiveLayout);
+  applyResponsiveLayout();
+})();
 </script>
 
 </body>
