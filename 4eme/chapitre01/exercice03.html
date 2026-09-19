@@ -1009,7 +1009,50 @@ img,svg{max-width:100%;height:auto}
 <style id="exercise03-compact">
 .compact-sign{font-size:13px;margin:14px 0 20px}.compact-sign th,.compact-sign td{padding:5px 6px}
 @media(max-width:560px){.compact-sign{font-size:10.5px!important}.compact-sign th,.compact-sign td{padding:4px!important}.tunisian-variation{min-width:680px!important;font-size:12px!important}}
-</style></head>
+</style>
+<style id="variation-correction">
+.compact-variation{
+  font-size:13px;
+  table-layout:fixed;
+}
+.compact-variation th,
+.compact-variation td{
+  padding:5px 4px;
+  text-align:center;
+  vertical-align:middle;
+}
+.compact-variation th{
+  width:82px;
+}
+.compact-variation .sign{
+  font-weight:500;
+}
+.compact-variation .undefined{
+  color:#546e7a;
+  font-size:12px;
+}
+.compact-variation .arrow{
+  font-size:24px;
+  line-height:1;
+}
+.compact-variation .value{
+  font-size:14px;
+}
+@media(max-width:560px){
+  .compact-variation{
+    min-width:650px !important;
+    font-size:11px !important;
+  }
+  .compact-variation th,
+  .compact-variation td{
+    padding:4px 3px !important;
+  }
+  .compact-variation .arrow{font-size:21px}
+  .compact-variation .value{font-size:12px}
+  .compact-variation .undefined{font-size:10px}
+}
+</style>
+</head>
 
 <body>
 
@@ -1156,12 +1199,61 @@ f'>0\text{ sur }]-2,0[\cup]2,+\infty[.
 \]</div>
 </section>
 
-<section id="variations" class="step"><h2>7. Tableau de variations</h2>
-<div class="variation-wrap"><table class="variation tunisian-variation">
-<tr class="x-row"><th>\(x\)</th><td>\(-\infty\)</td><td></td><td>\(-2\)</td><td></td><td>0</td><td></td><td>2</td><td></td><td>\(+\infty\)</td></tr>
-<tr class="sign-row"><th>\(f'(x)\)</th><td></td><td class="sign">−</td><td></td><td class="sign">+</td><td>0</td><td class="sign">−</td><td></td><td class="sign">+</td><td></td></tr>
-<tr class="variation-row"><th>\(f(x)\)</th><td class="value">+\infty</td><td class="arrow">↘</td><td class="value">0</td><td class="arrow">↗</td><td class="value">4</td><td class="arrow">↘</td><td class="value">0</td><td class="arrow">↗</td><td class="value">+\infty</td></tr>
-</table></div>
+<section id="variations" class="step">
+<h2>7. Tableau de variations</h2>
+
+<div class="variation-wrap">
+<table class="variation tunisian-variation compact-variation">
+  <tr class="x-row">
+    <th>\(x\)</th>
+    <td>\(-\infty\)</td>
+    <td></td>
+    <td class="point">\(-2\)</td>
+    <td></td>
+    <td class="point">\(0\)</td>
+    <td></td>
+    <td class="point">\(2\)</td>
+    <td></td>
+    <td>\(+\infty\)</td>
+  </tr>
+
+  <tr class="sign-row">
+    <th>\(f'(x)\)</th>
+    <td></td>
+    <td class="sign">−</td>
+    <td class="undefined">\(\nexists\)</td>
+    <td class="sign">+</td>
+    <td class="zero">0</td>
+    <td class="sign">−</td>
+    <td class="undefined">\(\nexists\)</td>
+    <td class="sign">+</td>
+    <td></td>
+  </tr>
+
+  <tr class="variation-row">
+    <th>\(f(x)\)</th>
+    <td class="value">\(+\infty\)</td>
+    <td class="arrow">↘</td>
+    <td class="value">\(0\)</td>
+    <td class="arrow">↗</td>
+    <td class="value">\(4\)</td>
+    <td class="arrow">↘</td>
+    <td class="value">\(0\)</td>
+    <td class="arrow">↗</td>
+    <td class="value">\(+\infty\)</td>
+  </tr>
+</table>
+</div>
+
+<div class="doc-box note">
+<strong>Lecture du tableau :</strong>
+<ul>
+  <li>\(f\) décroît sur \(]-\infty,-2[\) puis croît sur \(]-2,0[\).</li>
+  <li>\(f\) décroît sur \(]0,2[\) puis croît sur \(]2,+\infty[\).</li>
+  <li>Aux points \(x=-2\) et \(x=2\), \(f\) est continue mais n'est pas dérivable.</li>
+  <li>\(f(0)=4\) est un maximum local et \(f(-2)=f(2)=0\) sont des minima globaux.</li>
+</ul>
+</div>
 </section>
 
 <section id="extrema" class="step"><h2>8. Extrema</h2>
