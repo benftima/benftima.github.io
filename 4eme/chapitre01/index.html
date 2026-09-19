@@ -3,8 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Chapitre 1 — Étude de fonctions</title>
+
+<!-- =========================
+     MATHJAX
+     ========================= -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [
+      ['\\(', '\\)'],
+      ['$', '$']
+    ],
+    displayMath: [
+      ['\\[', '\\]'],
+      ['$$', '$$']
+    ]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+
+<script async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
 <style>
+
 :root{
   --green:#6db33f;
   --green-dark:#4f8f2b;
@@ -13,315 +41,1343 @@
   --line:#e2e7e9;
   --bg:#f7f9fa;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;color:var(--ink);background:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.65;
-}
-a{text-decoration:none;color:inherit}
-.topbar{height:4px;background:var(--green)}
-header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
-.nav{
-  max-width:1180px;margin:auto;padding:0 24px;min-height:66px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-}
-.logo{font-weight:700;font-size:1.15rem}.logo span{color:var(--green)}
-nav{display:flex;gap:4px;flex-wrap:wrap}
-nav a{padding:8px 11px;border-radius:5px;color:#53616a;font-size:.9rem}
-nav a:hover{background:#f0f4f5}
-nav a.active{color:var(--green-dark);font-weight:600;background:#f1f6ee}
 
-main{max-width:1120px;margin:auto;padding:48px 24px 80px}
-.back{color:var(--green-dark);font-size:.9rem;font-weight:600}
-.eyebrow{
-  margin-top:27px;color:var(--green-dark);font-size:.78rem;
-  font-weight:700;letter-spacing:1px;text-transform:uppercase
+*{
+  box-sizing:border-box;
 }
-h1{font-size:clamp(2rem,4vw,3.3rem);line-height:1.1;letter-spacing:-1.4px;margin:7px 0 14px}
-.lead{max-width:790px;color:var(--muted);font-size:1.05rem;margin-bottom:34px}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  color:var(--ink);
+  background:#fff;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img,
+svg{
+  max-width:100%;
+  height:auto;
+}
+
+
+/* =========================
+   BARRE SUPERIEURE
+   ========================= */
+
+.topbar{
+  height:4px;
+  background:var(--green);
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header{
+  border-bottom:1px solid var(--line);
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.nav{
+  max-width:1180px;
+  margin:auto;
+  padding:0 24px;
+  min-height:66px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-weight:700;
+  font-size:1.15rem;
+}
+
+.logo span{
+  color:var(--green);
+}
+
+nav{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  padding:8px 11px;
+  border-radius:5px;
+  color:#53616a;
+  font-size:.9rem;
+
+  transition:
+    background .18s ease,
+    color .18s ease;
+}
+
+nav a:hover{
+  background:#f0f4f5;
+}
+
+nav a.active{
+  color:var(--green-dark);
+  font-weight:600;
+  background:#f1f6ee;
+}
+
+
+/* =========================
+   CONTENU PRINCIPAL
+   ========================= */
+
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:48px 24px 80px;
+}
+
+.back{
+  color:var(--green-dark);
+  font-size:.9rem;
+  font-weight:600;
+}
+
+.back:hover{
+  text-decoration:underline;
+}
+
+.eyebrow{
+  margin-top:27px;
+  color:var(--green-dark);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(2rem,4vw,3.3rem);
+  line-height:1.1;
+  letter-spacing:-1.4px;
+  margin:7px 0 14px;
+}
+
+.lead{
+  max-width:790px;
+  color:var(--muted);
+  font-size:1.05rem;
+  margin-bottom:34px;
+}
+
+
+/* =========================
+   INTRODUCTION
+   ========================= */
 
 .intro{
-  border-left:4px solid var(--green);background:var(--bg);
-  padding:19px 22px;margin-bottom:45px
+  border-left:4px solid var(--green);
+  background:var(--bg);
+
+  padding:19px 22px;
+  margin-bottom:45px;
 }
-.intro strong{display:block;margin-bottom:3px}
-.intro p{margin:0;color:#59666d}
+
+.intro strong{
+  display:block;
+  margin-bottom:3px;
+}
+
+.intro p{
+  margin:0;
+  color:#59666d;
+}
+
+
+/* =========================
+   GRILLE
+   ========================= */
 
 .grid{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:24px;margin-top:20px
-}
-.block{border-top:1px solid var(--line);padding-top:18px}
-.block h2{font-size:1.35rem;margin:0 0 5px}
-.block>p{margin:0 0 16px;color:var(--muted);font-size:.9rem}
+  display:grid;
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
 
-.items{border-top:1px solid var(--line)}
+  gap:24px;
+  margin-top:20px;
+}
+
+.block{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
+
+.block h2{
+  font-size:1.35rem;
+  margin:0 0 5px;
+}
+
+.block>p{
+  margin:0 0 16px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+
+/* =========================
+   LISTES
+   ========================= */
+
+.items{
+  border-top:1px solid var(--line);
+}
+
 .item{
-  display:grid;grid-template-columns:45px minmax(0,1fr) auto;
-  align-items:center;gap:13px;padding:15px 6px;border-bottom:1px solid var(--line)
+  display:grid;
+
+  grid-template-columns:
+    45px
+    minmax(0,1fr)
+    auto;
+
+  align-items:center;
+  gap:13px;
+
+  padding:15px 6px;
+
+  border-bottom:1px solid var(--line);
+
+  transition:
+    background .16s ease,
+    padding-left .16s ease;
 }
-.item:hover{background:#fbfcfc}
+
+.item:hover{
+  background:#fbfcfc;
+  padding-left:10px;
+}
+
+
+/* =========================
+   NUMEROS
+   ========================= */
+
 .num{
-  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
-  background:#f0f6ec;color:var(--green-dark);font-weight:700;font-size:.8rem
+  width:34px;
+  height:34px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#f0f6ec;
+  color:var(--green-dark);
+
+  font-weight:700;
+  font-size:.8rem;
+
+  transition:
+    transform .16s ease;
 }
-.item h3{font-size:.97rem;margin:0 0 2px}
-.item p{font-size:.82rem;color:var(--muted);margin:0}
-.arrow{color:var(--green-dark);font-size:1.15rem}
+
+.item:hover .num{
+  transform:scale(1.05);
+}
+
+
+/* =========================
+   TITRES
+   ========================= */
+
+.item h3{
+  font-size:.97rem;
+  margin:0 0 2px;
+
+  transition:
+    color .16s ease;
+}
+
+.item:hover h3{
+  color:var(--green-dark);
+}
+
+.item p{
+  font-size:.82rem;
+  color:var(--muted);
+  margin:0;
+}
+
+
+/* =========================
+   FLECHE
+   ========================= */
+
+.arrow{
+  color:var(--green-dark);
+  font-size:1.15rem;
+
+  transition:
+    transform .16s ease;
+}
+
+.item:hover .arrow{
+  transform:translateX(3px);
+}
+
+
+/* ==================================================
+   EXERCICES
+   ROLLOVER MATHJAX SANS COULEUR
+   ================================================== */
+
+.exercise-item{
+  position:relative;
+  overflow:visible;
+}
+
+
+/*
+   Petite fenêtre qui apparaît au survol.
+   Même couleur pour les trois exercices.
+*/
+
+.function-rollover{
+
+  position:absolute;
+
+  left:64px;
+  bottom:-3px;
+
+  z-index:200;
+
+  padding:5px 10px;
+
+  background:#fff;
+
+  border:1px solid #d8dee1;
+  border-radius:5px;
+
+  color:#26343d;
+
+  font-size:.82rem;
+  line-height:1.35;
+
+  white-space:nowrap;
+
+  box-shadow:
+    0 4px 14px rgba(0,0,0,.10);
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateY(5px);
+
+  pointer-events:none;
+
+  transition:
+    opacity .16s ease,
+    visibility .16s ease,
+    transform .16s ease;
+}
+
+
+/*
+   Apparition au survol
+*/
+
+.exercise-item:hover .function-rollover,
+.exercise-item:focus-visible .function-rollover{
+
+  opacity:1;
+  visibility:visible;
+
+  transform:translateY(0);
+}
+
+
+/*
+   Petit effet uniquement sur la ligne.
+   Pas de couleur spéciale par exercice.
+*/
+
+.exercise-item:hover{
+  background:#fbfcfc;
+}
+
+
+/* =========================
+   APPROFONDISSEMENT
+   ========================= */
 
 .full{
-  margin-top:45px;border-top:1px solid var(--line);padding-top:27px
+  margin-top:45px;
+  border-top:1px solid var(--line);
+  padding-top:27px;
 }
-.full h2{font-size:1.45rem;margin:0 0 6px}
-.full p{color:var(--muted);margin:0 0 18px}
+
+.full h2{
+  font-size:1.45rem;
+  margin:0 0 6px;
+}
+
+.full p{
+  color:var(--muted);
+  margin:0 0 18px;
+}
+
 .method{
-  border:1px solid var(--line);padding:18px 20px;background:#fff
+  border:1px solid var(--line);
+  padding:18px 20px;
+  background:#fff;
 }
-.method strong{color:var(--ink)}
-.method span{color:var(--green-dark);font-weight:600}
+
+.method strong{
+  color:var(--ink);
+}
+
+.method span{
+  color:var(--green-dark);
+  font-weight:600;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
 
 footer{
-  border-top:1px solid var(--line);padding:25px 20px;
-  text-align:center;color:#748087;font-size:.84rem
-}
-@media(max-width:720px){
-  .nav{padding:0 16px}
-  main{padding:40px 17px 60px}
-  .grid{grid-template-columns:1fr}
+  border-top:1px solid var(--line);
+
+  padding:25px 20px;
+
+  text-align:center;
+
+  color:#748087;
+
+  font-size:.84rem;
 }
 
-/* ===== Responsive global ===== */
-html{scroll-behavior:smooth}
-img,svg{max-width:100%;height:auto}
-body{overflow-x:hidden}
+
+/* ==================================================
+   RESPONSIVE TABLETTE
+   ================================================== */
 
 @media(max-width:800px){
+
   .nav{
+
     min-height:58px;
+
     padding:8px 15px;
+
     flex-wrap:wrap;
   }
-  .logo{font-size:1.05rem}
+
+  .logo{
+    font-size:1.05rem;
+  }
+
   nav{
+
     width:100%;
+
     overflow-x:auto;
+
     flex-wrap:nowrap;
+
     -webkit-overflow-scrolling:touch;
+
     padding-bottom:2px;
   }
+
   nav a{
+
     white-space:nowrap;
+
     font-size:.84rem;
+
     padding:7px 9px;
   }
+
   main{
-    padding:38px 16px 60px;
+
+    padding:
+      38px
+      16px
+      60px;
   }
+
   h1{
-    font-size:clamp(2rem,9vw,2.8rem);
+
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        2.8rem
+      );
   }
-  .intro,.bac-box{
-    padding:16px 17px;
+
+  .intro{
+
+    padding:
+      16px
+      17px;
   }
+
 }
 
+
+/* ==================================================
+   RESPONSIVE MOBILE
+   ================================================== */
+
+@media(max-width:720px){
+
+  .grid{
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .function-rollover{
+
+    left:55px;
+
+    bottom:-4px;
+
+    font-size:.76rem;
+
+    max-width:
+      calc(100vw - 90px);
+
+    white-space:normal;
+  }
+
+  .exercise-item{
+
+    padding-top:15px;
+    padding-bottom:17px;
+  }
+
+  .item h3{
+
+    font-size:.9rem;
+
+    line-height:1.35;
+  }
+
+  .item p{
+
+    font-size:.78rem;
+
+    line-height:1.45;
+  }
+
+}
+
+
+/* ==================================================
+   TRES PETIT ECRAN
+   ================================================== */
+
 @media(max-width:560px){
+
   .nav{
+
     display:block;
   }
+
   .logo{
+
     display:block;
+
     margin-bottom:8px;
   }
+
   nav{
+
     display:flex;
+
     gap:2px;
   }
-  .chapter{
-    grid-template-columns:43px minmax(0,1fr) 20px;
+
+  .item{
+
+    grid-template-columns:
+      43px
+      minmax(0,1fr)
+      20px;
+
     gap:10px;
-    padding:16px 2px;
+
+    padding:
+      16px
+      2px;
   }
-  .chapter:hover{
+
+  .item:hover{
+
     padding-left:5px;
     padding-right:5px;
   }
-  .number{
+
+  .num{
+
     width:38px;
     height:38px;
+
     font-size:.78rem;
   }
-  .chapter h3{
+
+  .item h3{
+
     font-size:.96rem;
+
     line-height:1.35;
   }
-  .chapter p{
+
+  .item p{
+
     font-size:.8rem;
+
     line-height:1.45;
   }
-  .arrow{font-size:1.05rem}
-  .section-title h2{
+
+  .arrow{
+
+    font-size:1.05rem;
+  }
+
+  .full h2{
+
     font-size:1.45rem;
   }
-  .section-title p{
-    font-size:.9rem;
-  }
+
   footer{
-    padding:20px 15px;
+
+    padding:
+      20px
+      15px;
   }
+
+}
+
+
+/* ==================================================
+   ACCESSIBILITE
+   ================================================== */
+
+.exercise-item:focus-visible{
+
+  outline:
+    2px solid
+    var(--green);
+
+  outline-offset:
+    2px;
 }
 
 </style>
 </head>
 
+
 <body>
+
 <div class="topbar"></div>
 
+
+<!-- =========================
+     HEADER
+     ========================= -->
+
 <header>
+
   <div class="nav">
-    <a class="logo" href="../../index.html">Mathématiques<span>.</span></a>
+
+    <a class="logo"
+       href="../../index.html">
+
+      Mathématiques<span>.</span>
+
+    </a>
+
+
     <nav aria-label="Navigation">
-      <a href="../../1ere/">1ère</a>
-      <a href="../../2eme/">2ème</a>
-      <a href="../../3eme/">3ème</a>
-      <a class="active" href="../">4ème</a>
+
+      <a href="../../1ere/">
+        1ère
+      </a>
+
+      <a href="../../2eme/">
+        2ème
+      </a>
+
+      <a href="../../3eme/">
+        3ème
+      </a>
+
+      <a class="active"
+         href="../">
+
+        4ème
+
+      </a>
+
     </nav>
+
   </div>
+
 </header>
 
-<main>
-  <a class="back" href="../">← 4ème année</a>
 
-  <div class="eyebrow">4ème année · Chapitre 1</div>
-  <h1>Étude de fonctions</h1>
+
+<!-- =========================
+     CONTENU
+     ========================= -->
+
+<main>
+
+
+  <a class="back"
+     href="../">
+
+    ← 4ème année
+
+  </a>
+
+
+  <div class="eyebrow">
+
+    4ème année · Chapitre 1
+
+  </div>
+
+
+  <h1>
+
+    Étude de fonctions
+
+  </h1>
+
 
   <p class="lead">
-    De la découverte à la maîtrise : domaine de définition, limites,
-    continuité, dérivée, variations, extrema et image d'une fonction.
+
+    De la découverte à la maîtrise :
+    domaine de définition, limites,
+    continuité, dérivée, variations,
+    extrema et image d'une fonction.
+
   </p>
 
+
+
+  <!-- =========================
+       INTRO
+       ========================= -->
+
   <div class="intro">
-    <strong>Objectif du chapitre</strong>
+
+    <strong>
+      Objectif du chapitre
+    </strong>
+
     <p>
-      Construire progressivement une étude complète de fonction en reliant
-      chaque étape aux notions et théorèmes nécessaires.
+
+      Construire progressivement une étude
+      complète de fonction en reliant chaque
+      étape aux notions et théorèmes nécessaires.
+
     </p>
+
   </div>
+
+
+
+  <!-- =========================
+       GRILLE
+       ========================= -->
 
   <div class="grid">
 
-    <section class="block">
-      <h2>Prérequis</h2>
-      <p>Les notions à retrouver avant de commencer.</p>
-      <div class="items">
-        <a class="item" href="#">
-          <div class="num">01</div>
-          <div><h3>Ensembles de définition</h3><p>Intervalles et valeurs interdites</p></div>
-          <div class="arrow">→</div>
-        </a>
-        <a class="item" href="#">
-          <div class="num">02</div>
-          <div><h3>Calcul algébrique</h3><p>Factorisation et simplification</p></div>
-          <div class="arrow">→</div>
-        </a>
-        <a class="item" href="#">
-          <div class="num">03</div>
-          <div><h3>Dérivation</h3><p>Formules et règles de calcul</p></div>
-          <div class="arrow">→</div>
-        </a>
-      </div>
-    </section>
+
+
+    <!-- =========================
+         PREREQUIS
+         ========================= -->
 
     <section class="block">
-      <h2>Cours & méthodes</h2>
-      <p>Les notions essentielles du chapitre.</p>
+
+      <h2>
+        Prérequis
+      </h2>
+
+      <p>
+        Les notions à retrouver avant de commencer.
+      </p>
+
+
       <div class="items">
-        <a class="item" href="#">
-          <div class="num">01</div>
-          <div><h3>Limites</h3><p>Calcul et interprétation graphique</p></div>
-          <div class="arrow">→</div>
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            01
+          </div>
+
+          <div>
+
+            <h3>
+              Ensembles de définition
+            </h3>
+
+            <p>
+              Intervalles et valeurs interdites
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </a>
-        <a class="item" href="#">
-          <div class="num">02</div>
-          <div><h3>Continuité</h3><p>Continuité sur un intervalle</p></div>
-          <div class="arrow">→</div>
+
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            02
+          </div>
+
+          <div>
+
+            <h3>
+              Calcul algébrique
+            </h3>
+
+            <p>
+              Factorisation et simplification
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </a>
-        <a class="item" href="#">
-          <div class="num">03</div>
-          <div><h3>Dérivée et variations</h3><p>Du signe de f′ au tableau de variations</p></div>
-          <div class="arrow">→</div>
+
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            03
+          </div>
+
+          <div>
+
+            <h3>
+              Dérivation
+            </h3>
+
+            <p>
+              Formules et règles de calcul
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </a>
+
+
       </div>
+
     </section>
 
-    <section class="block">
-      <h2>Activités</h2>
-      <p>Découvrir les notions avant de formaliser le cours.</p>
-      <div class="items">
-        <a class="item" href="#">
-          <div class="num">01</div>
-          <div><h3>Activité 1</h3><p>À compléter</p></div>
-          <div class="arrow">→</div>
-        </a>
-        <a class="item" href="#">
-          <div class="num">02</div>
-          <div><h3>Activité 2</h3><p>À compléter</p></div>
-          <div class="arrow">→</div>
-        </a>
-        <a class="item" href="#">
-          <div class="num">03</div>
-          <div><h3>Activité 3</h3><p>À compléter</p></div>
-          <div class="arrow">→</div>
-        </a>
-      </div>
-    </section>
+
+
+    <!-- =========================
+         COURS
+         ========================= -->
 
     <section class="block">
-      <h2>Exercices</h2>
-      <p>Une collection extensible : autant d'exercices que nécessaire.</p>
+
+      <h2>
+        Cours & méthodes
+      </h2>
+
+      <p>
+        Les notions essentielles du chapitre.
+      </p>
+
+
       <div class="items">
-        <a class="item" href="exercice01.html">
-          <div class="num">01</div>
-          <div><h3>Exercice 1 — Étude d'une fonction rationnelle </h3><p>Révision complète de la démarche</p></div>
-          <div class="arrow">→</div>
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            01
+          </div>
+
+          <div>
+
+            <h3>
+              Limites
+            </h3>
+
+            <p>
+              Calcul et interprétation graphique
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </a>
-        <a class="item" href="exercice02.html">
-          <div class="num">02</div>
-          <div><h3>Exercice 2 — Étude d'une fonction racine de polynôme</h3><p>Révision complète de la démarche</p></div>
-          <div class="arrow">→</div>
+
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            02
+          </div>
+
+          <div>
+
+            <h3>
+              Continuité
+            </h3>
+
+            <p>
+              Continuité sur un intervalle
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </a>
-        <a class="item" href="exercice03.html">
-          <div class="num">03</div>
-          <div><h3>Exercice 3 — Étude d'une fonction à Valeur Absolue</h3><p>Révision complète de la démarche</p></div>
-          <div class="arrow">→</div>
+
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            03
+          </div>
+
+          <div>
+
+            <h3>
+              Dérivée et variations
+            </h3>
+
+            <p>
+              Du signe de \(f'\)
+              au tableau de variations
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
         </a>
-        <a class="item" href="#">
-          <div class="num">04</div>
-          <div><h3>Exercice 4</h3><p>À compléter</p></div>
-          <div class="arrow">→</div>
-        </a>
+
+
       </div>
+
     </section>
+
+
+
+    <!-- =========================
+         ACTIVITES
+         ========================= -->
+
+    <section class="block">
+
+      <h2>
+        Activités
+      </h2>
+
+      <p>
+        Découvrir les notions avant de formaliser le cours.
+      </p>
+
+
+      <div class="items">
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            01
+          </div>
+
+          <div>
+
+            <h3>
+              Activité 1
+            </h3>
+
+            <p>
+              À compléter
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            02
+          </div>
+
+          <div>
+
+            <h3>
+              Activité 2
+            </h3>
+
+            <p>
+              À compléter
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            03
+          </div>
+
+          <div>
+
+            <h3>
+              Activité 3
+            </h3>
+
+            <p>
+              À compléter
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         EXERCICES
+         ========================= -->
+
+    <section class="block">
+
+      <h2>
+        Exercices
+      </h2>
+
+      <p>
+        Une collection extensible :
+        autant d'exercices que nécessaire.
+      </p>
+
+
+      <div class="items">
+
+
+
+        <!-- =========================
+             EXERCICE 1
+             ========================= -->
+
+        <a class="item exercise-item"
+           href="exercice01.html">
+
+          <div class="num">
+            01
+          </div>
+
+
+          <div>
+
+            <h3>
+              Exercice 1 —
+              Étude d'une fonction rationnelle
+            </h3>
+
+            <p>
+              Révision complète de la démarche
+            </p>
+
+          </div>
+
+
+          <!-- ROLLOVER MATHJAX -->
+
+          <span class="function-rollover">
+
+            \(f(x)=\frac{x^4+1}{x^2}\)
+
+          </span>
+
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <!-- =========================
+             EXERCICE 2
+             ========================= -->
+
+        <a class="item exercise-item"
+           href="exercice02.html">
+
+          <div class="num">
+            02
+          </div>
+
+
+          <div>
+
+            <h3>
+              Exercice 2 —
+              Étude d'une fonction racine de polynôme
+            </h3>
+
+            <p>
+              Révision complète de la démarche
+            </p>
+
+          </div>
+
+
+          <!-- ROLLOVER MATHJAX -->
+
+          <span class="function-rollover">
+
+            \(f(x)=\sqrt{x^2+x+1}\)
+
+          </span>
+
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <!-- =========================
+             EXERCICE 3
+             ========================= -->
+
+        <a class="item exercise-item"
+           href="exercice03.html">
+
+          <div class="num">
+            03
+          </div>
+
+
+          <div>
+
+            <h3>
+              Exercice 3 —
+              Étude d'une fonction à valeur absolue
+            </h3>
+
+            <p>
+              Révision complète de la démarche
+            </p>
+
+          </div>
+
+
+          <!-- ROLLOVER MATHJAX -->
+
+          <span class="function-rollover">
+
+            \(f(x)=|x^2-4|\)
+
+          </span>
+
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <!-- =========================
+             EXERCICE 4
+             ========================= -->
+
+        <a class="item"
+           href="#">
+
+          <div class="num">
+            04
+          </div>
+
+          <div>
+
+            <h3>
+              Exercice 4
+            </h3>
+
+            <p>
+              À compléter
+            </p>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
 
   </div>
 
+
+
+  <!-- =========================
+       APPROFONDISSEMENT
+       ========================= -->
+
   <section class="full">
-    <h2>Approfondissement</h2>
+
+    <h2>
+      Approfondissement
+    </h2>
+
     <p>
-      Cette partie accueillera progressivement les problèmes et exercices
-      de niveau Bac permettant de mobiliser plusieurs notions du chapitre.
+
+      Cette partie accueillera progressivement
+      les problèmes et exercices de niveau Bac
+      permettant de mobiliser plusieurs notions
+      du chapitre.
+
     </p>
 
+
     <div class="method">
-      <strong>Notre démarche :</strong>
-      <span>Prérequis → Activité → Cours → Méthode → Exercices → Bac</span>
+
+      <strong>
+        Notre démarche :
+      </strong>
+
+      <span>
+        Prérequis →
+        Activité →
+        Cours →
+        Méthode →
+        Exercices →
+        Bac
+      </span>
+
     </div>
+
   </section>
+
+
 </main>
 
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
 <footer>
+
   4ème année · Chapitre 1 · Étude de fonctions
+
 </footer>
+
+
 </body>
 </html>
