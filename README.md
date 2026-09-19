@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -91,8 +90,8 @@ nav a:hover{
   margin:auto;
   padding:90px 24px 82px;
   display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:70px;
+  grid-template-columns:minmax(0, 1.2fr) minmax(0, .8fr);
+  gap:50px;
   align-items:center;
 }
 
@@ -114,6 +113,10 @@ h1{
 }
 
 h1 .accent{color:var(--green)}
+
+.hero-inner > *{
+  min-width:0;
+}
 
 .hero p{
   max-width:700px;
@@ -325,7 +328,7 @@ footer{
   gap:20px;
 }
 
-@media(max-width:850px){
+@media(max-width:980px){
   .hero-inner{
     grid-template-columns:1fr;
     padding-top:60px;
@@ -352,13 +355,13 @@ footer{
 
 <header>
   <div class="nav">
-    <a class="logo" href="index.html">Ben <span>Ftima</span></a>
+    <a class="logo" href="index.html">Mathématiques</a>
 
     <nav aria-label="Navigation principale">
-      <a href="cours/">Cours</a>
-      <a href="exercices/">Exercices</a>
-      <a href="videos/">Vidéos</a>
-      <a href="bac2027/">Bac 2027</a>
+      <a href="1ere/">1ère</a>
+      <a href="2eme/">2ème</a>
+      <a href="3eme/">3ème</a>
+      <a href="4eme/">4ème</a>
     </nav>
   </div>
 </header>
@@ -413,92 +416,49 @@ footer{
 <section class="section" id="ressources">
 
   <div class="section-header">
-    <h2>Ressources</h2>
+    <h2>Choisir votre niveau</h2>
     <p>
-      Un espace organisé pour retrouver rapidement les notions,
-      les méthodes et les entraînements.
+      Retrouvez les cours, exercices et ressources correspondant
+      à votre niveau scolaire.
     </p>
   </div>
 
   <div class="grid">
 
-    <a class="card" href="cours/">
+    <a class="card" href="1ere/">
       <div class="number">01</div>
-      <h3>Cours</h3>
-      <p>
-        Notions, théorèmes, méthodes et exemples expliqués
-        progressivement.
-      </p>
-      <span class="more">Accéder aux cours →</span>
+      <h3>1ère année</h3>
+      <p>Cours, méthodes et exercices de mathématiques pour la 1ère année.</p>
+      <span class="more">Accéder au niveau →</span>
     </a>
 
-    <a class="card" href="exercices/">
+    <a class="card" href="2eme/">
       <div class="number">02</div>
-      <h3>Exercices</h3>
-      <p>
-        Exercices classés par chapitre et par niveau,
-        avec corrections détaillées.
-      </p>
-      <span class="more">Voir les exercices →</span>
+      <h3>2ème année</h3>
+      <p>Cours, méthodes et exercices de mathématiques pour la 2ème année.</p>
+      <span class="more">Accéder au niveau →</span>
     </a>
 
-    <a class="card" href="videos/">
+    <a class="card" href="3eme/">
       <div class="number">03</div>
-      <h3>Vidéos</h3>
-      <p>
-        Explications pas à pas pour revoir les notions
-        et les méthodes essentielles.
-      </p>
-      <span class="more">Voir les vidéos →</span>
+      <h3>3ème année</h3>
+      <p>Cours, méthodes et exercices de mathématiques pour la 3ème année.</p>
+      <span class="more">Accéder au niveau →</span>
     </a>
 
-    <a class="card" href="bac2027/">
+    <a class="card" href="4eme/">
       <div class="number">04</div>
-      <h3>Bac 2027</h3>
-      <p>
-        Préparation, révisions et ressources destinées
-        aux élèves du Bac 2027.
-      </p>
-      <span class="more">Préparer le Bac →</span>
+      <h3>4ème année</h3>
+      <p>Cours, méthodes et exercices de mathématiques pour la 4ème année.</p>
+      <span class="more">Accéder au niveau →</span>
     </a>
 
   </div>
 </section>
 
-<section class="bac">
-  <div class="bac-inner">
 
-    <div>
-      <h2>Préparation Bac 2027</h2>
-      <p>
-        Une partie dédiée aux révisions et à la construction progressive
-        des connaissances : fonctions, dérivation, limites, nombres
-        complexes, transformations du plan et autres chapitres.
-      </p>
 
-      <div class="sections">
-        <span class="tag">Sciences expérimentales</span>
-        <span class="tag">Mathématiques</span>
-        <span class="tag">Technique</span>
-        <span class="tag">Informatique</span>
-      </div>
-    </div>
 
-    <a class="btn btn-primary" href="bac2027/">Entrer dans Bac 2027</a>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <h2>Une méthode progressive</h2>
-    <p>
-      Chaque chapitre peut suivre la même logique pédagogique :
-      prérequis → découverte → cours → théorèmes → méthode →
-      application → exercices → correction.
-    </p>
-  </div>
-</section>
 
 </main>
 
