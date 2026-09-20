@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice — Test de la dérivée première</title>
+
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --green:#6db33f;
+  --green-dark:#4f8f2b;
+  --ink:#26343d;
+  --muted:#69757c;
+  --line:#dfe5e8;
+  --soft:#f7f9fa;
+  --note:#f4f9f1;
+  --orange:#e6a23c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+.topbar{
+  min-height:66px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;padding:0 28px;
+  position:sticky;top:0;background:#fff;z-index:20;
+}
+.spring-mark{
+  display:flex;align-items:center;gap:10px;
+  font-weight:700;color:var(--green-dark);font-size:20px;
+}
+.dot{
+  width:14px;height:14px;border-radius:50%;
+  border:3px solid var(--green);position:relative;
+}
+.dot:after{
+  content:"";position:absolute;width:4px;height:4px;border-radius:50%;
+  background:var(--green);top:2px;left:2px;
+}
+.topnav{margin-left:auto;display:flex;gap:24px;font-size:14px}
+.topnav a{color:#455a64}
+.topnav a:hover{color:var(--green-dark)}
+
+.page{
+  max-width:1220px;margin:auto;
+  display:grid;grid-template-columns:235px minmax(0,760px) 170px;
+  gap:34px;padding:34px 24px 70px;
+}
+.sidebar{
+  position:sticky;top:92px;align-self:start;
+  max-height:calc(100vh - 115px);overflow:auto;
+  border-right:1px solid var(--line);padding-right:18px;
+}
+.sidebar .label{
+  font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+  color:#78909c;font-weight:700;margin-bottom:10px;
+}
+.sidebar a{
+  display:block;padding:6px 8px;margin:1px 0;
+  color:#455a64;border-left:2px solid transparent;font-size:14px;
+}
+.sidebar a:hover{color:var(--green-dark);border-left-color:var(--green);background:#fafcf9}
+.sidebar .current{color:var(--green-dark);font-weight:600;border-left-color:var(--green)}
+
+.content{min-width:0}
+.kicker{color:var(--green-dark);font-size:13px;font-weight:700;margin-bottom:5px}
+h1{font-size:38px;line-height:1.2;font-weight:500;margin:0 0 14px}
+h2{font-size:26px;line-height:1.3;font-weight:500;margin:42px 0 14px}
+h3{font-size:19px;font-weight:600;margin:27px 0 9px}
+p{margin:0 0 16px}
+.lead{font-size:18px;color:#546e7a;margin-bottom:28px}
+.rule{border:0;border-top:1px solid var(--line);margin:28px 0}
+
+.exercise-statement{
+  margin:30px 0 40px;padding:23px 25px;
+  border:1px solid var(--line);border-left:4px solid var(--green);
+  background:#fff;
+}
+.exercise-label{color:#5b9634;font-size:12px;font-weight:700;letter-spacing:.1em;margin-bottom:4px}
+.exercise-statement h2{margin:0 0 17px;font-size:27px}
+.formula{padding:12px 8px;margin:12px 0;overflow-x:auto;text-align:center}
+.doc-box{
+  border:1px solid var(--line);background:var(--soft);
+  padding:17px 19px;margin:20px 0;
+}
+.doc-box.note{border-left:4px solid var(--green);background:var(--note)}
+.doc-box.warning{border-left:4px solid var(--orange);background:#fffaf2}
+.step{margin:30px 0}
+.example{margin:25px 0;border-top:3px solid var(--green);padding-top:14px}
+.example-title{font-size:20px;font-weight:600;margin-bottom:8px}
+
+.popup-btn{
+  margin-left:8px;border:1px solid #cfd8dc;background:#fff;
+  color:#4f8f2c;border-radius:4px;padding:5px 9px;
+  font-size:12px;font-weight:600;cursor:pointer;
+}
+.popup-btn:hover{background:#f6faf4}
+dialog{
+  width:min(620px,calc(100% - 32px));
+  border:1px solid var(--line);border-top:4px solid var(--green);
+  padding:24px 26px;color:#263238;
+  box-shadow:0 18px 50px rgba(38,50,56,.18);
+}
+dialog::backdrop{background:rgba(38,50,56,.28)}
+dialog h3{margin:0 0 10px}
+.close-btn{
+  border:1px solid #cfd8dc;background:#fff;padding:7px 12px;
+  border-radius:4px;cursor:pointer;
+}
+
+table{
+  width:100%;border-collapse:collapse;margin:18px 0 24px;
+  font-size:14px;
+}
+th,td{border:1px solid #cfd8dc;padding:7px 6px;text-align:center}
+th{background:#f4f7f8;font-weight:600}
+
+.variation-wrap{width:100%;overflow-x:auto;margin:18px 0 25px}
+.variation{
+  min-width:650px;width:100%;border-collapse:collapse;
+  font-family:"Times New Roman",Georgia,serif;font-size:16px;
+}
+.variation th,.variation td{border:1px solid #b9c4c9;padding:6px;text-align:center}
+.variation th{width:65px;background:#f3f6f7}
+.variation .sep{border-left:4px double #455a64!important;border-right:4px double #455a64!important}
+.variation .arrow{font-size:28px;line-height:1}
+.variation .value{font-weight:600;font-size:17px}
+
+.toc-right{
+  position:sticky;top:92px;align-self:start;
+  border-left:1px solid var(--line);padding-left:16px;font-size:13px;
+}
+.toc-right strong{font-size:13px;color:#455a64}
+.toc-right a{display:block;color:#607d8b;margin:5px 0}
+.toc-right a:hover{color:var(--green-dark)}
+
+footer{
+  border-top:1px solid var(--line);padding:24px 20px;
+  text-align:center;color:#78909c;font-size:13px;
+}
+
+@media(max-width:1050px){
+  .page{grid-template-columns:215px minmax(0,1fr);gap:28px}
+  .toc-right{display:none}
+}
+@media(max-width:760px){
+  .topbar{min-height:58px;padding:9px 15px;flex-wrap:wrap;gap:7px 18px}
+  .topnav{
+    width:100%;margin-left:0;gap:18px;overflow-x:auto;
+    padding-bottom:2px;white-space:nowrap;
+  }
+  .page{display:block;padding:20px 16px 50px}
+  .sidebar{
+    position:relative;top:auto;max-height:none;overflow-x:auto;overflow-y:hidden;
+    border-right:0;border-bottom:1px solid var(--line);
+    padding:0 0 10px;margin-bottom:28px;white-space:nowrap;
+  }
+  .sidebar .label{display:inline-block;margin-right:8px}
+  .sidebar a{
+    display:inline-block;border-left:0;border-bottom:2px solid transparent;padding:5px 7px;
+  }
+  .sidebar .current{border-left:0;border-bottom-color:var(--green)}
+  h1{font-size:30px}
+  h2{font-size:23px;margin-top:34px}
+  .lead{font-size:17px}
+  .exercise-statement{padding:19px 16px}
+  table{display:block;overflow-x:auto;white-space:nowrap}
+}
+@media print{
+  .topbar,.sidebar,.toc-right,.popup-btn{display:none}
+  .page{display:block;padding:0;max-width:none}
+  body{font-size:12pt}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="spring-mark"><span class="dot"></span><span>Mathématiques</span></div>
+  <nav class="topnav">
+    <a href="../../index.html">Accueil</a>
+    <a href="../index.html">Chapitre 1</a>
+    <a href="#enonce">Exercice</a>
+    <a href="#retenir">À retenir</a>
+  </nav>
+</header>
+
+<div class="page">
+
+<aside class="sidebar">
+  <div class="label">4ème · Chapitre 1</div>
+  <a class="current" href="#enonce">Énoncé</a>
+  <a href="#difficulte">Difficulté</a>
+  <a href="#objectif">Objectif</a>
+  <a href="#prerequis">Prérequis</a>
+  <a href="#domaine">1. Domaine</a>
+  <a href="#derivee">2. Dérivée</a>
+  <a href="#critiques">3. Valeurs critiques</a>
+  <a href="#signe">4. Signe de \(f'\)</a>
+  <a href="#variations">5. Variations</a>
+  <a href="#extrema">6. Extrema</a>
+  <a href="#image">7. Image</a>
+  <a href="#retenir">À retenir</a>
+</aside>
+
+<main class="content">
+
+<div class="kicker">4ÈME · CHAPITRE 1 · RÉVISION BAC 2027</div>
+<h1>Exercice — Test de la dérivée première</h1>
+
+<p class="lead">
+Une étude de fonction où la difficulté principale est de trouver
+les valeurs pour lesquelles la dérivée s'annule.
+</p>
+
+<hr class="rule">
+
+<section id="enonce" class="exercise-statement">
+  <div class="exercise-label">EXERCICE · FIRST DERIVATIVE TEST</div>
+  <h2>
+    Énoncé
+    <button class="popup-btn" type="button" onclick="openComment()">💡 Commentaire</button>
+  </h2>
+
+  <p>On considère la fonction :</p>
+
+  <div class="formula">
+    \[
+      \boxed{f(x)=\frac{x^4+1}{x^2+1}}
+    \]
+  </div>
+
+  <p>
+    Déterminer les valeurs de \(x\) pour lesquelles la dérivée est nulle,
+    puis utiliser le <strong>test de la dérivée première</strong> pour étudier
+    les variations et les extrema de \(f\).
+  </p>
+</section>
+
+<section id="difficulte" class="step">
+<h2>1. Où se trouve la difficulté ?</h2>
+
+<div class="doc-box warning">
+<strong>Le point délicat de l'exercice :</strong>
+<p>
+La dérivée est facile à calculer, mais sa résolution demande une étape
+supplémentaire : résoudre une équation du quatrième degré sous une forme
+factorisée.
+</p>
+</div>
+
+<p>
+Après dérivation, on obtient :
+</p>
+
+<div class="formula">
+\[
+f'(x)=
+\frac{2x(x^4+2x^2-1)}{(x^2+1)^2}.
+\]
+</div>
+
+<p>
+Il faut donc résoudre :
+\[
+x^4+2x^2-1=0.
+\]
+</p>
+
+<div class="doc-box note">
+<strong>Astuce :</strong>
+<p>
+On ne cherche pas directement une formule compliquée en \(x\).
+On pose \(X=x^2\). L'équation devient une équation du second degré :
+</p>
+
+\[
+X^2+2X-1=0.
+\]
+
+<p>
+C'est cette transformation qui rend le problème accessible.
+</p>
+</div>
+</section>
+
+<section id="objectif" class="step">
+<h2>2. Objectif de l'étude</h2>
+
+<p>Nous allons suivre exactement la démarche utilisée dans les autres exercices :</p>
+
+<ol>
+  <li>déterminer le domaine ;</li>
+  <li>calculer la dérivée ;</li>
+  <li>chercher les valeurs critiques ;</li>
+  <li>étudier le signe de \(f'\) ;</li>
+  <li>dresser le tableau de variations ;</li>
+  <li>identifier les extrema.</li>
+</ol>
+</section>
+
+<section id="prerequis" class="step">
+<h2>3. Prérequis</h2>
+
+<div class="doc-box">
+<strong>À savoir avant de commencer :</strong>
+<ul>
+  <li>résoudre une équation du second degré ;</li>
+  <li>connaître le signe d'un carré ;</li>
+  <li>savoir dériver un quotient ;</li>
+  <li>connaître le lien entre le signe de \(f'\) et les variations de \(f\).</li>
+</ul>
+</div>
+</section>
+
+<section id="domaine" class="step">
+<h2>4. Domaine de définition</h2>
+
+<p>
+Le dénominateur est \(x^2+1\).
+Or :
+\[
+x^2\geq0
+\quad\Longrightarrow\quad
+x^2+1>0
+\]
+pour tout réel \(x\).
+</p>
+
+<div class="doc-box note">
+<strong>Donc :</strong>
+\[
+\boxed{D_f=\mathbb{R}}.
+\]
+</div>
+</section>
+
+<section id="derivee" class="step">
+<h2>5. Calcul de la dérivée</h2>
+
+<p>
+On utilise la formule de dérivation d'un quotient :
+</p>
+
+<div class="formula">
+\[
+\left(\frac{u}{v}\right)'
+=
+\frac{u'v-uv'}{v^2}.
+\]
+</div>
+
+<p>Avec :</p>
+
+\[
+u(x)=x^4+1,\qquad v(x)=x^2+1.
+\]
+
+<p>Donc :</p>
+
+<div class="formula">
+\[
+f'(x)
+=
+\frac{4x^3(x^2+1)-2x(x^4+1)}
+{(x^2+1)^2}.
+\]
+</div>
+
+<p>On simplifie le numérateur :</p>
+
+<div class="formula">
+\[
+\begin{aligned}
+4x^3(x^2+1)-2x(x^4+1)
+&=4x^5+4x^3-2x^5-2x\\
+&=2x^5+4x^3-2x\\
+&=2x(x^4+2x^2-1).
+\end{aligned}
+\]
+</div>
+
+<div class="doc-box note">
+<strong>Forme factorisée :</strong>
+\[
+\boxed{
+f'(x)=
+\frac{2x(x^4+2x^2-1)}
+{(x^2+1)^2}
+}
+\]
+</div>
+</section>
+
+<section id="critiques" class="step">
+<h2>6. Valeurs pour lesquelles \(f'(x)=0\)</h2>
+
+<p>
+Comme \((x^2+1)^2>0\) pour tout \(x\), les zéros de \(f'\) sont donnés par :
+\[
+2x(x^4+2x^2-1)=0.
+\]
+</p>
+
+<p>Donc :</p>
+
+\[
+x=0
+\quad\text{ou}\quad
+x^4+2x^2-1=0.
+\]
+
+<h3>Résolution de \(x^4+2x^2-1=0\)</h3>
+
+<p>Posons :</p>
+
+\[
+X=x^2.
+\]
+
+<p>On obtient :</p>
+
+\[
+X^2+2X-1=0.
+\]
+
+<p>Le discriminant vaut :</p>
+
+\[
+\Delta=2^2-4(1)(-1)=8.
+\]
+
+<p>Donc :</p>
+
+\[
+X=\frac{-2\pm\sqrt8}{2}
+=-1\pm\sqrt2.
+\]
+
+<p>
+Comme \(X=x^2\geq0\), seule la valeur
+\[
+X=-1+\sqrt2=\sqrt2-1
+\]
+est acceptable.
+</p>
+
+<p>Ainsi :</p>
+
+\[
+x^2=\sqrt2-1
+\]
+
+\[
+\boxed{x=\pm\sqrt{\sqrt2-1}}.
+\]
+
+<div class="doc-box warning">
+<strong>Les trois valeurs critiques sont donc :</strong>
+\[
+\boxed{
+-\sqrt{\sqrt2-1},\quad 0,\quad
+\sqrt{\sqrt2-1}
+}
+\]
+</div>
+
+<p>
+C'est précisément ici que se situe la difficulté signalée dans l'énoncé :
+il faut transformer une équation du quatrième degré en une équation du second degré.
+</p>
+</section>
+
+<section id="signe" class="step">
+<h2>7. Étude du signe de \(f'(x)\)</h2>
+
+<p>
+Posons :
+\[
+a=\sqrt{\sqrt2-1}>0.
+\]
+
+Alors :
+\[
+f'(x)=
+\frac{2x(x^2-a^2)(x^2+a^2)}
+{(x^2+1)^2}.
+\]
+
+Or :
+\[
+x^2+a^2>0
+\quad\text{et}\quad
+(x^2+1)^2>0.
+\]
+
+<p>
+Le signe de \(f'\) dépend donc seulement de
+\[
+x(x^2-a^2)=x(x-a)(x+a).
+\]
+</p>
+
+<div class="variation-wrap">
+<table class="variation">
+<tr>
+<th>\(x\)</th>
+<td>\(-\infty\)</td><td>\(-a\)</td><td>\(0\)</td><td>\(a\)</td><td>\(+\infty\)</td>
+</tr>
+<tr>
+<th>\(f'(x)\)</th>
+<td>\(-\)</td><td class="value">0</td><td>\(+\)</td><td class="value">0</td><td>\(-\)</td><td class="value">0</td><td>\(+\)</td>
+</tr>
+</table>
+</div>
+
+<div class="doc-box note">
+<strong>Lecture du signe :</strong>
+<ul>
+<li>sur \(]-\infty,-a[\), \(f'<0\) ;</li>
+<li>sur \(]-a,0[\), \(f'>0\) ;</li>
+<li>sur \(]0,a[\), \(f'<0\) ;</li>
+<li>sur \(]a,+\infty[\), \(f'>0\).</li>
+</ul>
+</div>
+</section>
+
+<section id="variations" class="step">
+<h2>8. Tableau de variations</h2>
+
+<p>
+Le test de la dérivée première donne directement les variations :
+</p>
+
+<div class="variation-wrap">
+<table class="variation">
+<tr>
+<th>\(x\)</th>
+<td>\(-\infty\)</td><td>\(-a\)</td><td>\(0\)</td><td>\(a\)</td><td>\(+\infty\)</td>
+</tr>
+<tr>
+<th>\(f'(x)\)</th>
+<td>\(-\)</td><td class="value">0</td><td>\(+\)</td><td class="value">0</td><td>\(-\)</td><td class="value">0</td><td>\(+\)</td>
+</tr>
+<tr>
+<th>\(f(x)\)</th>
+<td>\(+\infty\)</td>
+<td class="arrow">↘</td>
+<td class="value">\(2(\sqrt2-1)\)</td>
+<td class="arrow">↗</td>
+<td class="value">\(1\)</td>
+<td class="arrow">↘</td>
+<td class="value">\(2(\sqrt2-1)\)</td>
+<td class="arrow">↗</td>
+<td>\(+\infty\)</td>
+</tr>
+</table>
+</div>
+
+<p>
+On utilise ici le fait que :
+\[
+f'<0\Rightarrow f\text{ décroît},
+\qquad
+f'>0\Rightarrow f\text{ croît}.
+\]
+</p>
+</section>
+
+<section id="extrema" class="step">
+<h2>9. Extrema</h2>
+
+<h3>En \(x=-a\)</h3>
+
+<p>
+Le signe de \(f'\) passe de \(-\) à \(+\).
+La fonction passe donc de décroissante à croissante :
+</p>
+
+\[
+\boxed{\text{minimum local en }x=-a}.
+\]
+
+<h3>En \(x=0\)</h3>
+
+<p>
+Le signe de \(f'\) passe de \(+\) à \(-\).
+La fonction passe donc de croissante à décroissante :
+</p>
+
+\[
+\boxed{\text{maximum local en }x=0}.
+\]
+
+<h3>En \(x=a\)</h3>
+
+<p>
+Le signe de \(f'\) passe de \(-\) à \(+\) :
+</p>
+
+\[
+\boxed{\text{minimum local en }x=a}.
+\]
+
+<p>Calcul des valeurs :</p>
+
+\[
+f(0)=1
+\]
+
+et, pour \(a^2=\sqrt2-1\),
+
+\[
+f(a)
+=
+\frac{a^4+1}{a^2}
+=
+2(\sqrt2-1).
+\]
+
+Donc les deux minima ont pour valeur :</p>
+
+\[
+\boxed{2(\sqrt2-1)}.
+\]
+</section>
+
+<section id="image" class="step">
+<h2>10. Image de la fonction</h2>
+
+<p>
+Les deux minima ont la même valeur et la fonction tend vers \(+\infty\)
+aux deux extrémités.
+</p>
+
+<div class="doc-box note">
+<strong>Conclusion :</strong>
+\[
+\boxed{
+\operatorname{Im}(f)=
+[\,2(\sqrt2-1),+\infty[
+}
+\]
+</div>
+</section>
+
+<section id="retenir" class="step">
+<h2>11. À retenir</h2>
+
+<div class="doc-box">
+<strong>Test de la dérivée première :</strong>
+<p>
+Si \(f'\) change de signe :
+</p>
+<ul>
+<li>\(-\) vers \(+\) : \(f\) admet un <strong>minimum local</strong> ;</li>
+<li>\(+\) vers \(-\) : \(f\) admet un <strong>maximum local</strong>.</li>
+</ul>
+</div>
+
+<div class="doc-box note">
+<strong>La difficulté de cet exercice :</strong>
+<p>
+Ce n'est pas le tableau de variations lui-même. La difficulté est de trouver
+correctement les zéros de \(f'\), ici en transformant
+\[
+x^4+2x^2-1=0
+\]
+en une équation du second degré grâce à \(X=x^2\).
+</p>
+</div>
+
+<div class="doc-box">
+<strong>Technologie :</strong>
+<p>
+Un logiciel de calcul symbolique peut aider à vérifier la dérivée et à résoudre
+l'équation. Mais la transformation \(X=x^2\) permet de comprendre
+mathématiquement pourquoi les valeurs
+\[
+x=\pm\sqrt{\sqrt2-1}
+\]
+apparaissent.
+</p>
+</div>
+</section>
+
+</main>
+
+<aside class="toc-right">
+<strong>Sur cette page</strong>
+<a href="#enonce">Énoncé</a>
+<a href="#difficulte">Difficulté</a>
+<a href="#objectif">Objectif</a>
+<a href="#domaine">Domaine</a>
+<a href="#derivee">Dérivée</a>
+<a href="#critiques">Valeurs critiques</a>
+<a href="#signe">Signe</a>
+<a href="#variations">Variations</a>
+<a href="#extrema">Extrema</a>
+<a href="#image">Image</a>
+<a href="#retenir">À retenir</a>
+</aside>
+
+</div>
+
+<footer>
+4ème année · Chapitre 1 · Étude de fonctions · HTML + MathJax · Responsive
+</footer>
+
+<dialog id="commentDialog">
+<h3>💡 Pourquoi cet exercice est intéressant ?</h3>
+<p>
+L'énoncé attire l'attention sur la difficulté réelle du test de la dérivée
+première : trouver les valeurs où \(f'(x)=0\).
+</p>
+<p>
+Ici, la dérivée conduit à une équation en \(x^4\). La substitution
+\(X=x^2\) transforme cette équation en une équation du second degré.
+</p>
+<p>
+La technologie peut servir à vérifier le calcul, mais la correction montre
+la démarche mathématique complète.
+</p>
+<button class="close-btn" type="button" onclick="closeComment()">Fermer</button>
+</dialog>
+
+<script>
+function openComment(){
+  document.getElementById('commentDialog').showModal();
+}
+function closeComment(){
+  document.getElementById('commentDialog').close();
+}
+</script>
+
+</body>
+</html>
