@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice — Étude d'une fonction du type √g</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --green:#6db33f; --green-dark:#4f8f2b; --ink:#26343d;
+  --muted:#69757c; --line:#e2e7e9; --bg:#f7f9fa;
+  --star:#e3a51a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.65;overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+.topbar{height:4px;background:var(--green)}
+header{
+  border-bottom:1px solid var(--line);background:#fff;
+  position:sticky;top:0;z-index:20
+}
+.nav{
+  max-width:1180px;margin:auto;padding:0 24px;min-height:66px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px
+}
+.logo{font-weight:700;font-size:1.15rem}
+.logo span{color:var(--green)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{padding:8px 11px;border-radius:5px;color:#53616a;font-size:.9rem}
+nav a:hover{background:#f0f4f5}
+nav a.active{color:var(--green-dark);font-weight:600;background:#f1f6ee}
+
+.page{
+  max-width:1220px;margin:auto;
+  display:grid;grid-template-columns:220px minmax(0,1fr) 160px;
+  gap:32px;padding:34px 24px 70px
+}
+.sidebar{
+  position:sticky;top:92px;align-self:start;
+  max-height:calc(100vh - 115px);overflow:auto;
+  border-right:1px solid var(--line);padding-right:15px
+}
+.sidebar .label{
+  font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+  color:#78909c;font-weight:700;margin-bottom:10px
+}
+.sidebar a{
+  display:block;padding:6px 7px;margin:1px 0;
+  color:#455a64;border-left:2px solid transparent;font-size:13px
+}
+.sidebar a:hover{color:var(--green-dark);border-left-color:var(--green);background:#fafcf9}
+.sidebar .current{color:var(--green-dark);font-weight:600;border-left-color:var(--green)}
+
+.content{min-width:0}
+.kicker{color:var(--green-dark);font-size:12px;font-weight:700;letter-spacing:.06em;margin-bottom:5px}
+h1{font-size:38px;line-height:1.18;font-weight:500;margin:0 0 12px}
+h2{font-size:25px;line-height:1.3;font-weight:500;margin:40px 0 13px}
+h3{font-size:19px;font-weight:600;margin:25px 0 8px}
+.lead{font-size:17px;color:#546e7a;margin-bottom:24px}
+.rule{border:0;border-top:1px solid var(--line);margin:25px 0}
+
+.exercise-statement{
+  margin:26px 0 36px;padding:21px 24px;
+  border:1px solid var(--line);border-left:4px solid var(--green);
+  background:#fff
+}
+.exercise-label{
+  color:var(--green-dark);font-size:12px;font-weight:700;
+  letter-spacing:.1em;margin-bottom:4px
+}
+.exercise-statement h2{margin:0 0 14px;font-size:25px}
+.formula{text-align:center;padding:8px;overflow-x:auto}
+.doc-box{
+  border:1px solid var(--line);background:var(--bg);
+  padding:15px 18px;margin:18px 0
+}
+.doc-box.note{border-left:4px solid var(--green);background:#f5faf2}
+.doc-box.warning{border-left:4px solid #d9a12c;background:#fffaf0}
+
+.difficulty{
+  display:flex;align-items:center;gap:12px;
+  margin:12px 0 22px;padding:11px 15px;
+  border:1px solid var(--line);background:#fff
+}
+.difficulty-label{font-size:13px;color:var(--muted);font-weight:600}
+.stars{letter-spacing:3px;font-size:18px}
+.stars .on{color:var(--star)}
+.stars .off{color:#d8dde0}
+
+.popup-btn{
+  margin-left:8px;border:1px solid #cfd8dc;background:#fff;
+  color:var(--green-dark);border-radius:4px;padding:4px 8px;
+  font-size:12px;font-weight:600;cursor:pointer
+}
+.popup-btn:hover{background:#f6faf4}
+dialog{
+  width:min(620px,calc(100% - 32px));border:1px solid var(--line);
+  border-top:4px solid var(--green);padding:23px 25px;
+  box-shadow:0 18px 50px rgba(38,50,56,.18)
+}
+dialog::backdrop{background:rgba(38,50,56,.28)}
+.close-btn{border:1px solid #cfd8dc;background:#fff;padding:7px 12px;border-radius:4px;cursor:pointer}
+
+table{
+  width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:13px
+}
+th,td{border:1px solid #cfd8dc;padding:6px;text-align:center}
+th{background:#f4f7f8;font-weight:600}
+.variation-wrap{width:100%;overflow-x:auto}
+.variation{min-width:610px;font-family:"Times New Roman",Georgia,serif}
+.variation th,.variation td{padding:6px}
+.variation .arrow{font-size:25px;line-height:1}
+.variation .value{font-weight:600}
+
+.toc-right{
+  position:sticky;top:92px;align-self:start;
+  border-left:1px solid var(--line);padding-left:14px;font-size:12px
+}
+.toc-right strong{font-size:13px;color:#455a64}
+.toc-right a{display:block;color:#607d8b;margin:5px 0}
+.toc-right a:hover{color:var(--green-dark)}
+
+footer{
+  border-top:1px solid var(--line);padding:24px 20px;
+  text-align:center;color:#78909c;font-size:13px
+}
+
+@media(max-width:1050px){
+  .page{grid-template-columns:205px minmax(0,1fr)}
+  .toc-right{display:none}
+}
+@media(max-width:760px){
+  .nav{min-height:58px;padding:8px 15px;flex-wrap:wrap}
+  .logo{font-size:1.05rem}
+  nav{width:100%;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap}
+  nav a{font-size:.84rem;padding:7px 9px}
+  .page{display:block;padding:20px 16px 50px}
+  .sidebar{
+    position:relative;top:auto;max-height:none;overflow-x:auto;overflow-y:hidden;
+    border-right:0;border-bottom:1px solid var(--line);
+    padding:0 0 9px;margin-bottom:25px;white-space:nowrap
+  }
+  .sidebar .label{display:inline-block;margin-right:8px}
+  .sidebar a{display:inline-block;border:0;border-bottom:2px solid transparent;padding:5px 7px}
+  .sidebar .current{border-bottom-color:var(--green)}
+  h1{font-size:30px}
+  h2{font-size:23px}
+  .exercise-statement{padding:18px 15px}
+  table{display:block;overflow-x:auto;white-space:nowrap}
+}
+@media print{
+  .topbar,.sidebar,.toc-right,.popup-btn{display:none}
+  .page{display:block;padding:0;max-width:none}
+}
+</style>
+</head>
+
+<body>
+<div class="topbar"></div>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="../../index.html">Mathématiques<span>.</span></a>
+    <nav aria-label="Navigation">
+      <a href="../../1ere/">1ère</a>
+      <a href="../../2eme/">2ème</a>
+      <a href="../../3eme/">3ème</a>
+      <a class="active" href="../">4ème</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page">
+
+<aside class="sidebar">
+  <div class="label">4ème · Chapitre 1</div>
+  <a class="current" href="#enonce">Énoncé</a>
+  <a href="#difficulte">Difficulté</a>
+  <a href="#objectif">Objectif</a>
+  <a href="#domaine">1. Domaine</a>
+  <a href="#symetrie">2. Symétrie</a>
+  <a href="#limite">3. Limite</a>
+  <a href="#derivee">4. Dérivée</a>
+  <a href="#variations">5. Variations</a>
+  <a href="#asymptote">6. Asymptote</a>
+  <a href="#graphe">7. Courbe</a>
+  <a href="#retenir">À retenir</a>
+</aside>
+
+<main class="content">
+
+<div class="kicker">4ÈME · CHAPITRE 1 · ÉTUDE DE FONCTIONS</div>
+<h1>Exercice — Étude d'une fonction du type \(f=\sqrt{g}\)</h1>
+
+<div class="difficulty">
+  <span class="difficulty-label">Difficulté</span>
+  <span class="stars" aria-label="3 étoiles sur 5">
+    <span class="on">★ ★ ★</span>
+    <span class="off">★ ★</span>
+  </span>
+  <span class="difficulty-label">3 / 5</span>
+</div>
+
+<p class="lead">
+  Un exercice qui rassemble domaine de définition, symétrie,
+  limite, dérivabilité, variations et asymptote.
+</p>
+
+<hr class="rule">
+
+<section id="enonce" class="exercise-statement">
+  <div class="exercise-label">EXERCICE 4.2 · ÉNONCÉ</div>
+  <h2>
+    Fonction à étudier
+    <button class="popup-btn" type="button" onclick="openComment()">💡 Difficulté</button>
+  </h2>
+
+  <div class="formula">
+    \[
+      \boxed{f(x)=\sqrt{x^2+x}}
+    \]
+  </div>
+
+  <ol>
+    <li>
+      <strong>1° a)</strong> Donner l'ensemble de définition \(D_f\) de \(f\).
+      <br>
+      <strong>b)</strong> Montrer que \(C_f\) admet un axe de symétrie.
+      On se restreindra à l'étude de \(f\) sur \([0,+\infty[\).
+    </li>
+    <li>
+      <strong>2° a)</strong> Déterminer la limite de \(f\) en \(+\infty\).
+      <br>
+      <strong>b)</strong> Justifier que \(f\) est dérivable sur \(]0,+\infty[\).
+      <br>
+      <strong>c)</strong> Admet-elle une limite en \(0\) ? Est-elle dérivable en \(0\) ?
+    </li>
+    <li>
+      <strong>3°</strong> Étudier le sens de variation de \(f\) et dresser le tableau
+      de variation de \(f\) sur \([0,+\infty[\).
+    </li>
+    <li>
+      <strong>4°</strong> Montrer que la droite
+      \[
+        \Delta:\ y=x+\frac12
+      \]
+      est asymptote à \(C_f\) en \(+\infty\).
+    </li>
+    <li><strong>5°</strong> Tracer la courbe \(C_f\).</li>
+  </ol>
+</section>
+
+<section id="difficulte">
+<h2>1. Où se trouve la difficulté ?</h2>
+
+<div class="doc-box warning">
+<strong>★★★☆☆ Difficulté moyenne</strong>
+<p>
+La difficulté n'est pas une seule opération. L'exercice demande de relier
+plusieurs notions : condition sous une racine, symétrie, limite,
+dérivée en \(0\), variations et recherche d'une asymptote oblique.
+</p>
+</div>
+
+<p>
+Le point particulièrement intéressant est la dérivée :
+</p>
+
+\[
+f'(x)=\frac{2x+1}{2\sqrt{x^2+x}}.
+\]
+
+<p>
+Cette formule est valable sur \(]0,+\infty[\), mais pas directement en \(0\).
+Il faut donc distinguer <strong>continuité en \(0\)</strong> et
+<strong>dérivabilité en \(0\)</strong>.
+</p>
+</section>
+
+<section id="objectif">
+<h2>2. Objectif</h2>
+<p>
+Construire une étude complète d'une fonction de la forme
+\[
+f(x)=\sqrt{g(x)}
+\]
+et comprendre pourquoi on peut réduire l'étude à un intervalle grâce à la symétrie.
+</p>
+</section>
+
+<section id="domaine">
+<h2>3. Domaine de définition</h2>
+
+<p>
+Pour que la racine carrée soit définie, il faut :
+\[
+x^2+x\geq0.
+\]
+</p>
+
+<p>On factorise :</p>
+
+\[
+x(x+1)\geq0.
+\]
+
+<p>Le tableau de signe donne :</p>
+
+\[
+\boxed{D_f=]-\infty,-1]\cup[0,+\infty[}.
+\]
+
+<div class="doc-box note">
+<strong>Pourquoi commencer par le domaine ?</strong>
+<p>
+Toute étude ultérieure — continuité, dérivée, variations — doit être faite
+uniquement sur les intervalles où la fonction existe.
+</p>
+</div>
+</section>
+
+<section id="symetrie">
+<h2>4. Axe de symétrie</h2>
+
+<p>
+Pour montrer que la courbe admet un axe de symétrie, on compare
+\(f(x)\) et \(f(-1-x)\).
+</p>
+
+\[
+\begin{aligned}
+f(-1-x)
+&=\sqrt{(-1-x)^2+(-1-x)}\\
+&=\sqrt{x^2+x}\\
+&=f(x).
+\end{aligned}
+\]
+
+<p>
+Ainsi, la courbe est symétrique par rapport à la droite :
+</p>
+
+\[
+\boxed{x=-\frac12}.
+\]
+
+<div class="doc-box note">
+<strong>Conséquence :</strong>
+<p>
+Il suffit d'étudier \(f\) sur \([0,+\infty[\), puis de compléter la courbe
+par symétrie par rapport à \(x=-\frac12\).
+</p>
+</div>
+</section>
+
+<section id="limite">
+<h2>5. Limite en \(+\infty\)</h2>
+
+<p>
+Pour \(x\geq0\), on peut écrire :
+</p>
+
+\[
+f(x)=\sqrt{x^2+x}
+=x\sqrt{1+\frac1x}.
+\]
+
+<p>
+Lorsque \(x\to+\infty\),
+\[
+\sqrt{1+\frac1x}\to1.
+\]
+Donc :
+</p>
+
+\[
+\boxed{\lim_{x\to+\infty}f(x)=+\infty}.
+\]
+
+<h3>Limite en \(0\)</h3>
+
+\[
+\boxed{\lim_{x\to0^+}f(x)=0=f(0)}.
+\]
+
+<p>
+La fonction est donc continue en \(0\), mais cela ne suffit pas à conclure
+qu'elle est dérivable en \(0\).
+</p>
+</section>
+
+<section id="derivee">
+<h2>6. Dérivée sur \(]0,+\infty[\)</h2>
+
+<p>
+Sur \(]0,+\infty[\), on a \(x^2+x>0\). La fonction
+\(u(x)=x^2+x\) est dérivable et la fonction racine est dérivable pour
+\(u>0\).
+</p>
+
+<p>Par composition :</p>
+
+\[
+f'(x)
+=
+\frac{2x+1}{2\sqrt{x^2+x}}.
+\]
+
+<div class="doc-box note">
+<strong>Signe de la dérivée :</strong>
+<p>
+Pour \(x>0\),
+\[
+2x+1>0
+\quad\text{et}\quad
+2\sqrt{x^2+x}>0.
+\]
+Donc :
+\[
+\boxed{f'(x)>0\quad\text{sur } ]0,+\infty[}.
+\]
+</p>
+</div>
+
+<h3>Que se passe-t-il en \(0\) ?</h3>
+
+<p>
+On étudie le taux d'accroissement à droite :
+</p>
+
+\[
+\frac{f(h)-f(0)}{h}
+=
+\frac{\sqrt{h^2+h}}{h}
+=
+\sqrt{1+\frac1h}.
+\]
+
+<p>
+Lorsque \(h\to0^+\),
+\[
+\sqrt{1+\frac1h}\to+\infty.
+\]
+Le taux d'accroissement n'admet donc pas de limite finie.
+</p>
+
+\[
+\boxed{f\text{ n'est pas dérivable en }0}.
+\]
+
+<div class="doc-box warning">
+<strong>À ne pas confondre :</strong>
+<p>
+\(f\) est <strong>continue</strong> en \(0\), mais elle n'est pas
+<strong>dérivable</strong> en \(0\).
+</p>
+</div>
+</section>
+
+<section id="variations">
+<h2>7. Sens de variation</h2>
+
+<p>
+Comme \(f'(x)>0\) sur \(]0,+\infty[\), la fonction est strictement croissante
+sur cet intervalle.
+</p>
+
+<div class="variation-wrap">
+<table class="variation">
+<tr>
+<th>\(x\)</th>
+<td>\(0\)</td><td></td><td>\(+\infty\)</td>
+</tr>
+<tr>
+<th>\(f'(x)\)</th>
+<td></td><td>\(+\)</td><td></td>
+</tr>
+<tr>
+<th>\(f(x)\)</th>
+<td class="value">\(0\)</td>
+<td class="arrow">↗</td>
+<td class="value"> \(+\infty\)</td>
+</tr>
+</table>
+</div>
+
+<p>
+Sur l'autre partie du domaine, la symétrie permet d'obtenir les variations
+sans refaire toute l'étude.
+</p>
+</section>
+
+<section id="asymptote">
+<h2>8. Asymptote \(y=x+\frac12\)</h2>
+
+<p>
+Pour \(x>0\), rationalisons la différence :
+</p>
+
+\[
+\begin{aligned}
+f(x)-\left(x+\frac12\right)
+&=\sqrt{x^2+x}-x-\frac12\\
+&=
+\frac{x^2+x-\left(x+\frac12\right)^2}
+{\sqrt{x^2+x}+x+\frac12}.
+\end{aligned}
+\]
+
+<p>Or :</p>
+
+\[
+x^2+x-\left(x+\frac12\right)^2
+=-\frac14.
+\]
+
+<p>Donc :</p>
+
+\[
+f(x)-\left(x+\frac12\right)
+=
+-\frac{1/4}
+{\sqrt{x^2+x}+x+\frac12}.
+\]
+
+<p>
+Le dénominateur tend vers \(+\infty\). Ainsi :
+</p>
+
+\[
+\boxed{
+\lim_{x\to+\infty}
+\left[
+f(x)-\left(x+\frac12\right)
+\right]=0
+}.
+\]
+
+<p>
+Par définition, la droite
+\[
+\boxed{y=x+\frac12}
+\]
+est une asymptote oblique à \(C_f\) en \(+\infty\).
+</p>
+</section>
+
+<section id="graphe">
+<h2>9. Courbe</h2>
+
+<div class="doc-box note">
+<strong>Pour construire la courbe :</strong>
+<ol>
+<li>placer le point \(O(0,0)\) ;</li>
+<li>tracer la branche sur \([0,+\infty[\), croissante ;</li>
+<li>tracer l'asymptote \(y=x+\frac12\) ;</li>
+<li>obtenir l'autre branche par symétrie par rapport à \(x=-\frac12\).</li>
+</ol>
+</div>
+
+<div class="formula">
+<svg viewBox="0 0 760 360" role="img" aria-label="Schéma de la courbe et de son asymptote"
+     style="width:100%;max-width:760px;height:auto;border:1px solid #e2e7e9;background:#fff">
+  <line x1="45" y1="300" x2="720" y2="300" stroke="#26343d" stroke-width="1.5"/>
+  <line x1="380" y1="335" x2="380" y2="25" stroke="#26343d" stroke-width="1.5"/>
+  <line x1="180" y1="220" x2="680" y2="70" stroke="#9aa5aa" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <path d="M70,330 C125,305 165,270 205,225 C245,180 285,140 330,105"
+        fill="none" stroke="#26343d" stroke-width="3"/>
+  <path d="M380,300 C420,245 465,195 515,150 C565,112 620,85 705,65"
+        fill="none" stroke="#26343d" stroke-width="3"/>
+  <circle cx="380" cy="300" r="5" fill="#6db33f"/>
+  <text x="392" y="295" font-size="16" fill="#26343d">O(0,0)</text>
+  <text x="570" y="105" font-size="16" fill="#69757c">y = x + 1/2</text>
+  <text x="610" y="45" font-size="18" fill="#26343d">C_f</text>
+  <text x="338" y="45" font-size="15" fill="#69757c">x = -1/2</text>
+</svg>
+</div>
+</section>
+
+<section id="retenir">
+<h2>10. À retenir</h2>
+
+<div class="doc-box">
+<strong>Pour une fonction \(f(x)=\sqrt{g(x)}\) :</strong>
+<ul>
+<li>commencer par \(g(x)\geq0\) pour déterminer le domaine ;</li>
+<li>chercher les symétries avant de refaire une étude inutile ;</li>
+<li>pour la dérivée, vérifier que \(g(x)>0\) sur l'intervalle étudié ;</li>
+<li>ne pas confondre continuité et dérivabilité ;</li>
+<li>pour une asymptote oblique \(y=ax+b\), étudier
+\[
+\lim_{x\to+\infty}[f(x)-(ax+b)].
+\]</li>
+</ul>
+</div>
+</section>
+
+</main>
+
+<aside class="toc-right">
+<strong>Sur cette page</strong>
+<a href="#enonce">Énoncé</a>
+<a href="#difficulte">Difficulté ★★★☆☆</a>
+<a href="#domaine">Domaine</a>
+<a href="#symetrie">Symétrie</a>
+<a href="#limite">Limites</a>
+<a href="#derivee">Dérivée</a>
+<a href="#variations">Variations</a>
+<a href="#asymptote">Asymptote</a>
+<a href="#graphe">Courbe</a>
+<a href="#retenir">À retenir</a>
+</aside>
+
+</div>
+
+<footer>
+4ème année · Chapitre 1 · Étude de fonctions
+</footer>
+
+<dialog id="commentDialog">
+<h3>💡 Pourquoi 3 étoiles ?</h3>
+<p>
+La difficulté est intermédiaire : il faut maîtriser la racine carrée,
+le domaine, la symétrie et la dérivation, puis comprendre pourquoi
+la continuité en \(0\) n'implique pas la dérivabilité en \(0\).
+</p>
+<p>
+La dernière partie demande également de reconnaître et de démontrer
+une asymptote oblique.
+</p>
+<button class="close-btn" type="button" onclick="closeComment()">Fermer</button>
+</dialog>
+
+<script>
+function openComment(){ document.getElementById('commentDialog').showModal(); }
+function closeComment(){ document.getElementById('commentDialog').close(); }
+</script>
+</body>
+</html>
