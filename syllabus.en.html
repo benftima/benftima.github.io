@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculus I — Course Syllabus</title>
+
+<script>
+window.MathJax={
+  tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+  svg:{fontCache:'global'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+
+<style>
+:root{--green:#6db33f;--green-dark:#4f8f2b;--ink:#26343d;--muted:#69757c;--line:#dfe5e8;--soft:#f7f9fa;--blue:#4f8fc4;--red:#d95b5b}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55}
+a{text-decoration:none;color:inherit}.topbar{height:4px;background:var(--green)}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;min-height:58px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:1.05rem}.logo span{color:var(--green)}
+.nav-right{display:flex;gap:5px}.nav-right a{padding:6px 9px;border-radius:5px;color:#59666d;font-size:.78rem}.nav-right a:hover{background:#f1f5f6;color:var(--green-dark)}
+main{max-width:1180px;margin:auto;padding:38px 24px 70px}.back{color:var(--green-dark);font-size:.88rem;font-weight:600}
+.eyebrow{margin-top:20px;color:var(--green-dark);font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+h1{margin:5px 0 8px;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.05;letter-spacing:-1.5px}
+.lead{max-width:850px;margin:0 0 30px;color:var(--muted);font-size:1rem}
+.syllabus{border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.column{padding:24px 25px 18px;border-right:1px solid var(--line)}.column:last-child{border-right:0}
+.column-title{color:var(--blue);font-size:1.05rem;font-weight:700;margin:0 0 18px}.column-title:before{content:"* ";font-weight:700}
+.topic{margin:0 0 17px}.topic strong{display:block;color:var(--red);font-size:.95rem;font-weight:500}
+.subtopic{color:#7a858b;font-size:.9rem;padding-left:14px;margin-top:3px}
+.application{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}.application strong{color:var(--blue);font-size:1rem}
+.formula-box{margin-top:28px;padding:20px;background:var(--soft);border-left:3px solid var(--green)}.formula-box strong{display:block;margin-bottom:5px}
+footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:#748087;font-size:.82rem}
+@media(max-width:900px){.syllabus{grid-template-columns:1fr 1fr}.column:nth-child(2){border-right:0}.column:nth-child(3){border-top:1px solid var(--line)}}
+@media(max-width:620px){.nav{padding:7px 14px;flex-wrap:wrap;gap:5px}.nav-right{width:100%;overflow-x:auto}main{padding:28px 16px 55px}.syllabus{grid-template-columns:1fr}.column{border-right:0;border-bottom:1px solid var(--line);padding:21px 8px}.column:last-child{border-bottom:0}}
+</style>
+</head>
+
+<body>
+<div class="topbar"></div>
+<header><div class="nav">
+<a class="logo" href="#">Calculus<span>.</span></a>
+<nav class="nav-right">
+<a href="#functions">Functions</a><a href="#limits">Limits</a><a href="#differentiation">Differentiation</a><a href="#applications">Applications</a>
+</nav>
+</div></header>
+
+<main>
+<a class="back" href="#">← Mathematics</a>
+<div class="eyebrow">Course syllabus</div>
+<h1>Calculus I</h1>
+<p class="lead">Une progression structurée des fonctions, des limites, de la dérivation et de leurs applications.</p>
+
+<section class="syllabus">
+<div class="column" id="functions">
+<h2 class="column-title">The functions</h2>
+<div class="topic"><strong>Fonctions</strong>
+<div class="subtopic">Polynomiales</div><div class="subtopic">Rationnelles</div><div class="subtopic">Définies par morceaux</div>
+<div class="subtopic">Trigonométriques</div><div class="subtopic">Exponentielles</div><div class="subtopic">Logarithmiques</div></div>
+<div class="topic"><strong>Fonctions inverses</strong></div>
+</div>
+
+<div class="column" id="limits">
+<h2 class="column-title">Limits and derivatives</h2>
+<div class="topic"><strong>The tangent and velocity problems</strong></div>
+<div class="topic"><strong>The limit of a function</strong></div>
+<div class="topic"><strong>Calculating limits using the limit laws</strong></div>
+<div class="topic"><strong>Continuity</strong></div>
+<div class="topic"><strong>Limits at infinity</strong></div>
+<div class="topic"><strong>Derivatives and rates of change</strong></div>
+</div>
+
+<div class="column" id="differentiation">
+<h2 class="column-title">Differentiation rules</h2>
+<div class="topic"><strong>Derivatives of polynomial and exponential functions</strong></div>
+<div class="topic"><strong>The product and quotient rules</strong></div>
+<div class="topic"><strong>Derivatives of trigonometric functions</strong></div>
+<div class="topic"><strong>The chain rule</strong></div>
+<div class="topic"><strong>Implicit differentiation</strong></div>
+<div class="topic"><strong>Derivatives of logarithmic functions</strong></div>
+<div class="topic"><strong>Exponential growth and decay</strong></div>
+<div class="topic"><strong>Hyperbolic functions</strong></div>
+<div class="application" id="applications"><strong>* Applications of differentiation</strong><div class="topic" style="margin-top:12px"><strong>* Integrals</strong></div></div>
+</div>
+</section>
+
+<div class="formula-box">
+<strong>Fil conducteur mathématique</strong>
+On part de l'étude des fonctions, puis on introduit les limites, la dérivation et enfin les applications.
+Par exemple :
+\[
+f(x)=\frac{x^4+1}{x^2}
+\]
+permet de relier domaine, limites, dérivée, signe de \(f'\), variations et représentation graphique.
+</div>
+</main>
+<footer>Calculus I · Course Syllabus</footer>
+</body>
+</html>
