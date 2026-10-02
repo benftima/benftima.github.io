@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 1 — Les nombres réels | 1ère MP Prépa Math Sup / Spé</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --green:#6aa84f;
+  --green-dark:#38761d;
+  --ink:#263238;
+  --muted:#607d8b;
+  --line:#dfe5e8;
+  --paper:#fff;
+  --bg:#f7f9fa;
+  --red:#b94a48;
+  --blue:#2f6f9f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--bg);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.7;
+}
+.topbar{height:4px;background:var(--green)}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+.nav{
+  max-width:1180px;margin:auto;padding:18px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo{font-size:20px;font-weight:750;color:#17324d;text-decoration:none}
+.logo span{color:var(--green)}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:#38536a;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--green-dark)}
+.layout{
+  max-width:1180px;margin:0 auto;padding:40px 24px 80px;
+  display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px;
+}
+aside{
+  position:sticky;top:92px;align-self:start;
+  background:white;border:1px solid var(--line);border-radius:10px;
+  padding:18px;
+}
+aside .small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green-dark);font-weight:700}
+aside h3{margin:8px 0 12px;font-size:18px}
+aside a{display:block;text-decoration:none;color:#526b7a;padding:6px 0;font-size:14px}
+aside a:hover{color:var(--green-dark)}
+main{min-width:0}
+.eyebrow{
+  color:var(--green-dark);font-size:12px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+h1{font-size:48px;line-height:1.08;margin:10px 0 14px;letter-spacing:-.03em}
+.lead{font-size:19px;color:#587080;max-width:850px}
+.chapter-note{
+  background:#eef6ea;border-left:4px solid var(--green);
+  padding:14px 18px;border-radius:0 8px 8px 0;margin:25px 0;
+}
+.section{
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  padding:28px 30px;margin:24px 0;
+}
+.section h2{margin-top:0;font-size:28px}
+.section h3{font-size:21px;margin-top:28px}
+.def,.prop,.theorem,.remark,.proof,.example,.exercise{
+  border-radius:8px;padding:17px 19px;margin:18px 0;border:1px solid var(--line);
+  background:#fff;
+}
+.def{border-left:4px solid var(--blue)}
+.prop{border-left:4px solid var(--green)}
+.theorem{border-left:4px solid #7b61a8}
+.remark{border-left:4px solid #d6a400;background:#fffdf2}
+.proof{border-left:4px solid #777;background:#fafafa}
+.example{border-left:4px solid #5b9bd5}
+.exercise{border-left:4px solid var(--red);background:#fffafa}
+.label{
+  display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:5px;
+}
+.def .label{color:var(--blue)}
+.prop .label{color:var(--green-dark)}
+.theorem .label{color:#7b61a8}
+.remark .label{color:#9b7800}
+.proof .label{color:#555}
+.example .label{color:#376f9e}
+.exercise .label{color:var(--red)}
+.math{
+  overflow-x:auto;padding:6px 0;
+}
+ul,ol{padding-left:25px}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid var(--line);padding:9px;text-align:left}
+th{background:#f2f6f7}
+.footer{
+  margin-top:50px;padding-top:20px;border-top:1px solid var(--line);
+  color:#71818b;font-size:13px;
+}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  aside{position:relative;top:0}
+  h1{font-size:38px}
+  nav{display:none}
+}
+@media(max-width:600px){
+  .layout{padding:25px 14px 60px}
+  .section{padding:20px 17px}
+  h1{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+<div class="topbar"></div>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="../index.html">Mathématiques<span>.</span></a>
+    <nav>
+      <a href="../../">Accueil</a>
+      <a href="../">1ère MP</a>
+      <a href="#rationnels">Rationnels</a>
+      <a href="#ordre">Ordre</a>
+      <a href="#bornes">Bornes</a>
+      <a href="#intervalles">Intervalles</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside>
+  <div class="small">1ère MP · Prépa</div>
+  <h3>Chapitre 1</h3>
+  <a href="#intro">Introduction</a>
+  <a href="#rationnels">1. Nombres rationnels</a>
+  <a href="#reels">2. Nombres réels</a>
+  <a href="#ordre">3. Relation d'ordre</a>
+  <a href="#valabs">4. Valeur absolue</a>
+  <a href="#archi">5. Propriété d'Archimède</a>
+  <a href="#intervalles">6. Intervalles</a>
+  <a href="#parties">7. Parties de \(\mathbb R\)</a>
+  <a href="#bornes">8. Bornes supérieure et inférieure</a>
+  <a href="#exercices">9. Exercices</a>
+</aside>
+
+<main>
+  <div id="intro" class="section">
+    <div class="eyebrow">1ère MP — Prépa Math Sup / Spé</div>
+    <h1>Chapitre 1 — Les nombres réels</h1>
+    <p class="lead">
+      Transcription en HTML + MathJax du cours manuscrit fourni.
+      La présentation conserve l'ordre des feuillets et le contenu mathématique du manuscrit.
+    </p>
+    <div class="chapter-note">
+      <strong>Important :</strong> les formulations ci-dessous suivent le manuscrit.
+      Les titres et la mise en page sont ajoutés uniquement pour rendre la lecture numérique plus claire.
+    </div>
+  </div>
+
+  <section id="rationnels" class="section">
+    <h2>1. Les nombres rationnels</h2>
+
+    <div class="example">
+      <div class="label">Exemple</div>
+      <p>Si \(2\) divise \(n^2\), alors \(2\) divise \(n\), avec \(n\in\mathbb N^\ast\).</p>
+    </div>
+
+    <div class="proof">
+      <div class="label">Preuve</div>
+      <p>Raisonnement par l'absurde.</p>
+      <p>Supposons que \(n\) est impair. Alors \(n=2k+1\).</p>
+      <div class="math">
+        \[
+        n^2=(2k+1)^2=4k^2+4k+1.
+        \]
+      </div>
+      <p>Donc \(n^2\) est impair, contradiction.</p>
+    </div>
+
+    <div class="remark">
+      <div class="label">Remarque</div>
+      <p>Ce qui interdit le fait que \(2\) divise \(n^2\) et que \(n\) soit impair.</p>
+    </div>
+
+    <div class="remark">
+      <div class="label">Remarque</div>
+      <p>La propriété précédente n'est pas vraie en général pour les rationnels.</p>
+      <ul>
+        <li>\(x=\sqrt2,\ y=-\sqrt2\) : \(x\notin\mathbb Q\), mais \(x+y=0\in\mathbb Q\).</li>
+        <li>\(x\cdot y=-2\in\mathbb Q\), alors que \(x,y\notin\mathbb Q\).</li>
+      </ul>
+      <p>L'univers d'un rationnel non nul est irrationnel. [formulation conservée du manuscrit]</p>
+    </div>
+
+    <div class="prop">
+      <div class="label">Propriété</div>
+      <p>L'addition et la multiplication des nombres rationnels sont des opérations sur les rationnels.</p>
+    </div>
+
+    <div class="proof">
+      <div class="label">Preuve</div>
+      <p>Soient \(x=\dfrac pq\) et \(y=\dfrac{p'}{q'}\), avec \(p,p'\in\mathbb Z\) et \(q,q'\in\mathbb Z^\ast\).</p>
+      <div class="math">
+        \[
+        x+y=\frac pq+\frac{p'}{q'}=\frac{pq'+p'q}{qq'}\in\mathbb Q,
+        \]
+        \[
+        x\cdot y=\frac{pp'}{qq'}\in\mathbb Q.
+        \]
+      </div>
+      <p>De même, si \(x=\dfrac pq\neq0\), alors</p>
+      <div class="math">
+        \[
+        \frac1x=\frac qp\in\mathbb Q.
+        \]
+      </div>
+    </div>
+  </section>
+
+  <section id="reels" class="section">
+    <h2>2. Les nombres réels</h2>
+
+    <div class="remark">
+      <div class="label">Remarque</div>
+      <p>On représente souvent les nombres réels par une droite numérique.</p>
+      <div class="math">
+        \[
+        \cdots\quad -3\quad -2\quad -1\quad 0\quad 1\quad 2\quad 3\quad\cdots
+        \]
+      </div>
+    </div>
+
+    <div class="remark">
+      <div class="label">Remarque</div>
+      <p>Il est souvent pratique de rajouter les extrémités :</p>
+      <div class="math">
+        \[
+        \overline{\mathbb R}=\mathbb R\cup\{-\infty,+\infty\}.
+        \]
+      </div>
+    </div>
+
+    <div class="theorem">
+      <div class="label">Théorème</div>
+      <p>\((\mathbb R,+,\times)\) est un corps commutatif.</p>
+    </div>
+
+    <div class="prop">
+      <div class="label">Propriétés</div>
+      <p>On a les propriétés suivantes pour \(a,b,c\in\mathbb R\) :</p>
+      <div class="math">
+        \[
+        a+b=b+a
+        \]
+        \[
+        a+b=0\Longrightarrow b=-a
+        \]
+        \[
+        (a+b)+c=a+(b+c)
+        \]
+        \[
+        0+a=a
+        \]
+        \[
+        a\times b=b\times a
+        \]
+        \[
+        a\ne0,\quad ab=1\Longrightarrow b=\frac1a
+        \]
+        \[
+        (a\times b)\times c=a\times(b\times c)
+        \]
+        \[
+        1\times a=a
+        \]
+        \[
+        a\times(b+c)=a\times b+a\times c
+        \]
+        \[
+        a\times b=0\Longleftrightarrow a=0\ \text{ou}\ b=0.
+        \]
+      </div>
+    </div>
+  </section>
+
+  <section id="ordre" class="section">
+    <h2>3. Relation d'ordre</h2>
+
+    <div class="def">
+      <div class="label">Définition</div>
+      <p>Avant de travailler avec \(\mathbb R\), on travaille avec un ensemble non vide \(E\).</p>
+      <p>On définit une relation d'ordre sur \(E\) si elle vérifie les propriétés suivantes pour tous \(a,b,c\in E\).</p>
+    </div>
+
+    <div class="prop">
+      <div class="label">Propriétés</div>
+      <ol>
+        <li>Réflexivité : \(a\le a\).</li>
+        <li>Antisymétrie : \(a\le b\) et \(b\le a\Rightarrow a=b\).</li>
+        <li>Transitivité : \(a\le b\) et \(b\le c\Rightarrow a\le c\).</li>
+      </ol>
+    </div>
+
+    <div class="def">
+      <div class="label">Ordre total</div>
+      <p>Pour tous \(a,b\in E\), on a \(a\le b\) ou \(b\le a\).</p>
+    </div>
+
+    <div class="example">
+      <div class="label">Exemple</div>
+      <p>Dans \(\mathbb R\), la relation \(\le\) est une relation d'ordre total.</p>
+    </div>
+  </section>
+
+  <section id="valabs" class="section">
+    <h2>4. Valeur absolue</h2>
+
+    <div class="def">
+      <div class="label">Définition</div>
+      <p>Pour \(x\in\mathbb R\), on définit :</p>
+      <div class="math">
+        \[
+        |x|=
+        \begin{cases}
+        x,&x\ge0,\\
+        -x,&x<0.
+        \end{cases}
+        \]
+      </div>
+    </div>
+
+    <div class="remark">
+      <div class="label">Interprétation</div>
+      <p>\(|x|\) représente la distance entre \(x\) et \(0\) sur la droite réelle.</p>
+      <div class="math">
+        \[
+        |x-a|
+        \]
+      </div>
+      <p>représente la distance entre \(x\) et \(a\).</p>
+    </div>
+
+    <div class="prop">
+      <div class="label">Propriétés</div>
+      <div class="math">
+        \[
+        |x|\ge0,\qquad |x|=0\Longleftrightarrow x=0,
+        \]
+        \[
+        |xy|=|x|\,|y|,
+        \]
+        \[
+        |x+y|\le |x|+|y|,
+        \]
+        \[
+        \big||x|-|y|\big|\le |x-y|.
+        \]
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="label">Résolution</div>
+      <p>Pour \(a>0\), les équivalences classiques sont :</p>
+      <div class="math">
+        \[
+        |x|<a\Longleftrightarrow -a<x<a,
+        \]
+        \[
+        |x|\le a\Longleftrightarrow -a\le x\le a,
+        \]
+        \[
+        |x|>a\Longleftrightarrow x<-a\ \text{ou}\ x>a,
+        \]
+        \[
+        |x|\ge a\Longleftrightarrow x\le-a\ \text{ou}\ x\ge a.
+        \]
+      </div>
+    </div>
+  </section>
+
+  <section id="archi" class="section">
+    <h2>5. Propriété d'Archimède</h2>
+
+    <div class="theorem">
+      <div class="label">Propriété d'Archimède</div>
+      <p>Pour tout \(x\in\mathbb R\), il existe \(n\in\mathbb N^\ast\) tel que \(n>x\).</p>
+      <div class="math">
+        \[
+        \forall x\in\mathbb R,\ \exists n\in\mathbb N^\ast,\quad n>x.
+        \]
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="label">Conséquence</div>
+      <p>Pour tout \(\varepsilon>0\), il existe \(n\in\mathbb N^\ast\) tel que</p>
+      <div class="math">
+        \[
+        \frac1n<\varepsilon.
+        \]
+      </div>
+    </div>
+  </section>
+
+  <section id="intervalles" class="section">
+    <h2>6. Intervalles de \(\mathbb R\)</h2>
+
+    <div class="example">
+      <div class="label">Intervalles</div>
+      <table>
+        <tr><th>Écriture</th><th>Condition</th></tr>
+        <tr><td>\([a,b]\)</td><td>\(a\le x\le b\)</td></tr>
+        <tr><td>\([a,b[\)</td><td>\(a\le x<b\)</td></tr>
+        <tr><td>\(]a,b]\)</td><td>\(a<x\le b\)</td></tr>
+        <tr><td>\(]a,b[\)</td><td>\(a<x<b\)</td></tr>
+      </table>
+    </div>
+
+    <div class="exercise">
+      <div class="label">Exercice — manuscrit</div>
+      <p>Soit \(]a,b[\) un intervalle de \(\mathbb R\), contenant \(0\), avec \(a<b\).</p>
+      <p>Montrer qu'il existe \(n\in\mathbb N^\ast\) tel que</p>
+      <div class="math">
+        \[
+        ]-\frac1n,\frac1n[\subset ]a,b[.
+        \]
+      </div>
+      <p>On choisit par exemple</p>
+      <div class="math">
+        \[
+        n_0=\max\left(E\left(-\frac1a\right)+1,\ E\left(\frac1b\right)+1\right),
+        \]
+      </div>
+      <p>lorsque les expressions sont définies dans le cadre considéré.</p>
+    </div>
+  </section>
+
+  <section id="parties" class="section">
+    <h2>7. Parties de \(\mathbb R\)</h2>
+
+    <div class="def">
+      <div class="label">Définition</div>
+      <p>Soit \(A\subset\mathbb R\). On dit que \(A\) est bornée si elle est majorée et minorée.</p>
+    </div>
+
+    <div class="def">
+      <div class="label">Majorant</div>
+      <p>Un réel \(M\) est un majorant de \(A\) si :</p>
+      <div class="math">
+        \[
+        \forall x\in A,\quad x\le M.
+        \]
+      </div>
+    </div>
+
+    <div class="def">
+      <div class="label">Minorant</div>
+      <p>Un réel \(m\) est un minorant de \(A\) si :</p>
+      <div class="math">
+        \[
+        \forall x\in A,\quad m\le x.
+        \]
+      </div>
+    </div>
+
+    <div class="def">
+      <div class="label">Maximum et minimum</div>
+      <p>Le maximum de \(A\), lorsqu'il existe, est le plus grand élément de \(A\).</p>
+      <p>Le minimum de \(A\), lorsqu'il existe, est le plus petit élément de \(A\).</p>
+    </div>
+  </section>
+
+  <section id="bornes" class="section">
+    <h2>8. Bornes supérieure et inférieure</h2>
+
+    <div class="def">
+      <div class="label">Borne supérieure</div>
+      <p>Soit \(A\) une partie non vide et majorée de \(\mathbb R\).</p>
+      <p>La borne supérieure \(\sup(A)\) est le plus petit des majorants de \(A\).</p>
+      <div class="math">
+        \[
+        \forall x\in A,\quad x\le\sup(A),
+        \]
+        \[
+        \forall y<\sup(A),\quad \exists x\in A\quad y<x.
+        \]
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="label">Caractérisation de la borne supérieure</div>
+      <p>Soit \(A\) une partie non vide majorée de \(\mathbb R\). Le réel \(s\) est \(\sup(A)\) si et seulement si :</p>
+      <ol>
+        <li>\(\forall x\in A,\ x\le s\).</li>
+        <li>\(\forall\varepsilon>0,\ \exists x\in A\) tel que \(s-\varepsilon<x\).</li>
+      </ol>
+    </div>
+
+    <div class="def">
+      <div class="label">Borne inférieure</div>
+      <p>Soit \(A\) une partie non vide et minorée de \(\mathbb R\).</p>
+      <p>La borne inférieure \(\inf(A)\) est le plus grand des minorants de \(A\).</p>
+      <div class="math">
+        \[
+        \forall x\in A,\quad \inf(A)\le x,
+        \]
+        \[
+        \forall\varepsilon>0,\ \exists x\in A,\quad x<\inf(A)+\varepsilon.
+        \]
+      </div>
+    </div>
+
+    <div class="prop">
+      <div class="label">Caractérisation de la borne inférieure</div>
+      <p>Le réel \(m\) est \(\inf(A)\) si et seulement si :</p>
+      <ol>
+        <li>\(\forall x\in A,\ m\le x\).</li>
+        <li>\(\forall\varepsilon>0,\ \exists x\in A\) tel que \(x<m+\varepsilon\).</li>
+      </ol>
+    </div>
+
+    <div class="theorem">
+      <div class="label">Propriété de \(\mathbb R\)</div>
+      <p>Toute partie non vide et majorée de \(\mathbb R\) admet une borne supérieure.</p>
+      <p>Toute partie non vide et minorée de \(\mathbb R\) admet une borne inférieure.</p>
+    </div>
+
+    <div class="prop">
+      <div class="label">Proposition</div>
+      <p>Soit \(A\) non vide et majorée. La borne supérieure \(\sup(A)\) est l'unique réel vérifiant :</p>
+      <div class="math">
+        \[
+        \forall x\in A,\quad x\le\sup(A),
+        \]
+        \[
+        \forall\varepsilon>0,\ \exists x\in A,\quad
+        \sup(A)-\varepsilon<x.
+        \]
+      </div>
+    </div>
+  </section>
+
+  <section id="exercices" class="section">
+    <h2>9. Exercices du manuscrit</h2>
+
+    <div class="exercise">
+      <div class="label">Exercice</div>
+      <p>Soit</p>
+      <div class="math">
+        \[
+        A=\left\{1-\frac{2}{\ln(n)}\ ;\ n\in\mathbb N\setminus\{0,1\}\right\}.
+        \]
+      </div>
+      <ol>
+        <li>Montrer que \(A\) est bornée.</li>
+        <li>Déterminer \(\inf(A)\).</li>
+        <li>Déterminer \(\sup(A)\).</li>
+      </ol>
+    </div>
+
+    <div class="proof">
+      <div class="label">Correction manuscrite</div>
+      <p>Pour \(n\in\mathbb N\setminus\{0,1\}\), on a \(n\ge2\), donc \(\ln n\ge\ln2>0\).</p>
+      <div class="math">
+        \[
+        \frac{2}{\ln n}\le\frac{2}{\ln2},
+        \]
+        d'où
+        \[
+        1-\frac{2}{\ln2}\le1-\frac{2}{\ln n}<1.
+        \]
+      </div>
+      <p>A est donc bornée.</p>
+      <p>Comme \(1-\dfrac2{\ln2}\in A\), on obtient :</p>
+      <div class="math">
+        \[
+        \inf(A)=1-\frac2{\ln2}.
+        \]
+      </div>
+      <p>De plus, lorsque \(n\to+\infty\), \(\ln n\to+\infty\), donc</p>
+      <div class="math">
+        \[
+        1-\frac2{\ln n}\longrightarrow1.
+        \]
+      </div>
+      <p>Le réel \(1\) est un majorant de \(A\), et les éléments de \(A\) s'en approchent arbitrairement. Ainsi :</p>
+      <div class="math">
+        \[
+        \sup(A)=1.
+        \]
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="label">Exercice</div>
+      <p>Soit \(A\) et \(B\) deux parties non vides de \(\mathbb R\) telles que</p>
+      <div class="math">
+        \[
+        \forall a\in A,\ \forall b\in B,\quad a\le b.
+        \]
+      </div>
+      <ol>
+        <li>Montrer que \(A\) est majorée et \(B\) est minorée.</li>
+        <li>Montrer que \(\sup(A)\le\inf(B)\).</li>
+      </ol>
+    </div>
+
+    <div class="proof">
+      <div class="label">Correction</div>
+      <p>Comme \(B\) est non vide, il existe \(b_0\in B\).</p>
+      <p>Pour tout \(a\in A\), on a \(a\le b_0\). Donc \(b_0\) est un majorant de \(A\), et \(A\) est majorée.</p>
+      <p>De même, comme \(A\) est non vide, il existe \(a_0\in A\). Pour tout \(b\in B\), on a \(a_0\le b\). Donc \(a_0\) est un minorant de \(B\), et \(B\) est minorée.</p>
+      <p>Par l'absurde, supposons \(\sup(A)>\inf(B)\). On choisit un réel \(p\) entre les deux :</p>
+      <div class="math">
+        \[
+        \inf(B)<p<\sup(A).
+        \]
+      </div>
+      <p>Par la caractérisation de la borne supérieure, il existe \(a\in A\) tel que \(p<a\). Par la caractérisation de la borne inférieure, il existe \(b\in B\) tel que \(b<p\). Ainsi \(b<p<a\), contradiction avec \(a\le b\).</p>
+      <p>Donc :</p>
+      <div class="math">
+        \[
+        \boxed{\sup(A)\le\inf(B)}.
+        \]
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="label">Exercice — borne supérieure</div>
+      <p>Soit</p>
+      <div class="math">
+        \[
+        A=\left\{\frac{1}{n}\ ;\ n\in\mathbb N^\ast\right\}.
+        \]
+      </div>
+      <p>On cherche une borne supérieure et une borne inférieure.</p>
+      <div class="math">
+        \[
+        0<\frac1n\le1.
+        \]
+      </div>
+      <p>Donc \(1\) est un majorant et \(1\in A\), ainsi \(\max(A)=\sup(A)=1\).</p>
+      <p>Pour tout \(\varepsilon>0\), par la propriété d'Archimède, on choisit \(n>\dfrac1\varepsilon\). Alors</p>
+      <div class="math">
+        \[
+        \frac1n<\varepsilon.
+        \]
+      </div>
+      <p>Donc \(\inf(A)=0\), mais \(0\notin A\). Ainsi \(A\) n'admet pas de minimum.</p>
+    </div>
+
+    <div class="exercise">
+      <div class="label">Exercice — densité</div>
+      <p>Soit \(a<b\). Montrer qu'il existe \(n\in\mathbb N^\ast\) tel que</p>
+      <div class="math">
+        \[
+        \frac1n<b-a.
+        \]
+      </div>
+      <p>On choisit alors \(n\) suffisamment grand grâce à la propriété d'Archimède.</p>
+      <p>Cette propriété permet de construire des nombres rationnels entre deux réels distincts.</p>
+    </div>
+  </section>
+
+  <div class="footer">
+    <strong>1ère MP — Prépa Math Sup / Spé</strong><br>
+    Chapitre 1 — Les nombres réels · Version HTML MathJax.
+  </div>
+</main>
+</div>
+</body>
+</html>
