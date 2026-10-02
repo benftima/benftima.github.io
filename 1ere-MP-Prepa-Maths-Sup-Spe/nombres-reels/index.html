@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1ère MP — Chapitre 1 : Les nombres réels</title>
+<meta name="description" content="Cours manuscrit de 1ère MP retranscrit en HTML MathJax — Les nombres réels.">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{
+  --green:#1b5e4b; --green2:#2e7d63; --mint:#eaf6f1;
+  --ink:#243238; --muted:#64748b; --paper:#fff;
+  --line:#dce7e3; --orange:#e46b3c; --yellow:#fff3b0;
+  --shadow:0 8px 28px rgba(20,50,40,.10); --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f5f7f6;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.65}
+a{color:var(--green2);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(27,94,75,.97);color:white;border-bottom:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px)}
+.topbar-inner{max-width:1250px;margin:auto;padding:12px 20px;display:flex;gap:18px;align-items:center}
+.brand{font-weight:800;letter-spacing:.2px;white-space:nowrap}
+.brand small{display:block;font-weight:500;opacity:.78;font-size:.72rem}
+.nav{display:flex;gap:6px;overflow:auto;white-space:nowrap}
+.nav a{color:#eafff6;padding:7px 10px;border-radius:8px;font-size:.88rem}
+.nav a:hover{background:rgba(255,255,255,.13);text-decoration:none}
+.layout{max-width:1250px;margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;padding:26px 18px}
+.sidebar{position:sticky;top:80px;height:calc(100vh - 100px);overflow:auto}
+.side-card{background:white;border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--shadow)}
+.side-card h3{font-size:.9rem;margin:0 0 8px;color:var(--green)}
+.side-card a{display:block;padding:7px 8px;border-radius:7px;font-size:.84rem;color:#334}
+.side-card a:hover{background:var(--mint);text-decoration:none}
+main{min-width:0}
+.hero{background:linear-gradient(135deg,#173f34,#2d735e);color:white;border-radius:18px;padding:34px 36px;box-shadow:var(--shadow);margin-bottom:22px}
+.hero .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;opacity:.8}
+.hero h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;margin:8px 0 12px}
+.hero p{max-width:850px;margin:0;color:#e7fff5}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.badge{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 10px;font-size:.78rem}
+.section{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;margin:0 0 20px;box-shadow:var(--shadow)}
+.section h2{margin:0 0 18px;color:var(--green);font-size:1.65rem}
+.section h3{color:#255a4c;margin-top:26px}
+.section h4{margin-bottom:8px;color:#475569}
+.definition,.theorem,.property,.remark,.proof,.example,.exercise,.warning{
+  border-left:4px solid var(--green2);background:#f8fbfa;padding:14px 17px;margin:16px 0;border-radius:0 10px 10px 0;
+}
+.theorem{border-left-color:#16825d;background:#eef9f4}
+.property{border-left-color:#3b82a0;background:#f2f8fb}
+.definition{border-left-color:#7c5cff;background:#f7f5ff}
+.remark{border-left-color:#d97706;background:#fff9ed}
+.proof{border-left-color:#64748b;background:#f7f8fa}
+.example{border-left-color:#e5a900;background:#fffdf1}
+.exercise{border-left-color:#d65c36;background:#fff8f5}
+.warning{border-left-color:#b91c1c;background:#fff6f6}
+.label{font-weight:800;text-transform:uppercase;font-size:.72rem;letter-spacing:.08em;color:var(--green)}
+.exercise .label{color:#c64c2c}
+.callout-title{font-weight:800;margin-bottom:5px}
+.formula{overflow-x:auto;padding:4px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.93rem}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left}
+th{background:var(--mint);color:var(--green)}
+kbd{background:#eef2f2;border:1px solid #d5dddd;border-bottom-width:2px;border-radius:5px;padding:1px 5px;font-size:.8em}
+mark{background:var(--yellow);padding:1px 4px;border-radius:4px}
+.note{font-size:.88rem;color:var(--muted)}
+details{border:1px solid var(--line);border-radius:10px;margin:12px 0;background:#fff}
+summary{cursor:pointer;padding:11px 14px;font-weight:700;color:var(--green)}
+details>div{padding:0 14px 14px}
+.source-order{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.page-chip{background:#edf7f3;color:var(--green);border:1px solid #cfe7dd;border-radius:8px;padding:6px 9px;font-size:.78rem;font-weight:700}
+.footer{max-width:1250px;margin:0 auto;padding:0 18px 35px;color:var(--muted);font-size:.8rem}
+.top{position:fixed;right:18px;bottom:18px;background:var(--green);color:white;border-radius:50%;width:42px;height:42px;display:grid;place-items:center;box-shadow:var(--shadow)}
+@media(max-width:900px){
+ .layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}.side-card{display:flex;gap:5px;overflow:auto;align-items:center}.side-card h3{display:none}.side-card a{white-space:nowrap}
+ .hero{padding:27px 23px}.section{padding:22px 18px}.grid2{grid-template-columns:1fr}
+ .topbar-inner{padding:10px 12px}.brand small{display:none}
+}
+@media print{
+ .topbar,.sidebar,.top{display:none}.layout{display:block;padding:0}.section,.hero{box-shadow:none;border:1px solid #aaa;break-inside:avoid}.hero{color:#111;background:white}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">1ère MP <small>Mathématiques — Cours</small></div>
+    <nav class="nav">
+      <a href="#rationnels">ℚ</a><a href="#ordre">Ordre</a><a href="#abs">Valeur absolue</a>
+      <a href="#archimede">Archimède</a><a href="#densite">Densité</a><a href="#intervalles">Intervalles</a>
+      <a href="#bornes">Bornes</a><a href="#exercices">Exercices</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+ <div class="side-card">
+  <h3>Sommaire</h3>
+  <a href="#ordre-pages">Ordre des feuillets</a>
+  <a href="#rationnels">1. Nombres rationnels</a>
+  <a href="#irrationnels">2. Irrationnels</a>
+  <a href="#ordre">3. Relation d'ordre</a>
+  <a href="#abs">4. Valeur absolue</a>
+  <a href="#archimede">5. Propriété d'Archimède</a>
+  <a href="#densite">6. Densité de ℚ dans ℝ</a>
+  <a href="#intervalles">7. Intervalles</a>
+  <a href="#parties">8. Parties finies et ℘(E)</a>
+  <a href="#bornes">9. Majorant, minorant, sup, inf</a>
+  <a href="#maxmin">10. Maximum et minimum</a>
+  <a href="#exercices">11. Exercices manuscrits</a>
+ </div>
+</aside>
+
+<main>
+<section class="hero">
+ <div class="eyebrow">Cours retranscrit — 1ère MP</div>
+ <h1>Chapitre 1 — Les nombres réels</h1>
+ <p>Ensemble des rationnels et des irrationnels, structure ordonnée de \(\mathbb R\), valeur absolue, propriété d'Archimède, densité, intervalles et bornes.</p>
+ <div class="badges">
+  <span class="badge">HTML + MathJax</span><span class="badge">Responsive</span><span class="badge">Style documentation</span>
+  <span class="badge">Transcription du manuscrit</span>
+ </div>
+</section>
+
+<section class="section" id="ordre-pages">
+<h2>Ordre des pages manuscrites</h2>
+<p>Pour respecter la continuité mathématique du cours, l'ordre de travail retenu est celui des feuillets, et non l'ordre alphabétique des noms de fichiers :</p>
+<div class="source-order">
+ <span class="page-chip">01 — photo 25.jpeg</span>
+ <span class="page-chip">02 — photo 25 (1).jpeg</span>
+ <span class="page-chip">03 — photo 25 (2).jpeg</span>
+ <span class="page-chip">04 — photo 25 (3).jpeg</span>
+ <span class="page-chip">05 — photo 26 (1).jpeg</span>
+ <span class="page-chip">06 — photo 26.jpeg</span>
+ <span class="page-chip">07 — photo 26 (3).jpeg</span>
+ <span class="page-chip">08 — photo 26 (4).jpeg</span>
+ <span class="page-chip">09 — photo 26 (2).jpeg</span>
+ <span class="page-chip">10 — photo 27.jpeg</span>
+</div>
+<p class="note">La logique de lecture est : \(\mathbb Q\) → irrationnels → ordre sur \(\mathbb R\) → valeur absolue → Archimède → densité → intervalles → bornes/supremum/infimum → exercices.</p>
+</section>
+
+<section class="section" id="rationnels">
+<h2>1. Les nombres rationnels \(\mathbb Q\)</h2>
+
+<div class="definition">
+<div class="label">Définition</div>
+<p>Par définition, l'ensemble des nombres rationnels est</p>
+<div class="formula">\[
+\mathbb Q=\left\{\frac pq\ ;\ p\in\mathbb Z,\ q\in\mathbb Z^*\right\}.
+\]</div>
+<p>Un nombre rationnel peut donc s'écrire sous la forme \(\frac pq\), avec un numérateur entier et un dénominateur entier non nul.</p>
+</div>
+
+<div class="remark">
+<div class="label">Remarque du manuscrit</div>
+<p>En pratique, pour qu'une fraction soit un nombre décimal, son dénominateur, après décomposition en facteurs premiers, doit comporter uniquement les facteurs \(2\) et \(5\) (éventuellement après simplification).</p>
+</div>
+
+<div class="example">
+<div class="label">Exemples</div>
+<div class="formula">\[
+\frac{39}{120}=\frac{13}{40}=\frac{13}{5\times2^3}.
+\]</div>
+<p>Les exemples de nombres décimaux donnés dans le manuscrit montrent qu'un nombre rationnel possède une écriture décimale finie ou périodique.</p>
+</div>
+
+<div class="theorem">
+<div class="label">Proposition</div>
+<p>Un nombre \(x\) est rationnel si et seulement si son écriture décimale est <strong>finie ou périodique</strong> (éventuellement périodique à partir d'un certain rang).</p>
+</div>
+
+<div class="example">
+<div class="label">Exemple — écriture d'un décimal sous forme de fraction</div>
+<p>Pour \(x=0,47\), on a directement</p>
+<div class="formula">\[
+x=\frac{47}{100}.
+\]</div>
+<p>Pour le décimal périodique \(x=0,\overline{47}=0,474747\ldots\), on obtient</p>
+<div class="formula">\[
+100x=47,\overline{47}
+\quad\Longrightarrow\quad
+100x-x=47
+\quad\Longrightarrow\quad
+99x=47,
+\]
+\[
+\boxed{x=\frac{47}{99}}.
+\]</div>
+</div>
+</section>
+
+<section class="section" id="irrationnels">
+<h2>2. Les nombres irrationnels</h2>
+<div class="definition">
+<div class="label">Définition</div>
+<p>Il existe des nombres qui ne sont pas rationnels. Ils sont appelés <strong>nombres irrationnels</strong>. Ils apparaissent naturellement sur la droite réelle.</p>
+</div>
+
+<div class="example">
+<div class="label">Exemples du manuscrit</div>
+<ul>
+<li>\(\sqrt2\), longueur de l'hypoténuse d'un carré de côté \(1\) ;</li>
+<li>\(\pi\), périmètre d'un cercle de rayon \(1\) ;</li>
+<li>\(e=\exp(1)\).</li>
+</ul>
+<p>Leurs écritures décimales sont non finies et non périodiques.</p>
+</div>
+
+<div class="theorem">
+<div class="label">Proposition</div>
+<p>\(\sqrt2\notin\mathbb Q\).</p>
+</div>
+
+<div class="proof">
+<div class="label">Preuve par l'absurde</div>
+<p>Supposons \(\sqrt2\in\mathbb Q\). Alors il existe \(p\in\mathbb Z\) et \(q\in\mathbb N^*\), premiers entre eux, tels que</p>
+<div class="formula">\[
+\sqrt2=\frac pq.
+\]</div>
+<p>En élevant au carré :</p>
+<div class="formula">\[
+p^2=2q^2.
+\]</div>
+<p>Donc \(p^2\) est pair, d'où \(p\) est pair. Écrivons \(p=2p'\). Alors</p>
+<div class="formula">\[
+4p'^2=2q^2\quad\Longrightarrow\quad q^2=2p'^2.
+\]</div>
+<p>Donc \(q\) est également pair. Ainsi \(2\) divise à la fois \(p\) et \(q\), contradiction avec \(\gcd(p,q)=1\).</p>
+<p>Par conséquent, \(\boxed{\sqrt2\notin\mathbb Q}\).</p>
+</div>
+
+<div class="remark">
+<div class="label">Remarque</div>
+<p>La propriété « être irrationnel » n'est pas stable par toutes les opérations : par exemple \(\sqrt2\) et \(-\sqrt2\) sont irrationnels alors que leur somme est nulle, qui est rationnelle. De même \(\sqrt2\times\sqrt2=2\in\mathbb Q\).</p>
+</div>
+
+<div class="theorem">
+<div class="label">Structure</div>
+<p>On note \(\mathbb R\setminus\mathbb Q\) l'ensemble des irrationnels.</p>
+</div>
+</section>
+
+<section class="section" id="ordre">
+<h2>3. Relation d'ordre sur \(\mathbb R\)</h2>
+
+<div class="definition">
+<div class="label">Définition — relation d'ordre</div>
+<p>Une relation \(\mathcal R\) sur un ensemble \(E\) est une relation d'ordre si elle est :</p>
+<ol>
+<li><strong>réflexive :</strong> \(\forall a\in E,\ a\mathcal R a\) ;</li>
+<li><strong>antisymétrique :</strong> \(a\mathcal R b\) et \(b\mathcal R a\Rightarrow a=b\) ;</li>
+<li><strong>transitive :</strong> \(a\mathcal R b\) et \(b\mathcal R c\Rightarrow a\mathcal R c\).</li>
+</ol>
+</div>
+
+<div class="example">
+<div class="label">Exemple</div>
+<p>Sur \(\mathbb R\), on considère la relation \(\leq\), définie par</p>
+<div class="formula">\[
+x\le y\iff y-x\in\mathbb R_+.
+\]</div>
+<p>La relation \(\leq\) est une relation d'ordre total : deux réels quelconques sont comparables.</p>
+</div>
+
+<div class="property">
+<div class="label">Propriétés rappelées dans le manuscrit</div>
+<ul>
+<li>Si \(x\le y\), alors \(x+z\le y+z\) pour tout \(z\in\mathbb R\).</li>
+<li>Si \(x\le y\) et \(z\ge0\), alors \(xz\le yz\).</li>
+<li>Si \(x\le y\) et \(z\le0\), alors \(xz\ge yz\).</li>
+<li>Si \(0<x<y\), alors \(\frac1y<\frac1x\).</li>
+</ul>
+</div>
+
+<div class="theorem">
+<div class="label">Théorème</div>
+<p>\((\mathbb R,+,\times)\) est un <strong>corps commutatif</strong>.</p>
+</div>
+
+<div class="example">
+<div class="label">Maximum et minimum de deux réels</div>
+<div class="formula">\[
+\max(a,b)=
+\begin{cases}
+a,&a\ge b,\\
+b,&a<b,
+\end{cases}
+\qquad
+\min(a,b)=
+\begin{cases}
+a,&a\le b,\\
+b,&a>b.
+\end{cases}
+\]</div>
+</div>
+</section>
+
+<section class="section" id="abs">
+<h2>4. Valeur absolue</h2>
+
+<div class="definition">
+<div class="label">Définition</div>
+<p>Pour \(x\in\mathbb R\), la valeur absolue de \(x\), notée \(|x|\), est définie par</p>
+<div class="formula">\[
+|x|=
+\begin{cases}
+x,&x\ge0,\\
+-x,&x<0.
+\end{cases}
+\]</div>
+</div>
+
+<div class="property">
+<div class="label">Propriétés</div>
+<div class="formula">\[
+|x|\ge0,\qquad |x|=0\iff x=0,
+\]
+\[
+-|x|\le x\le |x|,
+\qquad
+|xy|=|x|\,|y|,
+\]
+\[
+|x+y|\le |x|+|y|,
+\qquad
+\bigl||x|-|y|\bigr|\le |x-y|.
+\]</div>
+<p>On a également :</p>
+<div class="formula">\[
+|x|<r\ (r>0)
+\iff -r<x<r,
+\]
+\[
+|x-a|<r\ (r>0)
+\iff a-r<x<a+r.
+\]</div>
+</div>
+
+<div class="example">
+<div class="label">Interprétation géométrique</div>
+<p>\(|x-a|\) représente la distance entre \(x\) et \(a\) sur la droite réelle. Ainsi</p>
+<div class="formula">\[
+|x-a|<r\iff x\in]a-r,a+r[.
+\]</div>
+</div>
+</section>
+
+<section class="section" id="archimede">
+<h2>5. Propriété d'Archimède</h2>
+
+<div class="theorem">
+<div class="label">Propriété d'Archimède</div>
+<p>\(\mathbb R\) est archimédien. Autrement dit, pour tout \(x\in\mathbb R\), il existe \(n\in\mathbb N\) tel que</p>
+<div class="formula">\[
+n>x.
+\]</div>
+<p>Une forme équivalente est : pour tout \(\varepsilon>0\), il existe \(n\in\mathbb N^*\) tel que</p>
+<div class="formula">\[
+\frac1n<\varepsilon.
+\]</div>
+</div>
+
+<div class="theorem">
+<div class="label">Partie entière</div>
+<p>Pour tout \(x\in\mathbb R\), il existe un unique entier \(E(x)\in\mathbb Z\) tel que</p>
+<div class="formula">\[
+\boxed{E(x)\le x<E(x)+1}.
+\]</div>
+</div>
+
+<div class="example">
+<div class="label">Exemples</div>
+<div class="formula">\[
+E(1,9)=1,\qquad E(-6,4)=-7,\qquad E(-16,9)=-17,
+\]
+\[
+E(2,3)=2,\qquad E(m)=m\quad\text{si }m\in\mathbb Z.
+\]</div>
+</div>
+
+<div class="proof">
+<div class="label">Application manuscrite</div>
+<p>Pour \(m>1\), on utilise \(m-1<E(m)\le m\), puis</p>
+<div class="formula">\[
+\frac{m-1}{m}<\frac{E(m)}m\le1.
+\]</div>
+<p>Comme \(\frac{m-1}{m}\to1\), on obtient</p>
+<div class="formula">\[
+\boxed{\lim_{m\to+\infty}\frac{E(m)}m=1}.
+\]</div>
+</div>
+</section>
+
+<section class="section" id="densite">
+<h2>6. Densité de \(\mathbb Q\) dans \(\mathbb R\)</h2>
+
+<div class="theorem">
+<div class="label">Théorème — densité de \(\mathbb Q\)</div>
+<p>Entre deux réels distincts, il existe toujours un rationnel. Ainsi, si \(x<y\), alors</p>
+<div class="formula">\[
+\exists r\in\mathbb Q\quad x<r<y.
+\]</div>
+</div>
+
+<div class="proof">
+<div class="label">Preuve par Archimède</div>
+<p>Soient \(x<y\). Alors \(y-x>0\). Par Archimède, il existe \(n\in\mathbb N^*\) tel que</p>
+<div class="formula">\[
+n>\frac1{y-x}.
+\]</div>
+<p>Donc \(n(y-x)>1\). On choisit alors un entier \(p\) convenable tel que</p>
+<div class="formula">\[
+nx<p<ny.
+\]</div>
+<p>En divisant par \(n>0\), on obtient</p>
+<div class="formula">\[
+x<\frac pn<y,
+\]</div>
+<p>et \(\frac pn\in\mathbb Q\).</p>
+</div>
+
+<div class="theorem">
+<div class="label">Densité des irrationnels</div>
+<p>De même, entre deux réels distincts, il existe un irrationnel. Ainsi, pour \(x<y\), il existe \(z\in\mathbb R\setminus\mathbb Q\) tel que</p>
+<div class="formula">\[
+x<z<y.
+\]</div>
+</div>
+
+<div class="remark">
+<div class="label">Remarque</div>
+<p>Les ensembles \(\mathbb Q\) et \(\mathbb R\setminus\mathbb Q\) sont tous deux denses dans \(\mathbb R\).</p>
+</div>
+</section>
+
+<section class="section" id="intervalles">
+<h2>7. Intervalles de \(\mathbb R\)</h2>
+
+<div class="definition">
+<div class="label">Définition</div>
+<p>Un intervalle est une partie de \(\mathbb R\) contenant, avec deux nombres \(a<b\), tout réel situé entre eux.</p>
+</div>
+
+<table>
+<thead><tr><th>Notation</th><th>Caractérisation</th></tr></thead>
+<tbody>
+<tr><td>\(]a,b[\)</td><td>\(\{x\in\mathbb R\mid a<x<b\}\)</td></tr>
+<tr><td>\([a,b]\)</td><td>\(\{x\in\mathbb R\mid a\le x\le b\}\)</td></tr>
+<tr><td>\([a,b[\)</td><td>\(\{x\in\mathbb R\mid a\le x<b\}\)</td></tr>
+<tr><td>\(]a,b]\)</td><td>\(\{x\in\mathbb R\mid a<x\le b\}\)</td></tr>
+<tr><td>\(]-\infty,b]\)</td><td>\(\{x\in\mathbb R\mid x\le b\}\)</td></tr>
+<tr><td>\([a,+\infty[\)</td><td>\(\{x\in\mathbb R\mid a\le x\}\)</td></tr>
+</tbody>
+</table>
+
+<div class="example">
+<div class="label">Lien avec la valeur absolue</div>
+<div class="formula">\[
+|x-a|<r\quad\Longleftrightarrow\quad x\in]a-r,a+r[.
+\]</div>
+</div>
+</section>
+
+<section class="section" id="parties">
+<h2>8. Parties finies et ensemble des parties</h2>
+
+<div class="example">
+<div class="label">Exemple du manuscrit</div>
+<p>Soit \(X=\{1,2,3\}\). L'ensemble des parties de \(X\), noté \(\mathcal P(X)\), est</p>
+<div class="formula">\[
+\mathcal P(X)=
+\{\varnothing,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\}.
+\]</div>
+<p>On compte donc</p>
+<div class="formula">\[
+\boxed{\operatorname{card}(\mathcal P(X))=2^3=8}.
+\]</div>
+</div>
+
+<div class="theorem">
+<div class="label">Relation d'ordre sur \(\mathcal P(E)\)</div>
+<p>La relation \(\subset\) est une relation d'ordre sur \(\mathcal P(E)\) :</p>
+<ul>
+<li>réflexive : \(A\subset A\) ;</li>
+<li>antisymétrique : \(A\subset B\) et \(B\subset A\Rightarrow A=B\) ;</li>
+<li>transitive : \(A\subset B\) et \(B\subset C\Rightarrow A\subset C\).</li>
+</ul>
+<p>Elle n'est pas totale en général : deux parties peuvent ne pas être comparables.</p>
+</div>
+</section>
+
+<section class="section" id="bornes">
+<h2>9. Majorant, minorant, borne supérieure et borne inférieure</h2>
+
+<div class="definition">
+<div class="label">Définitions</div>
+<p>Soit \(A\) une partie non vide de \(\mathbb R\).</p>
+<ul>
+<li>\(M\) est un <strong>majorant</strong> de \(A\) si \(\forall x\in A,\ x\le M\).</li>
+<li>\(m\) est un <strong>minorant</strong> de \(A\) si \(\forall x\in A,\ m\le x\).</li>
+<li>\(A\) est <strong>majorée</strong> si elle admet au moins un majorant.</li>
+<li>\(A\) est <strong>minorée</strong> si elle admet au moins un minorant.</li>
+<li>\(A\) est <strong>bornée</strong> si elle est à la fois majorée et minorée.</li>
+</ul>
+</div>
+
+<div class="theorem">
+<div class="label">Axiome de la borne supérieure</div>
+<p>Toute partie non vide de \(\mathbb R\), majorée, admet une borne supérieure dans \(\mathbb R\).</p>
+<p>De même, toute partie non vide de \(\mathbb R\), minorée, admet une borne inférieure.</p>
+</div>
+
+<div class="definition">
+<div class="label">Borne supérieure</div>
+<p>La borne supérieure de \(A\), notée \(\sup(A)\), est le plus petit des majorants de \(A\).</p>
+<div class="formula">\[
+\sup(A)=s
+\iff
+\begin{cases}
+\forall x\in A,\ x\le s,\\
+\forall\varepsilon>0,\ \exists x\in A:\ s-\varepsilon<x.
+\end{cases}
+\]</div>
+</div>
+
+<div class="definition">
+<div class="label">Borne inférieure</div>
+<p>La borne inférieure de \(A\), notée \(\inf(A)\), est le plus grand des minorants de \(A\).</p>
+<div class="formula">\[
+\inf(A)=i
+\iff
+\begin{cases}
+\forall x\in A,\ i\le x,\\
+\forall\varepsilon>0,\ \exists x\in A:\ x<i+\varepsilon.
+\end{cases}
+\]</div>
+</div>
+
+<div class="property">
+<div class="label">Caractérisation séquentielle — idée présente dans le manuscrit</div>
+<p>Si \(A\neq\varnothing\) est majorée, il existe une suite \((x_n)\) d'éléments de \(A\) qui converge vers \(\sup(A)\). Une formulation analogue existe pour \(\inf(A)\).</p>
+</div>
+
+<div class="example">
+<div class="label">Exemples</div>
+<ul>
+<li>Si \(A=[a,b]\), alors \(\min(A)=a\), \(\max(A)=b\), \(\inf(A)=a\), \(\sup(A)=b\).</li>
+<li>Si \(A=[a,b[\), alors \(\inf(A)=a\) et \(\sup(A)=b\), mais \(A\) n'a pas de maximum.</li>
+<li>Pour \(A=\{1-\frac1n:n\in\mathbb N^*\}\), on a \(\inf(A)=0\), \(\sup(A)=1\), mais \(A\) n'admet ni minimum ni maximum.</li>
+<li>Pour \(A=]-\infty,+\infty[\), \(A\) n'est ni majorée ni minorée.</li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="maxmin">
+<h2>10. Maximum et minimum</h2>
+
+<div class="definition">
+<div class="label">Définition</div>
+<p>Un élément \(M\in A\) est le <strong>maximum</strong> de \(A\) si</p>
+<div class="formula">\[
+\forall x\in A,\quad x\le M.
+\]</div>
+<p>Un élément \(m\in A\) est le <strong>minimum</strong> de \(A\) si</p>
+<div class="formula">\[
+\forall x\in A,\quad m\le x.
+\]</div>
+</div>
+
+<div class="property">
+<div class="label">Lien avec les bornes</div>
+<p>Si \(A\) admet un maximum, alors</p>
+<div class="formula">\[
+\boxed{\max(A)=\sup(A)}.
+\]</div>
+<p>Si \(A\) admet un minimum, alors</p>
+<div class="formula">\[
+\boxed{\min(A)=\inf(A)}.
+\]</div>
+</div>
+
+<div class="example">
+<div class="label">Exemple</div>
+<p>Pour \(A=[3,9]\), \(3\) est un minorant appartenant à \(A\), donc \(\min(A)=3\). De même \(9\in A\) et \(9\) est un majorant, donc \(\max(A)=9\).</p>
+</div>
+</section>
+
+<section class="section" id="exercices">
+<h2>11. Exercices du manuscrit</h2>
+
+<div class="exercise">
+<div class="label">Exercice 1 — Partie bornée par une expression quadratique</div>
+<p>Soit</p>
+<div class="formula">\[
+A=\{x\in\mathbb Q\mid x^2-3x+1<0\}.
+\]</div>
+<p>Les racines de \(x^2-3x+1\) sont</p>
+<div class="formula">\[
+r_1=\frac{3-\sqrt5}{2},\qquad
+r_2=\frac{3+\sqrt5}{2}.
+\]</div>
+<p>Comme le coefficient dominant est positif,</p>
+<div class="formula">\[
+A=\mathbb Q\cap\left]\frac{3-\sqrt5}{2},\frac{3+\sqrt5}{2}\right[.
+\]</div>
+<p>On en déduit que \(A\) est bornée et, grâce à la densité de \(\mathbb Q\) dans \(\mathbb R\), elle possède les mêmes bornes réelles :</p>
+<div class="formula">\[
+\boxed{\inf(A)=\frac{3-\sqrt5}{2},\qquad
+\sup(A)=\frac{3+\sqrt5}{2}}.
+\]</div>
+<p>Les bornes ne sont pas des éléments de \(A\), donc \(A\) n'a ni minimum ni maximum.</p>
+</div>
+
+<div class="exercise">
+<div class="label">Exercice 2 — Suite de nombres réels</div>
+<p>Soit</p>
+<div class="formula">\[
+A=\left\{\frac1n+\frac1p\ ;\ n,p\in\mathbb N^*\right\}.
+\]</div>
+<ol>
+<li>Montrer que \(A\) est bornée.</li>
+<li>Déterminer sa borne supérieure.</li>
+<li>Déterminer sa borne inférieure.</li>
+<li>Dire si \(A\) admet un maximum et/ou un minimum.</li>
+</ol>
+<div class="proof">
+<div class="label">Indications / solution</div>
+<p>Pour \(n,p\ge1\),</p>
+<div class="formula">\[
+0<\frac1n+\frac1p\le2.
+\]</div>
+<p>Donc \(A\) est bornée et \(2\) est un majorant. Pour \(n=p=1\), \(2\in A\), donc</p>
+<div class="formula">\[
+\boxed{\max(A)=\sup(A)=2}.
+\]</div>
+<p>Par ailleurs, \(\frac1n+\frac1p>0\), tandis que \(\frac1n+\frac1p\to0\) lorsque \(n,p\to+\infty\). Ainsi</p>
+<div class="formula">\[
+\boxed{\inf(A)=0},
+\]</div>
+<p>mais \(0\notin A\), donc \(A\) n'a pas de minimum.</p>
+</div>
+</div>
+
+<div class="exercise">
+<div class="label">Exercice 3 — Une suite tendant vers 1</div>
+<p>Soit</p>
+<div class="formula">\[
+A=\left\{1-\frac{2}{\ln n}\ ;\ n\in\mathbb N,\ n\ge2\right\}.
+\]</div>
+<p>Pour \(n\ge2\), \(\ln n\ge\ln2>0\), donc</p>
+<div class="formula">\[
+1-\frac2{\ln2}\le1-\frac2{\ln n}<1.
+\]</div>
+<p>Ainsi \(A\) est bornée. Comme \(\frac2{\ln n}\to0\),</p>
+<div class="formula">\[
+1-\frac2{\ln n}\longrightarrow1.
+\]</div>
+<p>De plus, les termes restent strictement inférieurs à \(1\). On obtient donc</p>
+<div class="formula">\[
+\boxed{\sup(A)=1}.
+\]</div>
+<p>Le manuscrit souligne que \(1\) n'appartient pas à \(A\) : il s'agit donc d'une borne supérieure qui n'est pas un maximum.</p>
+</div>
+
+<div class="exercise">
+<div class="label">Exercice 4 — Comparaison de deux parties</div>
+<p>Soient \(A\) et \(B\) deux parties non vides de \(\mathbb R\) telles que</p>
+<div class="formula">\[
+\forall a\in A,\ \forall b\in B,\qquad a<b.
+\]</div>
+<p>Montrer que \(A\) est majorée, \(B\) est minorée, puis établir</p>
+<div class="formula">\[
+\boxed{\sup(A)\le\inf(B)}.
+\]</div>
+<div class="proof">
+<div class="label">Preuve</div>
+<p>Comme \(B\neq\varnothing\), prenons \(b_0\in B\). Pour tout \(a\in A\), on a \(a<b_0\), donc \(b_0\) est un majorant de \(A\). Ainsi \(A\) est majorée.</p>
+<p>De même, comme \(A\neq\varnothing\), prenons \(a_0\in A\). Pour tout \(b\in B\), \(a_0<b\), donc \(a_0\) est un minorant de \(B\). Ainsi \(B\) est minorée.</p>
+<p>Supposons par l'absurde \(\sup(A)>\inf(B)\). Choisissons un réel \(p\) strictement compris entre ces deux nombres. Par caractérisation de la borne supérieure, il existe \(a\in A\) tel que \(p<a\). Par caractérisation de la borne inférieure, il existe \(b\in B\) tel que \(b<p\). On obtient \(b<p<a\), donc \(a>b\), contradiction avec \(a<b\).</p>
+</div>
+</div>
+
+<div class="exercise">
+<div class="label">Exercice 5 — Propriété d'Archimède et intervalle</div>
+<p>Soit \(]a,b[\) un intervalle de \(\mathbb R\), avec \(a<b\). Montrer qu'il existe \(n\in\mathbb N^*\) tel que</p>
+<div class="formula">\[
+\left]-\frac1n,\frac1n\right[\subset]a,b[.
+\]</div>
+<div class="proof">
+<div class="label">Solution du manuscrit</div>
+<p>On distingue les positions de \(a\) et \(b\). L'objectif revient à choisir \(n\) suffisamment grand pour avoir</p>
+<div class="formula">\[
+-\frac1n>a,\qquad \frac1n<b.
+\]</div>
+<p>Lorsque \(a<0<b\), cela donne</p>
+<div class="formula">\[
+n>-\frac1a,\qquad n>\frac1b.
+\]</div>
+<p>Par la propriété d'Archimède, un entier \(n\) suffisamment grand convient. Une façon compacte de l'écrire est de prendre par exemple</p>
+<div class="formula">\[
+n_0=
+\max\!\left(
+E\!\left(-\frac1a\right)+1,\,
+E\!\left(\frac1b\right)+1
+\right)
+\]</div>
+<p>dans le cas \(a<0<b\).</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>12. Synthèse du chapitre</h2>
+<div class="grid2">
+<div class="theorem">
+<div class="label">À retenir</div>
+<ul>
+<li>\(\mathbb Q\subset\mathbb R\).</li>
+<li>\(\mathbb R\setminus\mathbb Q\) est l'ensemble des irrationnels.</li>
+<li>\((\mathbb R,+,\times)\) est un corps commutatif.</li>
+<li>\(\leq\) est une relation d'ordre total sur \(\mathbb R\).</li>
+<li>\(\mathbb R\) vérifie la propriété d'Archimède.</li>
+</ul>
+</div>
+<div class="property">
+<div class="label">À savoir utiliser</div>
+<ul>
+<li>Valeur absolue et distance.</li>
+<li>Partie entière \(E(x)\).</li>
+<li>Densité de \(\mathbb Q\) et des irrationnels.</li>
+<li>Majorant, minorant.</li>
+<li>\(\sup,\inf,\max,\min\).</li>
+<li>Caractérisations avec \(\varepsilon\).</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>13. Notes de fidélité</h2>
+<p>Cette version transforme le manuscrit en support HTML structuré sans changer la progression mathématique : les définitions, propriétés, preuves, exemples et exercices sont regroupés dans l'ordre logique des feuillets.</p>
+<details>
+<summary>Afficher la correspondance des feuillets</summary>
+<div>
+<p><strong>Photo 25.jpeg</strong> → début du chapitre : rationnels, décimaux, irrationnels, preuve de \(\sqrt2\notin\mathbb Q\).</p>
+<p><strong>Photo 25 (1).jpeg</strong> → propriétés algébriques et relation d'ordre.</p>
+<p><strong>Photo 25 (2).jpeg</strong> → relation d'ordre, valeur absolue.</p>
+<p><strong>Photo 25 (3).jpeg</strong> → valeur absolue, partie entière, ensembles.</p>
+<p><strong>Photo 26 (1).jpeg</strong> → intervalles et densité de \(\mathbb Q\).</p>
+<p><strong>Photo 26.jpeg</strong> → bornes, sup/inf et premier exemple.</p>
+<p><strong>Photo 26 (3).jpeg</strong> → exercices sur sup/inf et caractérisations.</p>
+<p><strong>Photo 26 (4).jpeg</strong> → exercices 3 et 4.</p>
+<p><strong>Photo 26 (2).jpeg</strong> → maximum/minimum et exemples.</p>
+<p><strong>Photo 27.jpeg</strong> → exercice sur les intervalles et propriété d'Archimède.</p>
+</div>
+</details>
+</section>
+</main>
+</div>
+<div class="footer">1ère MP — Chapitre 1 · Les nombres réels · Support HTML MathJax</div>
+<a class="top" href="#" aria-label="Retour en haut">↑</a>
+</body>
+</html>
