@@ -6,8 +6,16 @@
 <title>Chapitre 1 — Les nombres réels</title>
 <script>
 window.MathJax = {
-  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
-  svg: { fontCache: 'global' }
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  startup: {
+    typeset: true
+  }
 };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -685,38 +693,591 @@ a\times b=0\Longleftrightarrow a=0\ \text{ou}\ b=0.
 <h3>b. Relation d'ordre</h3>
 
 <div class="card def">
-<span class="label green">Définition</span>
-<p>Avant de travailler avec \(\mathbb R\), on rappelle que les réels travaillent avec
-\(E\), un ensemble non vide. La relation d'ordre partiel sur \(E\) vérifie les propriétés
-suivantes :</p>
-<ul>
-<li>réflexivité : \(\forall x\in E,\ x\le x\) ;</li>
-<li>antisymétrie : \(x\le y\) et \(y\le x\Rightarrow x=y\) ;</li>
-<li>transitivité : \(x\le y\) et \(y\le z\Rightarrow x\le z\).</li>
-</ul>
+<span class="label green">Définition — Relation d'ordre</span>
+
+<p>Soit \(E\) un ensemble non vide et \(\mathcal R\) une relation sur \(E\).</p>
+
+<p>On dit que \(\mathcal R\) est une <strong>relation d'ordre</strong> si elle vérifie les trois propriétés suivantes :</p>
+
+<ol>
+<li>
+<strong>Elle est réflexive :</strong>
+\[
+\forall x\in E,\qquad x\,\mathcal R\,x.
+\]
+</li>
+
+<li>
+<strong>Elle est antisymétrique :</strong>
+\[
+\left\{
+\begin{array}{l}
+x\,\mathcal R\,y\\
+y\,\mathcal R\,x
+\end{array}
+\right.
+\Longrightarrow x=y.
+\]
+</li>
+
+<li>
+<strong>Elle est transitive :</strong>
+\[
+\left\{
+\begin{array}{l}
+x\,\mathcal R\,y\\
+y\,\mathcal R\,z
+\end{array}
+\right.
+\Longrightarrow x\,\mathcal R\,z.
+\]
+</li>
+</ol>
 </div>
 
-<div class="card theorem">
-<span class="label green">Ordre sur \(\mathbb R\)</span>
-<p>La relation \(\le\) sur \(\mathbb R\) est une relation d'ordre total :
-pour tous \(x,y\in\mathbb R\), on a</p>
-<div class="eq">\[
-x\le y\quad\text{ou}\quad y\le x.
-\]</div>
+<div class="card remark">
+<span class="label">Remarque</span>
+
+<p>
+<strong>1)</strong> Si \(\mathcal R\) est une relation d'ordre partiel sur \(E\),
+alors \((E,\mathcal R)\) est un <strong>espace partiellement ordonné</strong>.
+</p>
+
+<p>
+<strong>2)</strong> \((E,\mathcal R)\) est dit <strong>espace totalement ordonné</strong>
+si, pour \(x,y\in E\), \(x\ne y\), ils sont comparables.
+C'est-à-dire :
+\[
+x\,\mathcal R\,y\quad\text{ou}\quad y\,\mathcal R\,x.
+\]
+</p>
 </div>
 
 <div class="card example">
 <span class="label">Exemple</span>
-<p>On considère :</p>
-<div class="eq">\[
-\mathbb R=\{x\in\mathbb R\}
-\]</div>
-<p>et, pour \(x,y\in\mathbb R\),</p>
-<div class="eq">\[
-x\le y\Longleftrightarrow y-x\ge0.
-\]</div>
+
+<p>
+\[
+(\mathbb R,\leq)
+\]
+est un espace totalement ordonné.
+</p>
+
+<p><strong>\(E=\mathbb R\)</strong></p>
+
+<p>On considère la relation \(\mathcal R\) définie par :</p>
+
+<div class="eq">
+\[
+\mathcal R=\left\{(x,y)\in\mathbb R^2\; ;\;
+x\leq y\Longleftrightarrow y-x\in\mathbb R_+\right\}.
+\]
 </div>
+</div>
+
+<div class="card proof">
+<span class="label">Montrons que \(\mathcal R\) est une relation d'ordre</span>
+
+<p>
+<strong>1) \(\mathcal R\) est une relation d'ordre partiel :</strong>
+</p>
+
+<p>
+<strong>i) Elle est réflexive :</strong>
+\[
+\forall x\in\mathbb R,\qquad x-x=0\in\mathbb R_+
+\]
+donc
+\[
+x\,\mathcal R\,x.
+\]
+</p>
+
+<p>
+<strong>ii) Elle est antisymétrique :</strong>
+si \(x\leq y\) et \(y\leq x\), alors
+\[
+y-x\in\mathbb R_+
+\qquad\text{et}\qquad
+x-y\in\mathbb R_+.
+\]
+Ainsi
+\[
+y-x\geq0
+\qquad\text{et}\qquad
+x-y\geq0,
+\]
+d'où
+\[
+x-y=0
+\qquad\Longrightarrow\qquad
+x=y.
+\]
+</p>
+
+<p>
+<strong>iii) Elle est transitive :</strong>
+si \(x\leq y\) et \(y\leq z\), alors
+\[
+y-x\in\mathbb R_+
+\qquad\text{et}\qquad
+z-y\in\mathbb R_+.
+\]
+Donc
+\[
+(y-x)+(z-y)=z-x\in\mathbb R_+,
+\]
+d'où
+\[
+x\leq z.
+\]
+</p>
+
+<p>
+<strong>2) \(\mathcal R\) est totale sur \(\mathbb R\).</strong>
+</p>
+
+<p>
+Pour tous \(x,y\in\mathbb R\), on a
+\[
+x\leq y
+\quad\text{ou}\quad
+y\leq x.
+\]
+Ainsi, tous les éléments de \(\mathbb R\) sont comparables.
+</p>
+
+<p>
+Donc
+\[
+\boxed{(\mathbb R,\leq)\text{ est un espace totalement ordonné}.}
+\]
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Min et max</span>
+
+<p>On définit :</p>
+
+<div class="eq">
+\[
+\min(a,b)=
+\begin{cases}
+a,&\text{si }a\leq b,\\
+b,&\text{si }a\geq b,
+\end{cases}
+\]
+</div>
+
+<div class="eq">
+\[
+\max(a,b)=
+\begin{cases}
+b,&\text{si }a\leq b,\\
+a,&\text{si }a\geq b.
+\end{cases}
+\]
+</div>
+</div>
+
+<div class="card def">
+<span class="label green">La valeur absolue</span>
+
+<p>
+Pour \(x\in\mathbb R\), on définit la valeur absolue de \(x\) par :
+</p>
+
+<div class="eq">
+\[
+|x|=
+\begin{cases}
+x,&\text{si }x\geq0,\\
+-x,&\text{si }x&lt;0.
+\end{cases}
+\]
+</div>
+
+<div class="figure-box" style="max-width:620px;">
+<svg viewBox="0 0 620 300" role="img" aria-label="Graphe de la fonction valeur absolue">
+  <line x1="70" y1="230" x2="560" y2="230" stroke="#263238" stroke-width="2.5"/>
+  <line x1="310" y1="270" x2="310" y2="35" stroke="#263238" stroke-width="2.5"/>
+  <line x1="105" y1="195" x2="310" y2="230" stroke="#263238" stroke-width="4"/>
+  <line x1="310" y1="230" x2="515" y2="195" stroke="#263238" stroke-width="4"/>
+  <circle cx="310" cy="230" r="5" fill="#263238"/>
+  <text x="530" y="222" font-size="20">x</text>
+  <text x="320" y="55" font-size="20">y</text>
+  <text x="326" y="250" font-size="18">0</text>
+  <text x="90" y="188" font-size="19">y=|x|</text>
+</svg>
+</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Propriétés de la valeur absolue</span>
+
+<div class="eq">
+\[
+|x|\geq0,\qquad |-x|=|x|.
+\]
+</div>
+
+<div class="eq">
+\[
+|x|=0\Longleftrightarrow x=0.
+\]
+</div>
+
+<div class="eq">
+\[
+|x+y|\leq |x|+|y|.
+\]
+</div>
+
+<div class="eq">
+\[
+\big||x|-|y|\big|\leq |x-y|.
+\]
+</div>
+
+<p class="small">
+Inégalité triangulaire.
+</p>
+</div>
+
 </section>
+
+
+<!-- ========================================= -->
+<!-- AJOUT — CONTENU DE LA FEUILLE AVANT 4. ORDRE -->
+<!-- ========================================= -->
+
+<div class="card proof">
+<span class="label">Preuve — inégalité triangulaire</span>
+
+<p>On a :</p>
+
+<div class="eq">
+\[
+-|x|\leq x\leq |x|
+\]
+</div>
+
+<div class="eq">
+\[
+-|y|\leq y\leq |y|.
+\]
+</div>
+
+<p>En additionnant membre à membre :</p>
+
+<div class="eq">
+\[
+-(|x|+|y|)\leq x+y\leq |x|+|y|.
+\]
+</div>
+
+<p>Donc :</p>
+
+<div class="eq">
+\[
+\boxed{|x+y|\leq |x|+|y|}.
+\]
+</div>
+</div>
+
+<div class="card example">
+<span class="label">Exemple</span>
+
+<p>On a :</p>
+
+<div class="eq">
+\[
+|x|\leq 7
+\]
+</div>
+
+<p>ce qui équivaut à :</p>
+
+<div class="eq">
+\[
+-7\leq x\leq 7.
+\]
+</div>
+
+<div class="figure-box" style="max-width:700px;">
+<svg viewBox="0 0 700 150" role="img" aria-label="Intervalle associé à la condition valeur absolue">
+  <line x1="80" y1="80" x2="620" y2="80" stroke="#263238" stroke-width="2.5"/>
+  <line x1="180" y1="65" x2="180" y2="95" stroke="#263238" stroke-width="2"/>
+  <line x1="350" y1="65" x2="350" y2="95" stroke="#263238" stroke-width="2"/>
+  <line x1="520" y1="65" x2="520" y2="95" stroke="#263238" stroke-width="2"/>
+  <line x1="180" y1="80" x2="520" y2="80" stroke="#6db33f" stroke-width="8"/>
+  <circle cx="180" cy="80" r="6" fill="#263238"/>
+  <circle cx="520" cy="80" r="6" fill="#263238"/>
+  <text x="165" y="120" font-size="18">−7</text>
+  <text x="342" y="120" font-size="18">x</text>
+  <text x="512" y="120" font-size="18">7</text>
+</svg>
+</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Distance et valeur absolue</span>
+
+<p>Soient \(a,x\in\mathbb R\) et \(r>0\).</p>
+
+<div class="eq">
+\[
+|x-a|&lt;r
+\Longleftrightarrow
+-r&lt;x-a&lt;r
+\]
+</div>
+
+<p>donc :</p>
+
+<div class="eq">
+\[
+\boxed{a-r&lt;x&lt;a+r}.
+\]
+</div>
+
+<p>Ainsi :</p>
+
+<div class="eq">
+\[
+\boxed{|x-a|&lt;r\Longleftrightarrow x\in]a-r,a+r[}.
+\]
+</div>
+
+<div class="figure-box" style="max-width:700px;">
+<svg viewBox="0 0 700 170" role="img" aria-label="Intervalle ouvert centré en a de rayon r">
+  <line x1="70" y1="85" x2="630" y2="85" stroke="#263238" stroke-width="2.5"/>
+  <line x1="180" y1="70" x2="180" y2="100" stroke="#263238" stroke-width="2"/>
+  <line x1="350" y1="65" x2="350" y2="105" stroke="#263238" stroke-width="2.5"/>
+  <line x1="520" y1="70" x2="520" y2="100" stroke="#263238" stroke-width="2"/>
+  <line x1="180" y1="85" x2="520" y2="85" stroke="#6db33f" stroke-width="8"/>
+  <circle cx="180" cy="85" r="7" fill="white" stroke="#263238" stroke-width="3"/>
+  <circle cx="520" cy="85" r="7" fill="white" stroke="#263238" stroke-width="3"/>
+  <text x="160" y="125" font-size="18">a−r</text>
+  <text x="340" y="125" font-size="18">a</text>
+  <text x="500" y="125" font-size="18">a+r</text>
+  <text x="335" y="45" font-size="18">r</text>
+</svg>
+</div>
+</div>
+
+<div class="card example">
+<span class="label">Exemple — ensemble des parties</span>
+
+<p>Soit :</p>
+
+<div class="eq">
+\[
+X=\{1,2,3\}.
+\]
+</div>
+
+<p>On considère l'ensemble des parties de \(X\), noté \(\mathcal P(X)\) :</p>
+
+<div class="eq">
+\[
+\mathcal P(X)=
+\{\varnothing,\{1\},\{2\},\{3\},
+\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\}.
+\]
+</div>
+
+<p>Comme \(X\) possède \(3\) éléments :</p>
+
+<div class="eq">
+\[
+\operatorname{Card}(\mathcal P(X))=2^3=8.
+\]
+</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Relation d'ordre sur \(\mathcal P(X)\)</span>
+
+<p>
+On considère la relation \(\subset\) définie sur \(\mathcal P(X)\).
+C'est une <strong>relation d'ordre partiel</strong>.
+</p>
+
+<ol>
+<li>
+<strong>\(\subset\) est réflexive :</strong>
+\[
+\forall A\in\mathcal P(X),\qquad A\subset A.
+\]
+</li>
+
+<li>
+<strong>\(\subset\) est antisymétrique :</strong>
+\[
+A\subset B\quad\text{et}\quad B\subset A
+\Longrightarrow A=B.
+\]
+</li>
+
+<li>
+<strong>\(\subset\) est transitive :</strong>
+\[
+A\subset B\quad\text{et}\quad B\subset C
+\Longrightarrow A\subset C.
+\]
+</li>
+
+<li>
+<strong>\(\subset\) n'est pas totale :</strong>
+les ensembles \(\{1,3\}\) et \(\{2,3\}\) ne sont pas comparables, car
+\[
+\{1,3\}\not\subset\{2,3\}
+\]
+et
+\[
+\{2,3\}\not\subset\{1,3\}.
+\]
+</li>
+</ol>
+
+<p>
+Donc \((\mathcal P(X),\subset)\) est un espace <strong>partiellement ordonné</strong>,
+mais pas totalement ordonné.
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Propriété d'Archimède</span>
+
+<p>
+\(\mathbb R\) est <strong>archimédien</strong>, c'est-à-dire :
+</p>
+
+<div class="eq">
+\[
+\forall x\in\mathbb R,\quad
+\exists n\in\mathbb N\quad\text{tel que}\quad n>x.
+\]
+</div>
+
+<p>
+Autrement dit, les entiers naturels peuvent dépasser tout réel.
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Partie entière</span>
+
+<p>
+Bien que cette proposition soit évidente, on peut définir la notion de
+<strong>partie entière</strong>, notée \(E(x)\).
+</p>
+
+<p>Pour tout \(x\in\mathbb R\), il existe un unique entier \(E(x)\in\mathbb Z\) tel que :</p>
+
+<div class="eq">
+\[
+\boxed{E(x)\leq x&lt;E(x)+1}.
+\]
+</div>
+
+<p>On peut aussi écrire :</p>
+
+<div class="eq">
+\[
+E(x)\leq x&lt;E(x)+1.
+\]
+</div>
+
+<p>Exemples :</p>
+
+<div class="eq">
+\[
+E(1,2)=1,\qquad E(3,2)=3,
+\]
+</div>
+
+<div class="eq">
+\[
+E(-6,4)=-7,\qquad E(-16,3)=-17.
+\]
+</div>
+
+<p>Pour un entier \(n\), on a :</p>
+
+<div class="eq">
+\[
+E(n)=n.
+\]
+</div>
+
+<div class="figure-box" style="max-width:700px;">
+<svg viewBox="0 0 700 300" role="img" aria-label="Représentation graphique de la fonction partie entière">
+  <line x1="70" y1="245" x2="630" y2="245" stroke="#263238" stroke-width="2.5"/>
+  <line x1="350" y1="270" x2="350" y2="35" stroke="#263238" stroke-width="2.5"/>
+  <line x1="105" y1="210" x2="175" y2="210" stroke="#315f22" stroke-width="5"/>
+  <line x1="175" y1="175" x2="245" y2="175" stroke="#315f22" stroke-width="5"/>
+  <line x1="245" y1="140" x2="315" y2="140" stroke="#315f22" stroke-width="5"/>
+  <line x1="385" y1="105" x2="455" y2="105" stroke="#315f22" stroke-width="5"/>
+  <line x1="455" y1="70" x2="525" y2="70" stroke="#315f22" stroke-width="5"/>
+  <line x1="525" y1="35" x2="595" y2="35" stroke="#315f22" stroke-width="5"/>
+  <text x="610" y="238" font-size="18">x</text>
+  <text x="360" y="52" font-size="18">y</text>
+  <text x="335" y="265" font-size="17">0</text>
+  <text x="475" y="125" font-size="17">E(x)</text>
+</svg>
+</div>
+</div>
+
+<div class="card proof">
+<span class="label">Application — limite de \(\dfrac{E(x)}x\)</span>
+
+<p>On a, pour tout \(x\in\mathbb R\),</p>
+
+<div class="eq">
+\[
+E(x)\leq x&lt;E(x)+1,
+\]
+</div>
+
+<p>d'où :</p>
+
+<div class="eq">
+\[
+x-1&lt;E(x)\leq x.
+\]
+</div>
+
+<p>Pour \(x>0\), en divisant par \(x\) :</p>
+
+<div class="eq">
+\[
+\frac{x-1}{x}
+&lt;
+\frac{E(x)}{x}
+\leq1.
+\]
+</div>
+
+<p>Or :</p>
+
+<div class="eq">
+\[
+\lim_{x\to+\infty}\frac{x-1}{x}=1.
+\]
+</div>
+
+<p>Donc, par le théorème des gendarmes :</p>
+
+<div class="eq">
+\[
+\boxed{\displaystyle
+\lim_{x\to+\infty}\frac{E(x)}{x}=1}.
+\]
+</div>
+</div>
 
 <section class="page" id="ordre">
 <h2>4. Ordre, intervalles et valeur absolue</h2>
@@ -725,15 +1286,15 @@ x\le y\Longleftrightarrow y-x\ge0.
 <span class="label green">Règles de calcul avec l'ordre</span>
 <p>Pour tous \(a,b,c\in\mathbb R\) :</p>
 <div class="eq">\[
-a<b\Longrightarrow a+c<b+c.
+a&lt;b\Longrightarrow a+c&lt;b+c.
 \]</div>
 <p>Si \(c>0\), alors</p>
 <div class="eq">\[
-a<b\Longrightarrow ac<bc.
+a&lt;b\Longrightarrow ac&lt;bc.
 \]</div>
-<p>Si \(c<0\), le sens de l'inégalité est inversé :</p>
+<p>Si \(c&lt;0\), le sens de l'inégalité est inversé :</p>
 <div class="eq">\[
-a<b\Longrightarrow ac>bc.
+a&lt;b\Longrightarrow ac>bc.
 \]</div>
 </div>
 
@@ -744,13 +1305,13 @@ a<b\Longrightarrow ac>bc.
 [a,b]=\{x\in\mathbb R\mid a\le x\le b\},
 \]</div>
 <div class="eq">\[
-]a,b[=\{x\in\mathbb R\mid a<x<b\},
+]a,b[=\{x\in\mathbb R\mid a&lt;x&lt;b\},
 \]</div>
 <div class="eq">\[
-[a,b[=\{x\in\mathbb R\mid a\le x<b\},
+[a,b[=\{x\in\mathbb R\mid a\le x&lt;b\},
 \]</div>
 <div class="eq">\[
-]a,b]=\{x\in\mathbb R\mid a<x\le b\}.
+]a,b]=\{x\in\mathbb R\mid a&lt;x\le b\}.
 \]</div>
 <p>Les intervalles non bornés sont par exemple :</p>
 <div class="eq">\[
@@ -765,7 +1326,7 @@ a<b\Longrightarrow ac>bc.
 |x|=
 \begin{cases}
 x,&x\ge0,\\
--x,&x<0.
+-x,&x&lt;0.
 \end{cases}
 \]</div>
 <p>La feuille rappelle notamment :</p>
@@ -791,9 +1352,9 @@ x,&x\ge0,\\
 <span class="label">Résolution d'inégalités</span>
 <p>Pour \(a\in\mathbb R\) et \(r>0\) :</p>
 <div class="eq">\[
-|x-a|<r
+|x-a|&lt;r
 \Longleftrightarrow
-a-r<x<a+r.
+a-r&lt;x&lt;a+r.
 \]</div>
 <p>De même :</p>
 <div class="eq">\[
@@ -817,7 +1378,7 @@ n>x.
 <div class="eq">\[
 \forall\varepsilon>0,\ \exists n\in\mathbb N^*
 \quad\text{tel que}\quad
-\frac1n<\varepsilon.
+\frac1n&lt;\varepsilon.
 \]</div>
 </div>
 
@@ -825,7 +1386,7 @@ n>x.
 <span class="label">Conséquence</span>
 <p>Si \(a\ne0\), on peut choisir \(n\in\mathbb N^*\) suffisamment grand pour avoir</p>
 <div class="eq">\[
-\frac1n<\frac{|a|}{2}.
+\frac1n&lt;\frac{|a|}{2}.
 \]</div>
 <p>Cette propriété permet notamment de construire des nombres rationnels
 arbitrairement proches d'un réel et d'étudier la densité.</p>
@@ -833,16 +1394,16 @@ arbitrairement proches d'un réel et d'étudier la densité.</p>
 
 <h3>Approximation dans un intervalle</h3>
 <div class="card">
-<p>Soit \(]a,b[\) un intervalle de \(\mathbb R\), avec \(a<b\).
+<p>Soit \(]a,b[\) un intervalle de \(\mathbb R\), avec \(a&lt;b\).
 On veut montrer qu'il existe \(n\in\mathbb N^*\) tel que</p>
 <div class="eq">\[
 -\frac1n\in]a,b[.
 \]</div>
 <p>Il suffit de choisir \(n\) de manière à avoir</p>
 <div class="eq">\[
-a<-\frac1n<b.
+a&lt;-\frac1n&lt;b.
 \]</div>
-<p>Lorsque \(a<0<b\), cela revient à prendre \(n\) assez grand pour que</p>
+<p>Lorsque \(a&lt;0&lt;b\), cela revient à prendre \(n\) assez grand pour que</p>
 <div class="eq">\[
 n>-\frac1a
 \qquad\text{et}\qquad
@@ -904,7 +1465,7 @@ La borne supérieure \(\sup(A)\) est l'unique réel \(s\) tel que :</p>
 <li>\(\forall x\in A,\ x\le s\) ;</li>
 <li>\(\forall\varepsilon>0,\ \exists x\in A\) tel que
 \[
-s-\varepsilon<x.
+s-\varepsilon&lt;x.
 \]</li>
 </ol>
 <p>Autrement dit, \(s\) est le plus petit des majorants de \(A\).</p>
@@ -918,7 +1479,7 @@ La borne inférieure \(\inf(A)\) est l'unique réel \(m\) tel que :</p>
 <li>\(\forall x\in A,\ m\le x\) ;</li>
 <li>\(\forall\varepsilon>0,\ \exists x\in A\) tel que
 \[
-x<m+\varepsilon.
+x&lt;m+\varepsilon.
 \]</li>
 </ol>
 <p>Autrement dit, \(m\) est le plus grand des minorants de \(A\).</p>
@@ -946,7 +1507,7 @@ La borne supérieure est le plus petit réel appartenant à cet ensemble.</p>
 <div class="eq">\[
 \forall\varepsilon>0,\quad
 \exists x\in A,\qquad
-\sup(A)-\varepsilon<x\le\sup(A).
+\sup(A)-\varepsilon&lt;x\le\sup(A).
 \]</div>
 </div>
 
@@ -978,11 +1539,11 @@ A=\left\{\frac{1}{n}+\frac{1}{p}\ ;\ n,p\in\mathbb N^*\right\}.
 
 <p>Pour \(n,p\in\mathbb N^*\), on a</p>
 <div class="eq">\[
-0<\frac1n\le1,\qquad 0<\frac1p\le1,
+0&lt;\frac1n\le1,\qquad 0&lt;\frac1p\le1,
 \]</div>
 <p>donc</p>
 <div class="eq">\[
-0<\frac1n+\frac1p\le2.
+0&lt;\frac1n+\frac1p\le2.
 \]</div>
 <p>Ainsi \(A\) est bornée.</p>
 
@@ -992,7 +1553,7 @@ A=\left\{\frac{1}{n}+\frac{1}{p}\ ;\ n,p\in\mathbb N^*\right\}.
 \]</div>
 
 <p>Pour tout \(\varepsilon>0\), la propriété d'Archimède permet de choisir
-\(n\) assez grand pour que \(\frac2n<\varepsilon\). Ainsi les éléments de \(A\)
+\(n\) assez grand pour que \(\frac2n&lt;\varepsilon\). Ainsi les éléments de \(A\)
 peuvent être rendus arbitrairement proches de \(0\). On obtient</p>
 <div class="eq">\[
 \inf(A)=0.
@@ -1010,9 +1571,9 @@ A=\left\{\frac{n+1}{n}\ ;\ n\in\mathbb N^*\right\}.
 <div class="eq">\[
 \frac{n+1}{n}=1+\frac1n.
 \]</div>
-<p>Comme \(0<\frac1n\le1\), on obtient</p>
+<p>Comme \(0&lt;\frac1n\le1\), on obtient</p>
 <div class="eq">\[
-1<1+\frac1n\le2.
+1&lt;1+\frac1n\le2.
 \]</div>
 <p>Ainsi \(A\) est bornée, avec</p>
 <div class="eq">\[
@@ -1046,7 +1607,7 @@ De plus, lorsque \(n\to+\infty\),</p>
 <span class="label">Exercice 4</span>
 <p>Soient \(A\) et \(B\) deux parties non vides de \(\mathbb R\) telles que</p>
 <div class="eq">\[
-\forall a\in A,\ \forall b\in B,\qquad a<b.
+\forall a\in A,\ \forall b\in B,\qquad a&lt;b.
 \]</div>
 <p>Montrer que \(A\) est majorée, \(B\) est minorée et que</p>
 <div class="eq">\[
@@ -1061,15 +1622,15 @@ De plus, lorsque \(n\to+\infty\),</p>
 <div class="card proof">
 <span class="label">Correction</span>
 <p>\(A\) et \(B\) sont non vides. Il existe donc \(a_0\in A\) et \(b_0\in B\).</p>
-<p>Comme \(a<b\) pour tout \(a\in A\) et \(b\in B\), on a en particulier</p>
+<p>Comme \(a&lt;b\) pour tout \(a\in A\) et \(b\in B\), on a en particulier</p>
 <div class="eq">\[
-a_0<b\qquad\forall b\in B.
+a_0&lt;b\qquad\forall b\in B.
 \]</div>
 <p>Donc \(a_0\) est un minorant de \(B\). Ainsi \(B\) est minorée.</p>
 
 <p>De même,</p>
 <div class="eq">\[
-a<b_0\qquad\forall a\in A,
+a&lt;b_0\qquad\forall a\in A,
 \]</div>
 <p>donc \(b_0\) est un majorant de \(A\). Ainsi \(A\) est majorée.</p>
 
@@ -1084,18 +1645,18 @@ p=\frac{\inf(B)+\sup(A)}2.
 \]</div>
 <p>Alors</p>
 <div class="eq">\[
-\inf(B)<p<\sup(A).
+\inf(B)&lt;p&lt;\sup(A).
 \]</div>
 <p>Par la caractérisation de la borne supérieure, il existe \(a\in A\) tel que</p>
 <div class="eq">\[
-p<a.
+p&lt;a.
 \]</div>
 <p>Par la caractérisation de la borne inférieure, il existe \(b\in B\) tel que</p>
 <div class="eq">\[
-b<p.
+b&lt;p.
 \]</div>
-<p>On obtient alors \(b<p<a\), donc \(b<a\), ce qui contredit
-\(a<b\).</p>
+<p>On obtient alors \(b&lt;p&lt;a\), donc \(b&lt;a\), ce qui contredit
+\(a&lt;b\).</p>
 <p>Par conséquent :</p>
 <div class="eq">\[
 \boxed{\sup(A)\le\inf(B)}.
