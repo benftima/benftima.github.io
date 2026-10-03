@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2ème Sciences — Série complète | benftima.github.io/2</title>
+<meta name="description" content="Série d'exercices de mathématiques pour 2ème Sciences — équations, inéquations, valeurs absolues, radicaux et problèmes du second degré.">
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']],
+    processEscapes: true
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --blue:#0645ad;
+  --blue-dark:#202122;
+  --ink:#202122;
+  --paper:#fff;
+  --soft:#f8f9fa;
+  --line:#a2a9b1;
+  --border:#c8ccd1;
+  --shadow:0 1px 3px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+.topbar{
+  background:#fff;
+  color:#202122;
+  border-bottom:1px solid #a2a9b1;
+  box-shadow:none;
+}
+.topbar-inner{
+  max-width:1280px;margin:auto;padding:8px 18px;
+  display:flex;gap:18px;align-items:center;justify-content:space-between;
+}
+.brand{
+  font-size:1.05rem;font-weight:600;white-space:nowrap;color:#202122;
+}
+nav{display:flex;flex-wrap:wrap;gap:2px;justify-content:flex-end}
+nav a{
+  color:#0645ad;text-decoration:none;padding:4px 7px;
+  font-size:.84rem;border-radius:2px;
+}
+nav a:hover{background:#eaecf0;text-decoration:underline}
+.hero{
+  max-width:1280px;margin:20px auto 10px;padding:0 18px;
+}
+.school-line{display:flex;justify-content:space-between;color:#285e59;font-style:italic;font-size:1.05rem}
+.ribbon{
+  margin-top:10px;
+  background:#fff;
+  color:#202122;text-align:left;padding:8px 0;
+  font-size:1.8rem;font-weight:400;
+  border:0;
+  border-bottom:1px solid #a2a9b1;
+  box-shadow:none;
+}
+.container{max-width:1180px;margin:0 auto;padding:0 18px 50px}
+.exercise{
+  position:relative;background:#fff;
+  margin:20px 0;padding:24px 24px 22px;
+  border:1px solid #c8ccd1;
+  border-radius:2px;
+  box-shadow:none;
+  overflow:hidden;
+}
+.exercise::after{
+  content:"";position:absolute;pointer-events:none;
+}
+.ex-title{
+  display:block;margin:-24px -24px 18px;
+  background:#f8f9fa;
+  color:#202122;padding:7px 12px;
+  border-bottom:1px solid #c8ccd1;
+  font-size:1.25rem;font-weight:600;
+  font-style:normal;
+}
+.intro{font-style:italic;font-size:1.08rem;margin:4px 0 18px}
+.items{display:grid;gap:13px}
+.item{
+  position:relative;z-index:2;
+  display:flex;align-items:flex-start;gap:12px;
+  line-height:1.8;font-size:1.08rem;
+}
+.num{
+  flex:0 0 34px;height:34px;
+  display:flex;align-items:center;justify-content:center;
+  background:#10b6a3;color:white;
+  clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+  font-weight:bold;
+}
+.sub{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:29px;height:29px;border-radius:50%;
+  background:var(--purple);color:white;font-weight:bold;
+  margin-right:8px;font-size:.92rem;
+}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.eqgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px 35px}
+.eq{position:relative;z-index:2;padding:4px 0 4px 15px;font-size:1.1rem}
+.eq::before{content:"•";position:absolute;left:0;color:#333}
+.system{margin:5px 0 0 8px}
+.figure{
+  display:block;max-width:470px;width:90%;margin:18px auto 0;
+  border:1px solid #bbb;border-radius:5px;
+}
+.section-note{
+  background:#f8f9fa;border-left:4px solid #36c;
+  padding:10px 14px;margin:14px 0;border-radius:0;
+}
+.footer{
+  max-width:1100px;margin:auto;padding:25px 18px 45px;
+  text-align:center;color:#54595d;font-size:.9rem;
+}
+.footer strong{color:var(--red)}
+
+@media(max-width:760px){
+  .topbar-inner{align-items:flex-start;flex-direction:column}
+  nav{justify-content:flex-start}
+  .hero{padding:0 10px}
+  .container{padding:0 10px 35px}
+  .exercise{padding:28px 18px 22px;margin:18px 0}
+  .exercise::after{font-size:3rem}
+  .ribbon{font-size:1.18rem;padding:13px}
+  .school-line{font-size:.9rem}
+  .cols,.eqgrid{grid-template-columns:1fr}
+  .item{font-size:1rem}
+}
+@media print{
+  .topbar,
+  body{background:white}
+  .exercise{box-shadow:none;break-inside:avoid}
+  .hero{margin-top:0}
+}
+</style>
+</head>
+
+<body id="top">
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Ben Ftima — Mathématiques</div>
+    <nav>
+      <a href="#ex1">1</a><a href="#ex2">2</a><a href="#ex3">3</a><a href="#ex4">4</a>
+      <a href="#ex5">5</a><a href="#ex6">6</a><a href="#ex7">7</a><a href="#ex8">8</a>
+      <a href="#ex9">9</a><a href="#ex10">10</a><a href="#ex11">11</a><a href="#ex12">12</a>
+      <a href="#ex13">13</a><a href="#ex14">14</a><a href="#ex15">15</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="school-line">
+    <span><strong><a href="https://benftima.github.io/2eme/" style="color:#0645ad;text-decoration:none">https://benftima.github.io/2eme/</a></strong></span>
+    <span>2026 / 2027</span>
+  </div>
+  <div class="ribbon">2ème Sciences — Problèmes du premier degré et du second degré</div>
+</section>
+
+<section class="container" style="padding-bottom:0">
+  <div style="border:1px solid #a2a9b1;background:#f8f9fa;padding:12px 16px;margin:16px 0">
+    <div style="font-weight:600;font-size:1.05rem;margin-bottom:5px">Sommaire</div>
+    <div style="font-size:.92rem">
+      <a href="#ex1">Exercices 1–5</a> ·
+      <a href="#ex6">Exercice 6</a> ·
+      <a href="#ex7">Exercices 7–9</a> ·
+      <a href="#ex10">Exercices 10–12</a> ·
+      <a href="#ex13">Exercices 13–15</a>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+<section class="exercise" id="ex1">
+  <div class="ex-title">Exercice 1</div>
+  <p class="intro">Relier par une flèche les équations avec les résultats convenables :</p>
+  <div class="cols">
+    <div class="items">
+      <div class="eq">\(\sqrt{1-x}=x-1\)</div>
+      <div class="eq">\(\sqrt{1-x}=|x+1|\)</div>
+      <div class="eq">\(\sqrt{1-x}=1-|x|\)</div>
+    </div>
+    <div class="items">
+      <div class="eq">\(S_{\mathbb R}=\{1\}\)</div>
+      <div class="eq">\(S_{\mathbb R}=\{-3;0\}\)</div>
+      <div class="eq">\(S_{\mathbb R}=\{0;1\}\)</div>
+    </div>
+  </div>
+</section>
+
+<section class="exercise" id="ex2">
+  <div class="ex-title">Exercice 2</div>
+  <p class="intro">Résoudre dans \(\mathbb R\) les équations suivantes :</p>
+  <div class="eqgrid">
+    <div class="eq">\(\dfrac34x+1=-3x\)</div>
+    <div class="eq">\((2x-3)(x+1)+(2x-3)(5x+2)=0\)</div>
+    <div class="eq">\((5x-1)(2x+3)=(x+1)(10x+3)\)</div>
+    <div class="eq">\((2x+1)(x+3)-(x^2+6x+9)=x^2-9\)</div>
+    <div class="eq">\((x-2)^2=\dfrac94(x+1)^2\)</div>
+    <div class="eq">\(x^3+27+(x+3)(x-9)=0\)</div>
+    <div class="eq">\(27x^3(x+3)-12(x^2+3x)=0\)</div>
+    <div class="eq">\(\dfrac{x^2-4}{x-2}=\dfrac34\)</div>
+    <div class="eq">\(\dfrac{4x+5}{2x+1}=\dfrac{6x+7}{3x-6}\)</div>
+    <div class="eq">\(|x^2+2x|-|x+2|=0\)</div>
+    <div class="eq">\(|x^2+2x|+|x+2|=0\)</div>
+    <div class="eq">\(|2x-1|=x+2\)</div>
+    <div class="eq">\(\dfrac{3x-1}{3x-1}+\dfrac52=\dfrac12\)</div>
+    <div class="eq">\(\sqrt{2x-1}=3\)</div>
+    <div class="eq">\(\sqrt{\dfrac{x^2+3}{x}}=\sqrt2\)</div>
+    <div class="eq">\(3x-4=\sqrt{x^2-4x+4}\)</div>
+    <div class="eq">\(\sqrt{2x+3}=\sqrt2-x\)</div>
+    <div class="eq">\(\sqrt{3x^2+1}=1-2x\)</div>
+  </div>
+</section>
+
+<section class="exercise" id="ex3">
+  <div class="ex-title">Exercice 3</div>
+  <p class="intro">Résoudre dans \(\mathbb R\) les inéquations suivantes :</p>
+  <div class="eqgrid">
+    <div class="eq">\(-\dfrac23x+1<0\)</div>
+    <div class="eq">\(\dfrac{-3x+2}{-3}-\dfrac12\ge\dfrac{-5}{3}\)</div>
+    <div class="eq">\(\dfrac{(x-1)^2}{3}+\dfrac{(x-2)(x+3)}{2}<\dfrac{(5x-1)(x-4)}{6}\)</div>
+  </div>
+</section>
+
+<section class="exercise" id="ex4">
+  <div class="ex-title">Exercice 4</div>
+  <p class="intro">Résoudre dans \(\mathbb R\) les inéquations suivantes :</p>
+  <div class="eqgrid">
+    <div class="eq">\(|2x+3|=-3\)</div>
+    <div class="eq">\(|2x+3|\ge-1\)</div>
+    <div class="eq">\(|2x+3|\le5\)</div>
+    <div class="eq">\(|2x+3|\ge2\)</div>
+    <div class="eq">\(\dfrac{|x|+3}{|x|-2}\le0\)</div>
+    <div class="eq">\((2x-1)(1-x)>0\)</div>
+    <div class="eq">\(\dfrac{x^2-4x}{1-x}\le0\)</div>
+    <div class="eq">\(\dfrac{5-2x}{1-x}>0\)</div>
+    <div class="eq">\(\sqrt{\dfrac{5-2x}{1-x}}<1\)</div>
+  </div>
+</section>
+
+<section class="exercise" id="ex5">
+  <div class="ex-title">Exercice 5</div>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Trouver trois entiers consécutifs dont leur somme est \(2025\).</div></div>
+    <div class="item"><span class="num">2</span><div>Trouver trois entiers consécutifs dont leur somme est \(2026\).</div></div>
+  </div>
+</section>
+
+<section class="exercise" id="ex6">
+  <div class="ex-title">Exercice 6</div>
+  <p class="intro">Le carré \(ABCD\) mesure \(10\,\mathrm{cm}\) de côté, nous choisissons un point \(E\) sur \([AB]\) et nous dessinons les carrés \(AEGF\) et \(GHCI\).</p>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>En posant \(AE=x\), calculer \(S_1\), aire du carré \(AEGF\) et \(S_2\), aire de \(GHCI\) en fonction de \(x\).</div></div>
+    <div class="item"><span class="num">2</span><div>On pose \(S(x)\) la somme des aires \(S_1\) et \(S_2\). Montrer que \(S(x)=2x^2-20x+100\).</div></div>
+    <div class="item"><span class="num">3</span><div>Déterminer \(x_1\) pour que \(S(x)\) soit égale à la moitié de l'aire du carré \(ABCD\).</div></div>
+  </div>
+  <svg class="figure" viewBox="0 0 520 360" aria-label="Carré ABCD et carrés AEGF et GHCI">
+    <rect x="80" y="40" width="330" height="270" fill="none" stroke="#222" stroke-width="3"/>
+    <line x1="210" y1="40" x2="210" y2="310" stroke="#222" stroke-width="3"/>
+    <line x1="80" y1="175" x2="410" y2="175" stroke="#222" stroke-width="3"/>
+    <circle cx="80" cy="40" r="4"/><circle cx="210" cy="40" r="4"/><circle cx="410" cy="40" r="4"/>
+    <circle cx="80" cy="175" r="4"/><circle cx="210" cy="175" r="4"/><circle cx="410" cy="175" r="4"/>
+    <circle cx="80" cy="310" r="4"/><circle cx="210" cy="310" r="4"/><circle cx="410" cy="310" r="4"/>
+    <g font-family="Georgia" font-size="24">
+      <text x="67" y="30">A</text><text x="202" y="30">E</text><text x="413" y="30">B</text>
+      <text x="61" y="175">F</text><text x="215" y="195">G</text><text x="415" y="175">H</text>
+      <text x="62" y="340">D</text><text x="202" y="340">I</text><text x="413" y="340">C</text>
+    </g>
+  </svg>
+</section>
+
+<section class="exercise" id="ex7">
+  <div class="ex-title">Exercice 7</div>
+  <p class="intro">Résoudre dans \(\mathbb R\) les équations suivantes :</p>
+  <div class="eqgrid">
+    <div class="eq">\(-x^2-2x+15=0\)</div>
+    <div class="eq">\(-3x^2+11x-10=0\)</div>
+    <div class="eq">\(x^2+x+1=0\)</div>
+    <div class="eq">\(x^2-\dfrac{28}{9}x+\dfrac13=0\)</div>
+    <div class="eq">\(x^2\sqrt2-\left(1+\dfrac1{\sqrt2}\right)x+\dfrac12=0\)</div>
+    <div class="eq">\(-x^2-\dfrac{31}{4}x+2=0\)</div>
+    <div class="eq">\(\dfrac{1}{2+\sqrt3}x^2+2x+\sqrt3=0\)</div>
+    <div class="eq">\(2024x^2+2023x-1=0\)</div>
+    <div class="eq">\(\dfrac{x+2}{2x+1}=\dfrac4{2x+1}\)</div>
+    <div class="eq">\(\dfrac{8x}{x-5}=1-3x\)</div>
+    <div class="eq">\(\sqrt{x^2+x+6}=2x-4\)</div>
+    <div class="eq">\(x^2+(2-\sqrt3)x-2\sqrt2=0\)</div>
+    <div class="eq">\((\sqrt6-\sqrt2)x^2+2\sqrt2\,x-(\sqrt6+\sqrt2)=0\)</div>
+    <div class="eq">\(\dfrac{x^2+3x+4}{x^2+x+1}=\dfrac{x^2+4x+10}{x^2+2x+3}\)</div>
+  </div>
+</section>
+
+<section class="exercise" id="ex8">
+  <div class="ex-title">Exercice 8</div>
+  <p class="intro">Résoudre dans \(\mathbb R\) les inéquations suivantes :</p>
+  <div class="eqgrid">
+    <div class="eq">\(2x^2+9x+9>0\)</div>
+    <div class="eq">\(-3x^2-5x+2>0\)</div>
+    <div class="eq">\(x^2-4\sqrt3\,x+12\le0\)</div>
+    <div class="eq">\(19x^2-18x-1\ge0\)</div>
+    <div class="eq">\(-29x^2-25x+4<0\)</div>
+    <div class="eq">\(\dfrac{5x+1}{x^2+x+1}\le\dfrac4{x+1}\)</div>
+    <div class="eq">\(7x-1>\dfrac{11x-5}{x+3}\)</div>
+  </div>
+</section>
+
+<section class="exercise" id="ex9">
+  <div class="ex-title">Exercice 9</div>
+  <p class="intro">Soit dans \(\mathbb R\) l'équation \((E):x^2-2(a-1)x+4=0\), où \(a\) est un réel.</p>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Déterminer le réel \(a\) pour que \(-1\) est une solution de \((E)\).</div></div>
+    <div class="item"><span class="num">2</span><div>Déterminer l'ensemble des réels \(a\) pour que \((E)\) admet deux racines distinctes \(x'\) et \(x''\).</div></div>
+    <div class="item"><span class="num">3</span><div>Déterminer \(a\) pour que \(x'^2+x''^2-x'x''=24\).</div></div>
+    <div class="item"><span class="num">4</span><div>On donne \(a=-2\), sans calculer les racines de \((E)\), calculer
+      \(A=\dfrac{x'+1}{x''-1}+\dfrac{x''+1}{x'-1}\) et \(B=x'^3+x''^3\).</div></div>
+  </div>
+</section>
+
+<section class="exercise" id="ex10">
+  <div class="ex-title">Exercice 10</div>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Résoudre dans \(\mathbb R\) l'équation \(x^2-3x-4=0\).</div></div>
+    <div class="item"><span class="num">2</span><div>Résoudre alors dans \(\mathbb R\) l'équation \((x^2+x+2)^2=3x^2+3x+10\).</div></div>
+    <div class="item"><span class="num">3</span><div>Déterminer tous les réels \(a\) et \(b\) vérifiant :
+      \(\begin{cases}a-b=2\sqrt3\\ ab=-2.\end{cases}\)</div></div>
+  </div>
+</section>
+
+<section class="exercise" id="ex11">
+  <div class="ex-title">Exercice 11</div>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Résoudre dans \(\mathbb R\) l'équation \(4x^2-7x-2=0\).</div></div>
+    <div class="item"><span class="num">2</span><div>En déduire l'ensemble des solutions dans \(\mathbb R\) de chacune des équations suivantes :
+      <div class="section-note">
+        <div><span class="sub">a</span>\(4(x^2+x)^2-7(x^2+x)-2=0\)</div>
+        <div style="margin-top:10px"><span class="sub">b</span>\(4|x-1|-7\sqrt{|x-1|}-2=0\)</div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="exercise" id="ex12">
+  <div class="ex-title">Exercice 12</div>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Résoudre dans \(\mathbb R\) les inéquations suivantes :
+      <div class="section-note">
+        <div><span class="sub">a</span>\(2x^2+x-3\ge0\)</div>
+        <div><span class="sub">b</span>\(\sqrt{2x^2+x-3}<x-1\)</div>
+        <div><span class="sub">c</span>\(\sqrt{2x^2+x-3}+x^2+1>0\)</div>
+      </div>
+    </div></div>
+    <div class="item"><span class="num">2</span><div>Soit \(F(x)=\dfrac{2x^2+x-3}{2x^2-x-6}\).
+      <div class="section-note">
+        <div><span class="sub">a</span>Déterminer l'ensemble \(D\) des réels \(x\) tels que \(F(x)\) a un sens.</div>
+        <div><span class="sub">b</span>Simplifier \(F(x)\) pour tout \(x\in D\).</div>
+        <div><span class="sub">c</span>Résoudre dans \(\mathbb R\) l'inéquation : \(F(x)\ge2x-2\).</div>
+      </div>
+    </div></div>
+    <div class="item"><span class="num">3</span><div>Soit \(G(x)=\dfrac{2x^2-x-6}{-x^2+3|x|+4}\).
+      <div class="section-note">
+        <div><span class="sub">a</span>Déterminer l'ensemble \(D'\) des réels \(x\) tels que \(G(x)\) a un sens.</div>
+        <div><span class="sub">b</span>Résoudre dans \(\mathbb R\) l'inéquation : \(G(x)\le0\).</div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="exercise" id="ex13">
+  <div class="ex-title">Exercice 13</div>
+  <p class="intro">Trouver les réels \(x\) et \(y\) tels que :</p>
+  <div class="eqgrid">
+    <div class="eq">\(x+y=24\) et \(xy=8\)</div>
+    <div class="eq">\(x-y=25\) et \(xy=-156\)</div>
+    <div class="eq">\(x^2+y^2=17\) et \(xy=4\)</div>
+    <div class="eq">\(x^2-y^2=40\) et \(xy=21\)</div>
+    <div class="eq">\(x+y=13\) et \(x^2+y^2=89\)</div>
+    <div class="eq">\(x^2+y^2=41\) et \((x-1)(y-1)=18\)</div>
+    <div class="eq">\(x^3+y^3=19\) et \(xy=1\)</div>
+    <div class="eq">\(x^2+y^3=2\) et \(x^2+y^2=8\)</div>
+    <div class="eq">\(x+y=2+\sqrt3\) et \(xy=\sqrt3\)</div>
+    <div class="eq">\(2x^2y+2y^2x=3\) et \(4xy=3\)</div>
+  </div>
+</section>
+
+<section class="exercise" id="ex14">
+  <div class="ex-title">Exercice 14</div>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Résoudre dans \(\mathbb R\) l'équation : \(x^2-7x-60=0\).</div></div>
+    <div class="item"><span class="num">2</span><div>Déduire les solutions des équations :
+      <div class="section-note">
+        <div><span class="sub">a</span>\(x^2-7x-60+x^2+6x+5=0\)</div>
+        <div><span class="sub">b</span>\((x^2-4x)^2-7x^2=60-28x\)</div>
+        <div><span class="sub">c</span>\(|5x+6|=x-1\)</div>
+      </div>
+    </div></div>
+    <div class="item"><span class="num">3</span><div>Soit \(ABC\) un triangle rectangle en \(A\) tel que \(BC=13\) et \(AB=AC=7\).
+      <div class="section-note">
+        <div><span class="sub">a</span>Montrer que \(AB\times AC=60\).</div>
+        <div><span class="sub">b</span>Déterminer alors \(AB\) et \(AC\).</div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="exercise" id="ex15">
+  <div class="ex-title">Exercice 15</div>
+
+  <p class="intro"><strong>I.</strong> Résoudre dans \(\mathbb R\) les inéquations suivantes :</p>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>\(2x^2-x-3<0\)</div></div>
+    <div class="item"><span class="num">2</span><div>\(|x^2-2x+3|<2x^2-x-3\)</div></div>
+  </div>
+
+  <p class="intro" style="margin-top:28px"><strong>II.</strong> On donne \(A(x)=3(x^2-1)^2+4(x^2-1)-7\).</p>
+  <div class="items">
+    <div class="item"><span class="num">1</span><div>Résoudre dans \(\mathbb R\) l'équation : \(A(x)=0\).</div></div>
+    <div class="item"><span class="num">2</span><div>Factoriser \(A(x)\).</div></div>
+    <div class="item"><span class="num">3</span><div>Résoudre dans \(\mathbb R\) l'inéquation : \(A(x)\ge0\).</div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div><strong>Ben Ftima</strong> — Mathématiques · 2ème Sciences</div>
+  <div>Année scolaire 2026 / 2027 · Série : Problèmes du premier et du second degré</div>
+  <div style="margin-top:8px"><a href="https://benftima.github.io/2eme/" style="color:#0645ad">https://benftima.github.io/2eme/</a></div>
+</footer>
+
+<a class="back" href="#top" title="Retour en haut">↑</a>
+</body>
+</html>
