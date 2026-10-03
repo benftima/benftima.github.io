@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De la densité au continu — Dedekind, Cauchy et complétude de R</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--g:#6db33f;--dg:#3f7f24;--bg:#f7faf5;--bd:#dfe8da;--tx:#263238}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--tx);line-height:1.7;background:#fff}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e7e7e7;box-shadow:0 2px 10px #0000000d}
+.head{max-width:1250px;margin:auto;padding:14px 22px;display:flex;justify-content:space-between;gap:20px}
+.logo{font-size:1.25rem;font-weight:700;color:var(--dg)} .author{font-size:.82rem;color:#667085}
+.layout{max-width:1250px;margin:auto;padding:30px 22px 60px;display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:28px}
+aside{position:sticky;top:82px;align-self:start;padding:17px;border:1px solid var(--bd);border-radius:10px;background:var(--bg)}
+aside h3{margin:0 0 10px;color:var(--dg)} aside a{display:block;padding:5px 7px;color:#455;text-decoration:none;font-size:.86rem;border-radius:5px}
+aside a:hover{background:#eaf4e4;color:var(--dg)}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:25px;margin-bottom:22px;box-shadow:0 3px 12px #0000000b}
+h1{font-size:2rem;margin-top:0} h2{font-size:1.35rem;border-left:4px solid var(--g);padding-left:12px}
+.kicker{color:var(--g);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+.math{overflow:auto;text-align:center;background:#fafcf9;border:1px solid #edf1eb;border-radius:8px;padding:12px;margin:17px 0}
+.q{font-weight:700;background:#fafafa;border-left:4px solid #9aa4ad;padding:11px 14px;margin-top:17px}
+.a{background:#fbfdf9;border-left:4px solid var(--g);padding:11px 14px;margin-bottom:15px}
+.note{background:var(--bg);border-left:4px solid var(--g);padding:13px 15px;margin:17px 0}
+.warn{background:#fff8ee;border-left:4px solid #e39a35;padding:13px 15px;margin:17px 0}
+.blue{background:#f4f8ff;border-left:4px solid #5b8def;padding:13px 15px;margin:17px 0}
+.small{font-size:.87rem;color:#59636e} table{width:100%;border-collapse:collapse;margin:17px 0}
+th,td{border:1px solid #dfe4e8;padding:9px;vertical-align:top} th{background:#f5f7f8;text-align:left}
+.fig{text-align:center;overflow:auto;margin:18px 0} .cap{text-align:center;color:#667085;font-size:.84rem}
+.tag{display:inline-block;background:#edf6e9;color:var(--dg);padding:2px 7px;border-radius:12px;font-size:.75rem;font-weight:700}
+.next{display:inline-block;background:var(--g);color:white;text-decoration:none;padding:9px 15px;border-radius:7px;font-weight:700}
+.next:hover{background:var(--dg)} footer{text-align:center;color:#7a8490;font-size:.8rem;padding:24px;border-top:1px solid #eee}
+@media(max-width:850px){.layout{grid-template-columns:1fr} aside{position:relative;top:0;order:-1} .card{padding:19px}}
+</style>
+</head>
+<body>
+<header><div class="head">
+  <div class="logo">Mathématiques.</div>
+  <div class="author">Ben Ftima Mohamed — 21621409061</div>
+</div></header>
+
+<div class="layout">
+<main>
+<section class="card">
+  <div class="kicker">Complément — Nombres réels</div>
+  <h1>De la densité au continu : Dedekind, Cauchy et la complétude de \(\mathbb R\)</h1>
+  <p>
+    Cette page est volontairement <strong>indépendante du fichier <code>index.html</code></strong>.
+    Elle contient uniquement la partie consacrée au passage de la densité à la
+    construction et à la complétude de \(\mathbb R\).
+  </p>
+  <div class="note">
+    <strong>Fil conducteur :</strong>
+    densité \(\rightarrow\) irrationnels \(\rightarrow\) problème de \(\sqrt2\)
+    \(\rightarrow\) Dedekind / Cauchy \(\rightarrow\) complétude
+    \(\rightarrow\) droite réelle continue.
+  </div>
+</section>
+
+<section class="card" id="dense-continu"><h2>1. Densité et continuité : deux notions différentes</h2>
+<div class="q">Question 7 — La densité suffit-elle à dire que \(\mathbb R\) est continu ?</div>
+<div class="a"><strong>Non.</strong> La densité décrit la répartition : « entre deux points, on peut en trouver d'autres ». La continuité de \(\mathbb R\) est liée à une propriété plus profonde : sa <strong>complétude</strong>.</div>
+<table><tr><th>Densité</th><th>Continuité / complétude</th></tr><tr><td>Les nombres sont présents dans tout intervalle, aussi petit soit-il.</td><td>Les limites et bornes attendues restent dans l'ensemble des réels.</td></tr><tr><td>\(\mathbb Q\) est dense dans \(\mathbb R\).</td><td>\(\mathbb R\) possède la propriété de la borne supérieure.</td></tr></table>
+<div class="math">\[\boxed{\text{densité}\neq\text{continuité}}\]</div>
+</section>
+
+<section class="card" id="sqrt2"><h2>7. Le problème de \(\sqrt2\) : le « trou » de \(\mathbb Q\)</h2>
+<div class="q">Question 8 — Pourquoi \(\sqrt2\) révèle-t-il une difficulté ?</div>
+<div class="a">L'équation \(x^2=2\) n'a pas de solution dans \(\mathbb Q\), alors que des rationnels peuvent approcher de plus en plus \(2\) par leurs carrés.</div>
+<div class="math">\[1^2=1,\quad1.4^2=1.96,\quad1.41^2=1.9881,\quad1.414^2=1.999396,\quad1.4142^2=1.99996164.\]</div>
+<p>On voit apparaître le nombre que nous appelons \(\sqrt2\), mais \(\sqrt2\notin\mathbb Q\).</p>
+<div class="note"><strong>Question fondamentale :</strong> comment compléter \(\mathbb Q\) pour obtenir \(\mathbb R\) ?</div>
+</section>
+
+<section class="card" id="dedekind"><h2>3. Dedekind : construire un réel par une coupure</h2>
+<div class="q">Question 9 — Comment Dedekind regarde-t-il le problème ?</div>
+<div class="a">Dedekind ne commence pas par une suite. Il regarde comment les rationnels se répartissent de part et d'autre du « trou ».</div>
+<div class="math">\[A=\{q\in\mathbb Q\mid q^2&lt;2\},\qquad B=\{q\in\mathbb Q\mid q^2&gt;2\}.\]</div>
+<p>Les rationnels de \(A\) sont d'un côté et ceux de \(B\) de l'autre. On obtient une séparation :</p>
+<div class="math">\[\boxed{A\mid B}\]</div>
+<div class="fig">
+<svg viewbox="0 0 900 245" width="900">
+<line stroke="#333" stroke-width="3" x1="70" x2="830" y1="135" y2="135"></line>
+<polygon fill="#333" points="830,135 812,126 812,144"></polygon>
+<g fill="#6db33f"><circle cx="160" cy="135" r="6"></circle><circle cx="230" cy="135" r="6"></circle><circle cx="300" cy="135" r="6"></circle><circle cx="370" cy="135" r="6"></circle></g>
+<g fill="#c76b00"><circle cx="535" cy="135" r="6"></circle><circle cx="605" cy="135" r="6"></circle><circle cx="675" cy="135" r="6"></circle><circle cx="745" cy="135" r="6"></circle></g>
+<line stroke="#3f7f24" stroke-width="4" x1="455" x2="455" y1="82" y2="188"></line>
+<text fill="#3f7f24" font-size="20" x="430" y="55">√2</text><text fill="#3f7f24" font-size="18" x="175" y="105">A : q² &lt; 2</text><text fill="#c76b00" font-size="18" x="565" y="105">B : q² &gt; 2</text>
+<text fill="#666" font-size="16" x="405" y="220">la coupure</text>
+</svg></div>
+<div class="a"><strong>Idée de Dedekind :</strong> une telle coupure représente un nombre réel. Pour la coupure associée à \(q^2&lt;2\), le réel correspondant est \(\sqrt2\).</div>
+<div class="warn">Dedekind ne transforme pas \(\sqrt2\) en rationnel : il construit un <strong>nouvel objet réel</strong> correspondant à la coupure.</div>
+</section>
+
+<section class="card" id="cauchy"><h2>4. Cauchy : construire un réel par une suite</h2>
+<div class="q">Question 10 — Cauchy regarde-t-il le problème de la même manière que Dedekind ?</div>
+<div class="a">Non. Cauchy regarde une suite de rationnels qui devient de plus en plus précise et dont les termes deviennent arbitrairement proches.</div>
+<div class="math">\[u_1=1,\quad u_2=1.4,\quad u_3=1.41,\quad u_4=1.414,\quad u_5=1.4142,\ldots\]</div>
+<div class="q">Question 11 — Qu'est-ce qu'une suite de Cauchy ?</div>
+<div class="a">\[\boxed{\forall\varepsilon&gt;0,\exists N,\forall m,n\ge N,\ |u_n-u_m|&lt;\varepsilon.}\] Les termes finissent par être aussi proches les uns des autres que l'on veut.</div>
+<div class="math">\[|u_n-u_m|\to0.\]</div>
+<div class="q">Question 12 — Pourquoi cette suite pose-t-elle un problème dans \(\mathbb Q\) ?</div>
+<div class="a">Tous les \(u_n\) sont rationnels, mais la valeur vers laquelle l'approximation conduit n'est pas rationnelle : \(\sqrt2\notin\mathbb Q\). La suite révèle donc une <strong>limite manquante dans \(\mathbb Q\)</strong>.</div>
+<div class="q">Question 13 — Cauchy dit-il dès le départ que la limite est \(\sqrt2\) ?</div>
+<div class="a"><strong>Non.</strong> Dans la construction, on ne suppose pas d'abord que \(\sqrt2\) existe dans \(\mathbb Q\). La suite représente un nouvel objet réel. Ensuite, on montre que ce réel vérifie \(x^2=2\), puis le réel positif obtenu est appelé \(\sqrt2\).</div>
+<div class="math">\[\boxed{\text{suite de Cauchy}\longrightarrow\text{nouvel objet }x\longrightarrow x^2=2\longrightarrow x=\sqrt2}\]</div>
+</section>
+
+<section class="card" id="comparaison"><h2>5. Dedekind et Cauchy : même objectif, deux visions</h2>
+<table><tr><th>Dedekind</th><th>Cauchy</th></tr>
+<tr><td>Il regarde la <strong>séparation</strong> des rationnels.</td><td>Il regarde une <strong>approximation de plus en plus précise</strong>.</td></tr>
+<tr><td>\(A\mid B\)</td><td>\(1,1.4,1.41,1.414,\ldots\)</td></tr>
+<tr><td>La coupure représente un réel.</td><td>Une classe de suites de Cauchy représente un réel.</td></tr>
+<tr><td colspan="2">Les deux constructions complètent \(\mathbb Q\) et conduisent, à isomorphisme près, au même système des nombres réels \(\mathbb R\).</td></tr>
+</table>
+</section>
+
+<section class="card" id="completude"><h2>6. De la construction à la complétude</h2>
+<div class="q">Question 14 — Quelle propriété fondamentale obtient-on avec \(\mathbb R\) ?</div>
+<div class="a">\[\boxed{A\neq\varnothing,\ A\subset\mathbb R,\ A\text{ majorée}\Rightarrow\sup(A)\in\mathbb R.}\] C'est la <strong>propriété de la borne supérieure</strong>, une expression de la complétude de \(\mathbb R\).</div>
+<div class="q">Question 15 — Est-ce une propriété que l'on démontre dans le cours élémentaire ?</div>
+<div class="a">Dans le cadre usuel, on <strong>admet</strong> la propriété de la borne supérieure comme propriété fondamentale de \(\mathbb R\). Dans une construction rigoureuse de \(\mathbb R\) à partir de \(\mathbb Q\), par Dedekind ou Cauchy, on peut démontrer que l'ensemble construit possède cette propriété.</div>
+<div class="note"><span class="tag">Cours</span> on utilise la complétude de \(\mathbb R\).   <span class="tag">Construction</span> on construit \(\mathbb R\), puis on démontre ses propriétés.</div>
+</section>
+
+<section class="card" id="borne"><h2>12. Pourquoi la borne supérieure évoque-t-elle l'absence de trous ?</h2>
+<p>Si \(A\subset\mathbb R\) est non vide et majorée, alors</p>
+<div class="math">\[s=\sup(A)\in\mathbb R.\]</div>
+<p>Le nombre \(s\) constitue la frontière vers laquelle les éléments de \(A\) peuvent s'approcher par la gauche. La frontière reste un réel.</p>
+<div class="blue"><strong>Attention :</strong> « il n'y a pas de trous » est une intuition géométrique. La formulation rigoureuse repose sur la complétude, par exemple la propriété de la borne supérieure.</div>
+</section>
+
+<section class="card" id="continu"><h2>8. Que signifie finalement « \(\mathbb R\) est continu » ?</h2>
+<div class="q">Question 16 — Peut-on identifier densité et continuité ?</div>
+<div class="a"><strong>Non.</strong> \(\boxed{\text{densité}\neq\text{continuité}}\). La densité décrit la répartition ; la continuité, dans ce contexte, est liée à la complétude de la droite réelle.</div>
+<div class="math">\[\boxed{\mathbb Q\text{ dense dans }\mathbb R}\qquad\boxed{\mathbb R\setminus\mathbb Q\text{ dense dans }\mathbb R}\qquad\boxed{\mathbb R\text{ complet}}\qquad\boxed{\mathbb R=\text{droite réelle continue}}\]</div>
+<div class="note">La densité nous apprend que rationnels et irrationnels sont entremêlés partout ; la complétude donne le fondement mathématique de l'idée d'un continu sans trous.</div>
+</section>
+
+<section class="card" id="synthese"><h2>9. Synthèse — le puzzle complet</h2>
+<div class="math">\[\boxed{\mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R}\]</div>
+<div class="math">\[\boxed{\text{discret}\longrightarrow\text{dense}\longrightarrow\text{complétude}\longrightarrow\text{continu}}\]</div>
+<ol>
+<li>\(\mathbb N\) et \(\mathbb Z\) ont une structure discrète.</li>
+<li>Avec \(\mathbb Q\), les nombres deviennent denses.</li>
+<li>Mais \(\mathbb Q\) possède des limites manquantes, comme celle associée à \(\sqrt2\).</li>
+<li>Les irrationnels complètent les rationnels pour former \(\mathbb R\).</li>
+<li>Dedekind construit les réels par les coupures.</li>
+<li>Cauchy les construit à partir des suites de Cauchy.</li>
+<li>On obtient un ensemble complet.</li>
+<li>Géométriquement, \(\mathbb R\) est représenté par la droite réelle continue.</li>
+</ol>
+<div class="math">\[\boxed{\mathbb Q\xrightarrow[\text{Cauchy}]{\text{Dedekind}}\mathbb R\xrightarrow{\text{complétude}}\text{continu}}\]</div>
+</section>
+
+<section class="card" id="questions"><h2>10. Questions de vérification</h2>
+<div class="q">1. \(\mathbb N\) est-il dense dans \(\mathbb R\) ?</div><div class="a">Non : \((1,2)\) ne contient aucun naturel.</div>
+<div class="q">2. \(\mathbb Q\) est-il dense dans \(\mathbb R\) ?</div><div class="a">Oui.</div>
+<div class="q">3. Les irrationnels sont-ils denses dans \(\mathbb R\) ?</div><div class="a">Oui.</div>
+<div class="q">4. Dense signifie-t-il égal à \(\mathbb R\) ?</div><div class="a">Non.</div>
+<div class="q">5. Pourquoi \(\mathbb Q\) n'est-il pas complet ?</div><div class="a">Certaines suites de Cauchy de rationnels ont une limite qui n'est pas rationnelle, comme les approximations de \(\sqrt2\).</div>
+<div class="q">6. Que fait Dedekind ?</div><div class="a">Il représente les réels par des coupures de rationnels.</div>
+<div class="q">7. Que fait Cauchy ?</div><div class="a">Il utilise des suites de rationnels dont les termes deviennent arbitrairement proches.</div>
+<div class="q">8. Cauchy suppose-t-il au départ que \(\sqrt2\in\mathbb Q\) ?</div><div class="a">Non. Il construit d'abord le nouvel objet réel.</div>
+<div class="q">9. Quelle propriété exprime la complétude de \(\mathbb R\) ?</div><div class="a">La propriété de la borne supérieure, entre autres formulations équivalentes.</div>
+<div class="q">10. Quelle différence retenir ?</div><div class="a">\[\boxed{\text{Densité : répartition des nombres}}\qquad\boxed{\text{Complétude : absence de limites/bornes manquantes}}\]</div>
+</section>
+
+<section class="card" id="suite"><h2>11. Vers la suite du cours</h2>
+<p>Nous pouvons maintenant étudier plus rigoureusement les bornes, le supremum, l'infimum, les intervalles, l'approximation, les suites, les limites et la continuité.</p>
+<p class="small">Cette page prépare les idées. Les constructions complètes par coupures de Dedekind et par classes de suites de Cauchy constituent un développement théorique plus avancé.</p>
+<a class="next" href="#intro">↑ Revenir au début</a>
+</section>
+
+</main>
+
+<aside>
+<h3>Sommaire de cette partie</h3>
+<a href="#dense-continu">1. Densité et continuité</a>
+<a href="#sqrt2">2. Le problème de \(\sqrt2\)</a>
+<a href="#dedekind">3. Construction de Dedekind</a>
+<a href="#cauchy">4. Construction de Cauchy</a>
+<a href="#comparaison">5. Dedekind et Cauchy</a>
+<a href="#completude">6. Complétude de \(\mathbb R\)</a>
+<a href="#borne">7. Borne supérieure et absence de trous</a>
+<a href="#continu">8. \(\mathbb R\) continu</a>
+<a href="#synthese">9. Synthèse</a>
+<a href="#questions">10. Questions</a>
+<a href="#suite">11. Suite du cours</a>
+</aside>
+</div>
+
+<footer>
+Mathématiques — Ben Ftima Mohamed — 21621409061
+</footer>
+</body>
+</html>
