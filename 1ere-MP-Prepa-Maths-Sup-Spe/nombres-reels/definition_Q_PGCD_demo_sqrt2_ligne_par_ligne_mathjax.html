@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Des rationnels à la démonstration de √2 — PGCD</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --green:#6db33f;
+  --dark:#3f7f24;
+  --text:#263238;
+  --muted:#667085;
+  --border:#dfe7dc;
+  --soft:#f7faf5;
+  --orange:#c97920;
+  --blue:#3267b1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#fff;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.72;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#fff;
+  border-bottom:1px solid #e7e7e7;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.header-inner{
+  max-width:1180px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.logo{
+  color:var(--dark);
+  font-size:1.25rem;
+  font-weight:700;
+}
+.author{
+  color:var(--muted);
+  font-size:.82rem;
+}
+.layout{
+  max-width:1180px;
+  margin:auto;
+  padding:30px 22px 65px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 250px;
+  gap:28px;
+}
+.card{
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+  padding:28px;
+  margin-bottom:22px;
+  box-shadow:0 3px 13px rgba(0,0,0,.045);
+}
+aside{
+  position:sticky;
+  top:82px;
+  align-self:start;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:17px;
+  background:var(--soft);
+}
+aside h3{
+  margin:0 0 12px;
+  color:var(--dark);
+}
+aside a{
+  display:block;
+  text-decoration:none;
+  color:#455;
+  padding:6px 7px;
+  border-radius:5px;
+  font-size:.88rem;
+}
+aside a:hover{
+  background:#eaf4e4;
+  color:var(--dark);
+}
+.kicker{
+  color:var(--green);
+  font-weight:700;
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+h1{
+  font-size:2rem;
+  margin:8px 0 22px;
+}
+h2{
+  font-size:1.35rem;
+  border-left:4px solid var(--green);
+  padding-left:12px;
+  margin-top:0;
+}
+h3{
+  color:#344;
+}
+.math-box{
+  margin:18px 0;
+  padding:15px;
+  background:#fafcf9;
+  border:1px solid #edf1eb;
+  border-radius:8px;
+  text-align:center;
+  overflow-x:auto;
+}
+.definition{
+  border-left:4px solid var(--green);
+  background:var(--soft);
+  padding:16px 18px;
+  margin:18px 0;
+}
+.key{
+  border-left:4px solid var(--blue);
+  background:#f5f8fd;
+  padding:16px 18px;
+  margin:18px 0;
+}
+.problem{
+  border-left:4px solid var(--orange);
+  background:#fff8ee;
+  padding:16px 18px;
+  margin:18px 0;
+}
+.step{
+  border-left:4px solid #aab3ba;
+  background:#fafafa;
+  padding:15px 18px;
+  margin:18px 0;
+}
+.question{
+  font-weight:700;
+  margin-top:18px;
+}
+.answer{
+  margin:8px 0 18px;
+}
+.highlight{
+  color:var(--dark);
+  font-weight:700;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:18px 0;
+}
+th,td{
+  border:1px solid #dfe4e8;
+  padding:10px;
+  vertical-align:top;
+}
+th{
+  background:#f5f7f8;
+  text-align:left;
+}
+.next{
+  display:inline-block;
+  padding:10px 16px;
+  background:var(--green);
+  color:white;
+  border-radius:7px;
+  text-decoration:none;
+  font-weight:700;
+}
+.next:hover{background:var(--dark)}
+footer{
+  text-align:center;
+  color:#7a8490;
+  font-size:.8rem;
+  padding:25px;
+  border-top:1px solid #eee;
+}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  aside{position:relative;top:0;order:-1}
+}
+@media(max-width:600px){
+  .card{padding:20px}
+  h1{font-size:1.6rem}
+  .header-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Mathématiques.</div>
+    <div class="author">Ben Ftima Mohamed — 21621409061</div>
+  </div>
+</header>
+
+<div class="layout">
+
+<main>
+
+<section class="card" id="intro">
+  <div class="kicker">Complément — Nombres rationnels</div>
+  <h1>De la définition de \(\mathbb Q\) au rôle du PGCD dans la démonstration de \(\sqrt2\notin\mathbb Q\)</h1>
+
+  <p>
+    Cette page fait le lien entre <strong>la définition des nombres rationnels</strong>
+    et la démonstration classique de l'irrationalité de \(\sqrt2\).
+  </p>
+
+  <div class="key">
+    <strong>Idée centrale :</strong> la définition de \(\mathbb Q\) n'impose pas
+    que \(p\) et \(q\) soient premiers entre eux. Cependant, toute fraction
+    représentant un rationnel peut être réduite en divisant le numérateur et
+    le dénominateur par leur <strong>PGCD</strong>. C'est cette forme
+    irréductible qui sera utilisée dans la démonstration de \(\sqrt2\).
+  </div>
+</section>
+
+<section class="card" id="definition">
+  <h2>1. Recopie de la définition du cours</h2>
+
+  <div class="definition">
+    <h3>DÉFINITION</h3>
+
+    <p>
+      Par définition, l'ensemble des rationnels est noté \(\mathbb Q\) et :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      \mathbb Q=
+      \left\{
+      \frac pq\,;\;p\in\mathbb Z,\ q\in\mathbb Z^*
+      \right\}
+      }
+      \]
+    </div>
+
+    <p>
+      On dit qu'un nombre \(a\) est rationnel s'il peut s'écrire sous la forme
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      a=\frac pq,\qquad p\in\mathbb Z,\quad q\in\mathbb N^*.
+      }
+      \]
+    </div>
+  </div>
+
+  <p>
+    Dans cette définition, il n'est <strong>pas écrit</strong> que \(p\) et
+    \(q\) doivent être premiers entre eux.
+  </p>
+
+  <div class="problem">
+    <strong>Question importante :</strong>
+    alors pourquoi peut-on écrire, dans la démonstration de \(\sqrt2\),
+    \[
+    \sqrt2=\frac pq
+    \]
+    avec \(p\) et \(q\) premiers entre eux ?
+  </div>
+</section>
+
+
+
+<section class="card" id="pgcd">
+  <h2>2. Du cas général à l'exemple — ligne par ligne</h2>
+
+  <p>
+    Oui : ici, nous voulons suivre <strong>exactement la même démonstration</strong>.
+    Pour chaque ligne du raisonnement général, nous plaçons <strong>d'abord
+    l'exemple numérique</strong>, puis juste en dessous la ligne correspondante
+    du <strong>cas général</strong>.
+  </p>
+
+  <div class="key">
+    <strong>Principe :</strong>
+    l'exemple permet de voir concrètement ce que signifie chaque ligne
+    du raisonnement général.
+  </div>
+
+  <h3>2.1 Réduction d'une fraction : exemple → général</h3>
+
+  <!-- LIGNE 1 -->
+  <div class="step">
+    <strong>Exemple — ligne 1</strong>
+    <div class="math-box">
+      \[
+      \boxed{\frac{18}{24}}
+      \]
+    </div>
+
+    <strong>Cas général — ligne 1</strong>
+    <div class="math-box">
+      \[
+      \boxed{a=\frac pq}
+      \]
+    </div>
+
+    <p>
+      Dans les deux cas, on commence avec une fraction qui représente
+      un nombre rationnel. À ce stade, le numérateur et le dénominateur
+      ne sont pas nécessairement premiers entre eux.
+    </p>
+  </div>
+
+  <!-- LIGNE 2 -->
+  <div class="step">
+    <strong>Exemple — ligne 2</strong>
+    <div class="math-box">
+      \[
+      \operatorname{PGCD}(18,24)=6
+      \]
+    </div>
+
+    <strong>Cas général — ligne 2</strong>
+    <div class="math-box">
+      \[
+      \boxed{d=\operatorname{PGCD}(|p|,|q|)}
+      \]
+    </div>
+
+    <p>
+      On cherche le plus grand diviseur commun du numérateur et du
+      dénominateur.
+    </p>
+  </div>
+
+  <!-- LIGNE 3 -->
+  <div class="step">
+    <strong>Exemple — ligne 3</strong>
+    <div class="math-box">
+      \[
+      18=6\times3,
+      \qquad
+      24=6\times4
+      \]
+    </div>
+
+    <strong>Cas général — ligne 3</strong>
+    <div class="math-box">
+      \[
+      \boxed{p=dp',
+      \qquad
+      q=dq'}
+      \]
+    </div>
+
+    <p>
+      Le PGCD permet d'extraire le facteur commun.
+    </p>
+  </div>
+
+  <!-- LIGNE 4 -->
+  <div class="step">
+    <strong>Exemple — ligne 4</strong>
+    <div class="math-box">
+      \[
+      \frac{18}{24}
+      =
+      \frac{6\times3}{6\times4}
+      \]
+    </div>
+
+    <strong>Cas général — ligne 4</strong>
+    <div class="math-box">
+      \[
+      \frac pq
+      =
+      \frac{dp'}{dq'}
+      \]
+    </div>
+
+    <p>
+      On remplace le numérateur et le dénominateur par leurs
+      expressions faisant apparaître le PGCD.
+    </p>
+  </div>
+
+  <!-- LIGNE 5 -->
+  <div class="step">
+    <strong>Exemple — ligne 5</strong>
+    <div class="math-box">
+      \[
+      \frac{18}{24}
+      =
+      \frac{6\times3}{6\times4}
+      =
+      \boxed{\frac34}
+      \]
+    </div>
+
+    <strong>Cas général — ligne 5</strong>
+    <div class="math-box">
+      \[
+      \frac{dp'}{dq'}
+      =
+      \boxed{\frac{p'}{q'}}
+      \]
+    </div>
+
+    <p>
+      On simplifie par le facteur commun \(d\).
+    </p>
+  </div>
+
+  <!-- LIGNE 6 -->
+  <div class="step">
+    <strong>Exemple — ligne 6</strong>
+    <div class="math-box">
+      \[
+      \operatorname{PGCD}(3,4)=1.
+      \]
+    </div>
+
+    <strong>Cas général — ligne 6</strong>
+    <div class="math-box">
+      \[
+      \boxed{\operatorname{PGCD}(|p'|,|q'|)=1}
+      \]
+    </div>
+
+    <p>
+      La nouvelle fraction est donc <strong>irréductible</strong>.
+    </p>
+  </div>
+
+  <div class="definition">
+    <strong>Conclusion de la partie 2</strong>
+
+    <p>
+      L'exemple et le cas général racontent exactement la même histoire :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      \text{fraction quelconque}
+      \xrightarrow{\text{PGCD}}
+      \text{fraction irréductible}
+      }
+      \]
+    </div>
+
+    <p>
+      Ainsi, pour tout rationnel, nous pouvons choisir une représentation
+      \[
+      \boxed{
+      a=\frac pq
+      \quad\text{avec}\quad
+      \operatorname{PGCD}(p,q)=1.
+      }
+      \]
+    </p>
+
+    <p>
+      C'est exactement cette représentation que nous utiliserons ensuite
+      pour la démonstration de \(\sqrt2\notin\mathbb Q\).
+    </p>
+  </div>
+</section>
+
+<section class="card" id="propriete">
+  <h2>3. Du cas général à la démonstration de \(\sqrt2\)</h2>
+
+  <p>
+    Maintenant, nous reprenons exactement le même mécanisme, mais avec
+    un rationnel quelconque supposé égal à \(\sqrt2\).
+  </p>
+
+  <h3>3.1 Cas général — pourquoi peut-on toujours choisir une fraction irréductible ?</h3>
+
+  <div class="step">
+    <strong>Ligne 1 — Départ</strong>
+
+    <div class="math-box">
+      \[
+      a\in\mathbb Q.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 2 — Utilisation de la définition de \(\mathbb Q\)</strong>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      a=\frac pq,
+      \qquad
+      p\in\mathbb Z,\quad q\in\mathbb N^*.
+      }
+      \]
+    </div>
+
+    <p>
+      Cette écriture est exactement celle donnée par la définition du cours.
+      À ce stade, <strong>aucune condition</strong>
+      \(\operatorname{PGCD}(p,q)=1\) n'est encore imposée.
+    </p>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 3 — On applique le PGCD</strong>
+
+    <div class="math-box">
+      \[
+      d=\operatorname{PGCD}(p,q).
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 4 — On réduit la fraction</strong>
+
+    <div class="math-box">
+      \[
+      p=dp',
+      \qquad
+      q=dq'
+      \]
+      donc
+      \[
+      a=\frac{dp'}{dq'}
+      =\frac{p'}{q'}.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 5 — Nouvelle représentation</strong>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      a=\frac{p'}{q'},
+      \qquad
+      \operatorname{PGCD}(p',q')=1.
+      }
+      \]
+    </div>
+
+    <p>
+      Nous avons donc obtenu une représentation irréductible du même
+      nombre rationnel.
+    </p>
+  </div>
+
+  <h3>3.2 Application immédiate à \(\sqrt2\)</h3>
+
+  <div class="step">
+    <strong>Ligne 1 — Supposons par l'absurde</strong>
+
+    <div class="math-box">
+      \[
+      \boxed{\sqrt2\in\mathbb Q}.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 2 — Définition de \(\mathbb Q\)</strong>
+
+    <p>
+      Puisque \(\sqrt2\) est supposé rationnel, il existe
+      \(p\in\mathbb Z\) et \(q\in\mathbb N^*\) tels que
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{\sqrt2=\frac pq}.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 3 — On choisit cette représentation irréductible</strong>
+
+    <p>
+      En appliquant exactement le raisonnement général précédent,
+      on peut choisir \(p\) et \(q\) tels que
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{\operatorname{PGCD}(p,q)=1}.
+      \]
+    </div>
+
+    <p>
+      Ce n'est donc <strong>pas une nouvelle condition ajoutée à la définition
+      de \(\mathbb Q\)</strong>. C'est un choix de représentation irréductible.
+    </p>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 4 — On élève au carré</strong>
+
+    <div class="math-box">
+      \[
+      \sqrt2=\frac pq
+      \quad\Longrightarrow\quad
+      2=\frac{p^2}{q^2}
+      \quad\Longrightarrow\quad
+      \boxed{p^2=2q^2}.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 5 — \(p\) est pair</strong>
+
+    <div class="math-box">
+      \[
+      p^2=2q^2
+      \quad\Longrightarrow\quad
+      p^2\text{ est pair}
+      \quad\Longrightarrow\quad
+      \boxed{p\text{ est pair}}.
+      \]
+    </div>
+
+    <p>
+      Il existe donc \(k\in\mathbb Z\) tel que
+      \[
+      p=2k.
+      \]
+    </p>
+  </div>
+
+  <div class="step">
+    <strong>Ligne 6 — \(q\) est pair</strong>
+
+    <div class="math-box">
+      \[
+      (2k)^2=2q^2
+      \]
+      \[
+      4k^2=2q^2
+      \]
+      \[
+      \boxed{q^2=2k^2}
+      \]
+      donc
+      \[
+      \boxed{q\text{ est pair}}.
+      \]
+    </div>
+  </div>
+
+  <div class="problem">
+    <strong>Ligne 7 — La contradiction apparaît</strong>
+
+    <p>
+      Nous avons montré :
+    </p>
+
+    <div class="math-box">
+      \[
+      2\mid p
+      \qquad\text{et}\qquad
+      2\mid q.
+      \]
+    </div>
+
+    <p>
+      Donc \(2\) est un diviseur commun de \(p\) et \(q\), et par conséquent :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{\operatorname{PGCD}(p,q)\ge2}.
+      \]
+    </div>
+
+    <p>
+      Mais nous avions choisi la fraction irréductible, donc :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{\operatorname{PGCD}(p,q)=1}.
+      \]
+    </div>
+  </div>
+
+  <div class="definition">
+    <strong>Conclusion — Y a-t-il une contradiction avec la définition de \(\mathbb Q\) ?</strong>
+
+    <p>
+      <strong>Non.</strong> Il n'y a aucune contradiction.
+    </p>
+
+    <p>
+      La définition dit seulement :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      a\in\mathbb Q
+      \Longleftrightarrow
+      a=\frac pq,\quad
+      p\in\mathbb Z,\quad q\in\mathbb N^*.
+      }
+      \]
+    </div>
+
+    <p>
+      Ensuite, si nous voulons travailler avec une représentation
+      irréductible, nous divisons \(p\) et \(q\) par leur
+      <strong>PGCD</strong>.
+      Nous pouvons alors supposer :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{\operatorname{PGCD}(p,q)=1}.
+      \]
+    </div>
+
+    <p>
+      Dans la démonstration de \(\sqrt2\), c'est précisément cette
+      représentation irréductible qui conduit à la contradiction.
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      \operatorname{PGCD}(p,q)=1
+      \quad\text{mais}\quad
+      \operatorname{PGCD}(p,q)\ge2
+      }
+      \]
+    </div>
+
+    <p>
+      La contradiction porte donc sur <strong>l'hypothèse
+      \(\sqrt2\in\mathbb Q\)</strong>, et non sur la définition de
+      \(\mathbb Q\).
+    </p>
+  </div>
+</section>
+
+<section class="card" id="lien">
+  <h2>4. Le lien exact avec la démonstration de \(\sqrt2\)</h2>
+
+  <p>
+    Nous pouvons maintenant comprendre exactement le début de la démonstration.
+  </p>
+
+  <div class="step">
+    <strong>Étape 1 — Supposons par l'absurde :</strong>
+    \[
+    \sqrt2\in\mathbb Q.
+    \]
+  </div>
+
+  <div class="step">
+    <strong>Étape 2 — Utilisons la définition de \(\mathbb Q\).</strong>
+
+    <p>
+      Puisque \(\sqrt2\) est supposé rationnel, il existe
+      \(p\in\mathbb Z\) et \(q\in\mathbb N^*\) tels que
+    </p>
+
+    <div class="math-box">
+      \[
+      \sqrt2=\frac pq.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Étape 3 — Réduisons la fraction grâce au PGCD.</strong>
+
+    <p>
+      Si nécessaire, on divise \(p\) et \(q\) par leur
+      <strong>PGCD</strong>.
+      Nous pouvons donc choisir une représentation irréductible :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      \sqrt2=\frac pq,
+      \qquad
+      \operatorname{PGCD}(p,q)=1.
+      }
+      \]
+    </div>
+
+    <p>
+      Voilà précisément d'où vient la condition « \(p\) et \(q\) premiers
+      entre eux ».
+    </p>
+  </div>
+</section>
+
+<section class="card" id="demo">
+  <h2>5. Démonstration complète de \(\sqrt2\notin\mathbb Q\)</h2>
+
+  <div class="step">
+    <strong>Raisonnons par l'absurde.</strong>
+
+    <p>
+      Supposons que
+      \[
+      \sqrt2\in\mathbb Q.
+      \]
+    </p>
+
+    <p>
+      D'après la définition de \(\mathbb Q\), il existe
+      \(p\in\mathbb Z\) et \(q\in\mathbb N^*\) tels que
+      \[
+      \sqrt2=\frac pq.
+      \]
+    </p>
+
+    <p>
+      En divisant éventuellement \(p\) et \(q\) par leur
+      <strong>PGCD</strong>, on choisit cette fraction irréductible :
+    </p>
+
+    <div class="math-box">
+      \[
+      \boxed{
+      \sqrt2=\frac pq,
+      \qquad
+      \operatorname{PGCD}(p,q)=1.
+      }
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Élevons au carré :</strong>
+
+    <div class="math-box">
+      \[
+      2=\frac{p^2}{q^2}
+      \]
+      donc
+      \[
+      \boxed{p^2=2q^2}.
+      \]
+    </div>
+  </div>
+
+  <div class="step">
+    <strong>Conséquence pour \(p\).</strong>
+
+    <p>
+      Puisque
+      \[
+      p^2=2q^2,
+      \]
+      \(p^2\) est pair.
+      Donc \(p\) est pair.
+    </p>
+
+    <p>
+      Il existe donc \(k\in\mathbb Z\) tel que
+      \[
+      p=2k.
+      \]
+    </p>
+  </div>
+
+  <div class="step">
+    <strong>Conséquence pour \(q\).</strong>
+
+    <p>
+      En remplaçant \(p\) par \(2k\) :
+    </p>
+
+    <div class="math-box">
+      \[
+      (2k)^2=2q^2
+      \]
+      \[
+      4k^2=2q^2
+      \]
+      \[
+      \boxed{q^2=2k^2}.
+      \]
+    </div>
+
+    <p>
+      Donc \(q^2\) est pair, et par conséquent \(q\) est pair.
+    </p>
+  </div>
+
+  <div class="problem">
+    <strong>La contradiction.</strong>
+
+    <p>
+      Nous avons montré que :
+    </p>
+
+    <div class="math-box">
+      \[
+      2\mid p
+      \qquad\text{et}\qquad
+      2\mid q.
+      \]
+    </div>
+
+    <p>
+      Ainsi \(p\) et \(q\) ont le facteur commun \(2\).
+      Donc :
+    </p>
+
+    <div class="math-box">
+      \[
+      \operatorname{PGCD}(p,q)\ge2.
+      \]
+    </div>
+
+    <p>
+      Mais notre choix initial était :
+    </p>
+
+    <div class="math-box">
+      \[
+      \operatorname{PGCD}(p,q)=1.
+      \]
+    </div>
+
+    <p>
+      Contradiction.
+    </p>
+  </div>
+
+  <div class="definition">
+    <strong>Conclusion :</strong>
+
+    <div class="math-box">
+      \[
+      \boxed{\sqrt2\notin\mathbb Q}.
+      \]
+    </div>
+
+    <p>
+      Donc \(\sqrt2\) est irrationnel.
+    </p>
+  </div>
+</section>
+
+<section class="card" id="synthese">
+  <h2>6. Ce qu'il faut retenir</h2>
+
+  <table>
+    <tr>
+      <th>Étape</th>
+      <th>Idée</th>
+    </tr>
+    <tr>
+      <td>Définition de \(\mathbb Q\)</td>
+      <td>
+        \[
+        a=\frac pq,\quad p\in\mathbb Z,\ q\in\mathbb N^*.
+        \]
+      </td>
+    </tr>
+    <tr>
+      <td>Réduction</td>
+      <td>
+        On divise \(p\) et \(q\) par leur <strong>PGCD</strong>.
+      </td>
+    </tr>
+    <tr>
+      <td>Forme irréductible</td>
+      <td>
+        \[
+        \operatorname{PGCD}(p,q)=1.
+        \]
+      </td>
+    </tr>
+    <tr>
+      <td>Démonstration de \(\sqrt2\)</td>
+      <td>
+        Le raisonnement montre que \(p\) et \(q\) sont tous deux pairs.
+      </td>
+    </tr>
+    <tr>
+      <td>Contradiction</td>
+      <td>
+        \[
+        \operatorname{PGCD}(p,q)\ge2
+        \]
+        contredit
+        \[
+        \operatorname{PGCD}(p,q)=1.
+        \]
+      </td>
+    </tr>
+  </table>
+
+  <div class="key">
+    <strong>Phrase essentielle :</strong>
+    la condition « \(p\) et \(q\) premiers entre eux » n'est pas une
+    condition supplémentaire dans la définition de \(\mathbb Q\).
+    Elle vient du fait que nous pouvons toujours choisir une
+    <strong>représentation irréductible</strong> en divisant par le
+    <strong>PGCD</strong>.
+  </div>
+
+  <a class="next" href="#intro">↑ Revenir au début</a>
+</section>
+
+</main>
+
+<aside>
+  <h3>Sommaire</h3>
+  <a href="#intro">Introduction</a>
+  <a href="#definition">1. Définition de \(\mathbb Q\)</a>
+  <a href="#pgcd">2. Rôle du PGCD</a>
+  <a href="#propriete">3. Propriété</a>
+  <a href="#lien">4. Lien avec \(\sqrt2\)</a>
+  <a href="#demo">5. Démonstration complète</a>
+  <a href="#synthese">6. Synthèse</a>
+</aside>
+
+</div>
+
+<footer>
+  Mathématiques — Ben Ftima Mohamed — 21621409061
+</footer>
+
+</body>
+</html>
