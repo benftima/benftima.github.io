@@ -82,6 +82,20 @@ h4{font-size:18px;color:#455a64}
   letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px
 }
 .green{color:var(--green-dark)} .red{color:var(--red)}
+.more-info{
+  display:inline-block;
+  margin-left:8px;
+  color:var(--green-dark);
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px solid rgba(109,179,63,.35);
+  transition:.2s ease;
+}
+.more-info:hover{
+  color:var(--green);
+  border-bottom-color:var(--green);
+  transform:translateX(2px);
+}
 .hl{background:var(--yellow);padding:2px 5px;border-radius:4px}
 ul,ol{padding-left:28px}
 .eq{overflow-x:auto;padding:10px 0}
@@ -101,6 +115,58 @@ footer{max-width:1100px;margin:auto;padding:30px;color:#78909c;font-size:13px}
  h2{font-size:25px}
 }
 </style>
+
+<style>
+/* Figures géométriques — ajout pour la section des nombres irrationnels */
+.geometry-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  margin:22px 0 10px;
+}
+.geometry-card{
+  background:#fff;
+  border:1px solid #dfe7ee;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(20,50,70,.07);
+}
+.geometry-card h3{
+  margin:0 0 12px;
+  color:#173d5a;
+  font-size:1.08rem;
+}
+.figure-box{
+  margin:16px auto 10px;
+  max-width:430px;
+  background:#fbfcfd;
+  border:1px solid #e3e9ee;
+  border-radius:12px;
+  padding:8px;
+}
+.figure-box svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.figure-caption{
+  margin:10px 0 0;
+  color:#40505d;
+  font-size:.96rem;
+}
+.irrational-examples{
+  margin-top:20px;
+  padding:16px 20px;
+  border-left:4px solid #6ab04c;
+  background:#f7fbf5;
+  border-radius:10px;
+}
+@media(max-width:800px){
+  .geometry-grid{grid-template-columns:1fr;}
+  .geometry-card{padding:16px;}
+}
+</style>
+
 </head>
 
 <body>
@@ -143,7 +209,9 @@ a=\frac pq,\qquad p\in\mathbb Z,\quad q\in\mathbb N^*.
 \]</div>
 <p>En pratique, pour qu'une fraction soit un nombre décimal, le dénominateur,
 après décomposition en facteurs premiers, doit comporter que \(2\) ou bien \(5\),
-à condition que la fraction irréductible.</p>
+à condition que la fraction irréductible.
+<a class="more-info" href="demonstration.html">Plus d'info → (à suivre)</a>
+</p>
 </div>
 
 <div class="card example">
@@ -199,10 +267,7 @@ on obtient une fraction. La feuille donne notamment :</p>
 <div class="eq">\[
 100000x-10x=5638142,8142\ldots-563,8142\ldots
 \]</div>
-<p>ce qui conduit à une écriture fractionnaire.
-
-</p>
-  <a href="demonstration.html">Plus d'info → (à suivre)</a>
+<p>ce qui conduit à une écriture fractionnaire.</p>
 </div>
 </section>
 
@@ -212,23 +277,128 @@ on obtient une fraction. La feuille donne notamment :</p>
 <div class="card def">
 <span class="label green">Définition</span>
 <p>Il existe des nombres qui ne sont pas rationnels. Ces nombres sont appelés
-<strong>nombres irrationnels</strong> et apparaissent dans la figure géométrique.</p>
+<strong>nombres irrationnels</strong>. Ils apparaissent naturellement dans des
+situations géométriques simples.</p>
 </div>
 
 <div class="card example">
-<span class="label">Exemples</span>
-<ul>
-<li>\(\sqrt2\) : hypothénuse du carré de côté \(1\) ;</li>
-<li>\(\pi\) : périmètre du cercle de rayon \(1/2\) ;</li>
-<li>\(e=\exp(1)\simeq2,718\ldots\).</li>
-</ul>
-<p>La feuille note notamment :</p>
-<div class="eq">\[
-\sqrt2\simeq1,4142\ldots
-\]</div>
-<div class="eq">\[
-\pi\simeq3,14159265\ldots
-\]</div>
+<span class="label">Exemples géométriques</span>
+
+<div class="geometry-grid">
+
+  <div class="geometry-card">
+    <h3>① La diagonale d'un carré</h3>
+    <p>
+      Dans un carré de côté \(1\), la diagonale partage le carré en deux triangles
+      rectangles. D'après le théorème de Pythagore :
+    </p>
+    <div class="eq">\[
+      AC^2=AB^2+BC^2=1^2+1^2=2
+      \quad\Longrightarrow\quad
+      AC=\sqrt2.
+    \]</div>
+
+    <div class="figure-box">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Carré de côté 1 et sa diagonale racine de 2">
+        <defs>
+          <marker id="arrowDiag" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#d14b3f"></path>
+          </marker>
+        </defs>
+
+        <!-- carré -->
+        <polygon points="90,220 90,70 300,70 300,220"
+                 fill="#eef6ff" stroke="#183b56" stroke-width="4"/>
+        <!-- diagonale -->
+        <line x1="90" y1="220" x2="300" y2="70"
+              stroke="#d14b3f" stroke-width="4" marker-end="url(#arrowDiag)"/>
+
+        <!-- repère angle droit -->
+        <polyline points="90,200 110,200 110,220" fill="none"
+                  stroke="#183b56" stroke-width="3"/>
+
+        <!-- labels sommets -->
+        <text x="72" y="238" font-size="20" font-weight="700">A</text>
+        <text x="72" y="62" font-size="20" font-weight="700">D</text>
+        <text x="305" y="62" font-size="20" font-weight="700">C</text>
+        <text x="305" y="238" font-size="20" font-weight="700">B</text>
+
+        <!-- côtés -->
+        <text x="177" y="246" font-size="19">\(1\)</text>
+        <text x="58" y="150" font-size="19">\(1\)</text>
+
+        <!-- diagonale -->
+        <text x="185" y="130" font-size="19" fill="#b53b32" font-weight="700">\(AC=\sqrt2\)</text>
+      </svg>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Conclusion :</strong> \(\sqrt2\) est obtenu comme longueur d'une
+      diagonale d'un carré de côté \(1\).
+    </p>
+  </div>
+
+  <div class="geometry-card">
+    <h3>② Le périmètre d'un cercle</h3>
+    <p>
+      Considérons un cercle de rayon \(r=\dfrac12\). Son diamètre vaut donc
+      \(1\), et son périmètre est :
+    </p>
+    <div class="eq">\[
+      P=2\pi r
+      =2\pi\times\frac12
+      =\pi.
+    \]</div>
+
+    <div class="figure-box">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Cercle de rayon un demi">
+        <defs>
+          <marker id="arrowRadius" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#2f7d32"></path>
+          </marker>
+        </defs>
+
+        <!-- cercle -->
+        <circle cx="205" cy="145" r="88" fill="#f3faf3"
+                stroke="#2f7d32" stroke-width="4"/>
+
+        <!-- centre -->
+        <circle cx="205" cy="145" r="5" fill="#183b56"/>
+        <text x="214" y="140" font-size="20" font-weight="700">O</text>
+
+        <!-- rayon -->
+        <line x1="205" y1="145" x2="293" y2="145"
+              stroke="#2f7d32" stroke-width="4" marker-end="url(#arrowRadius)"/>
+        <text x="235" y="134" font-size="19" fill="#246529" font-weight="700">\(r=\frac12\)</text>
+
+        <!-- diamètre -->
+        <line x1="117" y1="145" x2="293" y2="145"
+              stroke="#8a5a00" stroke-width="2" stroke-dasharray="7 6"/>
+        <text x="178" y="174" font-size="18" fill="#765000">diamètre \(=1\)</text>
+
+        <!-- périmètre -->
+        <text x="121" y="55" font-size="19" fill="#246529" font-weight="700">
+          \(P=\pi\)
+        </text>
+      </svg>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Conclusion :</strong> le cercle de rayon \(\dfrac12\) a un périmètre
+      égal à \(\pi\).
+    </p>
+  </div>
+
+</div>
+
+<div class="irrational-examples">
+  <p><strong>On rencontre notamment :</strong></p>
+  <ul>
+    <li>\(\sqrt2\simeq1,4142\ldots\), obtenu ici par la diagonale du carré ;</li>
+    <li>\(\pi\simeq3,14159265\ldots\), obtenu ici par le périmètre du cercle ;</li>
+    <li>\(e=\exp(1)\simeq2,718\ldots\).</li>
+  </ul>
+</div>
 </div>
 
 <div class="card theorem">
