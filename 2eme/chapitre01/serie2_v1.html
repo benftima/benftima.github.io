@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Série 2 — Équations, inéquations et systèmes</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$','$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --bordeaux:#7b1830;
+  --bordeaux2:#a52a48;
+  --turquoise:#087f8c;
+  --violet:#65408b;
+  --cream:#fffaf6;
+  --paper:#fff;
+  --ink:#263238;
+  --muted:#667085;
+  --line:#eadfe2;
+  --green:#237a57;
+  --orange:#c9822b;
+  --shadow:0 10px 30px rgba(62,25,35,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,#f7f3f1,#fff);
+  color:var(--ink);
+  font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.65;
+}
+header{
+  background:linear-gradient(120deg,var(--bordeaux),#922444 55%,var(--violet));
+  color:#fff;
+  padding:32px 18px 26px;
+}
+.header-inner{max-width:1100px;margin:auto}
+.brand{font-weight:800;letter-spacing:.04em;font-size:14px;opacity:.9}
+h1{margin:8px 0 5px;font-size:clamp(28px,5vw,46px);line-height:1.15}
+.subtitle{margin:0;opacity:.92;font-size:17px}
+nav{
+  position:sticky;top:0;z-index:20;
+  background:#fff;border-bottom:1px solid var(--line);
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+.nav-inner{
+  max-width:1100px;margin:auto;display:flex;gap:8px;
+  overflow-x:auto;padding:9px 12px;
+}
+nav a{
+  flex:0 0 auto;text-decoration:none;color:var(--bordeaux);
+  border:1px solid #ead5da;border-radius:999px;padding:7px 12px;
+  font-size:14px;font-weight:700;background:#fff;
+}
+nav a:hover{background:#f9eef1}
+main{max-width:1100px;margin:28px auto;padding:0 15px}
+.card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:18px;box-shadow:var(--shadow);
+  padding:24px;margin:0 0 22px;
+}
+.card h2{
+  color:var(--bordeaux);margin-top:0;
+  border-left:5px solid var(--turquoise);padding-left:12px;
+}
+.card h3{color:var(--violet);margin-bottom:8px}
+.badge{
+  display:inline-block;background:#f4e8ec;color:var(--bordeaux);
+  border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800;
+}
+.objective{
+  background:linear-gradient(90deg,#eef9fa,#fff);
+  border-left:5px solid var(--turquoise);
+  padding:14px 17px;border-radius:10px;margin:15px 0;
+}
+.theorem{
+  background:#faf6ff;border:1px solid #e4d7f0;
+  border-left:5px solid var(--violet);border-radius:10px;
+  padding:15px 18px;margin:15px 0;
+}
+.method{
+  background:#fff8ef;border:1px solid #f0dfc5;
+  border-left:5px solid var(--orange);border-radius:10px;padding:15px 18px;
+}
+.answer{
+  background:#effaf4;border:1px solid #cde8da;
+  border-left:5px solid var(--green);border-radius:10px;
+  padding:14px 18px;margin-top:16px;
+}
+.warning{
+  background:#fff4f4;border:1px solid #f0cccc;
+  border-left:5px solid #b42318;border-radius:10px;padding:13px 17px;
+}
+.note{
+  background:#f8f5ff;border:1px solid #ddd2ef;
+  border-left:5px solid var(--violet);border-radius:10px;padding:13px 17px;
+}
+table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff}
+th,td{border:1px solid #ddd;padding:10px;text-align:center}
+th{background:#f6ecef;color:var(--bordeaux)}
+.solution{font-size:1.04rem;overflow-x:auto}
+.exercise{border-top:4px solid var(--bordeaux2)}
+.exercise .statement{
+  background:#faf7f7;border-radius:12px;padding:15px 18px;
+  border:1px solid #eee0e3;margin:15px 0 20px;
+}
+.system-box{
+  background:#f9fbfc;border:1px solid #dce8eb;
+  border-radius:12px;padding:18px;margin:15px 0;
+}
+.footer{
+  max-width:1100px;margin:10px auto 35px;padding:0 15px;
+  color:var(--muted);font-size:13px;text-align:center;
+}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:800;color:var(--turquoise)}
+@media(max-width:650px){
+  .card{padding:17px;border-radius:14px}
+  header{padding:25px 15px}
+  main{margin-top:18px}
+  table{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">BEN FTIMA • MATHÉMATIQUES</div>
+    <h1>Série 2 — Résolution dans \( \mathbb{R} \)</h1>
+    <p class="subtitle">Équations, inéquations, systèmes symétriques et équations avec racine carrée</p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#methode">Méthode</a>
+    <a href="#exercices">Exercices</a>
+    <a href="#t1">T₁</a>
+    <a href="#t2">T₂</a>
+    <a href="#t3">T₃</a>
+    <a href="#t4">T₄</a>
+    <a href="#t5">T₅</a>
+    <a href="#systemes">Systèmes</a>
+    <a href="#racine">Racine</a>
+    <a href="#uv">\(u,v\)</a>
+    <a href="#bilan">Bilan</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="card" id="methode">
+  <span class="badge">RAPPEL DE COURS</span>
+  <h2>1. Méthode générale — trinôme du second degré</h2>
+
+  <p>On considère :</p>
+  <div class="objective">
+    \[
+      P(x)=ax^2+bx+c,\qquad a\neq0.
+    \]
+  </div>
+
+  <div class="theorem">
+    <strong>Discriminant :</strong>
+    \[
+      \Delta=b^2-4ac.
+    \]
+    Le signe de \(\Delta\) permet de déterminer les racines réelles du trinôme.
+  </div>
+
+  <h3>Cas \( \Delta>0 \)</h3>
+  <p>Deux racines réelles distinctes :</p>
+  \[
+    x_1=\frac{-b-\sqrt{\Delta}}{2a},
+    \qquad
+    x_2=\frac{-b+\sqrt{\Delta}}{2a}.
+  \]
+  \[
+    P(x)=a(x-x_1)(x-x_2).
+  \]
+
+  <h3>Cas \( \Delta=0 \)</h3>
+  <p>Une racine double :</p>
+  \[
+    x_0=-\frac{b}{2a},
+    \qquad
+    P(x)=a(x-x_0)^2.
+  \]
+
+  <h3>Cas \( \Delta<0 \)</h3>
+  <p>Aucune racine réelle. Le trinôme garde sur \(\mathbb R\) le signe de \(a\).</p>
+
+  <div class="method">
+    <strong>Pour une inéquation :</strong>
+    <ol>
+      <li>Identifier \(a,b,c\).</li>
+      <li>Calculer \(\Delta\).</li>
+      <li>Déterminer les racines lorsqu'elles existent.</li>
+      <li>Construire le tableau de signes.</li>
+      <li>Lire l'ensemble solution en tenant compte de l'inégalité.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="card" id="exercices">
+  <span class="badge">ÉNONCÉ</span>
+  <h2>2. Exercices — première partie</h2>
+  <div class="statement">
+    <p>Résoudre dans \( \mathbb R \) :</p>
+    <ol>
+      <li>\(2x^2+3x-5\geq0\)</li>
+      <li>\(2x^2-2\sqrt2\,x+1<0\)</li>
+      <li>\(-3x^2-5x+8<0\)</li>
+      <li>\(2x^2+x+3>0\)</li>
+      <li>\(2x^2+3x-5=0\)</li>
+    </ol>
+  </div>
+</section>
+
+<section class="card exercise" id="t1">
+  <span class="badge">T₁ — INÉQUATION</span>
+  <h2>3. Résolution de \(2x^2+3x-5\geq0\)</h2>
+
+  <div class="statement"><strong>Énoncé :</strong>
+    \[
+      \boxed{2x^2+3x-5\geq0}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Discriminant</h3>
+    \[
+      a=2,\quad b=3,\quad c=-5
+    \]
+    \[
+      \Delta=3^2-4(2)(-5)=9+40=49>0.
+    \]
+
+    <h3>Étape 2 — Racines</h3>
+    \[
+      x_1=\frac{-3-7}{4}=-\frac52,
+      \qquad
+      x_2=\frac{-3+7}{4}=1.
+    \]
+
+    <h3>Étape 3 — Factorisation</h3>
+    \[
+      2x^2+3x-5=(2x+5)(x-1).
+    \]
+
+    <h3>Étape 4 — Signe</h3>
+    <table>
+      <tr><th>\(x\)</th><th>\(\left]-\infty,-\frac52\right[\)</th><th>\(-\frac52\)</th><th>\(\left]-\frac52,1\right[\)</th><th>\(1\)</th><th>\(]1,+\infty[\)</th></tr>
+      <tr><th>\(2x+5\)</th><td>−</td><td>0</td><td>+</td><td>+</td><td>+</td></tr>
+      <tr><th>\(x-1\)</th><td>−</td><td>−</td><td>−</td><td>0</td><td>+</td></tr>
+      <tr><th>\(P(x)\)</th><td>+</td><td>0</td><td>−</td><td>0</td><td>+</td></tr>
+    </table>
+
+    <div class="answer">
+      \[
+        \boxed{S_{\mathbb R}
+        =\left]-\infty,-\frac52\right]\cup[1,+\infty[}
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t2">
+  <span class="badge">T₂ — CAS \( \Delta=0 \)</span>
+  <h2>4. Résolution de \(2x^2-2\sqrt2\,x+1<0\)</h2>
+
+  <div class="statement"><strong>Énoncé :</strong>
+    \[
+      \boxed{2x^2-2\sqrt2\,x+1<0}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Discriminant</h3>
+    \[
+      a=2,\quad b=-2\sqrt2,\quad c=1
+    \]
+    \[
+      \Delta=(-2\sqrt2)^2-4(2)(1)=8-8=0.
+    \]
+
+    <h3>Étape 2 — Racine double</h3>
+    \[
+      x_0=-\frac{b}{2a}=\frac{\sqrt2}{2}.
+    \]
+    \[
+      2x^2-2\sqrt2\,x+1
+      =2\left(x-\frac{\sqrt2}{2}\right)^2.
+    \]
+
+    <h3>Étape 3 — Signe</h3>
+    \[
+      2\left(x-\frac{\sqrt2}{2}\right)^2\geq0
+      \qquad\forall x\in\mathbb R.
+    \]
+
+    <div class="answer">
+      L'expression ne peut jamais être strictement négative :
+      \[
+        \boxed{S_{\mathbb R}=\varnothing}.
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t3">
+  <span class="badge">T₃ — INÉQUATION</span>
+  <h2>5. Résolution de \(-3x^2-5x+8<0\)</h2>
+
+  <div class="statement"><strong>Énoncé :</strong>
+    \[
+      \boxed{-3x^2-5x+8<0}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Discriminant</h3>
+    \[
+      a=-3,\quad b=-5,\quad c=8
+    \]
+    \[
+      \Delta=(-5)^2-4(-3)(8)=25+96=121>0.
+    \]
+
+    <h3>Racines</h3>
+    \[
+      x_1=\frac{5-11}{-6}=1,
+      \qquad
+      x_2=\frac{5+11}{-6}=-\frac83.
+    \]
+    Donc, dans l'ordre :
+    \[
+      x_1=-\frac83,\qquad x_2=1.
+    \]
+
+    <h3>Factorisation et signe</h3>
+    \[
+      -3x^2-5x+8=-3\left(x+\frac83\right)(x-1).
+    \]
+    Comme \(a=-3<0\), le trinôme est négatif à l'extérieur des deux racines.
+
+    <table>
+      <tr><th>\(x\)</th><th>\(\left]-\infty,-\frac83\right[\)</th><th>\(-\frac83\)</th><th>\(\left]-\frac83,1\right[\)</th><th>\(1\)</th><th>\(]1,+\infty[\)</th></tr>
+      <tr><th>\(P(x)\)</th><td>−</td><td>0</td><td>+</td><td>0</td><td>−</td></tr>
+    </table>
+
+    <div class="answer">
+      \[
+        \boxed{
+        S_{\mathbb R}
+        =\left]-\infty,-\frac83\right[
+        \cup
+        \left]1,+\infty\right[
+        }
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t4">
+  <span class="badge">T₄ — CAS \( \Delta<0 \)</span>
+  <h2>6. Résolution de \(2x^2+x+3>0\)</h2>
+
+  <div class="statement"><strong>Énoncé :</strong>
+    \[
+      \boxed{2x^2+x+3>0}
+    \]
+  </div>
+
+  <div class="solution">
+    \[
+      a=2,\quad b=1,\quad c=3
+    \]
+    \[
+      \Delta=1^2-4(2)(3)=1-24=-23<0.
+    \]
+    Il n'existe donc aucune racine réelle. Comme \(a=2>0\),
+    \[
+      2x^2+x+3>0\qquad\forall x\in\mathbb R.
+    \]
+
+    <div class="answer">
+      \[
+        \boxed{S_{\mathbb R}=\mathbb R}
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t5">
+  <span class="badge">T₅ — ÉQUATION</span>
+  <h2>7. Résolution de \(2x^2+3x-5=0\)</h2>
+
+  <div class="statement"><strong>Énoncé :</strong>
+    \[
+      \boxed{2x^2+3x-5=0}
+    \]
+  </div>
+
+  <div class="solution">
+    \[
+      \Delta=3^2-4(2)(-5)=49>0.
+    \]
+    \[
+      x_1=-\frac52,\qquad x_2=1.
+    \]
+
+    <div class="answer">
+      \[
+        \boxed{S_{\mathbb R}=\left\{-\frac52,\;1\right\}}
+      \]
+    </div>
+
+    <details>
+      <summary>Vérification par factorisation</summary>
+      \[
+        2x^2+3x-5=(2x+5)(x-1)
+      \]
+      donc
+      \[
+        (2x+5)(x-1)=0
+        \Longleftrightarrow
+        x=-\frac52\quad\text{ou}\quad x=1.
+      \]
+    </details>
+  </div>
+</section>
+
+<section class="card" id="systemes">
+  <span class="badge">NOUVELLE PARTIE — D'APRÈS LES FEUILLES</span>
+  <h2>8. Systèmes symétriques : somme et produit</h2>
+
+  <div class="objective">
+    L'idée essentielle des feuilles est de transformer un système faisant intervenir
+    \(x+y\) et \(xy\) en une équation du second degré.
+  </div>
+
+  <div class="theorem">
+    <strong>Propriété fondamentale</strong>
+    <p>Si \(x\) et \(y\) vérifient</p>
+    \[
+      \boxed{
+      \begin{cases}
+      x+y=S\\
+      xy=P
+      \end{cases}}
+    \]
+    alors \(x\) et \(y\) sont les deux racines de
+    \[
+      \boxed{X^2-SX+P=0}.
+    \]
+  </div>
+
+  <h3>8.1 Exemple : \(x+y=10\) et \(xy=21\)</h3>
+
+  <div class="system-box">
+    \[
+      \begin{cases}
+      x+y=10\\
+      xy=21
+      \end{cases}
+    \]
+
+    <p>On cherche les deux nombres dont la somme est \(10\) et le produit est \(21\).</p>
+
+    \[
+      X^2-10X+21=0.
+    \]
+
+    \[
+      \Delta=10^2-4(21)=100-84=16>0.
+    \]
+
+    \[
+      X_1=\frac{10-4}{2}=3,
+      \qquad
+      X_2=\frac{10+4}{2}=7.
+    \]
+
+    Donc \(x\) et \(y\) sont \(3\) et \(7\).
+
+    <div class="answer">
+      \[
+        \boxed{S_{\mathbb R^2}=\{(3,7),(7,3)\}}
+      \]
+    </div>
+  </div>
+
+  <h3>8.2 Exemple : \(x+y=5\) et \(xy=7\)</h3>
+
+  \[
+    \begin{cases}
+    x+y=5\\
+    xy=7
+    \end{cases}
+    \quad\Longrightarrow\quad
+    X^2-5X+7=0.
+  \]
+
+  \[
+    \Delta=25-28=-3<0.
+  \]
+
+  Il n'existe donc pas de nombres réels \(x,y\) satisfaisant simultanément les deux conditions.
+
+  <div class="answer">
+    \[
+      \boxed{S_{\mathbb R^2}=\varnothing}
+    \]
+  </div>
+
+  <h3>8.3 Exemple : \(x-y=2\) et \(xy=99\)</h3>
+
+  <div class="system-box">
+    \[
+      \begin{cases}
+      x-y=2\\
+      xy=99
+      \end{cases}
+    \]
+
+    <p>Pour retrouver une situation « somme-produit », on pose :</p>
+    \[
+      z=-y.
+    \]
+
+    Alors :
+    \[
+      x+z=x-y=2,
+      \qquad
+      xz=x(-y)=-xy=-99.
+    \]
+
+    Donc \(x\) et \(z\) sont les racines de :
+    \[
+      X^2-2X-99=0.
+    \]
+
+    \[
+      \Delta=(-2)^2-4(1)(-99)=4+396=400.
+    \]
+
+    \[
+      X_1=\frac{2-20}{2}=-9,
+      \qquad
+      X_2=\frac{2+20}{2}=11.
+    \]
+
+    Ainsi :
+    \[
+      (x,z)=(-9,11)\quad\text{ou}\quad(11,-9).
+    \]
+
+    Comme \(y=-z\) :
+    \[
+      (x,y)=(-9,-11)\quad\text{ou}\quad(11,9).
+    \]
+
+    <div class="answer">
+      \[
+        \boxed{S_{\mathbb R^2}=\{(11,9),(-9,-11)\}}
+      \]
+    </div>
+  </div>
+
+  <h3>8.4 Formule générale pour \(x+y=S,\;xy=P\)</h3>
+
+  <p>On part de :</p>
+  \[
+    x+y=S,\qquad xy=P.
+  \]
+
+  <p>Comme \(y=S-x\), alors :</p>
+  \[
+    x(S-x)=P
+  \]
+  \[
+    Sx-x^2=P
+  \]
+  \[
+    \boxed{x^2-Sx+P=0}.
+  \]
+
+  De même, \(y\) vérifie :
+  \[
+    \boxed{y^2-Sy+P=0}.
+  \]
+
+  <div class="theorem">
+    <strong>À retenir :</strong>
+    si \(x,y\) sont les racines de \(aX^2+bX+c=0\), alors
+    \[
+      \boxed{x+y=-\frac ba},
+      \qquad
+      \boxed{xy=\frac ca}.
+    \]
+    Ce sont les relations de Viète utilisées dans les feuilles.
+  </div>
+</section>
+
+<section class="card exercise" id="racine">
+  <span class="badge">NOUVELLE PARTIE — ÉQUATION AVEC RACINE</span>
+  <h2>9. Résolution de \(\sqrt{3x+1}=x+2\)</h2>
+
+  <div class="statement">
+    <strong>Énoncé :</strong>
+    \[
+      \boxed{\sqrt{3x+1}=x+2}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Conditions de définition</h3>
+
+    Pour que la racine carrée existe :
+    \[
+      3x+1\geq0
+      \quad\Longleftrightarrow\quad
+      x\geq-\frac13.
+    \]
+
+    De plus, le membre de gauche est positif ou nul, donc il faut aussi :
+    \[
+      x+2\geq0
+      \quad\Longleftrightarrow\quad
+      x\geq-2.
+    \]
+
+    Les deux conditions donnent :
+    \[
+      \boxed{x\in\left[-\frac13,+\infty\right[}.
+    \]
+
+    <h3>Étape 2 — Élévation au carré</h3>
+
+    Sur cet ensemble, on peut écrire :
+    \[
+      \sqrt{3x+1}=x+2
+      \quad\Longrightarrow\quad
+      3x+1=(x+2)^2.
+    \]
+
+    \[
+      3x+1=x^2+4x+4
+    \]
+    \[
+      x^2+x+3=0.
+    \]
+
+    <h3>Étape 3 — Discriminant</h3>
+    \[
+      \Delta=1^2-4(1)(3)=1-12=-11<0.
+    \]
+
+    L'équation du second degré n'a donc aucune solution réelle.
+
+    <div class="answer">
+      \[
+        \boxed{S_{\mathbb R}=\varnothing}
+      \]
+    </div>
+
+    <div class="warning">
+      <strong>Point important :</strong> on ne doit pas oublier la condition
+      \(x\geq-\frac13\) avant de mettre au carré. Ici, elle ne donne finalement
+      aucune solution, car l'équation obtenue a un discriminant négatif.
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="uv">
+  <span class="badge">NOUVELLE PARTIE — SYSTÈME \(u,v\)</span>
+  <h2>10. Résoudre le système
+    \(\begin{cases}u^2+v^2=8\\uv=2\end{cases}\)
+  </h2>
+
+  <div class="statement">
+    \[
+      \boxed{
+      \begin{cases}
+      u^2+v^2=8\\
+      uv=2
+      \end{cases}}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Faire apparaître \(u+v\)</h3>
+
+    On utilise :
+    \[
+      (u+v)^2=u^2+v^2+2uv.
+    \]
+
+    Donc :
+    \[
+      (u+v)^2=8+2(2)=12.
+    \]
+
+    Ainsi :
+    \[
+      \boxed{u+v=\pm\sqrt{12}=\pm2\sqrt3}.
+    \]
+
+    <h3>Étape 2 — Premier cas : \(u+v=2\sqrt3\)</h3>
+
+    On connaît alors :
+    \[
+      u+v=2\sqrt3,\qquad uv=2.
+    \]
+
+    Donc \(u\) et \(v\) sont les racines de :
+    \[
+      X^2-2\sqrt3\,X+2=0.
+    \]
+
+    \[
+      \Delta=(2\sqrt3)^2-4(2)=12-8=4.
+    \]
+
+    \[
+      X_1=\frac{2\sqrt3-2}{2}=\sqrt3-1,
+      \qquad
+      X_2=\frac{2\sqrt3+2}{2}=\sqrt3+1.
+    \]
+
+    On obtient :
+    \[
+      (u,v)=(\sqrt3-1,\sqrt3+1)
+    \]
+    ou
+    \[
+      (u,v)=(\sqrt3+1,\sqrt3-1).
+    \]
+
+    <h3>Étape 3 — Deuxième cas : \(u+v=-2\sqrt3\)</h3>
+
+    Cette fois :
+    \[
+      u+v=-2\sqrt3,\qquad uv=2.
+    \]
+
+    \(u\) et \(v\) sont les racines de :
+    \[
+      X^2+2\sqrt3\,X+2=0.
+    \]
+
+    \[
+      \Delta=12-8=4.
+    \]
+
+    \[
+      X_1=\frac{-2\sqrt3-2}{2}=-\sqrt3-1,
+      \qquad
+      X_2=\frac{-2\sqrt3+2}{2}=1-\sqrt3.
+    \]
+
+    Donc :
+    \[
+      (u,v)=(-1-\sqrt3,1-\sqrt3)
+    \]
+    ou
+    \[
+      (u,v)=(1-\sqrt3,-1-\sqrt3).
+    \]
+
+    <div class="answer">
+      <strong>Ensemble des solutions :</strong>
+      \[
+      \boxed{
+      \begin{aligned}
+      S_{\mathbb R^2}=\{&
+      (\sqrt3-1,\sqrt3+1),\\
+      &(\sqrt3+1,\sqrt3-1),\\
+      &(-1-\sqrt3,1-\sqrt3),\\
+      &(1-\sqrt3,-1-\sqrt3)
+      \}.
+      \end{aligned}}
+      \]
+    </div>
+
+    <div class="note">
+      <strong>Idée à retenir :</strong>
+      lorsqu'un système contient \(u^2+v^2\) et \(uv\), penser immédiatement
+      à l'identité
+      \[
+        (u+v)^2=u^2+v^2+2uv.
+      \]
+      On transforme ensuite le problème en un problème de somme et de produit.
+    </div>
+  </div>
+</section>
+
+<section class="card" id="bilan">
+  <span class="badge">SYNTHÈSE</span>
+  <h2>11. Bilan — démarche à retenir</h2>
+
+  <table>
+    <tr>
+      <th>Situation</th>
+      <th>Transformation utile</th>
+      <th>Équation obtenue</th>
+    </tr>
+    <tr>
+      <td>\(ax^2+bx+c=0\)</td>
+      <td>Discriminant</td>
+      <td>\(\Delta=b^2-4ac\)</td>
+    </tr>
+    <tr>
+      <td>\(x+y=S,\;xy=P\)</td>
+      <td>Somme-produit</td>
+      <td>\(X^2-SX+P=0\)</td>
+    </tr>
+    <tr>
+      <td>\(x-y=S,\;xy=P\)</td>
+      <td>Poser \(z=-y\)</td>
+      <td>\(X^2-SX-P=0\)</td>
+    </tr>
+    <tr>
+      <td>\(\sqrt{A}=B\)</td>
+      <td>Conditions puis carré</td>
+      <td>\(A=B^2\)</td>
+    </tr>
+    <tr>
+      <td>\(u^2+v^2,\;uv\)</td>
+      <td>\((u+v)^2\)</td>
+      <td>\(u+v=\pm\sqrt{u^2+v^2+2uv}\)</td>
+    </tr>
+  </table>
+
+  <div class="theorem">
+    <strong>Relations de Viète</strong>
+    <p>Pour \(aX^2+bX+c=0\), si \(x_1,x_2\) sont les deux racines :</p>
+    \[
+      \boxed{x_1+x_2=-\frac ba},
+      \qquad
+      \boxed{x_1x_2=\frac ca}.
+    \]
+  </div>
+
+  <div class="method">
+    <strong>Progression de la série :</strong>
+    <ol>
+      <li>Résoudre une équation ou une inéquation du second degré.</li>
+      <li>Utiliser somme et produit pour résoudre un système.</li>
+      <li>Transformer \(x-y\) en somme en posant \(z=-y\).</li>
+      <li>Traiter une équation avec racine carrée en commençant par son domaine.</li>
+      <li>Utiliser les identités remarquables pour transformer un système en équation du second degré.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<div class="footer">
+  Mathématiques — Série 2 • HTML + MathJax • Ben Ftima • 2026/2027
+</div>
+
+</body>
+</html>
