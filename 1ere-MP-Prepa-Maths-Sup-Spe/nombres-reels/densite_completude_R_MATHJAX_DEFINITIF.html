@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Densité et complétude de R</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script>
+window.addEventListener("load", function () {
+  if (!window.MathJax || !window.MathJax.tex2svg) return;
+  document.querySelectorAll(".eq[data-tex]").forEach(function (el) {
+    var tex = el.getAttribute("data-tex");
+    el.replaceChildren(window.MathJax.tex2svg(tex, {display: true}));
+  });
+});
+</script>
+
+<style>
+:root{
+  --green:#2f7d32;
+  --green-light:#eef8ef;
+  --blue:#1769aa;
+  --blue-light:#eef6ff;
+  --red:#b33a3a;
+  --orange:#b26a00;
+  --dark:#263238;
+  --gray:#607d8b;
+  --bg:#f5f7f8;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.65;
+}
+header{
+  background:linear-gradient(135deg,#ffffff,#eef8ef);
+  border-bottom:1px solid #d9e4dc;
+  padding:38px 20px;
+  text-align:center;
+}
+header h1{
+  margin:0 0 8px;
+  color:var(--green);
+  font-size:clamp(1.8rem,4vw,2.7rem);
+}
+header p{
+  margin:0;
+  color:var(--gray);
+}
+.container{
+  width:min(1050px,92%);
+  margin:30px auto 60px;
+}
+.card{
+  background:var(--white);
+  border-radius:14px;
+  padding:24px;
+  margin:20px 0;
+  box-shadow:0 4px 18px rgba(0,0,0,.06);
+  border:1px solid #e2e8ea;
+}
+.question{
+  border-left:5px solid var(--blue);
+  background:var(--blue-light);
+}
+.answer{
+  border-left:5px solid var(--green);
+  background:var(--green-light);
+}
+.warning{
+  border-left:5px solid var(--orange);
+  background:#fff8ec;
+}
+.example{
+  border-left:5px solid #795548;
+  background:#faf7f5;
+}
+h2{color:var(--green);margin-top:0}
+h3{color:var(--blue)}
+.label{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:.85rem;
+  font-weight:bold;
+  margin-bottom:10px;
+  background:#e7f0f3;
+}
+.eq{
+  text-align:center;
+  margin:18px 0;
+  font-size:1.08rem;
+  overflow-x:auto;
+  padding:4px 2px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:15px 0;
+}
+th,td{
+  border:1px solid #d7dee1;
+  padding:12px;
+  vertical-align:top;
+}
+th{
+  background:#eef8ef;
+  color:var(--green);
+}
+strong{color:#263238}
+footer{
+  text-align:center;
+  color:var(--gray);
+  padding:25px;
+  font-size:.9rem;
+}
+@media(max-width:650px){
+  .card{padding:17px}
+  th,td{padding:8px;font-size:.93rem}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Densité et complétude de \(\mathbb R\)</h1>
+  <p>Résumé — comprendre la différence entre « dense » et « complet »</p>
+</header>
+
+<main class="container">
+
+<section class="card question">
+  <span class="label">Question essentielle</span>
+  <h2>Que signifie « un ensemble est dense » ?</h2>
+  <p>
+    Si \(A\subset\mathbb R\), on dit que \(A\) est <strong>dense dans \(\mathbb R\)</strong>
+    lorsque, entre deux réels distincts, on peut toujours trouver un élément de \(A\).
+  </p>
+
+  <div class="eq" data-tex="\boxed{ \forall x,y\in\mathbb R,\quad x&lt;y \Longrightarrow \exists a\in A:\ x&lt;a&lt;y }"></div>
+</section>
+
+<section class="card answer">
+  <span class="label">Réponse</span>
+  <h2>Les rationnels sont-ils denses ?</h2>
+
+  <p>Oui :</p>
+
+  <div class="eq" data-tex="\boxed{\mathbb Q\text{ est dense dans }\mathbb R}"></div>
+
+  <p>
+    Cela signifie qu'entre deux réels, même très proches, il existe toujours
+    un nombre rationnel.
+  </p>
+
+  <div class="eq" data-tex="1&lt;\frac32&lt;2"></div>
+</section>
+
+<section class="card answer">
+  <span class="label">Réponse</span>
+  <h2>Les irrationnels sont-ils denses ?</h2>
+
+  <p>Oui également :</p>
+
+  <div class="eq" data-tex="\boxed{\mathbb R\setminus\mathbb Q\text{ est dense dans }\mathbb R}"></div>
+
+  <p>Par exemple :</p>
+
+  <div class="eq" data-tex="1&lt;\sqrt2&lt;2."></div>
+
+  <p>
+    Ainsi, entre deux réels, on peut trouver des rationnels
+    <strong>et</strong> des irrationnels.
+  </p>
+</section>
+
+<section class="card example">
+  <span class="label">Exemple important</span>
+  <h2>Entre deux nombres, que peut-on trouver ?</h2>
+
+  <p>
+    Entre deux rationnels, on peut trouver un autre rationnel et un irrationnel.
+  </p>
+
+  <div class="eq" data-tex="1&lt;\frac32&lt;2 \qquad\text{et}\qquad 1&lt;\sqrt2&lt;2."></div>
+
+  <p>
+    Le même phénomène existe entre deux irrationnels : on peut y trouver
+    des rationnels et des irrationnels.
+  </p>
+</section>
+
+<section class="card question">
+  <span class="label">Deuxième question</span>
+  <h2>Alors, que signifie « \(\mathbb R\) est complet » ?</h2>
+
+  <p>
+    La <strong>complétude</strong> est une propriété différente de la densité.
+    Elle concerne notamment les limites et les bornes.
+  </p>
+
+  <p>
+    Une formulation fondamentale est la <strong>propriété de la borne supérieure</strong> :
+  </p>
+
+  <div class="eq" data-tex="\boxed{ A\subset\mathbb R,\quad A\neq\varnothing,\quad A\text{ majorée} \Longrightarrow \sup A\in\mathbb R }"></div>
+</section>
+
+<section class="card example">
+  <span class="label">Exemple avec \(\mathbb Q\)</span>
+  <h2>Pourquoi \(\mathbb Q\) est dense mais n'est pas complet ?</h2>
+
+  <p>Considérons :</p>
+
+  <div class="eq" data-tex="A=\{q\in\mathbb Q\mid q^2&lt;2\}."></div>
+
+  <p>
+    Cet ensemble est non vide et majoré dans \(\mathbb Q\).
+    Sa borne supérieure correspond à :
+  </p>
+
+  <div class="eq" data-tex="\sqrt2."></div>
+
+  <p>Mais :</p>
+
+  <div class="eq" data-tex="\sqrt2\notin\mathbb Q."></div>
+
+  <p>
+    La borne supérieure « manque » donc dans \(\mathbb Q\).
+    C'est pourquoi :
+  </p>
+
+  <div class="eq" data-tex="\boxed{\mathbb Q\text{ est dense dans }\mathbb R \quad\text{mais}\quad \mathbb Q\text{ n&#x27;est pas complet}.}"></div>
+</section>
+
+<section class="card answer">
+  <span class="label">Conclusion</span>
+  <h2>À retenir</h2>
+
+  <table>
+    <tr>
+      <th>Propriété</th>
+      <th>Question à se poser</th>
+    </tr>
+    <tr>
+      <td><strong>Densité</strong></td>
+      <td>
+        « Entre deux nombres, puis-je toujours trouver un élément de mon ensemble ? »
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Complétude</strong></td>
+      <td>
+        « Les limites ou les bornes qui doivent exister restent-elles dans mon ensemble ? »
+      </td>
+    </tr>
+  </table>
+
+  <div class="eq" data-tex="\boxed{ \mathbb Q\text{ est dense mais non complet} }"></div>
+
+  <div class="eq" data-tex="\boxed{ \mathbb R\text{ est complet} }"></div>
+
+  <p>
+    Les irrationnels sont eux aussi denses dans \(\mathbb R\).
+    La densité et la complétude répondent donc à <strong>deux questions différentes</strong>.
+  </p>
+</section>
+
+<section class="card warning">
+  <span class="label">Lien avec le cours</span>
+  <p>
+    La complétude de \(\mathbb R\) est précisément liée à l'idée qu'il ne manque
+    pas de « points » à la droite réelle. Les constructions de \(\mathbb R\)
+    par les <strong>coupures de Dedekind</strong> ou par les
+    <strong>suites de Cauchy</strong> permettent de formaliser cette idée.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  Mathématiques — Nombres réels — Densité et complétude
+</footer>
+
+</body>
+</html>
