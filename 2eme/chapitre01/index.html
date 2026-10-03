@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 1 — 2ème Sciences | Ben Ftima</title>
+
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'], ['$','$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7f9;color:#263238;line-height:1.6}
+.topbar{background:#20232a;color:#fff;min-height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.logo{font-size:21px;font-weight:600;letter-spacing:.3px}.logo span{color:#6db33f}
+.nav{display:flex;gap:24px}.nav a{color:#ddd;text-decoration:none;font-size:14px}.nav a:hover{color:#fff}
+.hero{background:#fff;border-bottom:1px solid #e1e5e8;padding:60px 6% 50px}
+.hero-container{max-width:1150px;margin:auto}.eyebrow{color:#6db33f;font-size:14px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.hero h1{margin:10px 0 12px;font-size:clamp(32px,5vw,48px);font-weight:400;color:#263238}.hero h1 span{color:#6db33f}
+.hero p{max-width:800px;font-size:18px;color:#607078}
+.btn{display:inline-block;margin-top:18px;padding:11px 20px;border-radius:4px;background:#6db33f;color:#fff;text-decoration:none;font-size:14px;font-weight:bold;transition:.2s}.btn:hover{background:#5b9635;transform:translateY(-1px)}
+main{max-width:1150px;margin:auto;padding:45px 6%}.section-title{margin-bottom:28px}.section-title h2{font-size:30px;font-weight:400;margin-bottom:5px}.section-title p{color:#718087}
+.intro{background:#fff;border-left:4px solid #6db33f;padding:25px 28px;margin-bottom:40px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.intro strong{color:#263238}
+.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.card{background:#fff;border:1px solid #e3e7e9;border-radius:5px;padding:25px;min-height:245px;display:flex;flex-direction:column;transition:.2s;box-shadow:0 2px 5px rgba(0,0,0,.04)}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.10)}
+.number{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#eef6e9;color:#5c9835;font-weight:bold;margin-bottom:18px}
+.card h3{margin:0 0 8px;font-size:20px;font-weight:500}.card p{color:#65747b;font-size:15px;margin-top:0}.card .btn{margin-top:auto;align-self:flex-start}
+.available,.coming{display:inline-block;font-size:12px;padding:3px 8px;border-radius:12px;margin-bottom:10px}.available{color:#4e8c2d;background:#edf7e9}.coming{color:#777;background:#f0f2f3}
+footer{background:#20232a;color:#bfc5c8;text-align:center;padding:35px 20px;margin-top:40px}footer strong{color:#fff}footer span{color:#6db33f}
+@media(max-width:700px){.topbar{height:auto;padding:12px 5%;flex-direction:column;gap:8px}.nav{gap:15px;flex-wrap:wrap;justify-content:center}.nav a{font-size:13px}.hero{padding:40px 5%}.hero p{font-size:16px}main{padding:35px 5%}.series-grid{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="logo">Ben <span>Ftima</span></div>
+  <nav class="nav">
+    <a href="../../index.html">Accueil</a>
+    <a href="../index.html">2ème Sciences</a>
+    <a href="#series">Séries</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-container">
+    <div class="eyebrow">Mathématiques · 2ème Sciences</div>
+    <h1>Chapitre 1 — <span>Séries d'exercices</span></h1>
+    <p>Un parcours progressif d'exercices pour comprendre, appliquer et maîtriser les notions du chapitre.</p>
+    <a href="#series" class="btn">Explorer les séries →</a>
+  </div>
+</section>
+
+<main>
+  <div class="section-title">
+    <h2>Organisation du chapitre</h2>
+    <p>Les exercices sont répartis en dix séries afin de permettre une progression régulière du niveau de difficulté.</p>
+  </div>
+
+  <div class="intro">
+    <strong>Notre démarche pédagogique</strong>
+    <p>Les séries commencent par des exercices d'application permettant de maîtriser les notions essentielles. La difficulté augmente progressivement jusqu'aux exercices de synthèse et de recherche.</p>
+    <p>Chaque série possède sa propre page avec les énoncés, les indications et, lorsque cela est prévu, les corrections détaillées en MathJax.</p>
+  </div>
+
+  <section id="series">
+    <div class="series-grid">
+
+      <article class="card">
+        <div class="number">01</div><span class="available">Disponible</span>
+        <h3>Série 1</h3>
+        <p>Exercices d'application directe. Cette première série permet de découvrir et d'appliquer les notions fondamentales du chapitre.</p>
+        <a href="serie1.html" class="btn">Ouvrir la série →</a>
+      </article>
+
+      <article class="card">
+        <div class="number">02</div><span class="available">Disponible</span>
+        <h3>Série 2</h3>
+        <p>Exercices de consolidation. On réutilise les notions étudiées dans des situations plus variées.</p>
+        <a href="serie2.html" class="btn">Ouvrir la série →</a>
+      </article>
+
+      <article class="card"><div class="number">03</div><span class="coming">À venir</span><h3>Série 3</h3><p>Exercices progressifs mobilisant plusieurs propriétés et différentes méthodes de résolution.</p></article>
+      <article class="card"><div class="number">04</div><span class="coming">À venir</span><h3>Série 4</h3><p>Exercices d'approfondissement destinés à développer le raisonnement mathématique.</p></article>
+      <article class="card"><div class="number">05</div><span class="coming">À venir</span><h3>Série 5</h3><p>Problèmes guidés permettant de construire progressivement une démarche de résolution.</p></article>
+      <article class="card"><div class="number">06</div><span class="coming">À venir</span><h3>Série 6</h3><p>Exercices variés permettant de travailler les notions dans différentes configurations.</p></article>
+      <article class="card"><div class="number">07</div><span class="coming">À venir</span><h3>Série 7</h3><p>Exercices de synthèse reliant plusieurs notions étudiées dans le chapitre.</p></article>
+      <article class="card"><div class="number">08</div><span class="coming">À venir</span><h3>Série 8</h3><p>Exercices de type devoir pour s'entraîner dans des conditions proches d'une évaluation.</p></article>
+      <article class="card"><div class="number">09</div><span class="coming">À venir</span><h3>Série 9</h3><p>Défis et exercices de recherche pour développer l'autonomie et le raisonnement.</p></article>
+      <article class="card"><div class="number">10</div><span class="coming">À venir</span><h3>Série 10</h3><p>Synthèse générale du chapitre permettant de revoir l'ensemble des compétences travaillées.</p></article>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Mathématiques — 2ème Sciences</strong><br>
+  <span>Ben Ftima</span><br><br>
+  Chapitre 1 · Séries d'exercices · 2026/2027
+</footer>
+</body>
+</html>
