@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résolution dans ℝ — Inéquations du second degré</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --bordeaux:#7b1830;
+  --bordeaux2:#a52a48;
+  --turquoise:#087f8c;
+  --violet:#65408b;
+  --cream:#fffaf6;
+  --paper:#ffffff;
+  --ink:#263238;
+  --muted:#667085;
+  --line:#eadfe2;
+  --green:#237a57;
+  --shadow:0 10px 30px rgba(62,25,35,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,#f7f3f1,#fff);
+  color:var(--ink);
+  font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.65;
+}
+header{
+  background:linear-gradient(120deg,var(--bordeaux),#922444 55%,var(--violet));
+  color:white;
+  padding:32px 18px 26px;
+}
+.header-inner{max-width:1100px;margin:auto}
+.brand{font-weight:800;letter-spacing:.04em;font-size:14px;opacity:.9}
+h1{margin:8px 0 5px;font-size:clamp(28px,5vw,46px);line-height:1.15}
+.subtitle{margin:0;opacity:.92;font-size:17px}
+nav{
+  position:sticky;top:0;z-index:20;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+.nav-inner{
+  max-width:1100px;margin:auto;
+  display:flex;gap:8px;overflow-x:auto;padding:9px 12px;
+}
+nav a{
+  flex:0 0 auto;text-decoration:none;color:var(--bordeaux);
+  border:1px solid #ead5da;border-radius:999px;padding:7px 12px;
+  font-size:14px;font-weight:700;background:#fff;
+}
+nav a:hover{background:#f9eef1}
+main{max-width:1100px;margin:28px auto;padding:0 15px}
+.card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:18px;box-shadow:var(--shadow);
+  padding:24px;margin:0 0 22px;
+}
+.card h2{
+  color:var(--bordeaux);margin-top:0;
+  border-left:5px solid var(--turquoise);padding-left:12px;
+}
+.card h3{color:var(--violet);margin-bottom:8px}
+.badge{
+  display:inline-block;background:#f4e8ec;color:var(--bordeaux);
+  border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800;
+}
+.objective{
+  background:linear-gradient(90deg,#eef9fa,#fff);
+  border-left:5px solid var(--turquoise);
+  padding:14px 17px;border-radius:10px;margin:15px 0;
+}
+.theorem{
+  background:#faf6ff;border:1px solid #e4d7f0;
+  border-left:5px solid var(--violet);border-radius:10px;
+  padding:15px 18px;margin:15px 0;
+}
+.method{
+  background:#fff8ef;border:1px solid #f0dfc5;
+  border-left:5px solid #c9822b;border-radius:10px;padding:15px 18px;
+}
+.answer{
+  background:#effaf4;border:1px solid #cde8da;
+  border-left:5px solid var(--green);border-radius:10px;
+  padding:14px 18px;margin-top:16px;
+}
+.warning{
+  background:#fff4f4;border:1px solid #f0cccc;
+  border-left:5px solid #b42318;border-radius:10px;padding:13px 17px;
+}
+table{
+  width:100%;border-collapse:collapse;margin:16px 0;
+  background:#fff;
+}
+th,td{border:1px solid #ddd;padding:10px;text-align:center}
+th{background:#f6ecef;color:var(--bordeaux)}
+.solution{
+  font-size:1.04rem;
+  overflow-x:auto;
+}
+.exercise{
+  border-top:4px solid var(--bordeaux2);
+}
+.exercise .statement{
+  background:#faf7f7;border-radius:12px;padding:15px 18px;
+  border:1px solid #eee0e3;margin:15px 0 20px;
+}
+.footer{
+  max-width:1100px;margin:10px auto 35px;padding:0 15px;
+  color:var(--muted);font-size:13px;text-align:center;
+}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:800;color:var(--turquoise)}
+.katexlike{font-size:1.02rem}
+@media(max-width:650px){
+  .card{padding:17px;border-radius:14px}
+  header{padding:25px 15px}
+  main{margin-top:18px}
+  table{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">BEN FTIMA • MATHÉMATIQUES</div>
+    <h1>Résoudre dans \( \mathbb{R} \)</h1>
+    <p class="subtitle">Équations et inéquations du second degré — démarche progressive</p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#methode">Méthode</a>
+    <a href="#exercices">Énoncé</a>
+    <a href="#t1">T₁</a>
+    <a href="#t2">T₂</a>
+    <a href="#t3">T₃</a>
+    <a href="#t4">T₄</a>
+    <a href="#t5">T₅</a>
+    <a href="#bilan">Bilan</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="card" id="methode">
+  <span class="badge">RAPPEL DE COURS</span>
+  <h2>1. Méthode générale</h2>
+
+  <p>On considère le trinôme du second degré</p>
+  <div class="objective">\[
+      P(x)=ax^2+bx+c,\qquad a\neq0.
+  \]</div>
+
+  <div class="theorem">
+    <strong>Discriminant :</strong>
+    \[
+      \Delta=b^2-4ac.
+    \]
+    Le signe de \( \Delta \) permet de déterminer le nombre de racines réelles de \(P\).
+  </div>
+
+  <h3>Cas \( \Delta>0 \)</h3>
+  <p>Le trinôme possède deux racines réelles distinctes :</p>
+  \[
+      x_1=\frac{-b-\sqrt{\Delta}}{2a},
+      \qquad
+      x_2=\frac{-b+\sqrt{\Delta}}{2a}.
+  \]
+  <p>On peut alors écrire :</p>
+  \[
+      P(x)=a(x-x_1)(x-x_2).
+  \]
+
+  <h3>Cas \( \Delta=0 \)</h3>
+  <p>Le trinôme possède une racine double :</p>
+  \[
+      x_0=-\frac{b}{2a},
+      \qquad
+      P(x)=a(x-x_0)^2.
+  \]
+
+  <h3>Cas \( \Delta<0 \)</h3>
+  <p>Le trinôme n'a pas de racine réelle. Il garde donc sur \( \mathbb R \) le signe de son coefficient \(a\).</p>
+
+  <div class="method">
+    <strong>Pour une inéquation :</strong>
+    <ol>
+      <li>Identifier \(a,b,c\).</li>
+      <li>Calculer \( \Delta=b^2-4ac\).</li>
+      <li>Déterminer les racines réelles lorsqu'elles existent.</li>
+      <li>Construire le tableau de signes de \(P(x)\).</li>
+      <li>Lire l'ensemble solution en tenant compte de \(<,\leq,>,\geq\).</li>
+    </ol>
+  </div>
+
+  <div class="warning">
+    <strong>Petite correction de méthode :</strong>
+    lorsque \( \Delta=0 \), il n'y a qu'une seule valeur \(x_0\), mais elle est une
+    <em>racine double</em>. Le signe de \(P(x)\) ne change donc pas en \(x_0\).
+  </div>
+</section>
+
+<section class="card" id="exercices">
+  <span class="badge">ÉNONCÉ</span>
+  <h2>2. Exercices — Résoudre dans \( \mathbb R \)</h2>
+  <div class="statement">
+    <p>Résoudre dans \( \mathbb R \) les équations et inéquations suivantes :</p>
+    <ol>
+      <li>\(2x^2+3x-5\geq0\)</li>
+      <li>\(2x^2-2\sqrt2\,x+1<0\)</li>
+      <li>\(-3x^2-5x+8<0\)</li>
+      <li>\(2x^2+x+3>0\)</li>
+      <li>\(2x^2+3x-5=0\)</li>
+    </ol>
+  </div>
+</section>
+
+<section class="card exercise" id="t1">
+  <span class="badge">T₁ — INÉQUATION</span>
+  <h2>3. Résolution de \(2x^2+3x-5\geq0\)</h2>
+
+  <div class="statement">
+    <strong>Énoncé :</strong>
+    \[
+      \boxed{\,2x^2+3x-5\geq0\,}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Calcul du discriminant</h3>
+    \[
+      a=2,\qquad b=3,\qquad c=-5.
+    \]
+    \[
+      \Delta=b^2-4ac
+      =3^2-4(2)(-5)
+      =9+40
+      =49>0.
+    \]
+
+    <h3>Étape 2 — Calcul des racines</h3>
+    \[
+      x_1=\frac{-3-\sqrt{49}}{4}
+      =\frac{-3-7}{4}
+      =-\frac52,
+    \]
+    \[
+      x_2=\frac{-3+\sqrt{49}}{4}
+      =\frac{-3+7}{4}
+      =1.
+    \]
+
+    <h3>Étape 3 — Factorisation</h3>
+    \[
+      2x^2+3x-5
+      =2\left(x+\frac52\right)(x-1)
+      =(2x+5)(x-1).
+    \]
+
+    <h3>Étape 4 — Signe</h3>
+    <table>
+      <tr><th>\(x\)</th><th>\((-\infty,-\frac52)\)</th><th>\(-\frac52\)</th><th>\((-\frac52,1)\)</th><th>\(1\)</th><th>\((1,+\infty)\)</th></tr>
+      <tr><th>\(2x+5\)</th><td>−</td><td>0</td><td>+</td><td>+</td><td>+</td></tr>
+      <tr><th>\(x-1\)</th><td>−</td><td>−</td><td>−</td><td>0</td><td>+</td></tr>
+      <tr><th>\(P(x)\)</th><td>+</td><td>0</td><td>−</td><td>0</td><td>+</td></tr>
+    </table>
+
+    <div class="answer">
+      Comme on cherche \(P(x)\geq0\), on retient les intervalles où le signe est positif
+      ou nul :
+      \[
+        \boxed{S_{\mathbb R}
+        =\left]-\infty,-\frac52\right]\cup[1,+\infty[}.
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t2">
+  <span class="badge">T₂ — CAS \( \Delta=0 \)</span>
+  <h2>4. Résolution de \(2x^2-2\sqrt2\,x+1<0\)</h2>
+
+  <div class="statement">
+    <strong>Énoncé :</strong>
+    \[
+      \boxed{\,2x^2-2\sqrt2\,x+1<0\,}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Discriminant</h3>
+    \[
+      a=2,\qquad b=-2\sqrt2,\qquad c=1.
+    \]
+    \[
+      \Delta=(-2\sqrt2)^2-4(2)(1)
+      =8-8
+      =0.
+    \]
+
+    <h3>Étape 2 — Racine double</h3>
+    \[
+      x_0=-\frac{b}{2a}
+      =\frac{2\sqrt2}{4}
+      =\frac{\sqrt2}{2}.
+    \]
+
+    Donc
+    \[
+      2x^2-2\sqrt2\,x+1
+      =2\left(x-\frac{\sqrt2}{2}\right)^2.
+    \]
+
+    <h3>Étape 3 — Signe</h3>
+    Puisque \(2>0\) et qu'un carré est toujours positif ou nul,
+    \[
+      2\left(x-\frac{\sqrt2}{2}\right)^2\geq0
+      \qquad\text{pour tout }x\in\mathbb R.
+    \]
+
+    <div class="answer">
+      On cherche une valeur telle que l'expression soit <strong>strictement négative</strong>.
+      Il n'en existe aucune :
+      \[
+        \boxed{S_{\mathbb R}=\varnothing}.
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t3">
+  <span class="badge">T₃ — INÉQUATION</span>
+  <h2>5. Résolution de \(-3x^2-5x+8<0\)</h2>
+
+  <div class="statement">
+    <strong>Énoncé :</strong>
+    \[
+      \boxed{\,-3x^2-5x+8<0\,}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Discriminant</h3>
+    \[
+      a=-3,\qquad b=-5,\qquad c=8.
+    \]
+    \[
+      \Delta=(-5)^2-4(-3)(8)
+      =25+96
+      =121>0.
+    \]
+
+    <h3>Étape 2 — Racines</h3>
+    \[
+      x_1=\frac{-(-5)-\sqrt{121}}{2(-3)}
+      =\frac{5-11}{-6}
+      =1,
+    \]
+    \[
+      x_2=\frac{5+11}{-6}
+      =-\frac83.
+    \]
+
+    <p>En les ordonnant :</p>
+    \[
+      x_1=-\frac83,\qquad x_2=1.
+    \]
+
+    <h3>Étape 3 — Factorisation</h3>
+    \[
+      -3x^2-5x+8=-3\left(x+\frac83\right)(x-1).
+    \]
+
+    <h3>Étape 4 — Signe</h3>
+    <p>Le coefficient dominant est \(a=-3<0\). Le trinôme est donc négatif à l'extérieur des deux racines et positif entre elles.</p>
+
+    <table>
+      <tr><th>\(x\)</th><th>\(\left]-\infty,-\frac83\right[\)</th><th>\(-\frac83\)</th><th>\(\left]-\frac83,1\right[\)</th><th>\(1\)</th><th>\(]1,+\infty[\)</th></tr>
+      <tr><th>\(P(x)\)</th><td>−</td><td>0</td><td>+</td><td>0</td><td>−</td></tr>
+    </table>
+
+    <div class="answer">
+      Comme l'inégalité est stricte :
+      \[
+        \boxed{
+        S_{\mathbb R}
+        =\left]-\infty,-\frac83\right[
+        \cup
+        \left]1,+\infty\right[
+        }.
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t4">
+  <span class="badge">T₄ — CAS \( \Delta<0 \)</span>
+  <h2>6. Résolution de \(x^2+x+3>0\)</h2>
+
+  <div class="statement">
+    <strong>Énoncé :</strong>
+    \[
+      \boxed{\,2x^2+x+3>0\,}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Discriminant</h3>
+    \[
+      a=1,\qquad b=1,\qquad c=3.
+    \]
+    \[
+      \Delta=1^2-4(1)(3)
+      =1-12
+      =-11<0.
+    \]
+
+    <h3>Étape 2 — Signe</h3>
+    Le trinôme n'a aucune racine réelle.
+    Comme \(a=2>0\), il est strictement positif sur \( \mathbb R \).
+
+    \[
+      \boxed{2x^2+x+3>0\quad\text{pour tout }x\in\mathbb R.}
+    \]
+
+    <div class="answer">
+      Donc :
+      \[
+        \boxed{S_{\mathbb R}=\mathbb R}.
+      \]
+    </div>
+  </div>
+</section>
+
+<section class="card exercise" id="t5">
+  <span class="badge">T₅ — ÉQUATION</span>
+  <h2>7. Résolution de \(2x^2+3x-5=0\)</h2>
+
+  <div class="statement">
+    <strong>Énoncé :</strong>
+    \[
+      \boxed{\,2x^2+3x-5=0\,}
+    \]
+  </div>
+
+  <div class="solution">
+    <h3>Étape 1 — Discriminant</h3>
+    \[
+      \Delta=3^2-4(2)(-5)=9+40=49>0.
+    \]
+
+    <h3>Étape 2 — Racines</h3>
+    \[
+      x_1=\frac{-3-7}{4}=-\frac52,
+      \qquad
+      x_2=\frac{-3+7}{4}=1.
+    \]
+
+    <div class="answer">
+      Ainsi :
+      \[
+        \boxed{S_{\mathbb R}=\left\{-\frac52,\;1\right\}}.
+      \]
+    </div>
+
+    <details>
+      <summary>Vérification par factorisation</summary>
+      <p>
+        On retrouve immédiatement :
+      </p>
+      \[
+        2x^2+3x-5=(2x+5)(x-1).
+      \]
+      Donc
+      \[
+        (2x+5)(x-1)=0
+        \Longleftrightarrow
+        x=-\frac52\quad\text{ou}\quad x=1.
+      \]
+    </details>
+  </div>
+</section>
+
+<section class="card" id="bilan">
+  <span class="badge">SYNTHÈSE</span>
+  <h2>8. Bilan de la démarche</h2>
+
+  <table>
+    <tr>
+      <th>Exercice</th>
+      <th>\(\Delta\)</th>
+      <th>Information essentielle</th>
+      <th>Solution</th>
+    </tr>
+    <tr>
+      <td>T₁</td>
+      <td>\(49>0\)</td>
+      <td>Deux racines</td>
+      <td>\(\displaystyle \left]-\infty,-\frac52\right]\cup[1,+\infty[\)</td>
+    </tr>
+    <tr>
+      <td>T₂</td>
+      <td>\(0\)</td>
+      <td>Racine double, \(a>0\)</td>
+      <td>\(\varnothing\)</td>
+    </tr>
+    <tr>
+      <td>T₃</td>
+      <td>\(121>0\)</td>
+      <td>Deux racines, \(a<0\)</td>
+      <td>\(\displaystyle \left]-\infty,-\frac83\right[\cup]1,+\infty[\)</td>
+    </tr>
+    <tr>
+      <td>T₄</td>
+      <td>\(-11<0\)</td>
+      <td>Aucune racine, \(a=1>0\)</td>
+      <td>\(\mathbb R\)</td>
+    </tr>
+    <tr>
+      <td>T₅</td>
+      <td>\(49>0\)</td>
+      <td>Équation</td>
+      <td>\(\displaystyle \left\{-\frac52,1\right\}\)</td>
+    </tr>
+  </table>
+
+  <div class="objective">
+    <strong>Démarche suivie dans les pages manuscrites :</strong>
+    <p>
+      On conserve la progression : calcul de \(a,b,c\), utilisation de
+      \(a+b+c=0\) lorsque c'est pertinent pour reconnaître \(x=1\),
+      recherche de la seconde racine avec \(x_1x_2=\frac ca\), factorisation,
+      puis tableau de signes et lecture de l'ensemble solution.
+    </p>
+  </div>
+
+  <div class="method">
+    <strong>À retenir :</strong>
+    <ul>
+      <li>\(\Delta>0\) : deux racines réelles distinctes.</li>
+      <li>\(\Delta=0\) : une racine double.</li>
+      <li>\(\Delta<0\) : aucune racine réelle.</li>
+      <li>Pour une inéquation, le signe de \(a\) détermine le comportement du trinôme à l'extérieur des racines.</li>
+      <li>Les bornes sont incluses seulement pour \( \leq \) ou \( \geq \), et exclues pour \(<\) ou \(>\).</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<div class="footer">
+  Mathématiques — fiche HTML + MathJax • Mise en page responsive pour GitHub Pages
+</div>
+
+</body>
+</html>
