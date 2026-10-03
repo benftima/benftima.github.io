@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démonstration Générale - Développement Décimal Périodique</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        .author-box {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-left: 5px solid #2c3e50;
+        }
+        .step {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .step-title {
+            font-weight: bold;
+            color: #e67e22;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .line-general {
+            background-color: #f7f9fa;
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            margin: 5px 0;
+            font-style: italic;
+        }
+        .line-example {
+            background-color: #fff9e6;
+            border-left: 4px solid #f1c40f;
+            padding: 10px;
+            margin: 5px 0;
+            font-weight: 500;
+        }
+        .math {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #c0392b;
+        }
+        .footer-link {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .footer-link a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .footer-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Démonstration Générale & Application Pratique</h1>
+    
+    <div class="author-box">
+        Par Ben Ftima Mohamed — Tél: +216 21 409 061
+    </div>
+
+    <p>Ce document présente la preuve algébrique générale permettant de transformer tout développement décimal périodique en fraction rationnelle, illustrée ligne par ligne par un exemple concret basé sur le nombre <span class="math">x = 5,2343434...</span> (où la période est 34 de longueur p=2, et le décalage après la virgule est 2 de longueur d=1).</p>
+
+    <div class="step">
+        <div class="step-title">Étape 1 : Amener la virgule juste avant la période</div>
+        <div class="line-general">
+            <strong>Ligne Générale :</strong> On multiplie x par 10<sup>d</sup> pour déplacer la virgule de d rangs vers la droite.<br>
+            <span class="math">10<sup>d</sup> · x = Partie avant la période + 0,période...</span>
+        </div>
+        <div class="line-example">
+            <strong>Application à l'exemple :</strong> On multiplie par 10<sup>1</sup> = 10 pour sauter le chiffre 2.<br>
+            <span class="math">10x = 52,343434...</span>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-title">Étape 2 : Amener la virgule juste après la première période</div>
+        <div class="line-general">
+            <strong>Ligne Générale :</strong> On multiplie x par 10<sup>d+p</sup> pour déplacer la virgule après la première période.<br>
+            <span class="math">10<sup>d+p</sup> · x = Tout le nombre sans virgule + 0,période...</span>
+        </div>
+        <div class="line-example">
+            <strong>Application à l'exemple :</strong> On multiplie par 10<sup>1+2</sup> = 10<sup>3</sup> = 1000 pour sauter le 2, le 3 et le 4.<br>
+            <span class="math">1000x = 5234,343434...</span>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-title">Étape 3 : Poser la soustraction pour éliminer l'infini</div>
+        <div class="line-general">
+            <strong>Ligne Générale :</strong> On soustrait la première égalité à la deuxième pour annuler la partie infinie 0,période...<br>
+            <span class="math">10<sup>d+p</sup> · x - 10<sup>d</sup> · x = Tout le nombre - Partie avant la période</span>
+        </div>
+        <div class="line-example">
+            <strong>Application à l'exemple :</strong> On soustrait 10x à 1000x.<br>
+            <span class="math">1000x - 10x = 5234,3434... - 52,3434...</span>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-title">Étape 4 : Calculer les deux membres</div>
+        <div class="line-general">
+            <strong>Ligne Générale :</strong> On factorise à gauche et on effectue la soustraction entière à droite.<br>
+            <span class="math">10<sup>d</sup>(10<sup>p</sup> - 1) · x = Résultat Entier</span>
+        </div>
+        <div class="line-example">
+            <strong>Application à l'exemple :</strong> On effectue les calculs numériques.<br>
+            <span class="math">990x = 5182</span>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-title">Étape 5 : Isoler x sous forme de fraction finie</div>
+        <div class="line-general">
+            <strong>Ligne Générale :</strong> On divise pour obtenir la formule de la fraction générale.<br>
+            <span class="math">x = (Tout le nombre - Partie avant la période) / [10<sup>d</sup>(10<sup>p</sup> - 1)]</span>
+        </div>
+        <div class="line-example">
+            <strong>Application à l'exemple :</strong> On extrait la fraction finale et on la simplifie.<br>
+            <span class="math">x = 5182 / 990 = 2591 / 495</span>
+        </div>
+    </div>
+
+    <div class="footer-link">
+        <p>Pour en savoir plus et consulter d'autres ressources de cours :</p>
+        <a href="https://benftima.github.io" target="_blank">Plus d'infos sur benftima.github.io</a>
+    </div>
+
+</body>
+</html>
