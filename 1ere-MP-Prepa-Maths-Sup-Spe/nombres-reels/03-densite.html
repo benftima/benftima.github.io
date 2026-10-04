@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1ère MP — Densité de \(\mathbb Q\) dans \(\mathbb R\)</title>
+<script>
+window.MathJax={
+ tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+ svg:{fontCache:'global'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{
+  --spring:#6db33f;
+  --spring-dark:#4f8f2f;
+  --ink:#24313a;
+  --muted:#6b7780;
+  --line:#e3e7e9;
+  --paper:#fff;
+  --bg:#f7f9fa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:15px;line-height:1.65;
+}
+.topbar{
+  height:64px;background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;position:sticky;top:0;z-index:20;
+}
+.nav{
+  width:min(1180px,calc(100% - 40px));margin:auto;
+  display:flex;align-items:center;justify-content:space-between;gap:25px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-weight:650}
+.logo{
+  width:34px;height:34px;border-radius:7px;background:var(--spring);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:18px;
+}
+.navlinks{display:flex;gap:22px;font-size:13px}
+.navlinks a{color:#56616a;text-decoration:none}
+.navlinks a:hover{color:var(--spring-dark)}
+.layout{
+  width:min(1180px,calc(100% - 40px));margin:0 auto;
+  display:grid;grid-template-columns:220px minmax(0,1fr) 185px;gap:38px;
+}
+.sidebar{
+  padding:34px 0;position:sticky;top:64px;height:calc(100vh - 64px);
+  overflow:auto;border-right:1px solid var(--line);padding-right:22px;
+}
+.sidebar .label{
+  text-transform:uppercase;letter-spacing:.08em;font-size:11px;
+  color:#89939a;margin-bottom:12px;font-weight:700;
+}
+.sidebar a{
+  display:block;text-decoration:none;color:#59656d;font-size:13px;
+  padding:7px 9px;border-left:2px solid transparent;
+}
+.sidebar a:hover,.sidebar a.active{
+  color:var(--spring-dark);border-left-color:var(--spring);background:#f1f7ed;
+}
+main{background:var(--paper);margin:28px 0;padding:42px 54px;min-width:0}
+.hero{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:30px}
+.kicker{color:var(--spring-dark);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+h1{font-size:34px;line-height:1.15;font-weight:500;margin:9px 0 10px;color:#263238}
+.lead{font-size:17px;color:var(--muted);margin:0}
+h2{font-size:23px;font-weight:500;margin:35px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;font-weight:600;margin:27px 0 8px}
+p,li{font-size:14px;line-height:1.65}
+.math{margin:18px 0;text-align:center}
+.box{
+  border-left:4px solid var(--spring);background:#f5f8f4;
+  padding:15px 18px;margin:20px 0;
+}
+.ex{
+  border:1px solid var(--line);border-radius:4px;padding:15px 18px;
+  margin:20px 0;background:#fff;
+}
+.ex:before{content:"Exercice";display:block;color:var(--spring-dark);
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.note{font-size:13px;color:var(--muted)}
+.diagram{margin:20px 0}
+.diagram svg{width:100%;height:auto;display:block}
+.toc{
+  padding:34px 0;position:sticky;top:64px;height:max-content;
+  color:#68747c;font-size:12px;
+}
+.toc strong{display:block;color:#35414a;font-size:12px;margin-bottom:12px}
+.toc a{display:block;color:#78838a;text-decoration:none;padding:4px 0}
+.toc a:hover{color:var(--spring-dark)}
+.footer{
+  margin-top:42px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--muted)
+}
+.prevnext{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:38px;padding-top:20px}
+.prevnext a{color:var(--spring-dark);text-decoration:none;font-size:13px}
+mjx-container[display="true"]{margin:.8em 0!important;max-width:100%}
+@media(max-width:950px){
+  .layout{grid-template-columns:180px minmax(0,1fr)}
+  .toc{display:none}
+}
+@media(max-width:720px){
+  .navlinks{display:none}
+  .layout{display:block;width:min(100% - 24px,680px)}
+  .sidebar{position:static;height:auto;border:0;padding:16px 0;display:flex;gap:4px;overflow:auto}
+  .sidebar a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent}
+  .sidebar a.active{border-left:0;border-bottom-color:var(--spring)}
+  main{margin:10px 0;padding:26px 20px}
+  h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="nav">
+  <a class="brand" href="index.html"><span class="logo">M</span><span>1ère MP · Nombres réels</span></a>
+  <nav class="navlinks">
+   <a href="index.html">Cours</a><a href="01-ordre-valeur-absolue.html">Notions</a><a href="04-bornes-completude.html">Complétude</a>
+  </nav>
+ </div>
+</header>
+<div class="layout">
+ <aside class="sidebar">
+  <div class="label">Nombres réels</div>
+  <a class="" href="01-ordre-valeur-absolue.html">1. Ordre + valeur absolue — Lemmes</a><a class="" href="02-archimede.html">2. Archimède</a><a class="active" href="03-densite.html">3. Densité de \(\mathbb Q\) dans \(\mathbb R\)</a><a class="" href="04-bornes-completude.html">4. Bornes supérieures — Complétude de \(\mathbb R\)</a>
+ </aside>
+ <main>
+  <div id="top" class="hero">
+   <div class="kicker">1ère MP · Cours</div>
+   <h1>Densité de \(\mathbb Q\) dans \(\mathbb R\)</h1>
+   <p class="lead">Définitions, démonstrations, exemples et exercices du cours.</p>
+  </div>
+  <h2>3. DENSITÉ DE \(\mathbb Q\) DANS \(\mathbb R\)</h2></div>
+<div class="content">
+<div class="column">
+
+<h3>Théorème de densité</h3>
+<div class="box">
+<div class="math">\[
+\boxed{x<y\Longrightarrow
+\exists q\in\mathbb Q,\quad x<q<y.}
+\]</div>
+</div>
+
+<h3>Démonstration — où intervient Archimède ?</h3>
+<p>Soient \(x<y\). Alors \(y-x>0\). <b>Étape Archimède :</b> choisir
+\(n\in\mathbb N^*\) tel que</p>
+<div class="math">\[
+\frac1n<y-x.
+\]</div>
+<p>Donc</p>
+<div class="math">\[
+ny-nx>1.
+\]</div>
+<p>Il existe alors \(p\in\mathbb Z\) tel que</p>
+<div class="math">\[
+nx<p<ny.
+\]</div>
+<p>En divisant par \(n>0\) :</p>
+<div class="math">\[
+\boxed{x<\frac pn<y,\qquad \frac pn\in\mathbb Q.}
+\]</div>
+
+<svg viewBox="0 0 430 50">
+<line x1="25" y1="27" x2="405" y2="27" stroke="#111"/>
+<circle cx="105" cy="27" r="4" fill="white" stroke="#111"/>
+<circle cx="215" cy="27" r="3.5" fill="#111"/>
+<circle cx="325" cy="27" r="4" fill="white" stroke="#111"/>
+<text x="99" y="44">x</text><text x="195" y="44">p/n</text><text x="319" y="44">y</text>
+</svg>
+
+<h3>Conséquences</h3>
+<p>Entre deux réels distincts, il existe un rationnel. En répétant
+la construction, on obtient une infinité de rationnels dans tout
+intervalle ouvert non vide. Les irrationnels sont également denses.</p>
+
+<h3>Exercice : rationnels entre deux réels</h3>
+<div class="ex">
+Pour \(1.2<x<1.25\), trouver un rationnel situé entre les deux bornes.
+Par exemple :
+\[
+1.2<\frac{26}{21}<1.25.
+\]
+</div>
+
+<h3>Exercice du cours — bornes et densité</h3>
+<div class="math">\[
+A=\left]\frac{3-\sqrt5}{2},\frac{3+\sqrt5}{2}\right[\cap\mathbb Q.
+\]</div>
+<p>Poser
+\(\alpha=(3-\sqrt5)/2,\ \beta=(3+\sqrt5)/2\).
+Si \(m>\alpha\), la densité donne un \(q\in\mathbb Q\) tel que
+\(\alpha<q<m\) : donc \(m\) n'est pas minorant. De même, si
+\(M<\beta\), il existe \(q\in\mathbb Q\) tel que \(M<q<\beta\) :
+\(M\) n'est pas majorant.</p>
+<div class="math">\[
+\boxed{\inf_{\mathbb R}(A)=\alpha,\qquad
+\sup_{\mathbb R}(A)=\beta.}
+\]</div>
+
+<p class="note"><b>Attention :</b> ici \(A\subset\mathbb Q\), mais les bornes
+sont prises dans \(\mathbb R\). Les extrémités sont irrationnelles.</p>
+
+
+</div>
+<div class="column">
+<div class="diagram"><svg viewBox="0 0 620 95">
+<line x1="45" y1="55" x2="575" y2="55" stroke="#111" stroke-width="2"/>
+<circle cx="145" cy="55" r="6" fill="white" stroke="#111" stroke-width="2"/><circle cx="315" cy="55" r="5"/><circle cx="485" cy="55" r="6" fill="white" stroke="#111" stroke-width="2"/>
+<text x="138" y="82">x</text><text x="288" y="82">p/n</text><text x="478" y="82">y</text>
+<text x="245" y="18">x &lt; p/n &lt; y</text></svg></div>
+</div>
+</div>
+  <div id="synthese" class="footer">
+   <div class="prevnext"><a href="02-archimede.html">← Archimède</a><a href="04-bornes-completude.html">Bornes supérieures — Complétude de \(\mathbb R\) →</a></div>
+  </div>
+ </main>
+ <aside class="toc">
+  <strong>Sur cette page</strong>
+  <a href="#top">Introduction</a>
+  <a href="#exercices">Exercices</a>
+  <a href="#synthese">Synthèse</a>
+ </aside>
+</div>
+</body>
+</html>
