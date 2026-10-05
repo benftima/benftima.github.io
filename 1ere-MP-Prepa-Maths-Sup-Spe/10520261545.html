@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 1 — Les nombres réels</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  startup: {
+    typeset: true
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+:root{
+  --green:#6db33f;
+  --green-dark:#3f7f24;
+  --ink:#263238;
+  --muted:#607d8b;
+  --line:#e1e8e3;
+  --paper:#fff;
+  --bg:#f7f9f7;
+  --red:#c85b55;
+  --yellow:#fff3b0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.72;
+}
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:10;
+}
+.nav{
+  max-width:1180px;margin:auto;padding:18px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:25px;
+}
+.logo{font-size:22px;font-weight:700;color:#263238;text-decoration:none}
+.logo span{color:var(--green)}
+nav{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:#455a64;text-decoration:none}
+nav a:hover{color:var(--green-dark)}
+main{max-width:1320px;margin:0 auto;padding:58px 28px 100px;display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:38px}
+.content{min-width:0}
+.toc{
+  position:sticky;top:92px;align-self:start;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:20px 18px;box-shadow:0 1px 2px rgba(0,0,0,.03)
+}
+.toc-title{font-weight:800;color:var(--green-dark);font-size:14px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.toc a{display:block;color:#546e7a;text-decoration:none;font-size:14px;padding:7px 8px;border-left:2px solid transparent}
+.toc a:hover{color:var(--green-dark);background:#f7faf6;border-left-color:var(--green)}
+.toc .sub{padding-left:20px;font-size:13px}
+.eyebrow{
+  color:var(--green-dark);font-size:14px;font-weight:800;
+  letter-spacing:.13em;text-transform:uppercase
+}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.08;margin:12px 0 15px}
+h2{font-size:30px;margin-top:55px;border-bottom:1px solid var(--line);padding-bottom:10px}
+h3{font-size:22px;margin-top:35px;color:#315f22}
+h4{font-size:18px;color:#455a64}
+.lead{font-size:18px;color:#607d8b;max-width:850px}
+.card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;padding:26px 30px;margin:24px 0;
+  box-shadow:0 1px 2px rgba(0,0,0,.03)
+}
+.def{border-left:4px solid var(--green)}
+.theorem{border-left:4px solid #82b64d;background:#fbfdf9}
+.remark{border-left:4px solid #90a4ae;background:#fbfcfd}
+.proof{border-left:4px solid #c9a227;background:#fffdf4}
+.example{border-left:4px solid #8a9bd0;background:#fbfcff}
+.warning{border-left:4px solid var(--red);background:#fffafa}
+.label{
+  display:inline-block;font-weight:800;font-size:13px;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px
+}
+.green{color:var(--green-dark)} .red{color:var(--red)}
+.more-info{
+  display:inline-block;
+  margin-left:8px;
+  color:var(--green-dark);
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px solid rgba(109,179,63,.35);
+  transition:.2s ease;
+}
+.more-info:hover{
+  color:var(--green);
+  border-bottom-color:var(--green);
+  transform:translateX(2px);
+}
+.hl{background:var(--yellow);padding:2px 5px;border-radius:4px}
+ul,ol{padding-left:28px}
+.eq{overflow-x:auto;padding:10px 0}
+.small{font-size:14px;color:var(--muted)}
+.page{
+  margin-top:55px;padding-top:15px;
+  border-top:3px solid #edf2ee
+}
+footer{max-width:1100px;margin:auto;padding:30px;color:#78909c;font-size:13px}
+@media(max-width:900px){
+ main{grid-template-columns:1fr}
+ .toc{position:relative;top:auto;order:-1}
+}
+@media(max-width:700px){
+ .nav{padding:14px 18px}.nav nav{gap:12px;font-size:14px}
+ main{padding:38px 17px 70px}.card{padding:20px 18px}
+ h2{font-size:25px}
+}
+</style>
+
+<style>
+/* Figures géométriques — ajout pour la section des nombres irrationnels */
+.geometry-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  margin:22px 0 10px;
+}
+.geometry-card{
+  background:#fff;
+  border:1px solid #dfe7ee;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(20,50,70,.07);
+}
+.geometry-card h3{
+  margin:0 0 12px;
+  color:#173d5a;
+  font-size:1.08rem;
+}
+.figure-box{
+  margin:16px auto 10px;
+  max-width:430px;
+  background:#fbfcfd;
+  border:1px solid #e3e9ee;
+  border-radius:12px;
+  padding:8px;
+}
+.figure-box svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.figure-caption{
+  margin:10px 0 0;
+  color:#40505d;
+  font-size:.96rem;
+}
+.irrational-examples{
+  margin-top:20px;
+  padding:16px 20px;
+  border-left:4px solid #6ab04c;
+  background:#f7fbf5;
+  border-radius:10px;
+}
+@media(max-width:800px){
+  .geometry-grid{grid-template-columns:1fr;}
+  .geometry-card{padding:16px;}
+}
+details{
+  margin-top:10px;
+}
+details summary{
+  cursor:pointer;
+  color:var(--green-dark);
+  font-weight:700;
+  padding:8px 0;
+}
+details summary:hover{
+  text-decoration:underline;
+}
+</style>
+
+</head>
+
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="../../index.html">Mathématiques<span>.</span></a>
+    <nav>
+      <a href="../../1ere/">1ère</a>
+      <a href="../../2eme/">2ème</a>
+      <a href="../../3eme/">3ème</a>
+      <a href="../../4eme/">4ème</a>
+      <a href="../../1ere-MP-Prepa-Maths-Sup-Spe/">1ère MP</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="content">
+<div class="eyebrow">Mathématiques · 1ère MP — Prépa Math Sup / Spé</div>
+<h1>Chapitre 1 — Les nombres réels</h1>
+<p class="lead">
+Cours retranscrit et réorganisé à partir des feuilles manuscrites fournies.
+L'ordre ci-dessous suit la progression mathématique du contenu : nombres rationnels,
+nombres irrationnels, propriétés de \(\mathbb R\), ordre, valeur absolue,
+intervalles, propriété d'Archimède et bornes.
+</p>
+
+<section class="page" id="rationnels">
+<h2>1. Les nombres rationnels \(\mathbb Q\)</h2>
+
+<div class="card def">
+<span class="label green">Définition</span>
+<p>Par définition, l'ensemble des rationnels est noté \(\mathbb Q\) et :</p>
+<div class="eq">\[
+\mathbb Q=\left\{\frac pq\ ;\ p\in\mathbb Z,\ q\in\mathbb Z^*\right\}.
+\]</div>
+<p>On dit qu'un nombre \(a\) est rationnel s'il peut s'écrire sous la forme</p>
+<div class="eq">\[
+a=\frac pq,\qquad p\in\mathbb Z,\quad q\in\mathbb N^*.
+\]</div>
+<p>En pratique, pour qu'une fraction soit un nombre décimal, le dénominateur,
+après décomposition en facteurs premiers, doit comporter que \(2\) ou bien \(5\),
+à condition que la fraction irréductible.
+<a class="more-info" href="demonstration.html">Plus d'info → (à suivre)</a>
+</p>
+</div>
+
+  
+<div class="card example">
+<span class="label">Exemple</span>
+<p>On a :</p>
+<div class="eq">\[
+\frac{39}{120}=\frac{13}{40}=\frac{13}{5\times 2^3},
+\]</div>
+<p>c'est un nombre décimal.</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Proposition</span>
+<p>\(x\) est un nombre rationnel si son écriture décimale est périodique ou finie.</p>
+<div class="eq">\[
+x\in\mathbb Q
+\]</div>
+<p>On distingue alors :</p>
+<ul>
+<li>un nombre décimal fini, par exemple \(x=3,6\) ;</li>
+<li>un nombre décimal périodique, par exemple \(x=0,\overline{47}\).</li>
+</ul>
+</div>
+
+<div class="card example">
+<span class="label">Exercice / exemple</span>
+<p>Écrire sous forme d'une fraction ce qui suit :</p>
+<div class="eq">\[
+1)\quad x=0,47=\frac{47}{100}.
+\]</div>
+<p>Pour \(x=0,\overline{47}\), on écrit :</p>
+<div class="eq">\[
+100x=47,\overline{47}
+\]</div>
+<p>et donc</p>
+<div class="eq">\[
+100x-x=47\quad\Longrightarrow\quad 99x=47
+\quad\Longrightarrow\quad
+x=\frac{47}{99}.
+\]</div>
+</div>
+
+<div class="card">
+<p>Autre exemple de développement périodique :</p>
+<div class="eq">\[
+x=56,381412\ldots
+\]</div>
+<p>En multipliant par une puissance de \(10\), puis en soustrayant les deux écritures,
+on obtient une fraction. La feuille donne notamment :</p>
+<div class="eq">\[
+100000x=5638142,8142\ldots
+\]</div>
+<div class="eq">\[
+100000x-10x=5638142,8142\ldots-563,8142\ldots
+\]</div>
+<p>ce qui conduit à une écriture fractionnaire.</p>
+</div>
+</section>
+
+<section class="page" id="irrationnels">
+<h2>2. Les nombres irrationnels</h2>
+
+<div class="card def">
+<span class="label green">Définition</span>
+<p>Il existe des nombres qui ne sont pas rationnels. Ces nombres sont appelés
+<strong>nombres irrationnels</strong>. Ils apparaissent naturellement dans des
+situations géométriques simples.</p>
+</div>
+
+<div class="card example">
+<span class="label">Exemples géométriques</span>
+
+<div class="geometry-grid">
+
+  <div class="geometry-card">
+    <h3>① La diagonale d'un carré</h3>
+    <p>
+      Dans un carré de côté \(1\), la diagonale partage le carré en deux triangles
+      rectangles. D'après le théorème de Pythagore :
+    </p>
+    <div class="eq">\[
+      AC^2=AB^2+BC^2=1^2+1^2=2
+      \quad\Longrightarrow\quad
+      AC=\sqrt2.
+    \]</div>
+
+    <div class="figure-box">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Carré de côté 1 et sa diagonale racine de 2">
+        <defs>
+          <marker id="arrowDiag" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#d14b3f"></path>
+          </marker>
+        </defs>
+
+        <!-- carré -->
+        <polygon points="90,220 90,70 300,70 300,220"
+                 fill="#eef6ff" stroke="#183b56" stroke-width="4"/>
+        <!-- diagonale -->
+        <line x1="90" y1="220" x2="300" y2="70"
+              stroke="#d14b3f" stroke-width="4" marker-end="url(#arrowDiag)"/>
+
+        <!-- repère angle droit -->
+        <polyline points="90,200 110,200 110,220" fill="none"
+                  stroke="#183b56" stroke-width="3"/>
+
+        <!-- labels sommets -->
+        <text x="72" y="238" font-size="20" font-weight="700">A</text>
+        <text x="72" y="62" font-size="20" font-weight="700">D</text>
+        <text x="305" y="62" font-size="20" font-weight="700">C</text>
+        <text x="305" y="238" font-size="20" font-weight="700">B</text>
+
+        <!-- côtés -->
+        <text x="177" y="246" font-size="19">\(1\)</text>
+        <text x="58" y="150" font-size="19">\(1\)</text>
+
+        <!-- diagonale -->
+        <text x="185" y="130" font-size="19" fill="#b53b32" font-weight="700">\(AC=\sqrt2\)</text>
+      </svg>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Conclusion :</strong> \(\sqrt2\) est obtenu comme longueur d'une
+      diagonale d'un carré de côté \(1\).
+    </p>
+  </div>
+
+  <div class="geometry-card">
+    <h3>② Le périmètre d'un cercle</h3>
+    <p>
+      Considérons un cercle de rayon \(r=\dfrac12\). Son diamètre vaut donc
+      \(1\), et son périmètre est :
+    </p>
+    <div class="eq">\[
+      P=2\pi r
+      =2\pi\times\frac12
+      =\pi.
+    \]</div>
+
+    <div class="figure-box">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Cercle de rayon un demi">
+        <defs>
+          <marker id="arrowRadius" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#2f7d32"></path>
+          </marker>
+        </defs>
+
+        <!-- cercle -->
+        <circle cx="205" cy="145" r="88" fill="#f3faf3"
+                stroke="#2f7d32" stroke-width="4"/>
+
+        <!-- centre -->
+        <circle cx="205" cy="145" r="5" fill="#183b56"/>
+        <text x="214" y="140" font-size="20" font-weight="700">O</text>
+
+        <!-- rayon -->
+        <line x1="205" y1="145" x2="293" y2="145"
+              stroke="#2f7d32" stroke-width="4" marker-end="url(#arrowRadius)"/>
+        <text x="235" y="134" font-size="19" fill="#246529" font-weight="700">\(r=\frac12\)</text>
+
+        <!-- diamètre -->
+        <line x1="117" y1="145" x2="293" y2="145"
+              stroke="#8a5a00" stroke-width="2" stroke-dasharray="7 6"/>
+        <text x="178" y="174" font-size="18" fill="#765000">diamètre \(=1\)</text>
+
+        <!-- périmètre -->
+        <text x="121" y="55" font-size="19" fill="#246529" font-weight="700">
+          \(P=\pi\)
+        </text>
+      </svg>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Conclusion :</strong> le cercle de rayon \(\dfrac12\) a un périmètre
+      égal à \(\pi\).
+    </p>
+  </div>
+
+</div>
+
+<div class="irrational-examples">
+  <p><strong>On rencontre notamment :</strong></p>
+  <ul>
+    <li>\(\sqrt2\simeq1,4142\ldots\), obtenu ici par la diagonale du carré ;</li>
+    <li>\(\pi\simeq3,14159265\ldots\), obtenu ici par le périmètre du cercle ;</li>
+    <li>\(e=\exp(1)\simeq2,718\ldots\).</li>
+  </ul>
+</div>
+</div>
+
+
+<div class="card proposition">
+
+    <span class="label green">PROPOSITION</span>
+
+    <!-- Cours original -->
+    <p>
+        \(\mathbb{Q}\) et les nombres irrationnels sont deux parties disjointes
+        de \(\mathbb{R}\).
+    </p>
+
+    <!-- Notre explication -->
+    <div class="explanation">
+        <small>
+            <strong>Explication :</strong>
+            Cela signifie qu’un nombre réel ne peut pas être à la fois
+            rationnel et irrationnel.
+            <br><br>
+
+            Un nombre rationnel vérifie
+            \(x\in\mathbb{Q}\), tandis qu’un nombre irrationnel vérifie
+            \(x\in\mathbb{R}\setminus\mathbb{Q}\).
+            Ainsi :
+            \[
+            \mathbb{Q}\cap
+            \left(\mathbb{R}\setminus\mathbb{Q}\right)
+            =\varnothing.
+            \]
+        </small>
+    </div>
+<div class="explanation">
+    <small>
+        <strong>💡 Pour aller plus loin — le puzzle se construit…</strong>
+        <br><br>
+
+        Cette remarque, qui peut sembler simple, nous conduit progressivement
+        vers une idée essentielle : comprendre comment les nombres rationnels
+        \(\mathbb{Q}\) et les nombres irrationnels
+        \(\mathbb{R}\setminus\mathbb{Q}\) se répartissent dans \(\mathbb{R}\).
+        <br><br>
+
+        Les démonstrations que nous rencontrerons dans la suite du cours ne
+        sont pas des résultats isolés. Elles vont progressivement nous conduire
+        à comprendre la <strong>densité de \(\mathbb{Q}\) dans \(\mathbb{R}\)</strong>
+        et celle de
+        <strong>\(\mathbb{R}\setminus\mathbb{Q}\) dans \(\mathbb{R}\)</strong>.
+        <br><br>
+
+        Chaque résultat apporte une nouvelle pièce au raisonnement :
+        <strong>comme un puzzle, les notions se relient progressivement
+        pour former une vision complète des nombres réels.</strong>
+        <br><br>
+
+        <strong>À suivre…</strong>
+        → <em>Densité de \(\mathbb{Q}\) et de
+        \(\mathbb{R}\setminus\mathbb{Q}\) dans \(\mathbb{R}\).</em>
+    </small>
+
+ <a class="more-info" href="densite_completude_R.html">Plus d'info → (à suivre part 1)</a> 
+<a class="more-info" href="dedekind_cauchy_completude_R_seule_mathjax.html">Plus d'info → (à suivre part 2)</a>
+</div>
+
+</div>
+
+
+  
+<div class="card proof">
+<span class="label">Preuve — irrationalité de \(\sqrt2\)</span>
+<p>Raisonnons par l'absurde. Supposons que \(\sqrt2\in\mathbb Q\).</p>
+<p>Alors il existe \(p\in\mathbb Z\) et \(q\in\mathbb N^*\), premiers entre eux, tels que</p>
+<div class="eq">\[
+\sqrt2=\frac pq.
+\]</div>
+<p>On a :</p>
+<div class="eq">\[
+p^2=2q^2.
+\]</div>
+<p>Donc \(p^2\) est pair, ainsi \(p\) est pair. On peut écrire \(p=2p'\).</p>
+<p>Alors :</p>
+<div class="eq">\[
+4p'^2=2q^2
+\quad\Longrightarrow\quad
+q^2=2p'^2.
+\]</div>
+<p>Donc \(q\) est pair. Ainsi \(p\) et \(q\) sont tous les deux divisibles par \(2\),
+ce qui contredit le fait qu'ils sont premiers entre eux.</p>
+<p>Donc :</p>
+<div class="eq">\[
+\boxed{\sqrt2\notin\mathbb Q}.
+\]</div>
+
+<div class="info-link">
+    <p>
+        <strong>Pour comprendre mieux :</strong>
+        la condition « \(p\) et \(q\) premiers entre eux » n'est pas une
+        condition supplémentaire dans la définition de \(\mathbb{Q}\).
+        En effet, la définition de \(\mathbb{Q}\) n'exige pas que \(p\) et \(q\)
+        soient premiers entre eux.
+    </p>
+
+    <p>
+        Ici, lorsque nous considérons un nombre rationnel
+        \[
+        x=\frac{p}{q},
+        \]
+        nous pouvons toujours choisir une
+        <strong>représentation irréductible</strong> en divisant le numérateur
+        et le dénominateur par leur <strong>PGCD</strong>. On obtient alors
+        \[
+        \operatorname{PGCD}(p,q)=1.
+        \]
+    </p>
+
+    <a href="definition_Q_PGCD_demo_sqrt2_ligne_par_ligne_mathjax.html">
+        → Comprendre le lien entre la définition de \(\mathbb{Q}\), le PGCD
+        et la démonstration de \(\sqrt{2}\notin\mathbb{Q}\)
+    </a>
+</div>
+
+  
+</div>
+
+<div class="card remark">
+<span class="label">Remarque</span>
+<p>La proposition « les irrationnels sont seulement les nombres dont l'écriture décimale
+est non périodique » n'est pas suffisante comme définition ; elle sert ici de description.
+La feuille donne par exemple \(\sqrt2\) et oppose les écritures rationnelles et irrationnelles.</p>
+</div>
+</section>
+
+<!-- ========================================= -->
+<!-- MANQUANT — TRANSCRIPTION DE LA FEUILLE -->
+<!-- ========================================= -->
+<section class="page" id="avant-proprietes">
+
+<div class="card theorem">
+<span class="label green">Lemme</span>
+<p>Si 2 divise <span class="eq-inline">\(n^2\)</span> alors 2 divise <span class="eq-inline">\(n\)</span>, avec <span class="eq-inline">\(n\in\mathbb N^*\)</span>.</p>
+</div>
+
+<div class="card proof">
+<span class="label">Preuve</span>
+<p>Raisonnons par l'absurde : supposons que <span class="eq-inline">\(n\)</span> est impair.</p>
+<div class="eq">\[
+n=2k+1
+\]</div>
+<p>D'où</p>
+<div class="eq">\[
+n^2=(2k+1)^2=4k^2+4k+1
+\]</div>
+<p>Alors <span class="eq-inline">\(n^2\)</span> est impair.</p>
+<p>Ceci contredit le fait que <span class="eq-inline">\(2\)</span> divise <span class="eq-inline">\(n^2\)</span> (\(n^2\) est pair).</p>
+<p>Alors <span class="eq-inline">\(n\)</span> est pair, d'où 2 divise <span class="eq-inline">\(n\)</span>.</p>
+</div>
+
+<div class="card def">
+<p>On représente souvent les nombres réels par une droite numérique.</p>
+
+<div class="figure-box" style="max-width:760px;">
+<svg viewBox="0 0 760 150" role="img" aria-label="Droite numérique des nombres réels">
+<line x1="65" y1="82" x2="695" y2="82" stroke="#263238" stroke-width="2.5"/>
+<g stroke="#263238" stroke-width="2">
+<line x1="105" y1="72" x2="105" y2="92"/>
+<line x1="185" y1="72" x2="185" y2="92"/>
+<line x1="265" y1="72" x2="265" y2="92"/>
+<line x1="345" y1="72" x2="345" y2="92"/>
+<line x1="425" y1="72" x2="425" y2="92"/>
+<line x1="505" y1="72" x2="505" y2="92"/>
+<line x1="585" y1="72" x2="585" y2="92"/>
+</g>
+<g font-size="17" fill="#263238" text-anchor="middle">
+<text x="105" y="116">−3</text>
+<text x="185" y="116">−2</text>
+<text x="265" y="116">−1</text>
+<text x="345" y="116">0</text>
+<text x="425" y="116">1</text>
+<text x="505" y="116">2</text>
+<text x="585" y="116">3</text>
+</g>
+<text x="465" y="48" font-size="20" font-weight="700" fill="#3f7f24" text-anchor="middle">R</text>
+</svg>
+</div>
+
+<p><strong>a)</strong> Il est souvent pratique de rajouter les extrémités :</p>
+<div class="eq">\[
+\overline{\mathbb R}=\mathbb R\cup\{-\infty,+\infty\}
+\]</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Proposition</span>
+<p>1) L'addition et la multiplication des nombres rationnels, est un nombre rationnel.</p>
+<p>2) L'inverse d'un nombre rationnel non nul est aussi un rationnel.</p>
+</div>
+
+<div class="card proof">
+<span class="label">Preuve</span>
+<p><strong>1)</strong> <span class="eq-inline">\(x=\frac pq\)</span>, <span class="eq-inline">\(y=\frac{p'}{q'}\)</span>, <span class="eq-inline">\(p,p'\in\mathbb Z\)</span>, <span class="eq-inline">\(q,q'\in\mathbb Z^*\)</span>.</p>
+<div class="eq">\[
+x+y=\frac pq+\frac{p'}{q'}
+=\frac{pq'+qp'}{qq'}\in\mathbb Q
+\]</div>
+<div class="eq">\[
+xy=\frac{pp'}{qq'}\in\mathbb Q
+\]</div>
+<p><strong>2)</strong> <span class="eq-inline">\(x=\frac pq\)</span>, <span class="eq-inline">\(p,q\in\mathbb Z^*\)</span>, on a :</p>
+<div class="eq">\[
+\frac1x=\frac qp
+\]</div>
+</div>
+
+<div class="card remark">
+<span class="label">Remarque</span>
+<p>La prop précédente n'est pas vraie en générale pour les irrationnels :</p>
+<ul>
+<li>
+<span class="eq-inline">\(x=\sqrt2\)</span>, <span class="eq-inline">\(y=-\sqrt2\)</span> :
+<span class="eq-inline">\(x,y\notin\mathbb Q\)</span>, mais <span class="eq-inline">\(x+y=0\in\mathbb Q\)</span>.
+</li>
+<li>
+<span class="eq-inline">\(x=y=\sqrt2\)</span> :
+<span class="eq-inline">\(x,y\notin\mathbb Q\)</span>, mais <span class="eq-inline">\(x\cdot y=2\in\mathbb Q\)</span>.
+</li>
+</ul>
+<p>2) L'inverse d'un irrationnel non nul est irrationnel.</p>
+</div>
+
+</section>
+
+<section class="page" id="proprietes">
+<h2>3. Les propriétés de \(\mathbb R\)</h2>
+
+<div class="card theorem">
+<span class="label green">Propriétés</span>
+<p>Pour tous \(a,b,c\in\mathbb R\), on a les propriétés suivantes :</p>
+<ol>
+<li><strong>Commutativité de l'addition :</strong>
+\[
+a+b=b+a.
+\]</li>
+<li><strong>Élément neutre pour l'addition :</strong>
+\[
+a+0=0+a=a.
+\]</li>
+<li><strong>Associativité de l'addition :</strong>
+\[
+(a+b)+c=a+(b+c).
+\]</li>
+<li><strong>Opposé :</strong>
+\[
+a+(-a)=0.
+\]</li>
+<li><strong>Commutativité de la multiplication :</strong>
+\[
+a\times b=b\times a.
+\]</li>
+<li><strong>Élément neutre de la multiplication :</strong>
+\[
+a\times1=1\times a=a.
+\]</li>
+<li><strong>Associativité de la multiplication :</strong>
+\[
+(a\times b)\times c=a\times(b\times c).
+\]</li>
+<li><strong>Distributivité :</strong>
+\[
+a\times(b+c)=a\times b+a\times c.
+\]</li>
+<li><strong>Élément absorbant :</strong>
+\[
+a\times b=0\Longleftrightarrow a=0\ \text{ou}\ b=0.
+\]</li>
+</ol>
+</div>
+
+<div class="card theorem">
+<span class="label green">Théorème</span>
+<p>\((\mathbb R,+,\times)\) est un <strong>corps commutatif</strong>.</p>
+</div>
+
+<h3>b. Relation d'ordre</h3>
+
+<div class="card def">
+<span class="label green">Définition — Relation d'ordre</span>
+
+<p>Soit \(E\) un ensemble non vide et \(\mathcal R\) une relation sur \(E\).</p>
+
+<p>On dit que \(\mathcal R\) est une <strong>relation d'ordre</strong> si elle vérifie les trois propriétés suivantes :</p>
+
+<ol>
+<li>
+<strong>Elle est réflexive :</strong>
+\[
+\forall x\in E,\qquad x\,\mathcal R\,x.
+\]
+</li>
+
+<li>
+<strong>Elle est antisymétrique :</strong>
+\[
+\left\{
+\begin{array}{l}
+x\,\mathcal R\,y\\
+y\,\mathcal R\,x
+\end{array}
+\right.
+\Longrightarrow x=y.
+\]
+</li>
+
+<li>
+<strong>Elle est transitive :</strong>
+\[
+\left\{
+\begin{array}{l}
+x\,\mathcal R\,y\\
+y\,\mathcal R\,z
+\end{array}
+\right.
+\Longrightarrow x\,\mathcal R\,z.
+\]
+</li>
+</ol>
+</div>
+
+<div class="card remark">
+<span class="label">Remarque</span>
+
+<p>
+<strong>1)</strong> Si \(\mathcal R\) est une relation d'ordre partiel sur \(E\),
+alors \((E,\mathcal R)\) est un <strong>espace partiellement ordonné</strong>.
+</p>
+
+<p>
+<strong>2)</strong> \((E,\mathcal R)\) est dit <strong>espace totalement ordonné</strong>
+si, pour \(x,y\in E\), \(x\ne y\), ils sont comparables.
+C'est-à-dire :
+\[
+x\,\mathcal R\,y\quad\text{ou}\quad y\,\mathcal R\,x.
+\]
+</p>
+</div>
+
+<div class="card example">
+<span class="label">Exemple</span>
+
+<p>
+\[
+(\mathbb R,\leq)
+\]
+est un espace totalement ordonné.
+</p>
+
+<p><strong>\(E=\mathbb R\)</strong></p>
+
+<p>On considère la relation \(\mathcal R\) définie par :</p>
+
+<div class="eq">
+\[
+\mathcal R=\left\{(x,y)\in\mathbb R^2\; ;\;
+x\leq y\Longleftrightarrow y-x\in\mathbb R_+\right\}.
+\]
+</div>
+</div>
+
+<div class="card proof">
+<span class="label">Montrons que \(\mathcal R\) est une relation d'ordre</span>
+
+<p>
+<strong>1) \(\mathcal R\) est une relation d'ordre partiel :</strong>
+</p>
+
+<p>
+<strong>i) Elle est réflexive :</strong>
+\[
+\forall x\in\mathbb R,\qquad x-x=0\in\mathbb R_+
+\]
+donc
+\[
+x\,\mathcal R\,x.
+\]
+</p>
+
+<p>
+<strong>ii) Elle est antisymétrique :</strong>
+si \(x\leq y\) et \(y\leq x\), alors
+\[
+y-x\in\mathbb R_+
+\qquad\text{et}\qquad
+x-y\in\mathbb R_+.
+\]
+Ainsi
+\[
+y-x\geq0
+\qquad\text{et}\qquad
+x-y\geq0,
+\]
+d'où
+\[
+x-y=0
+\qquad\Longrightarrow\qquad
+x=y.
+\]
+</p>
+
+<p>
+<strong>iii) Elle est transitive :</strong>
+si \(x\leq y\) et \(y\leq z\), alors
+\[
+y-x\in\mathbb R_+
+\qquad\text{et}\qquad
+z-y\in\mathbb R_+.
+\]
+Donc
+\[
+(y-x)+(z-y)=z-x\in\mathbb R_+,
+\]
+d'où
+\[
+x\leq z.
+\]
+</p>
+
+<p>
+<strong>2) \(\mathcal R\) est totale sur \(\mathbb R\).</strong>
+</p>
+
+<p>
+Pour tous \(x,y\in\mathbb R\), on a
+\[
+x\leq y
+\quad\text{ou}\quad
+y\leq x.
+\]
+Ainsi, tous les éléments de \(\mathbb R\) sont comparables.
+</p>
+
+<p>
+Donc
+\[
+\boxed{(\mathbb R,\leq)\text{ est un espace totalement ordonné}.}
+\]
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Min et max</span>
+
+<p>On définit :</p>
+
+<div class="eq">
+\[
+\min(a,b)=
+\begin{cases}
+a,&\text{si }a\leq b,\\
+b,&\text{si }a\geq b,
+\end{cases}
+\]
+</div>
+
+<div class="eq">
+\[
+\max(a,b)=
+\begin{cases}
+b,&\text{si }a\leq b,\\
+a,&\text{si }a\geq b.
+\end{cases}
+\]
+</div>
+</div>
+
+<div class="card def">
+<span class="label green">La valeur absolue</span>
+
+<p>
+Pour \(x\in\mathbb R\), on définit la valeur absolue de \(x\) par :
+</p>
+
+<div class="eq">
+\[
+|x|=
+\begin{cases}
+x,&\text{si }x\geq0,\\
+-x,&\text{si }x&lt;0.
+\end{cases}
+\]
+</div>
+
+<div class="figure-box" style="max-width:620px;">
+<svg viewBox="0 0 620 300" role="img" aria-label="Graphe de la fonction valeur absolue">
+  <line x1="70" y1="230" x2="560" y2="230" stroke="#263238" stroke-width="2.5"/>
+  <line x1="310" y1="270" x2="310" y2="35" stroke="#263238" stroke-width="2.5"/>
+  <line x1="105" y1="195" x2="310" y2="230" stroke="#263238" stroke-width="4"/>
+  <line x1="310" y1="230" x2="515" y2="195" stroke="#263238" stroke-width="4"/>
+  <circle cx="310" cy="230" r="5" fill="#263238"/>
+  <text x="530" y="222" font-size="20">x</text>
+  <text x="320" y="55" font-size="20">y</text>
+  <text x="326" y="250" font-size="18">0</text>
+  <text x="90" y="188" font-size="19">y=|x|</text>
+</svg>
+</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Propriétés de la valeur absolue</span>
+
+<div class="eq">
+\[
+|x|\geq0,\qquad |-x|=|x|.
+\]
+</div>
+
+<div class="eq">
+\[
+|x|=0\Longleftrightarrow x=0.
+\]
+</div>
+
+<div class="eq">
+\[
+|x+y|\leq |x|+|y|.
+\]
+</div>
+
+<div class="eq">
+\[
+\big||x|-|y|\big|\leq |x-y|.
+\]
+</div>
+
+<p class="small">
+Inégalité triangulaire.
+</p>
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+<!-- AJOUT — CONTENU DE LA FEUILLE AVANT 4. ORDRE -->
+<!-- ========================================= -->
+
+<div class="card proof">
+<span class="label">Preuve — inégalité triangulaire</span>
+
+<p>On a :</p>
+
+<div class="eq">
+\[
+-|x|\leq x\leq |x|
+\]
+</div>
+
+<div class="eq">
+\[
+-|y|\leq y\leq |y|.
+\]
+</div>
+
+<p>En additionnant membre à membre :</p>
+
+<div class="eq">
+\[
+-(|x|+|y|)\leq x+y\leq |x|+|y|.
+\]
+</div>
+
+<p>Donc :</p>
+
+<div class="eq">
+\[
+\boxed{|x+y|\leq |x|+|y|}.
+\]
+</div>
+</div>
+
+<div class="card example">
+<span class="label">Exemple</span>
+
+<p>On a :</p>
+
+<div class="eq">
+\[
+|x|\leq 7
+\]
+</div>
+
+<p>ce qui équivaut à :</p>
+
+<div class="eq">
+\[
+-7\leq x\leq 7.
+\]
+</div>
+
+<div class="figure-box" style="max-width:700px;">
+<svg viewBox="0 0 700 150" role="img" aria-label="Intervalle associé à la condition valeur absolue">
+  <line x1="80" y1="80" x2="620" y2="80" stroke="#263238" stroke-width="2.5"/>
+  <line x1="180" y1="65" x2="180" y2="95" stroke="#263238" stroke-width="2"/>
+  <line x1="350" y1="65" x2="350" y2="95" stroke="#263238" stroke-width="2"/>
+  <line x1="520" y1="65" x2="520" y2="95" stroke="#263238" stroke-width="2"/>
+  <line x1="180" y1="80" x2="520" y2="80" stroke="#6db33f" stroke-width="8"/>
+  <circle cx="180" cy="80" r="6" fill="#263238"/>
+  <circle cx="520" cy="80" r="6" fill="#263238"/>
+  <text x="165" y="120" font-size="18">−7</text>
+  <text x="342" y="120" font-size="18">x</text>
+  <text x="512" y="120" font-size="18">7</text>
+</svg>
+</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Distance et valeur absolue</span>
+
+<p>Soient \(a,x\in\mathbb R\) et \(r>0\).</p>
+
+<div class="eq">
+\[
+|x-a|&lt;r
+\Longleftrightarrow
+-r&lt;x-a&lt;r
+\]
+</div>
+
+<p>donc :</p>
+
+<div class="eq">
+\[
+\boxed{a-r&lt;x&lt;a+r}.
+\]
+</div>
+
+<p>Ainsi :</p>
+
+<div class="eq">
+\[
+\boxed{|x-a|&lt;r\Longleftrightarrow x\in]a-r,a+r[}.
+\]
+</div>
+
+<div class="figure-box" style="max-width:700px;">
+<svg viewBox="0 0 700 170" role="img" aria-label="Intervalle ouvert centré en a de rayon r">
+  <line x1="70" y1="85" x2="630" y2="85" stroke="#263238" stroke-width="2.5"/>
+  <line x1="180" y1="70" x2="180" y2="100" stroke="#263238" stroke-width="2"/>
+  <line x1="350" y1="65" x2="350" y2="105" stroke="#263238" stroke-width="2.5"/>
+  <line x1="520" y1="70" x2="520" y2="100" stroke="#263238" stroke-width="2"/>
+  <line x1="180" y1="85" x2="520" y2="85" stroke="#6db33f" stroke-width="8"/>
+  <circle cx="180" cy="85" r="7" fill="white" stroke="#263238" stroke-width="3"/>
+  <circle cx="520" cy="85" r="7" fill="white" stroke="#263238" stroke-width="3"/>
+  <text x="160" y="125" font-size="18">a−r</text>
+  <text x="340" y="125" font-size="18">a</text>
+  <text x="500" y="125" font-size="18">a+r</text>
+  <text x="335" y="45" font-size="18">r</text>
+</svg>
+</div>
+</div>
+
+<div class="card example">
+<span class="label">Exemple — ensemble des parties</span>
+
+<p>Soit :</p>
+
+<div class="eq">
+\[
+X=\{1,2,3\}.
+\]
+</div>
+
+<p>On considère l'ensemble des parties de \(X\), noté \(\mathcal P(X)\) :</p>
+
+<div class="eq">
+\[
+\mathcal P(X)=
+\{\varnothing,\{1\},\{2\},\{3\},
+\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\}.
+\]
+</div>
+
+<p>Comme \(X\) possède \(3\) éléments :</p>
+
+<div class="eq">
+\[
+\operatorname{Card}(\mathcal P(X))=2^3=8.
+\]
+</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Relation d'ordre sur \(\mathcal P(X)\)</span>
+
+<p>
+On considère la relation \(\subset\) définie sur \(\mathcal P(X)\).
+C'est une <strong>relation d'ordre partiel</strong>.
+</p>
+
+<ol>
+<li>
+<strong>\(\subset\) est réflexive :</strong>
+\[
+\forall A\in\mathcal P(X),\qquad A\subset A.
+\]
+</li>
+
+<li>
+<strong>\(\subset\) est antisymétrique :</strong>
+\[
+A\subset B\quad\text{et}\quad B\subset A
+\Longrightarrow A=B.
+\]
+</li>
+
+<li>
+<strong>\(\subset\) est transitive :</strong>
+\[
+A\subset B\quad\text{et}\quad B\subset C
+\Longrightarrow A\subset C.
+\]
+</li>
+
+<li>
+<strong>\(\subset\) n'est pas totale :</strong>
+les ensembles \(\{1,3\}\) et \(\{2,3\}\) ne sont pas comparables, car
+\[
+\{1,3\}\not\subset\{2,3\}
+\]
+et
+\[
+\{2,3\}\not\subset\{1,3\}.
+\]
+</li>
+</ol>
+
+<p>
+Donc \((\mathcal P(X),\subset)\) est un espace <strong>partiellement ordonné</strong>,
+mais pas totalement ordonné.
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Propriété d'Archimède</span>
+
+<p>
+\(\mathbb R\) est <strong>archimédien</strong>, c'est-à-dire :
+</p>
+
+<div class="eq">
+\[
+\forall x\in\mathbb R,\quad
+\exists n\in\mathbb N\quad\text{tel que}\quad n>x.
+\]
+</div>
+
+<p>
+Autrement dit, les entiers naturels peuvent dépasser tout réel.
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Partie entière</span>
+
+<p>
+Bien que cette proposition soit évidente, on peut définir la notion de
+<strong>partie entière</strong>, notée \(E(x)\).
+</p>
+
+<p>Pour tout \(x\in\mathbb R\), il existe un unique entier \(E(x)\in\mathbb Z\) tel que :</p>
+
+<div class="eq">
+\[
+\boxed{E(x)\leq x&lt;E(x)+1}.
+\]
+</div>
+
+<p>On peut aussi écrire :</p>
+
+<div class="eq">
+\[
+E(x)\leq x&lt;E(x)+1.
+\]
+</div>
+
+<p>Exemples :</p>
+
+<div class="eq">
+\[
+E(1,2)=1,\qquad E(3,2)=3,
+\]
+</div>
+
+<div class="eq">
+\[
+E(-6,4)=-7,\qquad E(-16,3)=-17.
+\]
+</div>
+
+<p>Pour un entier \(n\), on a :</p>
+
+<div class="eq">
+\[
+E(n)=n.
+\]
+</div>
+
+<div class="figure-box" style="max-width:700px;">
+<svg viewBox="0 0 700 300" role="img" aria-label="Représentation graphique de la fonction partie entière">
+  <line x1="70" y1="245" x2="630" y2="245" stroke="#263238" stroke-width="2.5"/>
+  <line x1="350" y1="270" x2="350" y2="35" stroke="#263238" stroke-width="2.5"/>
+  <line x1="105" y1="210" x2="175" y2="210" stroke="#315f22" stroke-width="5"/>
+  <line x1="175" y1="175" x2="245" y2="175" stroke="#315f22" stroke-width="5"/>
+  <line x1="245" y1="140" x2="315" y2="140" stroke="#315f22" stroke-width="5"/>
+  <line x1="385" y1="105" x2="455" y2="105" stroke="#315f22" stroke-width="5"/>
+  <line x1="455" y1="70" x2="525" y2="70" stroke="#315f22" stroke-width="5"/>
+  <line x1="525" y1="35" x2="595" y2="35" stroke="#315f22" stroke-width="5"/>
+  <text x="610" y="238" font-size="18">x</text>
+  <text x="360" y="52" font-size="18">y</text>
+  <text x="335" y="265" font-size="17">0</text>
+  <text x="475" y="125" font-size="17">E(x)</text>
+</svg>
+</div>
+</div>
+
+<div class="card proof">
+<span class="label">Application — limite de \(\dfrac{E(x)}x\)</span>
+
+<p>On a, pour tout \(x\in\mathbb R\),</p>
+
+<div class="eq">
+\[
+E(x)\leq x&lt;E(x)+1,
+\]
+</div>
+
+<p>d'où :</p>
+
+<div class="eq">
+\[
+x-1&lt;E(x)\leq x.
+\]
+</div>
+
+<p>Pour \(x>0\), en divisant par \(x\) :</p>
+
+<div class="eq">
+\[
+\frac{x-1}{x}
+&lt;
+\frac{E(x)}{x}
+\leq1.
+\]
+</div>
+
+<p>Or :</p>
+
+<div class="eq">
+\[
+\lim_{x\to+\infty}\frac{x-1}{x}=1.
+\]
+</div>
+
+<p>Donc, par le théorème des gendarmes :</p>
+
+<div class="eq">
+\[
+\boxed{\displaystyle
+\lim_{x\to+\infty}\frac{E(x)}{x}=1}.
+\]
+</div>
+</div>
+
+<section class="page" id="ordre">
+<h2>4. Ordre, intervalles et valeur absolue</h2>
+
+<div class="card theorem">
+<span class="label green">Règles de calcul avec l'ordre</span>
+<p>Pour tous \(a,b,c\in\mathbb R\) :</p>
+<div class="eq">\[
+a&lt;b\Longrightarrow a+c&lt;b+c.
+\]</div>
+<p>Si \(c>0\), alors</p>
+<div class="eq">\[
+a&lt;b\Longrightarrow ac&lt;bc.
+\]</div>
+<p>Si \(c&lt;0\), le sens de l'inégalité est inversé :</p>
+<div class="eq">\[
+a&lt;b\Longrightarrow ac>bc.
+\]</div>
+</div>
+
+<div class="card">
+<span class="label">Intervalles</span>
+<p>Les principaux intervalles de \(\mathbb R\) sont :</p>
+<div class="eq">\[
+[a,b]=\{x\in\mathbb R\mid a\le x\le b\},
+\]</div>
+<div class="eq">\[
+]a,b[=\{x\in\mathbb R\mid a&lt;x&lt;b\},
+\]</div>
+<div class="eq">\[
+[a,b[=\{x\in\mathbb R\mid a\le x&lt;b\},
+\]</div>
+<div class="eq">\[
+]a,b]=\{x\in\mathbb R\mid a&lt;x\le b\}.
+\]</div>
+<p>Les intervalles non bornés sont par exemple :</p>
+<div class="eq">\[
+]-\infty,a[,\quad ]-\infty,a],\quad ]a,+\infty[,\quad [a,+\infty[.
+\]</div>
+</div>
+
+<div class="card def">
+<span class="label green">Valeur absolue</span>
+<p>Pour \(x\in\mathbb R\), la valeur absolue de \(x\) est définie par :</p>
+<div class="eq">\[
+|x|=
+\begin{cases}
+x,&x\ge0,\\
+-x,&x&lt;0.
+\end{cases}
+\]</div>
+<p>La feuille rappelle notamment :</p>
+<div class="eq">\[
+|x|=|-x|.
+\]</div>
+</div>
+
+<div class="card theorem">
+<span class="label green">Propriétés de la valeur absolue</span>
+<div class="eq">\[
+|xy|=|x||y|,
+\]</div>
+<div class="eq">\[
+|x+y|\le |x|+|y|,
+\]</div>
+<div class="eq">\[
+\big||x|-|y|\big|\le |x-y|.
+\]</div>
+</div>
+
+<div class="card example">
+<span class="label">Résolution d'inégalités</span>
+<p>Pour \(a\in\mathbb R\) et \(r>0\) :</p>
+<div class="eq">\[
+|x-a|&lt;r
+\Longleftrightarrow
+a-r&lt;x&lt;a+r.
+\]</div>
+<p>De même :</p>
+<div class="eq">\[
+|x-a|\le r
+\Longleftrightarrow
+a-r\le x\le a+r.
+\]</div>
+</div>
+</section>
+
+
+<!-- ========================================= -->
+<!-- TRANSCRIPTION — FEUILLE DENSITÉ / INTERVALLES -->
+<!-- ========================================= -->
+<section class="page" id="densite-intervalles">
+
+<h2>Densité de \(\mathbb Q\) dans \(\mathbb R\) (et de \(\mathbb R\setminus\mathbb Q\))</h2>
+
+<h3>a. Les intervalles</h3>
+
+<div class="card def">
+<span class="label green">Définition</span>
+
+<p>
+Soit \(I\) un sous-ensemble de \(\mathbb R\). \(I\) est dit
+<strong>intervalle de \(\mathbb R\)</strong> s'il vérifie la propriété suivante :
+</p>
+
+<div class="eq">
+\[
+\forall a,b\in I,\qquad a&lt;b
+\Longrightarrow
+\forall x\in\mathbb R,\quad a&lt;x&lt;b\Longrightarrow x\in I.
+\]
+</div>
+
+<p>Les intervalles ouverts de \(\mathbb R\) sont notamment :</p>
+
+<div class="eq">
+\[
+]a,b[,\qquad ]-\infty,a[,\qquad ]a,+\infty[,\qquad
+\varnothing,\qquad \mathbb R.
+\]
+</div>
+
+<p>Les intervalles fermés de \(\mathbb R\) sont :</p>
+
+<div class="eq">
+\[
+[a,b],\qquad [a,+\infty[,\qquad ]-\infty,a].
+\]
+</div>
+
+<p>On a :</p>
+
+<div class="eq">
+\[
+]a,b[=\{x\in\mathbb R\mid a&lt;x&lt;b\},
+\]
+\[
+[a,b]=\{x\in\mathbb R\mid a\le x\le b\}.
+\]
+</div>
+
+<p>
+Le segment \([a,b]\) est un <strong>intervalle fermé borné</strong>.
+</p>
+
+<div class="eq">
+\[
+]a,b]=\{x\in\mathbb R\mid a&lt;x\le b\},
+\]
+\[
+[a,b[=\{x\in\mathbb R\mid a\le x&lt;b\}.
+\]
+</div>
+</div>
+
+<h3>b. Densité de \(\mathbb Q\) dans \(\mathbb R\)</h3>
+
+<div class="card def">
+<span class="label green">Définition — Voisinage</span>
+
+<p>
+Soit \(x_0\in\mathbb R\). \(V\) est dit <strong>voisinage de \(x_0\)</strong>
+s'il existe \(\alpha>0\) tel que
+</p>
+
+<div class="eq">
+\[
+]x_0-\alpha,x_0+\alpha[\subset V.
+\]
+</div>
+
+<div class="figure-box" style="max-width:620px;">
+<svg viewBox="0 0 620 130" role="img" aria-label="Voisinage d'un réel x0">
+  <line x1="70" y1="70" x2="550" y2="70" stroke="#263238" stroke-width="2.5"/>
+  <line x1="210" y1="58" x2="210" y2="82" stroke="#263238" stroke-width="2.5"/>
+  <line x1="410" y1="58" x2="410" y2="82" stroke="#263238" stroke-width="2.5"/>
+  <line x1="250" y1="55" x2="250" y2="85" stroke="#263238" stroke-width="3"/>
+  <line x1="250" y1="38" x2="370" y2="38" stroke="#6db33f" stroke-width="4"/>
+  <text x="190" y="108" font-size="17">\(x_0-\alpha\)</text>
+  <text x="235" y="108" font-size="17">\(x_0\)</text>
+  <text x="390" y="108" font-size="17">\(x_0+\alpha\)</text>
+  <text x="300" y="25" font-size="18" fill="#3f7f24">voisinage</text>
+</svg>
+</div>
+</div>
+
+<div class="card example">
+<span class="label">Exemple 1</span>
+
+<p>
+\[
+V=]1,7[
+\]
+est-il un voisinage de \(x_0=3\) ?
+</p>
+
+<p>On prend \(\alpha=1\). Alors :</p>
+
+<div class="eq">
+\[
+]x_0-\alpha,x_0+\alpha[
+=]3-1,3+1[
+=]2,4[
+\subset]1,7[.
+\]
+</div>
+
+<p>Donc \(V\) est un voisinage de \(3\).</p>
+</div>
+
+<div class="card example">
+<span class="label">Exemple 2</span>
+
+<p>
+\[
+V=]0,2[
+\]
+est-il un voisinage de \(x_0=2\) ?
+</p>
+
+<p>
+On a, pour tout \(\alpha>0\),
+\[
+]x_0-\alpha,x_0+\alpha[
+=]2-\alpha,2+\alpha[.
+\]
+</p>
+
+<p>
+Or \(2+\alpha\) est à droite de \(2\), donc l'intervalle
+\[
+]2-\alpha,2+\alpha[
+\]
+ne peut pas être contenu dans \(]0,2[\).
+</p>
+
+<div class="eq">
+\[
+\frac{2+\alpha}{2}=2+\frac{\alpha}{2}
+\in]2-\alpha,2+\alpha[
+\quad\text{mais}\quad
+2+\frac{\alpha}{2}\notin V.
+\]
+</div>
+
+<p>Donc \(V\) n'est pas un voisinage de \(x_0=2\).</p>
+</div>
+
+<div class="card remark">
+<span class="label">Remarque</span>
+
+<p>
+La notion de voisinage sera utile dans les notions de
+<strong>limites</strong>.
+</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Théorème — Densité de \(\mathbb Q\)</span>
+
+<p>
+\(\mathbb Q\) est dense dans \(\mathbb R\), c'est-à-dire :
+</p>
+
+<div class="eq">
+\[
+\forall x,y\in\mathbb R,\quad
+x&lt;y
+\Longrightarrow
+\exists q\in\mathbb Q,\quad x&lt;q&lt;y.
+\]
+</div>
+</div>
+
+<div class="card proof">
+<span class="label">Démonstration</span>
+
+<p>
+Soient \(x,y\in\mathbb R\) tels que \(x&lt;y\). On a \(y-x>0\), donc
+</p>
+
+<div class="eq">
+\[
+\frac1{y-x}>0.
+\]
+</div>
+
+<p>
+Par la propriété d'Archimède, il existe \(n\in\mathbb N^*\) tel que
+</p>
+
+<div class="eq">
+\[
+n>\frac1{y-x}.
+\]
+</div>
+
+<p>On peut prendre :</p>
+
+<div class="eq">
+\[
+n=
+E\left(\frac1{y-x}\right)+1.
+\]
+</div>
+
+<p>Alors :</p>
+
+<div class="eq">
+\[
+n(y-x)>1,
+\]
+</div>
+
+<p>d'où</p>
+
+<div class="eq">
+\[
+ny-nx>1.
+\]
+</div>
+
+<p>
+Pour construire explicitement un entier entre \(nx\) et \(ny\), on pose
+</p>
+
+<div class="eq">
+\[
+p=E(nx)+1.
+\]
+</div>
+
+<p>
+Par définition de la partie entière :
+</p>
+
+<div class="eq">
+\[
+E(nx)\leq nx&lt;E(nx)+1=p.
+\]
+</div>
+
+<p>
+De plus, puisque \(ny-nx&gt;1\),
+</p>
+
+<div class="eq">
+\[
+p=E(nx)+1\leq nx+1&lt;ny.
+\]
+</div>
+
+<p>Donc :</p>
+
+<div class="eq">
+\[
+nx&lt;p&lt;ny.
+\]
+</div>
+
+<p>En divisant par \(n>0\), on obtient :</p>
+
+<div class="eq">
+\[
+x&lt;\frac pn&lt;y.
+\]
+</div>
+
+<p>Or</p>
+
+<div class="eq">
+\[
+\frac pn\in\mathbb Q.
+\]
+</div>
+
+<p>Donc il existe bien un rationnel entre \(x\) et \(y\).</p>
+
+<div class="eq">
+\[
+\boxed{\mathbb Q\text{ est dense dans }\mathbb R.}
+\]
+</div>
+</div>
+
+<div class="card remark">
+<span class="label">Conséquence — une infinité de rationnels</span>
+<p>
+Entre deux rationnels distincts \(r<s\), leur milieu
+</p>
+
+<div class="eq">
+\[
+m=\frac{r+s}{2}\in\mathbb Q
+\]
+</div>
+
+<p>
+vérifie \(r&lt;m&lt;s\). En répétant le procédé dans les sous-intervalles,
+on construit une infinité de rationnels distincts entre \(r\) et \(s\).
+</p>
+</div>
+
+<!-- =========================================================
+     DENSITÉ DES IRRATIONNELS DANS R
+     ========================================================= -->
+
+<div class="demonstration irrational-density">
+
+<h3>c. Densité des irrationnels dans \(\mathbb R\)</h3>
+
+<div class="card theorem">
+<span class="label green">Théorème</span>
+
+<p>
+Les irrationnels sont denses dans \(\mathbb R\), c'est-à-dire :
+</p>
+
+<div class="eq">
+\[
+\forall x,y\in\mathbb R,\quad
+x&lt;y
+\Longrightarrow
+\exists\alpha\in\mathbb R\setminus\mathbb Q,\quad
+x&lt;\alpha&lt;y.
+\]
+</div>
+</div>
+
+<div class="card proof">
+<span class="label">Démonstration</span>
+
+<p>
+Soient \(x,y\in\mathbb R\) tels que \(x&lt;y\). Nous voulons construire
+un irrationnel \(\alpha\) tel que \(x&lt;\alpha&lt;y\).
+</p>
+
+<p>
+Comme \(\sqrt2&gt;0\), on a :
+</p>
+
+<div class="eq">
+\[
+\frac{x}{\sqrt2}&lt;\frac{y}{\sqrt2}.
+\]
+</div>
+
+<p>
+Par la densité de \(\mathbb Q\), il existe \(q\in\mathbb Q\) tel que
+</p>
+
+<div class="eq">
+\[
+\frac{x}{\sqrt2}&lt;q&lt;\frac{y}{\sqrt2}.
+\]
+</div>
+
+<p>
+Si \(q\neq0\), posons :
+</p>
+
+<div class="eq">
+\[
+\alpha=q\sqrt2.
+\]
+</div>
+
+<p>
+Puisque \(\sqrt2&gt;0\), on obtient :
+</p>
+
+<div class="eq">
+\[
+x&lt;q\sqrt2&lt;y.
+\]
+</div>
+
+<p>
+Montrons que \(q\sqrt2\) est irrationnel. Supposons le contraire :
+\(q\sqrt2\in\mathbb Q\). Comme \(q\in\mathbb Q^*\), on aurait
+</p>
+
+<div class="eq">
+\[
+\sqrt2=\frac{q\sqrt2}{q}\in\mathbb Q,
+\]
+</div>
+
+<p>
+ce qui contredit le résultat précédent \(\sqrt2\notin\mathbb Q\).
+Ainsi :
+</p>
+
+<div class="eq">
+\[
+\boxed{q\sqrt2\notin\mathbb Q}.
+\]
+</div>
+
+<p>
+Il reste le cas où le rationnel choisi est \(q=0\). Alors
+</p>
+
+<div class="eq">
+\[
+\frac{x}{\sqrt2}&lt;0&lt;\frac{y}{\sqrt2},
+\]
+</div>
+
+<p>
+donc \(y&gt;0\). Par la propriété d'Archimède, on peut choisir
+\(n\in\mathbb N^*\) tel que
+</p>
+
+<div class="eq">
+\[
+n&gt;\frac{\sqrt2}{y}.
+\]
+</div>
+
+<p>
+Ainsi :
+</p>
+
+<div class="eq">
+\[
+0&lt;\frac1n&lt;\frac{y}{\sqrt2}.
+\]
+</div>
+
+<p>
+Comme \(x/\sqrt2&lt;0\), on a alors :
+</p>
+
+<div class="eq">
+\[
+\frac{x}{\sqrt2}&lt;\frac1n&lt;\frac{y}{\sqrt2}.
+\]
+</div>
+
+<p>
+On prend donc \(q=\frac1n\neq0\) et on revient au premier cas.
+Finalement, il existe toujours un irrationnel entre \(x\) et \(y\).
+</p>
+
+<div class="eq">
+\[
+\boxed{\mathbb R\setminus\mathbb Q\text{ est dense dans }\mathbb R.}
+\]
+</div>
+</div>
+
+<div class="card remark">
+<span class="label">Conséquence importante</span>
+<p>
+Tout intervalle ouvert non vide de \(\mathbb R\) contient à la fois
+des rationnels et des irrationnels. En fait, il en contient une infinité
+de chaque.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="page" id="archimede">
+<h2>5. Propriété d'Archimède</h2>
+
+<div class="card theorem">
+<span class="label green">Propriété d'Archimède</span>
+<p>Pour tout \(x\in\mathbb R\), il existe \(n\in\mathbb N\) tel que</p>
+<div class="eq">\[
+n>x.
+\]</div>
+<p>Une formulation équivalente utilisée dans les feuilles est :</p>
+<div class="eq">\[
+\forall\varepsilon>0,\ \exists n\in\mathbb N^*
+\quad\text{tel que}\quad
+\frac1n&lt;\varepsilon.
+\]</div>
+</div>
+
+<div class="card proof">
+<span class="label">Conséquence</span>
+<p>Si \(a\ne0\), on peut choisir \(n\in\mathbb N^*\) suffisamment grand pour avoir</p>
+<div class="eq">\[
+\frac1n&lt;\frac{|a|}{2}.
+\]</div>
+<p>Cette propriété permet notamment de construire des nombres rationnels
+arbitrairement proches d'un réel et d'étudier la densité.</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Lemme fondamental — annulation par \(\varepsilon\)</span>
+
+<p>
+Soit \(a\in\mathbb R\). Si, pour tout \(\varepsilon>0\), on a
+</p>
+
+<div class="eq">
+\[
+|a|\leq\varepsilon.
+\]
+</div>
+
+<p>alors :</p>
+
+<div class="eq">
+\[
+\boxed{a=0}.
+\]
+</div>
+
+<div class="card proof" style="margin:20px 0 0;">
+<span class="label">Démonstration</span>
+
+<p>
+Raisonnons par l'absurde. Supposons que \(a\neq0\). Alors
+</p>
+
+<div class="eq">
+\[
+|a|>0.
+\]
+</div>
+
+<p>
+On choisit :
+</p>
+
+<div class="eq">
+\[
+\varepsilon=\frac{|a|}{2}>0.
+\]
+</div>
+
+<p>
+L'hypothèse du lemme donne :
+</p>
+
+<div class="eq">
+\[
+|a|\leq\frac{|a|}{2}.
+\]
+</div>
+
+<p>
+Mais \(|a|>0\), donc
+</p>
+
+<div class="eq">
+\[
+\frac{|a|}{2}<|a|.
+\]
+</div>
+
+<p>
+Contradiction. Ainsi :
+</p>
+
+<div class="eq">
+\[
+\boxed{a=0}.
+\]
+</div>
+</div>
+
+<div class="card remark">
+<span class="label">Utilisation</span>
+<p>
+Ce lemme est un outil d'<strong>unicité</strong>. Par exemple, si
+\[
+|L-L'|\leq\varepsilon\qquad\forall\varepsilon>0,
+\]
+alors, en appliquant le lemme à \(a=L-L'\), on obtient
+\[
+\boxed{L=L'}.
+\]
+Il sera donc réutilisé plus tard pour l'unicité des limites.
+</p>
+</div>
+
+<div class="card remark">
+<span class="label">Applications du lemme — à ouvrir</span>
+
+<details>
+<summary><strong>Voir les applications</strong></summary>
+
+<div class="card example" style="margin-top:18px;">
+<span class="label">1. Unicité de la limite d'une suite</span>
+
+<p>Si une suite \((u_n)\) admet deux limites \(L\) et \(L'\), alors pour tout
+\(\varepsilon>0\), on obtient finalement :</p>
+
+<div class="eq">
+\[
+|L-L'|<\varepsilon.
+\]
+</div>
+
+<p>Le lemme d'annulation donne alors :</p>
+
+<div class="eq">
+\[
+L-L'=0
+\qquad\Longrightarrow\qquad
+\boxed{L=L'}.
+\]
+</div>
+</div>
+
+<div class="card example">
+<span class="label">2. Unicité de la limite d'une fonction</span>
+
+<p>Si</p>
+
+<div class="eq">
+\[
+\lim_{x\to a}f(x)=L
+\qquad\text{et}\qquad
+\lim_{x\to a}f(x)=L',
+\]
+</div>
+
+<p>le raisonnement avec l'inégalité triangulaire conduit à</p>
+
+<div class="eq">
+\[
+|L-L'|<\varepsilon
+\qquad\forall\varepsilon>0.
+\]
+</div>
+
+<p>Donc, par le lemme :</p>
+
+<div class="eq">
+\[
+\boxed{L=L'}.
+\]
+</div>
+</div>
+
+<div class="card example">
+<span class="label">3. Montrer que deux nombres sont égaux</span>
+
+<p>Plus généralement, si l'on démontre</p>
+
+<div class="eq">
+\[
+|A-B|\leq\varepsilon
+\qquad\forall\varepsilon>0,
+\]
+</div>
+
+<p>on applique le lemme à \(a=A-B\), d'où :</p>
+
+<div class="eq">
+\[
+A-B=0
+\qquad\Longrightarrow\qquad
+\boxed{A=B}.
+\]
+</div>
+</div>
+
+<div class="card example">
+<span class="label">4. Unicité d'une solution</span>
+
+<p>Si deux nombres \(x_1\) et \(x_2\) satisfaisant une même propriété permettent
+d'établir</p>
+
+<div class="eq">
+\[
+|x_1-x_2|\leq\varepsilon
+\qquad\forall\varepsilon>0,
+\]
+</div>
+
+<p>alors :</p>
+
+<div class="eq">
+\[
+x_1-x_2=0
+\qquad\Longrightarrow\qquad
+\boxed{x_1=x_2}.
+\]
+</div>
+
+<p>Le lemme devient donc un outil général pour les raisonnements
+d'<strong>unicité</strong>.</p>
+</div>
+
+<div class="card remark">
+<span class="label">Idée à retenir</span>
+<p>
+Le lemme transforme une <strong>petitesse arbitraire</strong> en une
+<strong>nullité</strong> :
+</p>
+
+<div class="eq">
+\[
+\boxed{
+|a|\leq\varepsilon\ \text{pour tout }\varepsilon>0
+\quad\Longrightarrow\quad a=0.
+}
+\]
+</div>
+</div>
+
+</details>
+</div>
+</div>
+
+<h3>Application à la propriété d’Archimède — approximation dans un intervalle</h3>
+<div class="card">
+<p><strong>Attention :</strong> on ne peut pas affirmer ce résultat pour un intervalle quelconque.
+Par exemple, si \(0&lt;a&lt;b\), alors \(-1/n&lt;0\) pour tout \(n\), donc \(-1/n\notin]a,b[\).</p>
+
+<p>On considère donc un intervalle contenant \(0\), c’est-à-dire</p>
+<div class="eq">\[
+a&lt;0&lt;b.
+\]</div>
+
+<p><strong>Question.</strong> Montrer qu’il existe \(n\in\mathbb N^*\) tel que</p>
+<div class="eq">\[
+\boxed{-\frac1n\in]a,b[}.
+\]</div>
+
+<p><strong>1. Traduisons la question.</strong></p>
+<p>Dire que \(-1/n\) appartient à l’intervalle \(]a,b[\), c’est écrire</p>
+<div class="eq">\[
+a&lt;-\frac1n&lt;b.
+\]</div>
+
+<p><strong>2. Cherchons la condition à imposer à \(n\).</strong></p>
+<p>Puisque \(b&gt;0\), on a automatiquement</p>
+<div class="eq">\[
+-\frac1n&lt;0&lt;b.
+\]</div>
+<p>Il reste donc seulement à obtenir</p>
+<div class="eq">\[
+a&lt;-rac1n.
+\]</div>
+<p>Cette inégalité équivaut à</p>
+<div class="eq">\[
+\frac1n&lt;-a.
+\]</div>
+
+<p><strong>3. Faisons intervenir la propriété d’Archimède.</strong></p>
+<p>Comme \(a&lt;0\), on a</p>
+<div class="eq">\[
+-a&gt;0.
+\]</div>
+<p>Or la propriété d’Archimède sous sa forme</p>
+<div class="eq">\[
+\forall\varepsilon&gt;0,\quad
+\exists n\in\mathbb N^*\quad
+\frac1n&lt;\varepsilon
+\]</div>
+<p>permet de choisir \(\varepsilon=-a\). Il existe donc \(n\in\mathbb N^*\) tel que</p>
+<div class="eq">\[
+\boxed{\frac1n&lt;-a}.
+\]</div>
+
+<p><strong>4. Conclusion.</strong></p>
+<p>On en déduit</p>
+<div class="eq">\[
+a&lt;-\frac1n&lt;0&lt;b,
+\]</div>
+<p>donc</p>
+<div class="eq">\[
+\boxed{-\frac1n\in]a,b[}.
+\]</div>
+
+<div class="card remark">
+<span class="label">À retenir</span>
+<p>Cette construction est une <strong>application directe de la propriété d’Archimède</strong> :
+Archimède permet de rendre \(1/n\) aussi petit que l’on veut.
+Ici, on choisit \(1/n&lt;-a\) pour faire entrer \(-1/n\) dans l’intervalle.</p>
+<div class="eq">\[
+\boxed{\text{Archimède}\;\Longrightarrow\;\frac1n\text{ arbitrairement petit}
+\;\Longrightarrow\;-\frac1n\in]a,b[.}
+\]</div>
+</div>
+</div>
+</section>
+
+<section class="page" id="bornes">
+<h2>6. Parties majorées, minorées et bornées</h2>
+
+<div class="card def">
+<span class="label green">Définitions</span>
+<p>Soit \(A\) une partie non vide de \(\mathbb R\).</p>
+<p>\(A\) est <strong>majorée</strong> s'il existe \(M\in\mathbb R\) tel que</p>
+<div class="eq">\[
+\forall x\in A,\quad x\le M.
+\]</div>
+<p>\(M\) est alors un <strong>majorant</strong> de \(A\).</p>
+
+<p>\(A\) est <strong>minorée</strong> s'il existe \(m\in\mathbb R\) tel que</p>
+<div class="eq">\[
+\forall x\in A,\quad m\le x.
+\]</div>
+<p>\(m\) est alors un <strong>minorant</strong> de \(A\).</p>
+
+<p>\(A\) est <strong>bornée</strong> si elle est à la fois majorée et minorée.</p>
+</div>
+
+<div class="card example">
+<span class="label">Exemple</span>
+<p>On considère</p>
+<div class="eq">\[
+A=\left]\,\frac{3-\sqrt5}{2},\frac{3+\sqrt5}{2}\,\right[.
+\]</div>
+<p>\(A\) est bornée. Une borne supérieure est</p>
+<div class="eq">\[
+\sup(A)=\frac{3+\sqrt5}{2},
+\]</div>
+<p>et une borne inférieure est</p>
+<div class="eq">\[
+\inf(A)=\frac{3-\sqrt5}{2}.
+\]</div>
+<p>Comme l'intervalle est ouvert, ces bornes ne sont pas des éléments de \(A\).</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Caractérisation de la borne supérieure</span>
+<p>Soit \(A\) une partie non vide et majorée de \(\mathbb R\).
+La borne supérieure \(\sup(A)\) est l'unique réel \(s\) tel que :</p>
+<ol>
+<li>\(\forall x\in A,\ x\le s\) ;</li>
+<li>\(\forall\varepsilon>0,\ \exists x\in A\) tel que
+\[
+s-\varepsilon&lt;x.
+\]</li>
+</ol>
+<p>Autrement dit, \(s\) est le plus petit des majorants de \(A\).</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Caractérisation de la borne inférieure</span>
+<p>Soit \(A\) une partie non vide et minorée de \(\mathbb R\).
+La borne inférieure \(\inf(A)\) est l'unique réel \(m\) tel que :</p>
+<ol>
+<li>\(\forall x\in A,\ m\le x\) ;</li>
+<li>\(\forall\varepsilon>0,\ \exists x\in A\) tel que
+\[
+x&lt;m+\varepsilon.
+\]</li>
+</ol>
+<p>Autrement dit, \(m\) est le plus grand des minorants de \(A\).</p>
+</div>
+</section>
+
+<section class="page" id="borne-sup">
+<h2>7. Théorème de la borne supérieure</h2>
+
+<div class="card theorem">
+<span class="label green">Théorème</span>
+<p>Toute partie non vide de \(\mathbb R\) qui est majorée admet une borne supérieure dans \(\mathbb R\).</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">Énoncé analogue</span>
+<p>Toute partie non vide de \(\mathbb R\) qui est minorée admet une borne inférieure dans \(\mathbb R\).</p>
+</div>
+
+<div class="card proof">
+<span class="label">Idée utilisée dans les feuilles</span>
+<p>Si \(A\) est non vide et majorée, l'ensemble de ses majorants est non vide.
+La borne supérieure est le plus petit réel appartenant à cet ensemble.</p>
+<p>La caractérisation avec \(\varepsilon\) permet d'utiliser directement la définition :</p>
+<div class="eq">\[
+\forall\varepsilon>0,\quad
+\exists x\in A,\qquad
+\sup(A)-\varepsilon&lt;x\le\sup(A).
+\]</div>
+</div>
+
+<h3>Conséquence : approximation par une suite</h3>
+<div class="card theorem">
+<span class="label green">Proposition</span>
+<p>Soit \(A\) une partie non vide et majorée de \(\mathbb R\).
+Il existe une suite \((x_n)_{n\in\mathbb N}\) d'éléments de \(A\) qui converge vers \(\sup(A)\).</p>
+<p>De façon analogue, si \(A\) est non vide et minorée, il existe une suite
+d'éléments de \(A\) qui converge vers \(\inf(A)\).</p>
+</div>
+</section>
+
+<section class="page" id="exercices">
+<h2>8. Exercices sur les bornes</h2>
+
+<div class="card example">
+<span class="label">Exercice 1</span>
+<p>Soit</p>
+<div class="eq">\[
+A=\left\{\frac{1}{n}+\frac{1}{p}\ ;\ n,p\in\mathbb N^*\right\}.
+\]</div>
+<ol>
+<li>\(A\) est-elle bornée ?</li>
+<li>\(A\) admet-elle un maximum ?</li>
+<li>\(A\) admet-elle une borne inférieure ?</li>
+<li>\(A\) admet-elle un minimum ?</li>
+</ol>
+
+<p>Pour \(n,p\in\mathbb N^*\), on a</p>
+<div class="eq">\[
+0&lt;\frac1n\le1,\qquad 0&lt;\frac1p\le1,
+\]</div>
+<p>donc</p>
+<div class="eq">\[
+0&lt;\frac1n+\frac1p\le2.
+\]</div>
+<p>Ainsi \(A\) est bornée.</p>
+
+<p>Comme \(1\in\mathbb N^*\), on obtient \(2\in A\). Donc</p>
+<div class="eq">\[
+\max(A)=2.
+\]</div>
+
+<p>Pour tout \(\varepsilon>0\), la propriété d'Archimède permet de choisir
+\(n\) assez grand pour que \(\frac2n&lt;\varepsilon\). Ainsi les éléments de \(A\)
+peuvent être rendus arbitrairement proches de \(0\). On obtient</p>
+<div class="eq">\[
+\inf(A)=0.
+\]</div>
+<p>Mais \(0\notin A\), donc \(A\) n'admet pas de minimum.</p>
+</div>
+
+<div class="card example">
+<span class="label">Exercice 2</span>
+<p>Soit</p>
+<div class="eq">\[
+A=\left\{\frac{n+1}{n}\ ;\ n\in\mathbb N^*\right\}.
+\]</div>
+<p>On écrit</p>
+<div class="eq">\[
+\frac{n+1}{n}=1+\frac1n.
+\]</div>
+<p>Comme \(0&lt;\frac1n\le1\), on obtient</p>
+<div class="eq">\[
+1&lt;1+\frac1n\le2.
+\]</div>
+<p>Ainsi \(A\) est bornée, avec</p>
+<div class="eq">\[
+\sup(A)=2,\qquad \inf(A)=1.
+\]</div>
+<p>On a \(2\in A\), mais \(1\notin A\). Donc \(A\) admet un maximum mais pas de minimum.</p>
+</div>
+
+<div class="card example">
+<span class="label">Exercice 3</span>
+<p>Soit</p>
+<div class="eq">\[
+A=\left\{1-\frac{2}{\ln(n)}\ ;\ n\in\mathbb N\setminus\{0,1\}\right\}.
+\]</div>
+<p>Pour \(n\ge2\), \(\ln(n)\ge\ln2\), donc</p>
+<div class="eq">\[
+\frac2{\ln n}\le\frac2{\ln2}.
+\]</div>
+<p>et la feuille obtient en particulier que \(A\) est bornée supérieurement.
+De plus, lorsque \(n\to+\infty\),</p>
+<div class="eq">\[
+1-\frac2{\ln n}\longrightarrow1.
+\]</div>
+<p>On en déduit :</p>
+<div class="eq">\[
+\boxed{\sup(A)=1}.
+\]</div>
+</div>
+
+<div class="card example">
+<span class="label">Exercice 4</span>
+<p>Soient \(A\) et \(B\) deux parties non vides de \(\mathbb R\) telles que</p>
+<div class="eq">\[
+\forall a\in A,\ \forall b\in B,\qquad a&lt;b.
+\]</div>
+<p>Montrer que \(A\) est majorée, \(B\) est minorée et que</p>
+<div class="eq">\[
+\sup(A)\le\inf(B).
+\]</div>
+</div>
+</section>
+
+<section class="page" id="comparaison">
+<h2>9. Exercice : comparaison de \(\sup(A)\) et \(\inf(B)\)</h2>
+
+<div class="card proof">
+<span class="label">Correction</span>
+<p>\(A\) et \(B\) sont non vides. Il existe donc \(a_0\in A\) et \(b_0\in B\).</p>
+<p>Comme \(a&lt;b\) pour tout \(a\in A\) et \(b\in B\), on a en particulier</p>
+<div class="eq">\[
+a_0&lt;b\qquad\forall b\in B.
+\]</div>
+<p>Donc \(a_0\) est un minorant de \(B\). Ainsi \(B\) est minorée.</p>
+
+<p>De même,</p>
+<div class="eq">\[
+a&lt;b_0\qquad\forall a\in A,
+\]</div>
+<p>donc \(b_0\) est un majorant de \(A\). Ainsi \(A\) est majorée.</p>
+
+<p>Supposons maintenant, par l'absurde, que</p>
+<div class="eq">\[
+\sup(A)>\inf(B).
+\]</div>
+<p>Comme \(A\) est majorée et \(B\) minorée, ces deux réels existent.</p>
+<p>Posons</p>
+<div class="eq">\[
+p=\frac{\inf(B)+\sup(A)}2.
+\]</div>
+<p>Alors</p>
+<div class="eq">\[
+\inf(B)&lt;p&lt;\sup(A).
+\]</div>
+<p>Par la caractérisation de la borne supérieure, il existe \(a\in A\) tel que</p>
+<div class="eq">\[
+p&lt;a.
+\]</div>
+<p>Par la caractérisation de la borne inférieure, il existe \(b\in B\) tel que</p>
+<div class="eq">\[
+b&lt;p.
+\]</div>
+<p>On obtient alors \(b&lt;p&lt;a\), donc \(b&lt;a\), ce qui contredit
+\(a&lt;b\).</p>
+<p>Par conséquent :</p>
+<div class="eq">\[
+\boxed{\sup(A)\le\inf(B)}.
+\]</div>
+</div>
+</section>
+
+<section class="page" id="maxmin">
+<h2>10. Exercice : bornes et maximum/minimum</h2>
+
+<div class="card example">
+<span class="label">Exercice</span>
+<p>On considère</p>
+<div class="eq">\[
+A=\left]3-\sqrt5,\;3+\sqrt5\right[
+\]</div>
+<p>ou, suivant l'écriture de la feuille, une partie comprise entre les deux nombres
+\(3-\sqrt5\) et \(3+\sqrt5\).</p>
+<p>On cherche à déterminer les bornes et à savoir si elles appartiennent à \(A\).</p>
+</div>
+
+<div class="card">
+<p>La distinction fondamentale à retenir est :</p>
+<ul>
+<li>\(\sup(A)\) est une borne supérieure, mais elle n'est pas nécessairement dans \(A\) ;</li>
+<li>si \(\sup(A)\in A\), alors \(\sup(A)=\max(A)\) ;</li>
+<li>\(\inf(A)\) est une borne inférieure, mais elle n'est pas nécessairement dans \(A\) ;</li>
+<li>si \(\inf(A)\in A\), alors \(\inf(A)=\min(A)\).</li>
+</ul>
+</div>
+</section>
+
+<section class="page" id="conclusion">
+<h2>11. Densité et approximation — conclusion du cours</h2>
+
+<div class="card theorem">
+<span class="label green">Idée essentielle</span>
+<p>La propriété d'Archimède permet de construire des nombres \(1/n\)
+aussi petits que l'on veut. Elle est donc fondamentale dans les raisonnements
+sur les intervalles, les bornes et les approximations.</p>
+</div>
+
+<div class="card theorem">
+<span class="label green">À retenir</span>
+<ul>
+<li>\(\mathbb Q\subset\mathbb R\).</li>
+<li>Il existe des réels qui ne sont pas rationnels : ce sont les irrationnels.</li>
+<li>\(\sqrt2\notin\mathbb Q\).</li>
+<li>\((\mathbb R,+,\times)\) est un corps commutatif.</li>
+<li>\(\mathbb R\) est totalement ordonné.</li>
+<li>La valeur absolue mesure la distance à \(0\).</li>
+<li>Si \(|a|\leqarepsilon\) pour tout \(arepsilon>0\), alors \(a=0\).</li>
+<li>Une partie non vide et majorée de \(\mathbb R\) admet une borne supérieure.</li>
+<li>Une partie non vide et minorée de \(\mathbb R\) admet une borne inférieure.</li>
+<li>La borne supérieure n'est pas nécessairement un maximum.</li>
+<li>La borne inférieure n'est pas nécessairement un minimum.</li>
+</ul>
+</div>
+</section>
+
+
+</div>
+
+<aside class="toc" aria-label="Index du cours">
+  <div class="toc-title">Index du cours</div>
+  <a href="#rationnels">1. Les nombres rationnels \(\mathbb Q\)</a>
+  <a class="sub" href="#rationnels">Définition</a>
+  <a class="sub" href="#rationnels">Proposition et exemples</a>
+
+  <a href="#irrationnels">2. Les nombres irrationnels</a>
+  <a class="sub" href="#irrationnels">Exemples</a>
+  <a class="sub" href="#irrationnels">Irrationalité de \(\sqrt2\)</a>
+
+  <a class="sub" href="#avant-proprietes">Lemme : 2 divise \(n^2\) alors 2 divise \(n\)</a>
+  <a class="sub" href="#avant-proprietes">Représentation des nombres réels</a>
+  <a class="sub" href="#avant-proprietes">Proposition sur les rationnels</a>
+  <a class="sub" href="#avant-proprietes">Remarque sur les irrationnels</a>
+
+  <a href="#proprietes">3. Les propriétés de \(\mathbb R\)</a>
+  <a class="sub" href="#proprietes">Corps commutatif</a>
+  <a class="sub" href="#proprietes">Relation d'ordre</a>
+
+  <a href="#ordre">4. Ordre, intervalles et valeur absolue</a>
+  <a class="sub" href="#ordre">Intervalles</a>
+  <a class="sub" href="#ordre">Valeur absolue</a>
+
+  <a href="#densite-intervalles">Densité de \(\mathbb Q\) dans \(\mathbb R\)</a>
+  <a class="sub" href="#densite-intervalles">Intervalles et voisinages</a>
+  <a class="sub" href="#densite-intervalles">Densité de \(\mathbb Q\)</a>
+  <a class="sub" href="#densite-intervalles">Densité des irrationnels</a>
+
+  <a href="#archimede">5. Propriété d'Archimède</a>
+  <a class="sub" href="#archimede">Lemme fondamental — annulation par ε</a>
+
+  <a href="#bornes">6. Parties majorées, minorées et bornées</a>
+  <a class="sub" href="#bornes">Supremum / infimum</a>
+
+  <a href="#borne-sup">7. Théorème de la borne supérieure</a>
+
+  <a href="#exercices">8. Exercices sur les bornes</a>
+  <a class="sub" href="#exercices">Exercice 1</a>
+  <a class="sub" href="#exercices">Exercice 2</a>
+  <a class="sub" href="#exercices">Exercice 3</a>
+  <a class="sub" href="#exercices">Exercice 4</a>
+
+  <a href="#comparaison">9. Comparaison de \(\sup(A)\) et \(\inf(B)\)</a>
+  <a href="#maxmin">10. Bornes et maximum/minimum</a>
+  <a href="#conclusion">11. Densité et approximation</a>
+</aside>
+
+</main>
+
+<footer>
+  Mathématiques · Tunisie — Chapitre 1 : Les nombres réels
+</footer>
+</body>
+</html>
