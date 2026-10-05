@@ -1634,7 +1634,9 @@ x&lt;\frac pn&lt;y.
 \]
 </div>
 </div>
-<!-- =========================================================
+
+
+ <!-- =========================================================
      DENSITÉ DES RATIONNELS — TRANSCRIPTION DE LA DÉMONSTRATION
      ========================================================= -->
 
@@ -1644,60 +1646,71 @@ x&lt;\frac pn&lt;y.
 
     <p>
         Soient \(x,y\in\mathbb{R}\) tels que
-        \[
-        x<y.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    x<y.
+    \]
+    </div>
 
     <p>
         On considère le milieu de \(x\) et \(y\) :
-        \[
-        m=\frac{x+y}{2}.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    m=\frac{x+y}{2}.
+    \]
+    </div>
 
     <p>
         Si \(x,y\in\mathbb{Q}\), alors
-        \[
-        \frac{x+y}{2}\in\mathbb{Q}.
-        \]
-        On a donc :
-        \[
-        x<\frac{x+y}{2}<y.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    \frac{x+y}{2}\in\mathbb{Q}.
+    \]
+    </div>
+
+    <p>
+        On a donc :
+    </p>
+
+    <div class="eq">
+    \[
+    x<\frac{x+y}{2}<y.
+    \]
+    </div>
 
     <p>
         On obtient ainsi deux intervalles disjoints :
-        \[
-        \left]x,\frac{x+y}{2}\right[
-        \qquad\text{et}\qquad
-        \left]\frac{x+y}{2},y\right[.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    \left]x,\frac{x+y}{2}\right[
+    \qquad\text{et}\qquad
+    \left]\frac{x+y}{2},y\right[.
+    \]
+    </div>
 
     <!-- Schéma TikZ -->
     <div class="tikz-container">
         <script type="text/tikz">
         \begin{tikzpicture}[scale=1.15]
 
-            % Axe
             \draw[->] (-0.5,0) -- (8,0);
 
-            % Points
             \fill (0,0) circle (2pt);
-            \fill (4,0) circle (2pt);
+            \fill (4,0) circle (3pt);
             \fill (8,0) circle (2pt);
 
-            % Milieu
-            \fill (4,0) circle (3pt);
-
-            % Labels
             \node[below] at (0,0) {$x$};
             \node[below] at (4,0) {$\frac{x+y}{2}$};
             \node[below] at (8,0) {$y$};
 
-            % Intervalles
             \draw[<->] (0,0.7) -- (4,0.7);
             \draw[<->] (4,0.7) -- (8,0.7);
 
@@ -1719,22 +1732,31 @@ x&lt;\frac pn&lt;y.
 
     <p>
         Par exemple :
-        \[
-        x
-        <
-        \frac{x+y}{2}
-        <
-        y.
-        \]
-        Puis dans le premier intervalle :
-        \[
-        x
-        <
-        \frac{x+\frac{x+y}{2}}{2}
-        <
-        \frac{x+y}{2}.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    x
+    <
+    \frac{x+y}{2}
+    <
+    y.
+    \]
+    </div>
+
+    <p>
+        Puis dans le premier intervalle :
+    </p>
+
+    <div class="eq">
+    \[
+    x
+    <
+    \frac{x+\frac{x+y}{2}}{2}
+    <
+    \frac{x+y}{2}.
+    \]
+    </div>
 
     <p>
         Comme le milieu de deux rationnels est rationnel, tous les nombres
@@ -1762,84 +1784,130 @@ x&lt;\frac pn&lt;y.
 
     <p>
         Soient \(x,y\in\mathbb{R}\) tels que
-        \[
-        x<y.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    x<y.
+    \]
+    </div>
 
     <p>
         Nous voulons montrer qu'il existe un irrationnel
         \(\alpha\) tel que
-        \[
-        x<\alpha<y.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    x<\alpha<y.
+    \]
+    </div>
 
     <p>
         Comme \(\mathbb{Q}\) est dense dans \(\mathbb{R}\), on peut choisir
         un rationnel \(q\) tel que
-        \[
-        \frac{x}{\sqrt2}
-        <
-        q
-        <
-        \frac{y}{\sqrt2}.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    \frac{x}{\sqrt2}
+    <
+    q
+    <
+    \frac{y}{\sqrt2}.
+    \]
+    </div>
 
     <p>
         Comme \(\sqrt2>0\), on peut multiplier toute l'inégalité par
         \(\sqrt2\) :
-        \[
-        x<q\sqrt2<y.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    x<q\sqrt2<y.
+    \]
+    </div>
 
     <p>
         Posons :
-        \[
-        \alpha=q\sqrt2.
-        \]
-        Alors :
-        \[
-        x<\alpha<y.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    \alpha=q\sqrt2.
+    \]
+    </div>
+
+    <p>
+        Alors :
+    </p>
+
+    <div class="eq">
+    \[
+    x<\alpha<y.
+    \]
+    </div>
 
     <p>
         Il reste à montrer que \(\alpha\) est irrationnel.
         Supposons par l'absurde que
-        \[
-        q\sqrt2\in\mathbb{Q}.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    q\sqrt2\in\mathbb{Q}.
+    \]
+    </div>
 
     <p>
         Comme \(q\in\mathbb{Q}\) et \(q\neq0\), on aurait :
-        \[
-        \sqrt2
-        =
-        \frac{q\sqrt2}{q}
-        \in\mathbb{Q},
-        \]
-        ce qui est impossible puisque
-        \[
-        \sqrt2\notin\mathbb{Q}.
-        \]
     </p>
+
+    <div class="eq">
+    \[
+    \sqrt2
+    =
+    \frac{q\sqrt2}{q}
+    \in\mathbb{Q},
+    \]
+    </div>
+
+    <p>
+        ce qui est impossible puisque
+    </p>
+
+    <div class="eq">
+    \[
+    \sqrt2\notin\mathbb{Q}.
+    \]
+    </div>
 
     <div class="conclusion">
         <strong>Conclusion :</strong>
-        \[
-        q\sqrt2\notin\mathbb{Q}.
-        \]
-        Ainsi,
-        \[
-        \boxed{x<q\sqrt2<y}
-        \]
-        avec \(q\sqrt2\) irrationnel.
     </div>
 
+    <div class="eq">
+    \[
+    q\sqrt2\notin\mathbb{Q}.
+    \]
+    </div>
+
+    <p>
+        Ainsi,
+    </p>
+
+    <div class="eq">
+    \[
+    \boxed{x<q\sqrt2<y}
+    \]
+    </div>
+
+    <p>
+        avec \(q\sqrt2\) irrationnel.
+    </p>
+
+</div>
     <p class="final-result">
         Donc :
         \[
