@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Correction détaillée — Exercice 2</title>
+<title>Devoir de synthèse N°1 — Mathématiques</title>
 
 <script>
 window.MathJax = {
@@ -11,9 +11,7 @@ window.MathJax = {
     inlineMath: [['\\(', '\\)']],
     displayMath: [['\\[', '\\]']]
   },
-  svg: {
-    fontCache: 'global'
-  }
+  svg: { fontCache: 'global' }
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -21,100 +19,76 @@ window.MathJax = {
 <style>
 *{box-sizing:border-box}
 body{
-    margin:0;
-    background:#fff;
-    color:#111;
-    font-family:"Times New Roman",serif;
-    font-size:18px;
-    line-height:1.6;
+  margin:0;
+  background:white;
+  color:#111;
+  font-family:"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.42;
 }
 .page{
-    max-width:1050px;
-    margin:30px auto 70px;
-    padding:0 35px;
-}
-.title{
-    text-align:center;
-    color:#159447;
-    font-size:29px;
-    font-weight:bold;
-    text-decoration:underline;
-    margin-bottom:25px;
+  width:94%;
+  max-width:1100px;
+  margin:25px auto 70px;
 }
 h2{
-    color:#159447;
-    font-size:25px;
-    text-decoration:underline;
-    margin-top:30px;
-    margin-bottom:12px;
+  color:#159447;
+  text-decoration:underline;
+  font-size:24px;
+  margin:18px 0 8px;
 }
 h3{
-    color:#b00000;
-    font-size:21px;
-    margin-top:22px;
+  color:#159447;
+  text-decoration:underline;
+  font-size:23px;
+  margin:22px 0 8px;
 }
-.step{
-    background:#f7f7f7;
-    border-left:5px solid #159447;
-    padding:10px 18px;
-    margin:14px 0;
-}
-.remark{
-    background:#fff8e6;
-    border-left:5px solid #d59b00;
-    padding:10px 18px;
-    margin:18px 0;
-}
-.warning{
-    background:#fff0f0;
-    border-left:5px solid #c00000;
-    padding:12px 18px;
-    margin:18px 0;
-}
-.result{
-    background:#eef9f1;
-    border:1px solid #159447;
-    padding:10px 18px;
-    margin:15px 0;
-}
+.q{margin:10px 0}
+.n,.letter{color:#c00000;font-weight:bold}
+.center{text-align:center}
+.matrix{margin:8px 0}
 table{
-    border-collapse:collapse;
-    width:100%;
-    margin:15px 0;
+  border-collapse:collapse;
+  width:100%;
+  margin:12px 0;
 }
-th,td{
-    border:1px solid #777;
-    padding:8px;
-    text-align:center;
+td,th{
+  border:1px solid #777;
+  padding:7px;
+  text-align:center;
 }
-.footer{
-    margin-top:55px;
-    padding-top:12px;
-    border-top:1px solid #aaa;
-    text-align:center;
-    color:#a00000;
-    font-style:italic;
+.footer-ref{
+  margin-top:55px;
+  padding-top:12px;
+  border-top:1px solid #aaa;
+  text-align:center;
+  font-style:italic;
+  color:#a00000;
 }
 @media(max-width:700px){
-    body{font-size:16px}
-    .page{padding:0 15px}
-    .title{font-size:23px}
-    h2{font-size:21px}
+ body{font-size:15px}
+ .page{width:96%;margin:12px auto 50px}
+ h2,h3{font-size:20px}
 }
 
 <style>
-.back-link{
-    display:inline-block;
-    margin:0 0 20px;
-    padding:8px 14px;
-    background:#159447;
-    color:white;
+#exercice2-link{
+    display:block;
+    cursor:pointer;
     text-decoration:none;
-    border-radius:6px;
-    font-family:Arial,sans-serif;
-    font-size:15px;
+    color:inherit;
 }
-.back-link:hover{background:#117b39}
+#exercice2-link:hover{
+    background:#f4fff6;
+    box-shadow:0 0 0 3px #d8f0df;
+    border-radius:8px;
+}
+#exercice2-link .click-note{
+    font-size:14px;
+    color:#159447;
+    font-style:italic;
+    margin-top:4px;
+}
 </style>
 </style>
 </head>
@@ -122,12 +96,100 @@ th,td{
 <body>
 <div class="page">
 
-<a class="back-link" href="devoir_synthese_mathjax_une_page.html">← Retour au devoir de synthèse</a>
+<!-- EXERCICE 1 -->
+<h2>EXERCICE N° 1. <span>(5 points)</span></h2>
 
-<div class="title">Correction détaillée — Exercice N° 2</div>
+<div class="q">
+Répondre par « <b>VRAI</b> » ou « <b>FAUX</b> ».<br>
+Aucune justification n'est demandée.
+</div>
 
-<p>
-On considère les matrices
+<table>
+<tr>
+<th>Affirmations</th>
+<th>VRAI / FAUX</th>
+</tr>
+
+<tr>
+<td>
+Si une fonction \(f\) vérifie :
+Pour tout \(x\in\mathbb{R}\),
+\[
+f(x)\leq\frac{3x^3-1}{x^2+1}.
+\]
+Alors
+\[
+\lim_{x\to-\infty}f(x)=-\infty.
+\]
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+Si \(f\) est continue en \(x_0\) alors \(f\) est dérivable en \(x_0\).
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+L'inverse de la matrice
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+1&2&1\\
+3&1&4
+\end{pmatrix}
+\]
+est
+\[
+B=
+\begin{pmatrix}
+1&3&0\\
+0&0&0\\
+2&1&0
+\end{pmatrix}.
+\]
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+\[
+\lim_{x\to-\infty}
+\frac{x^2-5x+6}{(x-2)^2}
+=-\infty.
+\]
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+Soit \(f\) une fonction dérivable sur \(\mathbb{R}\) telle que
+\(f(-1)=3\) et \(f'(-1)=-2\).
+
+Alors l'équation de la tangente à la courbe de \(f\)
+en \(-1\) est :
+\[
+y=-2x+3.
+\]
+</td>
+<td>................</td>
+</tr>
+</table>
+
+
+<!-- EXERCICE 2 -->
+<div id="exercice2-link" onclick="window.location.href='correction_detaillee_exercice_2_mathjax.html'" title="Cliquer pour ouvrir la correction détaillée de l'Exercice 2.">
+<h2>EXERCICE N° 2. <span>(5 points)</span></h2>
+<div class="click-note">Cliquer n’importe où sur cet exercice pour ouvrir la correction détaillée.</div>
+
+<div class="q">
+Soient les matrices
 \[
 A=
 \begin{pmatrix}
@@ -143,142 +205,26 @@ B=
 -8&-1&2
 \end{pmatrix}.
 \]
-</p>
-
-<div class="remark">
-<strong>Idée générale de l'exercice :</strong>
-on commence par montrer que \(A\) est inversible, puis on utilise le produit
-\(AB\) pour obtenir rapidement \(A^{-1}\). Cette matrice inverse permet ensuite
-de résoudre le système \((S)\). Enfin, on reconnaît que le problème de couture
-se traduit exactement par ce même système.
 </div>
 
-<h2>1. Déterminant et inversibilité de \(A\)</h2>
-
-<h3>a. Calcul de \(\det(A)\)</h3>
-
-<p>
-On a :
+<div class="q"><span class="n">1.</span></div>
+<div class="q"><span class="letter">a.</span> Calculer le déterminant de \(A\).</div>
+<div class="q">
 \[
 \det(A)=
 \begin{vmatrix}
 1&1&1\\
 2&4&5\\
 5&6&8
-\end{vmatrix}.
-\]
-</p>
-
-<p>
-On développe le déterminant suivant la première ligne.
-Le signe des trois termes est successivement \(+\), \(-\), \(+\) :
-</p>
-
-\[
-\det(A)
-=
-1
-\begin{vmatrix}
-4&5\\
-6&8
-\end{vmatrix}
--
-1
-\begin{vmatrix}
-2&5\\
-5&8
-\end{vmatrix}
-+
-1
-\begin{vmatrix}
-2&4\\
-5&6
-\end{vmatrix}.
-\]
-
-<p>Calculons séparément les déterminants d'ordre \(2\).</p>
-
-<div class="step">
-\[
-\begin{vmatrix}
-4&5\\
-6&8
-\end{vmatrix}
-=4\times8-5\times6
-=32-30
-=2.
+\end{vmatrix}=3.
 \]
 </div>
+<div class="q"><span class="letter">b.</span> Déduire que \(A\) est inversible.</div>
+<div class="q">Comme \(\det(A)=3\neq0\), \(A\) est inversible.</div>
 
-<div class="step">
-\[
-\begin{vmatrix}
-2&5\\
-5&8
-\end{vmatrix}
-=2\times8-5\times5
-=16-25
-=-9.
-\]
-</div>
-
-<div class="step">
-\[
-\begin{vmatrix}
-2&4\\
-5&6
-\end{vmatrix}
-=2\times6-4\times5
-=12-20
-=-8.
-\]
-</div>
-
-<p>Donc :</p>
-
-\[
-\det(A)=2-(-9)+(-8)
-\]
-
-\[
-\det(A)=2+9-8
-\]
-
-\[
-\boxed{\det(A)=3}.
-\]
-
-<h3>b. Déduire que \(A\) est inversible</h3>
-
-<p>
-Une matrice carrée est inversible si et seulement si son déterminant est non nul.
-</p>
-
-\[
-\det(A)=3\neq0.
-\]
-
-<p>Par conséquent :</p>
-
-<div class="result">
-\[
-\boxed{A\text{ est inversible}.}
-\]
-</div>
-
-<h2>2. Calcul de \(AB\) et détermination de \(A^{-1}\)</h2>
-
-<h3>a. Calcul de \(AB\)</h3>
-
-<p>
-Pour multiplier deux matrices, on utilise la règle
-<strong>« ligne de la première matrice × colonne de la deuxième »</strong>.
-</p>
-
-<p>
-Ainsi :
-</p>
-
+<div class="q"><span class="n">2.</span></div>
+<div class="q"><span class="letter">a.</span> Calculer la matrice \(A\times B\).</div>
+<div class="q">
 \[
 AB=
 \begin{pmatrix}
@@ -290,505 +236,32 @@ AB=
 2&-2&1\\
 9&3&-3\\
 -8&-1&2
-\end{pmatrix}.
-\]
-
-<h3>Première ligne</h3>
-
-<p><strong>Première colonne :</strong></p>
-
-\[
-1(2)+1(9)+1(-8)
-=2+9-8
-=3.
-\]
-
-<p><strong>Deuxième colonne :</strong></p>
-
-\[
-1(-2)+1(3)+1(-1)
-=-2+3-1
-=0.
-\]
-
-<p><strong>Troisième colonne :</strong></p>
-
-\[
-1(1)+1(-3)+1(2)
-=1-3+2
-=0.
-\]
-
-<p>La première ligne du produit est donc :</p>
-
-\[
-(3,\;0,\;0).
-\]
-
-<h3>Deuxième ligne</h3>
-
-<p><strong>Première colonne :</strong></p>
-
-\[
-2(2)+4(9)+5(-8)
-=4+36-40
-=0.
-\]
-
-<p><strong>Deuxième colonne :</strong></p>
-
-\[
-2(-2)+4(3)+5(-1)
-=-4+12-5
-=3.
-\]
-
-<p><strong>Troisième colonne :</strong></p>
-
-\[
-2(1)+4(-3)+5(2)
-=2-12+10
-=0.
-\]
-
-<p>La deuxième ligne est donc :</p>
-
-\[
-(0,\;3,\;0).
-\]
-
-<h3>Troisième ligne</h3>
-
-<p><strong>Première colonne :</strong></p>
-
-\[
-5(2)+6(9)+8(-8)
-=10+54-64
-=0.
-\]
-
-<p><strong>Deuxième colonne :</strong></p>
-
-\[
-5(-2)+6(3)+8(-1)
-=-10+18-8
-=0.
-\]
-
-<p><strong>Troisième colonne :</strong></p>
-
-\[
-5(1)+6(-3)+8(2)
-=5-18+16
-=3.
-\]
-
-<p>La troisième ligne est donc :</p>
-
-\[
-(0,\;0,\;3).
-\]
-
-<p>Finalement :</p>
-
-\[
-\boxed{
-AB=
+\end{pmatrix}
+=
 \begin{pmatrix}
 3&0&0\\
 0&3&0\\
 0&0&3
-\end{pmatrix}}
-\]
-
-<p>Or :</p>
-
-\[
-I_3=
-\begin{pmatrix}
-1&0&0\\
-0&1&0\\
-0&0&1
-\end{pmatrix}.
-\]
-
-<p>Donc :</p>
-
-\[
-\boxed{AB=3I_3}.
-\]
-
-<h3>b. Déduire \(A^{-1}\)</h3>
-
-<p>
-Nous avons obtenu :
-\[
-AB=3I_3.
-\]
-</p>
-
-<p>
-On écrit \(3I_3=I_3\times3\), puis on divise par \(3\) :
-</p>
-
-\[
-A\left(\frac13B\right)=I_3.
-\]
-
-<p>
-Par définition de la matrice inverse, cela donne :
-</p>
-
-<div class="result">
-\[
-\boxed{A^{-1}=\frac13B}.
+\end{pmatrix}
+=3I_3.
 \]
 </div>
-
-<p>En remplaçant \(B\) :</p>
-
-\[
-A^{-1}
-=
-\frac13
-\begin{pmatrix}
-2&-2&1\\
-9&3&-3\\
--8&-1&2
-\end{pmatrix}.
-\]
-
-Donc :</p>
-
+<div class="q"><span class="letter">b.</span> Déduire \(A^{-1}\), la matrice inverse de \(A\).</div>
+<div class="q">
+Puisque \(AB=3I_3\),
 \[
 \boxed{
-A^{-1}
-=
+A^{-1}=\frac13B=
 \begin{pmatrix}
 \frac23&-\frac23&\frac13\\
 3&1&-1\\
 -\frac83&-\frac13&\frac23
 \end{pmatrix}}
 \]
-
-<div class="remark">
-<strong>Astuce :</strong>
-le sujet a choisi la matrice \(B\) de façon à obtenir
-\[
-AB=3I_3.
-\]
-Il est donc inutile de calculer les cofacteurs de \(A\) pour trouver son inverse.
 </div>
 
-<h2>3. Résolution du système \((S)\)</h2>
-
-<p>Le système est :</p>
-
+<div class="q"><span class="n">3.</span> Soit le système suivant \((S)\) :
 \[
-(S)\quad
-\left\{
-\begin{aligned}
-x+y+z&=400\\
-2x+4y+5z&=1420\\
-5x+6y+8z&=2460.
-\end{aligned}
-\right.
-\]
-
-<h3>a. Écriture matricielle</h3>
-
-<p>
-On reconnaît exactement la matrice \(A\) dans les coefficients des inconnues.
-</p>
-
-<p>On pose :</p>
-
-\[
-X=
-\begin{pmatrix}
-x\\y\\z
-\end{pmatrix},
-\qquad
-C=
-\begin{pmatrix}
-400\\1420\\2460
-\end{pmatrix}.
-\]
-
-<p>Le système devient :</p>
-
-\[
-\boxed{
-AX=C
-}
-\]
-
-c'est-à-dire :
-
-\[
-\boxed{
-\begin{pmatrix}
-1&1&1\\
-2&4&5\\
-5&6&8
-\end{pmatrix}
-\begin{pmatrix}
-x\\y\\z
-\end{pmatrix}
-=
-\begin{pmatrix}
-400\\1420\\2460
-\end{pmatrix}.
-}
-\]
-
-<h3>b. Déduire la solution</h3>
-
-<p>
-Puisque \(A\) est inversible, on peut multiplier à gauche par \(A^{-1}\) :
-</p>
-
-\[
-A^{-1}AX=A^{-1}C.
-\]
-
-<p>Or :</p>
-
-\[
-A^{-1}A=I_3.
-\]
-
-Donc :
-
-\[
-X=A^{-1}C.
-\]
-
-<p>Nous savons que :</p>
-
-\[
-A^{-1}
-=
-\frac13
-\begin{pmatrix}
-2&-2&1\\
-9&3&-3\\
--8&-1&2
-\end{pmatrix}.
-\]
-
-Ainsi :</p>
-
-\[
-\begin{pmatrix}
-x\\y\\z
-\end{pmatrix}
-=
-\frac13
-\begin{pmatrix}
-2&-2&1\\
-9&3&-3\\
--8&-1&2
-\end{pmatrix}
-\begin{pmatrix}
-400\\1420\\2460
-\end{pmatrix}.
-\]
-
-<h3>Calcul de \(x\)</h3>
-
-\[
-x=
-\frac13
-\left[
-2(400)-2(1420)+1(2460)
-\right].
-\]
-
-\[
-x=
-\frac13
-(800-2840+2460).
-\]
-
-\[
-x=\frac{420}{3}.
-\]
-
-\[
-\boxed{x=140}.
-\]
-
-<h3>Calcul de \(y\)</h3>
-
-\[
-y=
-\frac13
-\left[
-9(400)+3(1420)-3(2460)
-\right].
-\]
-
-\[
-y=
-\frac13
-(3600+4260-7380).
-\]
-
-\[
-y=\frac{480}{3}.
-\]
-
-\[
-\boxed{y=160}.
-\]
-
-<h3>Calcul de \(z\)</h3>
-
-\[
-z=
-\frac13
-\left[
--8(400)-1420+2(2460)
-\right].
-\]
-
-\[
-z=
-\frac13
-(-3200-1420+4920).
-\]
-
-\[
-z=\frac{300}{3}.
-\]
-
-\[
-\boxed{z=100}.
-\]
-
-<div class="result">
-\[
-\boxed{(x,y,z)=(140,\;160,\;100)}
-\]
-</div>
-
-<h3>Vérification</h3>
-
-<p>Première équation :</p>
-
-\[
-140+160+100=400.
-\]
-
-<p>Deuxième équation :</p>
-
-\[
-2(140)+4(160)+5(100)
-=280+640+500
-=1420.
-\]
-
-<p>Troisième équation :</p>
-
-\[
-5(140)+6(160)+8(100)
-=700+960+800
-=2460.
-\]
-
-<p>Les trois équations sont donc vérifiées.</p>
-
-<h2>4. Application au problème de couture</h2>
-
-<p>
-On note :
-</p>
-
-\[
-x=\text{nombre de pantalons }P_1,
-\]
-
-\[
-y=\text{nombre de pantalons }P_2,
-\]
-
-\[
-z=\text{nombre de pantalons }P_3.
-\]
-
-<table>
-<tr>
-<th>Type</th>
-<th>\(P_1\)</th>
-<th>\(P_2\)</th>
-<th>\(P_3\)</th>
-</tr>
-<tr>
-<td>Coût (DT)</td>
-<td>8</td>
-<td>16</td>
-<td>20</td>
-</tr>
-<tr>
-<td>Tissu (m)</td>
-<td>1</td>
-<td>1,2</td>
-<td>1,6</td>
-</tr>
-</table>
-
-<h3>a. Traduction de la situation par le système \((S)\)</h3>
-
-<p><strong>1) Nombre total de pantalons :</strong></p>
-
-<p>
-L'atelier confectionne \(400\) pantalons :
-</p>
-
-\[
-\boxed{x+y+z=400}.
-\]
-
-<p><strong>2) Coût total :</strong></p>
-
-<p>
-Le coût total est de \(5680\) dinars :
-</p>
-
-\[
-8x+16y+20z=5680.
-\]
-
-<p>En divisant par \(4\) :</p>
-
-\[
-\boxed{2x+4y+5z=1420}.
-\]
-
-<p><strong>3) Longueur totale du tissu :</strong></p>
-
-<p>
-La longueur totale du tissu est de \(492\) mètres :
-</p>
-
-\[
-x+1,2y+1,6z=492.
-\]
-
-<p>
-Pour supprimer les nombres décimaux, on multiplie toute l'équation par \(5\) :
-</p>
-
-\[
-5x+6y+8z=2460.
-\]
-
-<p>On obtient donc :</p>
-
-<div class="result">
-\[
-\boxed{
 \left\{
 \begin{aligned}
 x+y+z&=400\\
@@ -796,88 +269,232 @@ x+y+z&=400\\
 5x+6y+8z&=2460
 \end{aligned}
 \right.
-}
 \]
-
-<p>
-C'est exactement le système \((S)\) étudié dans la question 3.
-</p>
 </div>
-
-<h3>b. Déterminer le nombre de pantalons de chaque modèle</h3>
-
-<p>
-Nous avons déjà résolu le système :
-</p>
-
+<div class="q"><span class="letter">a.</span> Donner l'écriture matricielle de \((S)\).</div>
+<div class="q">
 \[
-\boxed{x=140,\qquad y=160,\qquad z=100}.
+A
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=
+\begin{pmatrix}400\\1420\\2460\end{pmatrix}.
 \]
-
-<p>Donc :</p>
-
+</div>
+<div class="q"><span class="letter">b.</span> En déduire la solution du système \((S)\).</div>
+<div class="q">
 \[
-\boxed{140\text{ pantalons du modèle }P_1}
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=A^{-1}
+\begin{pmatrix}400\\1420\\2460\end{pmatrix}
+=
+\begin{pmatrix}20\\120\\260\end{pmatrix}.
 \]
-
+Donc
 \[
-\boxed{160\text{ pantalons du modèle }P_2}
-\]
-
-\[
-\boxed{100\text{ pantalons du modèle }P_3}.
-\]
-
-<h3>Vérification avec les données de l'atelier</h3>
-
-<p><strong>Nombre total :</strong></p>
-
-\[
-140+160+100=400.
-\]
-
-<p><strong>Longueur du tissu :</strong></p>
-
-\[
-140+1,2(160)+1,6(100)
-=140+192+160
-=492.
-\]
-
-<p><strong>Coût total :</strong></p>
-
-\[
-8(140)+16(160)+20(100)
-=1120+2560+2000
-=5680.
-\]
-
-<p>
-Les trois données de l'énoncé sont donc parfaitement respectées.
-</p>
-
-<div class="result">
-<strong>Réponse finale :</strong>
-\[
-\boxed{
-P_1=140,\qquad
-P_2=160,\qquad
-P_3=100
-}
+\boxed{x=20,\quad y=120,\quad z=260}.
 \]
 </div>
 
-<div class="warning">
-<strong>Attention à une erreur précédente :</strong>
-la valeur \((20,120,260)\) donnée précédemment était incorrecte.
-La vérification directe dans le système montre que la bonne solution est
+<div class="q"><span class="n">4.</span>
+Un atelier de couture confectionne 400 pantalons, en trois modèles
+\(P_1,P_2\) et \(P_3\).
+
+Il dispose d'un tissu de longueur 492 mètres (ayant une largeur fixe)
+pour la couture de ces pantalons avec un coût total de 5680 dinars.
+
+La longueur du tissu et le coût de couture d'un pantalon de chaque modèle
+sont donnés dans le tableau suivant :
+</div>
+
+<table>
+<tr><th>Type de pantalon</th><th>\(P_1\)</th><th>\(P_2\)</th><th>\(P_3\)</th></tr>
+<tr><td>Le coût de couture d'un pantalon (en dinars)</td><td>8</td><td>16</td><td>20</td></tr>
+<tr><td>Longueur du tissu (en mètres)</td><td>1</td><td>1.2</td><td>1.6</td></tr>
+</table>
+
+<div class="q">On se propose de déterminer le nombre de pantalons cousus de chaque modèle.</div>
+<div class="q"><span class="letter">a.</span> Montrer que la situation se traduit par le système \((S)\).</div>
+<div class="q">
+En posant \(x,y,z\) les nombres de pantalons des modèles \(P_1,P_2,P_3\),
 \[
-\boxed{(140,160,100)}.
+\left\{
+\begin{aligned}
+x+y+z&=400\\
+8x+16y+20z&=5680\\
+x+1.2y+1.6z&=492
+\end{aligned}
+\right.
+\]
+En divisant la deuxième équation par \(4\) et en multipliant la troisième par \(5\), on obtient exactement \((S)\).
+</div>
+<div class="q"><span class="letter">b.</span> Déterminer alors le nombre de pantalons cousus de chaque modèle.</div>
+<div class="q">
+\[
+\boxed{x=20,\qquad y=120,\qquad z=260.}
 \]
 </div>
 
-<div class="footer">
-Correction détaillée — Exercice N° 2 — Mathématiques
+</div>
+<!-- EXERCICE 3 -->
+<h2>EXERCICE N° 3. <span>Lecture graphique (5 points)</span></h2>
+
+<div class="q">
+Dans la figure 1, on a représenté dans un repère orthonormé
+\((O,\vec{i},\vec{j})\) la droite \(\Delta:y=x\) et la courbe
+\((C_f)\) d'une fonction \(f\) définie sur \(\mathbb{R}\).
+La courbe \((C_f)\) admet :
+</div>
+
+<div class="q">
+❖ Une branche parabolique de direction l'axe des ordonnées au voisinage de \(+\infty\).
+</div>
+<div class="q">
+❖ Une asymptote d'équation \(y=2\) au voisinage de \(-\infty\).
+</div>
+<div class="q">
+❖ Deux demi-tangentes au point \(A(0,-2)\) et une tangente au point \(B(1,-1)\).
+</div>
+
+<div class="q"><span class="n">1.</span> Déterminer graphiquement :</div>
+
+\[
+\lim_{x\to-\infty}f(x)
+\ ;\quad
+\lim_{x\to+\infty}f(x)
+\ ;\quad
+\lim_{x\to+\infty}\left(\frac{f(x)}{x}\right)
+\ ;\quad
+f'_d(0),\ f'_g(0)\ \text{et}\ f'(1).
+\]
+
+<div class="q"><span class="n">2.</span> Dresser le tableau de variation de \(f\).</div>
+
+<div class="q"><span class="n">3.</span>
+Soit \(g\) la restriction de \(f\) à l'intervalle \([0,+\infty[\).
+</div>
+
+<div class="q"><span class="letter">a.</span>
+Montrer que \(g\) admet une fonction réciproque \(g^{-1}\)
+définie sur un intervalle \(J\) que l'on déterminera.
+</div>
+
+<div class="q"><span class="letter">b.</span>
+\(g^{-1}\) est-elle dérivable à droite en \(-2\) ? Déterminer
+\[
+\lim_{x\to-2^+}
+\left(\frac{g^{-1}(x)}{x+2}\right).
+\]
+</div>
+
+<div class="q"><span class="letter">c.</span>
+Montrer que \(g^{-1}\) est dérivable en \(-1\) et calculer
+\[
+\left(g^{-1}\right)'(-1).
+\]
+</div>
+
+<div class="q"><span class="letter">d.</span>
+Déterminer
+\[
+\lim_{x\to-\infty}g^{-1}(x)
+\quad\text{et}\quad
+\lim_{x\to+\infty}
+\left(\frac{g^{-1}(x)}{x}\right).
+\]
+</div>
+
+<div class="q"><span class="letter">e.</span>
+Tracer les courbes \((C_{g^{-1}})\) qui représentent graphiquement
+la fonction \(g^{-1}\).
+</div>
+
+
+<!-- EXERCICE 4 -->
+<h2>EXERCICE N° 4. <span>(5 points)</span></h2>
+
+<div class="q">
+Soit la fonction \(f\) définie par :
+\[
+f(x)=2+\sqrt{x^2-1}.
+\]
+</div>
+
+<div class="q"><span class="n">1.</span>
+Déterminer \(D_f\), le domaine de définition de \(f\).
+</div>
+
+<div class="q"><span class="n">2.</span>
+Calculer
+\[
+\lim_{x\to1^+}
+\left(\frac{f(x)-2}{x-1}\right).
+\]
+Interpréter le résultat obtenu.
+</div>
+
+<div class="q"><span class="n">3.</span></div>
+
+<div class="q"><span class="letter">a.</span>
+Montrer que
+\[
+f'(x)=\frac{x}{\sqrt{x^2-1}}.
+\]
+</div>
+
+<div class="q"><span class="letter">b.</span>
+Calculer
+\[
+\lim_{x\to-\infty}f(x),
+\qquad
+\lim_{x\to+\infty}f(x),
+\qquad
+f(-1)
+\quad\text{et}\quad
+f(1).
+\]
+</div>
+
+<div class="q"><span class="letter">c.</span>
+Dresser le tableau de variation de \(f\).
+</div>
+
+<div class="q"><span class="n">4.</span>
+Calculer
+\[
+\lim_{x\to+\infty}\left(f(x)-(x+2)\right).
+\]
+Interpréter graphiquement le résultat obtenu.
+</div>
+
+<div class="q"><span class="n">5.</span>
+Soit \(g\) la restriction de \(f\) à l'intervalle \([1,+\infty[\).
+</div>
+
+<div class="q"><span class="letter">a.</span>
+Montrer que \(g\) admet une fonction réciproque \(g^{-1}\)
+définie sur un intervalle \(J\) que l'on déterminera.
+</div>
+
+<div class="q"><span class="letter">b.</span>
+Expliciter \(g^{-1}(x)\), \(x\in J\).
+</div>
+
+<div class="q"><span class="letter">c.</span>
+Justifier que \(g^{-1}\) est dérivable en \(2\) et déterminer
+\[
+\left(g^{-1}\right)'(2).
+\]
+</div>
+
+<div class="q"><span class="letter">d.</span>
+Dans l'annexe figure 2, on donne la courbe \((C_f)\) de \(f\)
+et les droites \(D:y=x+2\) et \(\Delta:y=x\).
+Tracer la courbe \((C_{g^{-1}})\) de \(g^{-1}\)
+et sa demi-tangente au point d'abscisse \(2\).
+</div>
+
+<div class="footer-ref">
+Synthèse 1er semestre — Lycée Alkhawarizmi — 2025/2026
 </div>
 
 </div>
