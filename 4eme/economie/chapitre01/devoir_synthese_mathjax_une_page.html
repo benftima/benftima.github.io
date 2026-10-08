@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devoir de synthèse N°1 — Mathématiques</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:white;
+  color:#111;
+  font-family:"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.42;
+}
+.page{
+  width:94%;
+  max-width:1100px;
+  margin:25px auto 70px;
+}
+h2{
+  color:#159447;
+  text-decoration:underline;
+  font-size:24px;
+  margin:18px 0 8px;
+}
+h3{
+  color:#159447;
+  text-decoration:underline;
+  font-size:23px;
+  margin:22px 0 8px;
+}
+.q{margin:10px 0}
+.n,.letter{color:#c00000;font-weight:bold}
+.center{text-align:center}
+.matrix{margin:8px 0}
+table{
+  border-collapse:collapse;
+  width:100%;
+  margin:12px 0;
+}
+td,th{
+  border:1px solid #777;
+  padding:7px;
+  text-align:center;
+}
+.footer-ref{
+  margin-top:55px;
+  padding-top:12px;
+  border-top:1px solid #aaa;
+  text-align:center;
+  font-style:italic;
+  color:#a00000;
+}
+@media(max-width:700px){
+ body{font-size:15px}
+ .page{width:96%;margin:12px auto 50px}
+ h2,h3{font-size:20px}
+}
+
+<style>
+#exercice2-link{
+    display:block;
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+}
+#exercice2-link:hover{
+    background:#f4fff6;
+    box-shadow:0 0 0 3px #d8f0df;
+    border-radius:8px;
+}
+#exercice2-link .click-note{
+    font-size:14px;
+    color:#159447;
+    font-style:italic;
+    margin-top:4px;
+}
+</style>
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<!-- EXERCICE 1 -->
+<h2>EXERCICE N° 1. <span>(5 points)</span></h2>
+
+<div class="q">
+Répondre par « <b>VRAI</b> » ou « <b>FAUX</b> ».<br>
+Aucune justification n'est demandée.
+</div>
+
+<table>
+<tr>
+<th>Affirmations</th>
+<th>VRAI / FAUX</th>
+</tr>
+
+<tr>
+<td>
+Si une fonction \(f\) vérifie :
+Pour tout \(x\in\mathbb{R}\),
+\[
+f(x)\leq\frac{3x^3-1}{x^2+1}.
+\]
+Alors
+\[
+\lim_{x\to-\infty}f(x)=-\infty.
+\]
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+Si \(f\) est continue en \(x_0\) alors \(f\) est dérivable en \(x_0\).
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+L'inverse de la matrice
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+1&2&1\\
+3&1&4
+\end{pmatrix}
+\]
+est
+\[
+B=
+\begin{pmatrix}
+1&3&0\\
+0&0&0\\
+2&1&0
+\end{pmatrix}.
+\]
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+\[
+\lim_{x\to-\infty}
+\frac{x^2-5x+6}{(x-2)^2}
+=-\infty.
+\]
+</td>
+<td>................</td>
+</tr>
+
+<tr>
+<td>
+Soit \(f\) une fonction dérivable sur \(\mathbb{R}\) telle que
+\(f(-1)=3\) et \(f'(-1)=-2\).
+
+Alors l'équation de la tangente à la courbe de \(f\)
+en \(-1\) est :
+\[
+y=-2x+3.
+\]
+</td>
+<td>................</td>
+</tr>
+</table>
+
+
+<!-- EXERCICE 2 -->
+<div id="exercice2-link" onclick="window.location.href='correction_detaillee_exercice_2_mathjax.html'" title="Cliquer pour ouvrir la correction détaillée de l'Exercice 2.">
+<h2>EXERCICE N° 2. <span>(5 points)</span></h2>
+<div class="click-note">Cliquer n’importe où sur cet exercice pour ouvrir la correction détaillée.</div>
+
+<div class="q">
+Soient les matrices
+\[
+A=
+\begin{pmatrix}
+1&1&1\\
+2&4&5\\
+5&6&8
+\end{pmatrix}
+\qquad\text{et}\qquad
+B=
+\begin{pmatrix}
+2&-2&1\\
+9&3&-3\\
+-8&-1&2
+\end{pmatrix}.
+\]
+</div>
+
+<div class="q"><span class="n">1.</span></div>
+<div class="q"><span class="letter">a.</span> Calculer le déterminant de \(A\).</div>
+<div class="q">
+\[
+\det(A)=
+\begin{vmatrix}
+1&1&1\\
+2&4&5\\
+5&6&8
+\end{vmatrix}=3.
+\]
+</div>
+<div class="q"><span class="letter">b.</span> Déduire que \(A\) est inversible.</div>
+<div class="q">Comme \(\det(A)=3\neq0\), \(A\) est inversible.</div>
+
+<div class="q"><span class="n">2.</span></div>
+<div class="q"><span class="letter">a.</span> Calculer la matrice \(A\times B\).</div>
+<div class="q">
+\[
+AB=
+\begin{pmatrix}
+1&1&1\\
+2&4&5\\
+5&6&8
+\end{pmatrix}
+\begin{pmatrix}
+2&-2&1\\
+9&3&-3\\
+-8&-1&2
+\end{pmatrix}
+=
+\begin{pmatrix}
+3&0&0\\
+0&3&0\\
+0&0&3
+\end{pmatrix}
+=3I_3.
+\]
+</div>
+<div class="q"><span class="letter">b.</span> Déduire \(A^{-1}\), la matrice inverse de \(A\).</div>
+<div class="q">
+Puisque \(AB=3I_3\),
+\[
+\boxed{
+A^{-1}=\frac13B=
+\begin{pmatrix}
+\frac23&-\frac23&\frac13\\
+3&1&-1\\
+-\frac83&-\frac13&\frac23
+\end{pmatrix}}
+\]
+</div>
+
+<div class="q"><span class="n">3.</span> Soit le système suivant \((S)\) :
+\[
+\left\{
+\begin{aligned}
+x+y+z&=400\\
+2x+4y+5z&=1420\\
+5x+6y+8z&=2460
+\end{aligned}
+\right.
+\]
+</div>
+<div class="q"><span class="letter">a.</span> Donner l'écriture matricielle de \((S)\).</div>
+<div class="q">
+\[
+A
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=
+\begin{pmatrix}400\\1420\\2460\end{pmatrix}.
+\]
+</div>
+<div class="q"><span class="letter">b.</span> En déduire la solution du système \((S)\).</div>
+<div class="q">
+\[
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=A^{-1}
+\begin{pmatrix}400\\1420\\2460\end{pmatrix}
+=
+\begin{pmatrix}20\\120\\260\end{pmatrix}.
+\]
+Donc
+\[
+\boxed{x=20,\quad y=120,\quad z=260}.
+\]
+</div>
+
+<div class="q"><span class="n">4.</span>
+Un atelier de couture confectionne 400 pantalons, en trois modèles
+\(P_1,P_2\) et \(P_3\).
+
+Il dispose d'un tissu de longueur 492 mètres (ayant une largeur fixe)
+pour la couture de ces pantalons avec un coût total de 5680 dinars.
+
+La longueur du tissu et le coût de couture d'un pantalon de chaque modèle
+sont donnés dans le tableau suivant :
+</div>
+
+<table>
+<tr><th>Type de pantalon</th><th>\(P_1\)</th><th>\(P_2\)</th><th>\(P_3\)</th></tr>
+<tr><td>Le coût de couture d'un pantalon (en dinars)</td><td>8</td><td>16</td><td>20</td></tr>
+<tr><td>Longueur du tissu (en mètres)</td><td>1</td><td>1.2</td><td>1.6</td></tr>
+</table>
+
+<div class="q">On se propose de déterminer le nombre de pantalons cousus de chaque modèle.</div>
+<div class="q"><span class="letter">a.</span> Montrer que la situation se traduit par le système \((S)\).</div>
+<div class="q">
+En posant \(x,y,z\) les nombres de pantalons des modèles \(P_1,P_2,P_3\),
+\[
+\left\{
+\begin{aligned}
+x+y+z&=400\\
+8x+16y+20z&=5680\\
+x+1.2y+1.6z&=492
+\end{aligned}
+\right.
+\]
+En divisant la deuxième équation par \(4\) et en multipliant la troisième par \(5\), on obtient exactement \((S)\).
+</div>
+<div class="q"><span class="letter">b.</span> Déterminer alors le nombre de pantalons cousus de chaque modèle.</div>
+<div class="q">
+\[
+\boxed{x=20,\qquad y=120,\qquad z=260.}
+\]
+</div>
+
+</div>
+<!-- EXERCICE 3 -->
+<h2>EXERCICE N° 3. <span>Lecture graphique (5 points)</span></h2>
+
+<div class="q">
+Dans la figure 1, on a représenté dans un repère orthonormé
+\((O,\vec{i},\vec{j})\) la droite \(\Delta:y=x\) et la courbe
+\((C_f)\) d'une fonction \(f\) définie sur \(\mathbb{R}\).
+La courbe \((C_f)\) admet :
+</div>
+
+<div class="q">
+❖ Une branche parabolique de direction l'axe des ordonnées au voisinage de \(+\infty\).
+</div>
+<div class="q">
+❖ Une asymptote d'équation \(y=2\) au voisinage de \(-\infty\).
+</div>
+<div class="q">
+❖ Deux demi-tangentes au point \(A(0,-2)\) et une tangente au point \(B(1,-1)\).
+</div>
+
+<div class="q"><span class="n">1.</span> Déterminer graphiquement :</div>
+
+\[
+\lim_{x\to-\infty}f(x)
+\ ;\quad
+\lim_{x\to+\infty}f(x)
+\ ;\quad
+\lim_{x\to+\infty}\left(\frac{f(x)}{x}\right)
+\ ;\quad
+f'_d(0),\ f'_g(0)\ \text{et}\ f'(1).
+\]
+
+<div class="q"><span class="n">2.</span> Dresser le tableau de variation de \(f\).</div>
+
+<div class="q"><span class="n">3.</span>
+Soit \(g\) la restriction de \(f\) à l'intervalle \([0,+\infty[\).
+</div>
+
+<div class="q"><span class="letter">a.</span>
+Montrer que \(g\) admet une fonction réciproque \(g^{-1}\)
+définie sur un intervalle \(J\) que l'on déterminera.
+</div>
+
+<div class="q"><span class="letter">b.</span>
+\(g^{-1}\) est-elle dérivable à droite en \(-2\) ? Déterminer
+\[
+\lim_{x\to-2^+}
+\left(\frac{g^{-1}(x)}{x+2}\right).
+\]
+</div>
+
+<div class="q"><span class="letter">c.</span>
+Montrer que \(g^{-1}\) est dérivable en \(-1\) et calculer
+\[
+\left(g^{-1}\right)'(-1).
+\]
+</div>
+
+<div class="q"><span class="letter">d.</span>
+Déterminer
+\[
+\lim_{x\to-\infty}g^{-1}(x)
+\quad\text{et}\quad
+\lim_{x\to+\infty}
+\left(\frac{g^{-1}(x)}{x}\right).
+\]
+</div>
+
+<div class="q"><span class="letter">e.</span>
+Tracer les courbes \((C_{g^{-1}})\) qui représentent graphiquement
+la fonction \(g^{-1}\).
+</div>
+
+
+<!-- EXERCICE 4 -->
+<h2>EXERCICE N° 4. <span>(5 points)</span></h2>
+
+<div class="q">
+Soit la fonction \(f\) définie par :
+\[
+f(x)=2+\sqrt{x^2-1}.
+\]
+</div>
+
+<div class="q"><span class="n">1.</span>
+Déterminer \(D_f\), le domaine de définition de \(f\).
+</div>
+
+<div class="q"><span class="n">2.</span>
+Calculer
+\[
+\lim_{x\to1^+}
+\left(\frac{f(x)-2}{x-1}\right).
+\]
+Interpréter le résultat obtenu.
+</div>
+
+<div class="q"><span class="n">3.</span></div>
+
+<div class="q"><span class="letter">a.</span>
+Montrer que
+\[
+f'(x)=\frac{x}{\sqrt{x^2-1}}.
+\]
+</div>
+
+<div class="q"><span class="letter">b.</span>
+Calculer
+\[
+\lim_{x\to-\infty}f(x),
+\qquad
+\lim_{x\to+\infty}f(x),
+\qquad
+f(-1)
+\quad\text{et}\quad
+f(1).
+\]
+</div>
+
+<div class="q"><span class="letter">c.</span>
+Dresser le tableau de variation de \(f\).
+</div>
+
+<div class="q"><span class="n">4.</span>
+Calculer
+\[
+\lim_{x\to+\infty}\left(f(x)-(x+2)\right).
+\]
+Interpréter graphiquement le résultat obtenu.
+</div>
+
+<div class="q"><span class="n">5.</span>
+Soit \(g\) la restriction de \(f\) à l'intervalle \([1,+\infty[\).
+</div>
+
+<div class="q"><span class="letter">a.</span>
+Montrer que \(g\) admet une fonction réciproque \(g^{-1}\)
+définie sur un intervalle \(J\) que l'on déterminera.
+</div>
+
+<div class="q"><span class="letter">b.</span>
+Expliciter \(g^{-1}(x)\), \(x\in J\).
+</div>
+
+<div class="q"><span class="letter">c.</span>
+Justifier que \(g^{-1}\) est dérivable en \(2\) et déterminer
+\[
+\left(g^{-1}\right)'(2).
+\]
+</div>
+
+<div class="q"><span class="letter">d.</span>
+Dans l'annexe figure 2, on donne la courbe \((C_f)\) de \(f\)
+et les droites \(D:y=x+2\) et \(\Delta:y=x\).
+Tracer la courbe \((C_{g^{-1}})\) de \(g^{-1}\)
+et sa demi-tangente au point d'abscisse \(2\).
+</div>
+
+<div class="footer-ref">
+Synthèse 1er semestre — Lycée Alkhawarizmi — 2025/2026
+</div>
+
+</div>
+</body>
+</html>
