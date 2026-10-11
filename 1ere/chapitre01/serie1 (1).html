@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Série 1 — Arithmétique</title><style>
+:root{--g:#6db33f;--n:#183153;--b:#2b6f9c;--t:#263746;--m:#617383;--l:#dce5ed;--p:#f1f8ed}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--t);font:16px/1.7 Arial,sans-serif}
+.topbar{height:6px;background:var(--g)}header{border-bottom:1px solid var(--l)}
+.nav{max-width:1100px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.logo{font-size:1.35rem;font-weight:800;color:var(--n);text-decoration:none}.logo span{color:var(--g)}
+nav{display:flex;flex-wrap:wrap;gap:16px}nav a,.back{color:var(--b);font-weight:700;text-decoration:none}
+main{max-width:1100px;margin:auto;padding:28px 22px 45px}.eyebrow{margin-top:18px;color:#39843a;font-size:.84rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;color:var(--n);margin:9px 0 12px}
+h2{font-size:1.45rem;color:var(--n);margin:0 0 16px;padding-bottom:11px;border-bottom:2px solid var(--g)}
+h3{color:var(--b)}.intro{max-width:850px;color:var(--m);font-size:1.05rem}.hero{padding:10px 0 22px}
+.pill{display:inline-block;background:#eaf5e5;color:#347c2f;padding:4px 11px;border-radius:24px;font-size:.82rem;font-weight:800}
+.card{border:1px solid var(--l);border-radius:13px;background:#fff;padding:clamp(17px,3vw,27px);margin:20px 0;box-shadow:0 4px 14px #1831530a}
+.theorem,.note{padding:14px 17px;margin:14px 0;border-radius:0 8px 8px 0}.theorem{border-left:4px solid var(--g);background:var(--p)}.note{border-left:4px solid var(--b);background:#f3f8fb}
+.question{padding:15px 17px;margin:14px 0;border:1px solid var(--l);border-radius:10px;background:#f8fafc}.qtitle{font-weight:800;color:var(--n)}
+details{margin-top:12px;border:1px solid var(--l);border-radius:8px;overflow:hidden}summary{cursor:pointer;padding:12px 15px;background:#f0f6f9;color:var(--b);font-weight:800}.solution{padding:15px 18px;background:#fff}
+.link-card{display:block;margin:13px 0;padding:18px;border:1px solid var(--l);border-radius:10px;color:var(--t);text-decoration:none}.link-card:hover{border-color:var(--g);background:#fbfdf9}.link-card strong{color:var(--n);font-size:1.1rem}.link-card span{display:block;color:var(--m);margin-top:4px}
+footer{background:#fff!important;color:var(--m)!important;border-top:1px solid var(--l);padding:23px;text-align:center}footer a{color:var(--b);font-weight:700;text-decoration:none}
+@media(max-width:650px){.nav{align-items:flex-start;flex-direction:column}main{padding:22px 15px}nav{gap:10px 14px}.card{padding:16px}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div class="topbar"></div><header><div class="nav">
+<a class="logo" href="../../index.html">Mathématiques<span>.</span></a>
+<nav><a href="../../1ere/">1ère</a><a href="../../2eme/">2ème</a><a href="../../3eme/">3ème</a><a href="../../4eme/">4ème</a></nav>
+</div></header><main>
+<a class="back" href="index.html">← Retour aux séries</a>
+<section class="hero"><div class="eyebrow">1ère année secondaire · Arithmétique</div><h1>Série 1 — Arithmétique et calcul numérique</h1>
+<p class="intro">PGCD, PPCM, fractions, division euclidienne et calcul avec les racines carrées.</p><span class="pill">Énoncé · Cours · Correction détaillée</span></section>
+<section class="card"><h2>Rappels de cours nécessaires</h2>
+<div class="theorem"><b>PGCD et PPCM.</b> Pour deux entiers positifs \(a,b\) :
+\[a\times b=\operatorname{PGCD}(a,b)\times\operatorname{PPCM}(a,b).\]</div>
+<div class="theorem"><b>Fraction irréductible.</b> \(\frac ab\), avec \(b\ne0\), est irréductible si et seulement si \(\operatorname{PGCD}(a,b)=1\).</div>
+<div class="theorem"><b>Division euclidienne.</b> Pour \(n\ge0\) et \(d>0\), il existe \(q\ge0\) et \(r\) tels que
+\[n=dq+r,\qquad 0\le r<d.\]
+Le nombre \(r\) est le reste.</div>
+<div class="theorem"><b>Identité du PGCD.</b> Pour des entiers \(a,b,k\), \[\operatorname{PGCD}(a,b)=\operatorname{PGCD}(a,b-ka).\]</div></section>
+<section class="card"><h2>Exercice 1 <span class="pill">8 points</span></h2>
+<div class="question"><div class="qtitle">1. Calculer le PGCD et le PPCM</div>Calculer \(\operatorname{PGCD}(324,540)\) et \(\operatorname{PPCM}(324,540)\).
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Par l'algorithme d'Euclide :
+\[\begin{aligned}540&=324+216,\\324&=216+108,\\216&=2\times108+0.\end{aligned}\]
+Le dernier reste non nul est \(108\). Donc \(\operatorname{PGCD}(324,540)=108\).
+\[\operatorname{PPCM}(324,540)=\frac{324\times540}{108}=1620.\]
+<b>Réponse :</b> PGCD \(=108\), PPCM \(=1620\).
+</div></details></div>
+<div class="question"><div class="qtitle">2. Fraction irréductible et arrondi</div>a) Rendre \(\frac{324}{540}\) irréductible. b) Donner son arrondi au centième.
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+\[\frac{324}{540}=\frac{324\div108}{540\div108}=\frac35=0,6.\]
+La fraction \(\frac35\) est irréductible, car \(\operatorname{PGCD}(3,5)=1\). Au centième, \(0,6=0,60\).
+</div></details></div>
+<div class="question"><div class="qtitle">3. Reste d'une division euclidienne</div>Soit \(n\in\mathbb N\), \(n>4\), tel que le reste de la division de \(n\) par \(324\) et par \(540\) soit \(4\). Trouver la plus petite valeur possible de \(n\).
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Puisque les deux restes valent \(4\), \(n-4\) est un multiple commun de \(324\) et \(540\). Le plus petit multiple commun positif est \(1620\). Donc \(n-4=1620\), d'où \(\boxed{n=1624}\).
+Vérification : \(1624=5\times324+4\) et \(1624=3\times540+4\).
+</div></details></div>
+<div class="question"><div class="qtitle">4. Expressions avec \(q\)</div>Pour \(q\in\mathbb N\), \(z=540q+324\) et \(t=108q+108\).<br>a) Étudier si \(t\) divise \(z\). b) \(z\) et \(t\) sont-ils premiers entre eux ? c) Trouver \(q\) si \(\frac zt=\frac92\).
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+On factorise \(z=108(5q+3)\) et \(t=108(q+1)\). Ainsi \(t\mid z\) équivaut à \(q+1\mid5q+3\). Or \(5q+3=5(q+1)-2\), donc \(q+1\mid2\). Pour \(q\in\mathbb N\), cela donne \(q=0\) ou \(q=1\). <b>La divisibilité n'est donc pas vraie pour tout \(q\)</b> : l'énoncé semble incomplet si aucune condition supplémentaire n'est donnée.
+<br><br>Les deux nombres sont multiples de \(108\), donc ils ne sont pas premiers entre eux.
+<br><br>Pour \(\frac{540q+324}{108q+108}=\frac92\), le produit en croix donne :
+\[2(540q+324)=9(108q+108)\]
+\[1080q+648=972q+972\Rightarrow108q=324\Rightarrow\boxed{q=3}.\]
+</div></details></div></section>
+<section class="card"><h2>Exercice 2 <span class="pill">3 points</span></h2>
+<div class="question"><div class="qtitle">A. Simplifier</div>\[A=\frac{\frac34-\frac25}{1,4+\frac12}.\]
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Au numérateur : \(\frac34-\frac25=\frac{15}{20}-\frac8{20}=\frac7{20}\).
+Au dénominateur, \(1,4=\frac75\), donc \(1,4+\frac12=\frac75+\frac12=\frac{19}{10}\).
+\[A=\frac7{20}\div\frac{19}{10}=\frac7{20}\times\frac{10}{19}=\boxed{\frac7{38}}.\]
+</div></details></div>
+<div class="question"><div class="qtitle">B. Développer et réduire</div>\[B=(\sqrt3+1)(2\sqrt3-1)-\sqrt3(1+2\sqrt3).\]
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+\[(\sqrt3+1)(2\sqrt3-1)=6-\sqrt3+2\sqrt3-1=5+\sqrt3.\]
+\[\sqrt3(1+2\sqrt3)=\sqrt3+6.\]
+Donc \(B=(5+\sqrt3)-(\sqrt3+6)=\boxed{-1}\).
+</div></details></div></section></main><footer><strong>Ben Ftima Mohamed</strong><br><a href="https://benftima.github.io">benftima.github.io</a> · WhatsApp / Telegram : 21621409061</footer></body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Série 2 — Géométrie du cercle</title><style>
+:root{--g:#6db33f;--n:#183153;--b:#2b6f9c;--t:#263746;--m:#617383;--l:#dce5ed;--p:#f1f8ed}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--t);font:16px/1.7 Arial,sans-serif}
+.topbar{height:6px;background:var(--g)}header{border-bottom:1px solid var(--l)}
+.nav{max-width:1100px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.logo{font-size:1.35rem;font-weight:800;color:var(--n);text-decoration:none}.logo span{color:var(--g)}
+nav{display:flex;flex-wrap:wrap;gap:16px}nav a,.back{color:var(--b);font-weight:700;text-decoration:none}
+main{max-width:1100px;margin:auto;padding:28px 22px 45px}.eyebrow{margin-top:18px;color:#39843a;font-size:.84rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;color:var(--n);margin:9px 0 12px}
+h2{font-size:1.45rem;color:var(--n);margin:0 0 16px;padding-bottom:11px;border-bottom:2px solid var(--g)}
+h3{color:var(--b)}.intro{max-width:850px;color:var(--m);font-size:1.05rem}.hero{padding:10px 0 22px}
+.pill{display:inline-block;background:#eaf5e5;color:#347c2f;padding:4px 11px;border-radius:24px;font-size:.82rem;font-weight:800}
+.card{border:1px solid var(--l);border-radius:13px;background:#fff;padding:clamp(17px,3vw,27px);margin:20px 0;box-shadow:0 4px 14px #1831530a}
+.theorem,.note{padding:14px 17px;margin:14px 0;border-radius:0 8px 8px 0}.theorem{border-left:4px solid var(--g);background:var(--p)}.note{border-left:4px solid var(--b);background:#f3f8fb}
+.question{padding:15px 17px;margin:14px 0;border:1px solid var(--l);border-radius:10px;background:#f8fafc}.qtitle{font-weight:800;color:var(--n)}
+details{margin-top:12px;border:1px solid var(--l);border-radius:8px;overflow:hidden}summary{cursor:pointer;padding:12px 15px;background:#f0f6f9;color:var(--b);font-weight:800}.solution{padding:15px 18px;background:#fff}
+.link-card{display:block;margin:13px 0;padding:18px;border:1px solid var(--l);border-radius:10px;color:var(--t);text-decoration:none}.link-card:hover{border-color:var(--g);background:#fbfdf9}.link-card strong{color:var(--n);font-size:1.1rem}.link-card span{display:block;color:var(--m);margin-top:4px}
+footer{background:#fff!important;color:var(--m)!important;border-top:1px solid var(--l);padding:23px;text-align:center}footer a{color:var(--b);font-weight:700;text-decoration:none}
+@media(max-width:650px){.nav{align-items:flex-start;flex-direction:column}main{padding:22px 15px}nav{gap:10px 14px}.card{padding:16px}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><div class="topbar"></div><header><div class="nav">
+<a class="logo" href="../../index.html">Mathématiques<span>.</span></a>
+<nav><a href="../../1ere/">1ère</a><a href="../../2eme/">2ème</a><a href="../../3eme/">3ème</a><a href="../../4eme/">4ème</a></nav>
+</div></header><main>
+<a class="back" href="index.html">← Retour aux séries</a>
+<section class="hero"><div class="eyebrow">1ère année secondaire · Géométrie</div><h1>Série 2 — Géométrie du cercle</h1>
+<p class="intro">Angles inscrits, diamètre, parallélisme, triangles isocèles et points cocycliques.</p><span class="pill">Énoncé · Cours · Correction détaillée</span></section>
+<section class="card"><h2>Rappels de cours nécessaires</h2>
+<div class="theorem"><b>Angle inscrit dans un demi-cercle.</b> Si \([AB]\) est un diamètre et \(C\) appartient au cercle, alors \(\widehat{ACB}=90^\circ\).</div>
+<div class="theorem"><b>Somme des angles d'un triangle.</b> \[\widehat A+\widehat B+\widehat C=180^\circ.\]</div>
+<div class="theorem"><b>Angles inscrits.</b> Deux angles inscrits qui interceptent la même corde, avec des sommets dans la configuration appropriée, sont égaux.</div>
+<div class="theorem"><b>Parallèles.</b> Les angles alternes-internes et correspondants formés par deux parallèles et une sécante sont égaux.</div>
+<div class="theorem"><b>Triangle isocèle.</b> Deux angles égaux impliquent l'égalité des côtés opposés.</div>
+<div class="theorem"><b>Angle au centre.</b> L'angle au centre interceptant un arc vaut le double d'un angle inscrit interceptant le même arc.</div></section>
+<section class="card"><h2>Exercice 3 <span class="pill">9 points</span></h2>
+<p>Soit \((C)\) un cercle de centre \(O\) et de diamètre \([AB]\). \(C\) appartient au cercle et \(\widehat{BAC}=30^\circ\). \(D\) appartient au cercle et \((CD)\parallel(AB)\). On note \(K=(BD)\cap(AC)\).</p>
+<div class="question"><div class="qtitle">1. Nature du triangle \(ABC\)</div>Donner la nature de \(ABC\), puis calculer \(\widehat{ABC}\).
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Puisque \([AB]\) est un diamètre, \(\widehat{ACB}=90^\circ\). Ainsi :
+\[\widehat{ABC}=180^\circ-90^\circ-30^\circ=\boxed{60^\circ}.\]
+Le triangle \(ABC\) est rectangle en \(C\).
+</div></details></div>
+<div class="question"><div class="qtitle">2.a. Égalités d'angles</div>Montrer que \(\widehat{BAC}=\widehat{BDC}\) et que \(\widehat{BDC}=\widehat{ABD}\).
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Dans la configuration représentée, les angles inscrits \(\widehat{BAC}\) et \(\widehat{BDC}\) interceptent la même corde \([BC]\), donc \(\widehat{BDC}=\widehat{BAC}=30^\circ\). Comme \((CD)\parallel(AB)\), les angles \(\widehat{BDC}\) et \(\widehat{ABD}\) sont égaux par la propriété des angles formés par deux parallèles. Donc \(\widehat{ABD}=30^\circ\).
+<div class="note">Cette justification suppose que les points sont placés comme sur l'image d'origine.</div>
+</div></details></div>
+<div class="question"><div class="qtitle">2.b. Montrer que \(ABK\) est isocèle</div>
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Comme \(K\in(BD)\), \(\widehat{ABK}=\widehat{ABD}=30^\circ\). Comme \(K\in(AC)\), \(\widehat{BAK}=\widehat{BAC}=30^\circ\). Les angles en \(A\) et \(B\) sont égaux, donc \(AK=BK\). Le triangle \(ABK\) est isocèle en \(K\).
+</div></details></div>
+<div class="question"><div class="qtitle">2.c. Calculer \(\widehat{DOA}\), puis montrer que \(AOD\) est équilatéral</div>
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Dans la figure, \(\widehat{DBA}=30^\circ\). L'angle au centre interceptant le même arc \(DA\) vaut le double :
+\[\widehat{DOA}=2\times30^\circ=\boxed{60^\circ}.\]
+Comme \(OA=OD\), le triangle \(AOD\) est isocèle en \(O\). Ses angles à la base valent \((180^\circ-60^\circ)/2=60^\circ\). Le triangle \(AOD\) est équilatéral.
+</div></details></div>
+<div class="question"><div class="qtitle">3.a. Parallélisme</div>Le point \(J\) appartient au cercle et \([AB]\) est la bissectrice de \(\widehat{CAJ}\). Montrer que \((AJ)\parallel(BD)\).
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+La bissectrice donne \(\widehat{BAJ}=\widehat{CAB}=30^\circ\). D'après la question 2, \(\widehat{ABD}=30^\circ\). L'égalité de ces angles permet de conclure au parallélisme \((AJ)\parallel(BD)\), si leur position sur la figure correspond à des angles alternes-internes.
+<div class="note">Vérifie la position des demi-droites sur la figure originale avant de valider cette déduction.</div>
+</div></details></div>
+<div class="question"><div class="qtitle">3.b. Calculer \(\widehat{CBJ}\)</div>
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+La bissectrice donne \(\widehat{BAJ}=30^\circ\). Pour terminer, on utilise les angles inscrits qui interceptent la même corde et la somme des angles du triangle \(BCJ\). La valeur de \(\widehat{BJC}\) n'est pas suffisamment lisible sur l'image fournie pour garantir une valeur numérique finale sans ambiguïté : vérifie la figure originale avant de fixer le résultat.
+</div></details></div>
+<div class="question"><div class="qtitle">4. Montrer que \(M,N,O,A\) sont cocycliques</div><p>\(N\) est le projeté orthogonal de \(O\) sur \((AJ)\), et \(M\) est le milieu de \([AD]\).</p>
+<details><summary>Afficher la correction détaillée</summary><div class="solution">
+Comme \(ON\perp AJ\), on a \(\widehat{ANO}=90^\circ\). Si \(AOD\) est équilatéral, la médiane \(OM\) relative au côté \([AD]\) est aussi une hauteur, donc \(OM\perp AD\). Comme \(A,M,D\) sont alignés, \(\widehat{AMO}=90^\circ\).
+Les points \(M\) et \(N\) voient donc \([AO]\) sous un angle droit. Ils appartiennent au cercle de diamètre \([AO]\), d'où \(A,M,N,O\) cocycliques.
+</div></details></div></section></main><footer><strong>Ben Ftima Mohamed</strong><br><a href="https://benftima.github.io">benftima.github.io</a> · WhatsApp / Telegram : 21621409061</footer></body></html>
