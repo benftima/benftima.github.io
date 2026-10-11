@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice — Bac Eco 2022</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:"Times New Roman",serif;font-size:18px;line-height:1.58}
+.page{max-width:1050px;margin:25px auto 70px;padding:0 30px}
+.title{color:#147fc1;font-family:Arial,sans-serif;font-weight:700;font-size:27px;margin-bottom:22px}
+h2{color:#159447;text-decoration:underline;font-size:24px;margin:24px 0 10px}
+h3{color:#b00000;font-size:20px;margin:20px 0 8px}
+.statement{border:1px solid #bbb;padding:18px;margin-bottom:18px;background:#fafafa}
+.answer-btn{display:block;width:100%;border:0;background:#159447;color:white;padding:13px 18px;font-size:18px;font-family:"Times New Roman",serif;font-weight:bold;cursor:pointer;border-radius:6px;margin:15px 0}
+.answer-btn:hover{background:#117b39}
+.solution{display:none;border-left:5px solid #159447;padding:5px 18px 18px;background:#fbfffc}
+.box{background:#eef8f1;border:1px solid #159447;padding:10px 16px;margin:14px 0}
+.note{background:#fff8e7;border-left:5px solid #d49b00;padding:10px 16px;margin:14px 0}
+.error{background:#fff0f0;border-left:5px solid #c00000;padding:10px 16px;margin:14px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0}
+th,td{border:1px solid #777;padding:8px;text-align:center}
+.footer{margin-top:45px;padding-top:12px;border-top:1px solid #aaa;text-align:center;color:#a00000;font-style:italic}
+.back{display:inline-block;margin-bottom:15px;color:#147fc1}
+@media(max-width:700px){body{font-size:16px}.page{padding:0 14px}.title{font-size:22px}}
+</style>
+<script>
+function toggleSolution(id,btn){
+ const e=document.getElementById(id);
+ if(e.style.display==='block'){e.style.display='none';btn.textContent='▶ Afficher la correction détaillée';}
+ else{e.style.display='block';btn.textContent='▼ Masquer la correction détaillée';}
+}
+</script>
+</head><body><div class="page">
+<a class="back" href="index_corrections_matrices.html">← Retour à l'index</a>
+<div class="title">Exercice — Bac Eco 2022</div>
+<div class="statement">
+<h2>Exercice 1 (Bac Eco 2022 — Session principale)</h2>
+<p><strong>1)</strong> On considère la matrice</p>
+\[
+M_\alpha=
+\begin{pmatrix}
+5&4&6\\
+\alpha&2&1\\
+1&4&3
+\end{pmatrix},
+\qquad \alpha\in\mathbb R.
+\]
+<p><strong>a)</strong> Montrer que \(\det(M_\alpha)=12\alpha+2\).</p>
+<p><strong>b)</strong> En déduire l'ensemble des réels \(\alpha\) pour lesquels \(M_\alpha\) est inversible.</p>
+<p><strong>2)</strong> On donne</p>
+\[
+A=
+\begin{pmatrix}
+5&4&6\\
+4&2&1\\
+1&4&3
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+2&12&-8\\
+-11&9&19\\
+14&-16&-6
+\end{pmatrix}.
+\]
+<p><strong>a)</strong> Calculer \(A\times B\).</p>
+<p><strong>b)</strong> En déduire \(A^{-1}\), la matrice inverse de \(A\).</p>
+<p><strong>3)</strong> On considère dans \(\mathbb R^3\) le système \((S)\)</p>
+\[
+\left\{
+\begin{aligned}
+5x+4y+6z&=1460\\
+4x+2y+z&=720\\
+x+4y+3z&=820.
+\end{aligned}
+\right.
+\]
+<p><strong>a)</strong> Donner l'écriture matricielle du système \((S)\).</p>
+<p><strong>b)</strong> Résoudre alors dans \(\mathbb R^3\) le système \((S)\).</p>
+</div>
+<button class="answer-btn" onclick="toggleSolution('solution','this')">▶ Afficher la correction détaillée</button>
+<div id="solution" class="solution">
+<h2>Correction détaillée</h2>
+<h3>1.a — Déterminant</h3>
+\[
+\det(M_\alpha)=
+\begin{vmatrix}
+5&4&6\\
+\alpha&2&1\\
+1&4&3
+\end{vmatrix}.
+\]
+<p>Développement suivant la première ligne :</p>
+\[
+=5\begin{vmatrix}2&1\\4&3\end{vmatrix}
+-4\begin{vmatrix}\alpha&1\\1&3\end{vmatrix}
++6\begin{vmatrix}\alpha&2\\1&4\end{vmatrix}.
+\]
+\[
+=5(6-4)-4(3\alpha-1)+6(4\alpha-2)
+\]
+\[
+=10-12\alpha+4+24\alpha-12
+=\boxed{12\alpha+2}.
+\]
+
+<h3>1.b — Valeurs pour lesquelles \(M_\alpha\) est inversible</h3>
+<p>On utilise le théorème :</p>
+\[
+M_\alpha\text{ inversible}\Longleftrightarrow\det(M_\alpha)\neq0.
+\]
+Donc
+\[
+12\alpha+2\neq0
+\Longleftrightarrow
+\alpha\neq-\frac16.
+\]
+<div class="box">\[
+\boxed{\alpha\in\mathbb R\setminus\left\{-\frac16\right\}.}
+\]</div>
+
+<h3>2.a — Calcul de \(AB\)</h3>
+<p>On effectue le produit ligne-colonne :</p>
+\[
+AB=
+\begin{pmatrix}
+5&4&6\\
+4&2&1\\
+1&4&3
+\end{pmatrix}
+\begin{pmatrix}
+2&12&-8\\
+-11&9&19\\
+14&-16&-6
+\end{pmatrix}
+=
+\begin{pmatrix}
+50&0&0\\
+0&50&0\\
+0&0&50
+\end{pmatrix}.
+\]
+Donc
+\[
+\boxed{AB=50I_3}.
+\]
+
+<h3>2.b — Détermination de \(A^{-1}\)</h3>
+<p>De \(AB=50I_3\), on déduit</p>
+\[
+A\left(\frac1{50}B\right)=I_3.
+\]
+Ainsi
+\[
+\boxed{A^{-1}=\frac1{50}B}.
+\]
+Donc
+\[
+\boxed{
+A^{-1}=
+\begin{pmatrix}
+\frac1{25}&\frac6{25}&-\frac4{25}\\
+-\frac{11}{50}&\frac9{50}&\frac{19}{50}\\
+\frac7{25}&-\frac8{25}&-\frac3{25}
+\end{pmatrix}.}
+\]
+
+<h3>3.a — Écriture matricielle</h3>
+<p>Le système s'écrit \(AX=V\), avec</p>
+\[
+X=\begin{pmatrix}x\\y\\z\end{pmatrix},
+\qquad
+V=\begin{pmatrix}1460\\720\\820\end{pmatrix}.
+\]
+Ainsi
+\[
+\boxed{
+\begin{pmatrix}
+5&4&6\\
+4&2&1\\
+1&4&3
+\end{pmatrix}
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=
+\begin{pmatrix}1460\\720\\820\end{pmatrix}.}
+\]
+
+<h3>3.b — Résolution</h3>
+<p>Comme \(A\) est inversible :</p>
+\[
+X=A^{-1}V.
+\]
+Donc
+\[
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=
+\frac1{50}
+\begin{pmatrix}
+2&12&-8\\
+-11&9&19\\
+14&-16&-6
+\end{pmatrix}
+\begin{pmatrix}
+1460\\720\\820
+\end{pmatrix}.
+\]
+Calculons :
+\[
+x=\frac{2920+8640-6560}{50}=\frac{5000}{50}=100,
+\]
+\[
+y=\frac{-16060+6480+15580}{50}=\frac{6000}{50}=120,
+\]
+\[
+z=\frac{20440-11520-4920}{50}=\frac{4000}{50}=80.
+\]
+<div class="box">\[
+\boxed{(x,y,z)=(100,120,80).}
+\]</div>
+</div>
+<div class="footer">Correction argumentée par le cours — Matrices et systèmes</div>
+</div></body></html>

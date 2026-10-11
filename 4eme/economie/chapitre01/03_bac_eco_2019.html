@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice — Bac Eco 2019</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:"Times New Roman",serif;font-size:18px;line-height:1.58}
+.page{max-width:1050px;margin:25px auto 70px;padding:0 30px}
+.title{color:#147fc1;font-family:Arial,sans-serif;font-weight:700;font-size:27px;margin-bottom:22px}
+h2{color:#159447;text-decoration:underline;font-size:24px;margin:24px 0 10px}
+h3{color:#b00000;font-size:20px;margin:20px 0 8px}
+.statement{border:1px solid #bbb;padding:18px;margin-bottom:18px;background:#fafafa}
+.answer-btn{display:block;width:100%;border:0;background:#159447;color:white;padding:13px 18px;font-size:18px;font-family:"Times New Roman",serif;font-weight:bold;cursor:pointer;border-radius:6px;margin:15px 0}
+.answer-btn:hover{background:#117b39}
+.solution{display:none;border-left:5px solid #159447;padding:5px 18px 18px;background:#fbfffc}
+.box{background:#eef8f1;border:1px solid #159447;padding:10px 16px;margin:14px 0}
+.note{background:#fff8e7;border-left:5px solid #d49b00;padding:10px 16px;margin:14px 0}
+.error{background:#fff0f0;border-left:5px solid #c00000;padding:10px 16px;margin:14px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0}
+th,td{border:1px solid #777;padding:8px;text-align:center}
+.footer{margin-top:45px;padding-top:12px;border-top:1px solid #aaa;text-align:center;color:#a00000;font-style:italic}
+.back{display:inline-block;margin-bottom:15px;color:#147fc1}
+@media(max-width:700px){body{font-size:16px}.page{padding:0 14px}.title{font-size:22px}}
+</style>
+<script>
+function toggleSolution(id,btn){
+ const e=document.getElementById(id);
+ if(e.style.display==='block'){e.style.display='none';btn.textContent='▶ Afficher la correction détaillée';}
+ else{e.style.display='block';btn.textContent='▼ Masquer la correction détaillée';}
+}
+</script>
+</head><body><div class="page">
+<a class="back" href="index_corrections_matrices.html">← Retour à l'index</a>
+<div class="title">Exercice — Bac Eco 2019</div>
+<div class="statement">
+<h2>Exercice (Bac Eco 2019 — Session principale)</h2>
+<p>On donne les matrices</p>
+\[
+A=
+\begin{pmatrix}
+4&-2&6\\
+3&-1&5\\
+-1&1&-3
+\end{pmatrix},
+\quad
+B=
+\begin{pmatrix}
+3&0&2\\
+-2&5&1\\
+-1&1&1
+\end{pmatrix},
+\quad
+I_3=
+\begin{pmatrix}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{pmatrix}.
+\]
+<p><strong>1.a)</strong> Calculer le déterminant de \(A\) et déduire que \(A\) est inversible.</p>
+<p><strong>1.b)</strong> Calculer \(A\times(B-2I_3)\) puis déduire la matrice inverse de \(A\).</p>
+<p><strong>2)</strong> Soit dans \(\mathbb R^3\) le système</p>
+\[
+(S):
+\left\{
+\begin{aligned}
+4x-2y+6z&=1\\
+3x-y+5z&=2\\
+-x+y-3z&=1.
+\end{aligned}
+\right.
+\]
+<p><strong>a)</strong> Existe-t-il un réel \(\alpha\) pour que le triplet \((\alpha,\alpha,0)\) soit une solution de \((S)\) ? Justifier votre réponse.</p>
+<p><strong>b)</strong> Montrer que :</p>
+\[
+(a,b,c)\text{ est solution de }(S)
+\Longleftrightarrow
+\begin{pmatrix}a\\b\\c\end{pmatrix}
+=
+\begin{pmatrix}
+\frac12&0&1\\
+-1&\frac32&\frac12\\
+-\frac12&\frac12&-\frac12
+\end{pmatrix}
+\begin{pmatrix}1\\2\\1\end{pmatrix}.
+\]
+<p><strong>c)</strong> Résoudre alors dans \(\mathbb R^3\) le système \((S)\).</p>
+</div>
+<button class="answer-btn" onclick="toggleSolution('solution','this')">▶ Afficher la correction détaillée</button>
+<div id="solution" class="solution">
+<h2>Correction détaillée</h2>
+<h3>1.a — Déterminant et inversibilité</h3>
+\[
+\det(A)=
+\begin{vmatrix}
+4&-2&6\\
+3&-1&5\\
+-1&1&-3
+\end{vmatrix}.
+\]
+<p>Développement suivant la première ligne :</p>
+\[
+=4\begin{vmatrix}-1&5\\1&-3\end{vmatrix}
+-(-2)\begin{vmatrix}3&5\\-1&-3\end{vmatrix}
++6\begin{vmatrix}3&-1\\-1&1\end{vmatrix}.
+\]
+\[
+=4(3-5)+2(-9+5)+6(3-1)
+\]
+\[
+=-8-8+12=-4.
+\]
+<div class="box">\[
+\boxed{\det(A)=-4\neq0\quad\Longrightarrow\quad A\text{ est inversible}.}
+\]</div>
+
+<h3>1.b — Calcul de \(A(B-2I_3)\)</h3>
+<p>D'abord :</p>
+\[
+B-2I_3=
+\begin{pmatrix}
+1&0&2\\
+-2&3&1\\
+-1&1&-1
+\end{pmatrix}.
+\]
+<p>On multiplie :</p>
+\[
+A(B-2I_3)
+=
+\begin{pmatrix}
+4&-2&6\\
+3&-1&5\\
+-1&1&-3
+\end{pmatrix}
+\begin{pmatrix}
+1&0&2\\
+-2&3&1\\
+-1&1&-1
+\end{pmatrix}
+=
+\begin{pmatrix}
+2&0&0\\
+0&2&0\\
+0&0&2
+\end{pmatrix}.
+\]
+Donc
+\[
+\boxed{A(B-2I_3)=2I_3}.
+\]
+<p>On divise par \(2\) :</p>
+\[
+A\left(\frac12(B-2I_3)\right)=I_3.
+\]
+Par définition,
+\[
+\boxed{A^{-1}=\frac12(B-2I_3)}.
+\]
+Ainsi :
+\[
+\boxed{
+A^{-1}=
+\begin{pmatrix}
+\frac12&0&1\\
+-1&\frac32&\frac12\\
+-\frac12&\frac12&-\frac12
+\end{pmatrix}.}
+\]
+
+<h3>2.a — Tester le triplet \((\alpha,\alpha,0)\)</h3>
+<p>On remplace \(x=\alpha,\ y=\alpha,\ z=0\) dans les équations.</p>
+<p>Première équation :</p>
+\[
+4\alpha-2\alpha=1
+\Longrightarrow 2\alpha=1
+\Longrightarrow \alpha=\frac12.
+\]
+<p>Deuxième équation :</p>
+\[
+3\alpha-\alpha=2
+\Longrightarrow2\alpha=2
+\Longrightarrow\alpha=1.
+\]
+<p>On devrait avoir simultanément \(\alpha=\frac12\) et \(\alpha=1\), ce qui est impossible.</p>
+<div class="box">\[
+\boxed{\text{Il n'existe aucun réel }\alpha\text{ tel que }(\alpha,\alpha,0)\text{ soit solution.}}
+\]</div>
+
+<h3>2.b — Utilisation de la matrice inverse</h3>
+<p>Le système s'écrit \(AX=V\), avec</p>
+\[
+X=\begin{pmatrix}a\\b\\c\end{pmatrix},
+\qquad
+V=\begin{pmatrix}1\\2\\1\end{pmatrix}.
+\]
+<p>Comme \(A\) est inversible :</p>
+\[
+AX=V\Longleftrightarrow X=A^{-1}V.
+\]
+Or
+\[
+A^{-1}=
+\begin{pmatrix}
+\frac12&0&1\\
+-1&\frac32&\frac12\\
+-\frac12&\frac12&-\frac12
+\end{pmatrix}.
+\]
+Donc exactement :
+\[
+\boxed{
+\begin{pmatrix}a\\b\\c\end{pmatrix}
+=
+\begin{pmatrix}
+\frac12&0&1\\
+-1&\frac32&\frac12\\
+-\frac12&\frac12&-\frac12
+\end{pmatrix}
+\begin{pmatrix}1\\2\\1\end{pmatrix}.}
+\]
+
+<h3>2.c — Solution</h3>
+\[
+a=\frac12(1)+0(2)+1(1)=\frac32,
+\]
+\[
+b=-1(1)+\frac32(2)+\frac12(1)
+=-1+3+\frac12=\frac52,
+\]
+\[
+c=-\frac12(1)+\frac12(2)-\frac12(1)=0.
+\]
+<div class="box">\[
+\boxed{(x,y,z)=\left(\frac32,\frac52,0\right).}
+\]</div>
+</div>
+<div class="footer">Correction argumentée par le cours — Matrices et systèmes</div>
+</div></body></html>

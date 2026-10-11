@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice — Bac Eco 2016</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:"Times New Roman",serif;font-size:18px;line-height:1.58}
+.page{max-width:1050px;margin:25px auto 70px;padding:0 30px}
+.title{color:#147fc1;font-family:Arial,sans-serif;font-weight:700;font-size:27px;margin-bottom:22px}
+h2{color:#159447;text-decoration:underline;font-size:24px;margin:24px 0 10px}
+h3{color:#b00000;font-size:20px;margin:20px 0 8px}
+.statement{border:1px solid #bbb;padding:18px;margin-bottom:18px;background:#fafafa}
+.answer-btn{display:block;width:100%;border:0;background:#159447;color:white;padding:13px 18px;font-size:18px;font-family:"Times New Roman",serif;font-weight:bold;cursor:pointer;border-radius:6px;margin:15px 0}
+.answer-btn:hover{background:#117b39}
+.solution{display:none;border-left:5px solid #159447;padding:5px 18px 18px;background:#fbfffc}
+.box{background:#eef8f1;border:1px solid #159447;padding:10px 16px;margin:14px 0}
+.note{background:#fff8e7;border-left:5px solid #d49b00;padding:10px 16px;margin:14px 0}
+.error{background:#fff0f0;border-left:5px solid #c00000;padding:10px 16px;margin:14px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0}
+th,td{border:1px solid #777;padding:8px;text-align:center}
+.footer{margin-top:45px;padding-top:12px;border-top:1px solid #aaa;text-align:center;color:#a00000;font-style:italic}
+.back{display:inline-block;margin-bottom:15px;color:#147fc1}
+@media(max-width:700px){body{font-size:16px}.page{padding:0 14px}.title{font-size:22px}}
+</style>
+<script>
+function toggleSolution(id,btn){
+ const e=document.getElementById(id);
+ if(e.style.display==='block'){e.style.display='none';btn.textContent='▶ Afficher la correction détaillée';}
+ else{e.style.display='block';btn.textContent='▼ Masquer la correction détaillée';}
+}
+</script>
+</head><body><div class="page">
+<a class="back" href="index_corrections_matrices.html">← Retour à l'index</a>
+<div class="title">Exercice — Bac Eco 2016</div>
+<div class="statement">
+<h2>Exercice (Bac Eco 2016 — Session principale)</h2>
+<p>On considère la matrice</p>
+\[
+A=
+\begin{pmatrix}
+25&12&8\\
+4&3&2\\
+1&1&1
+\end{pmatrix}.
+\]
+<p><strong>1.a)</strong> Calculer le déterminant de la matrice \(A\).</p>
+<p><strong>1.b)</strong> En déduire que \(A\) est inversible.</p>
+<p><strong>2)</strong> Soit la matrice</p>
+\[
+B=
+\begin{pmatrix}
+1&-4&0\\
+-2&17&-18\\
+1&-13&27
+\end{pmatrix}.
+\]
+<p>Calculer \(AB\) et en déduire la matrice \(A^{-1}\) inverse de \(A\).</p>
+<p><strong>3)</strong> Un artisan fabrique trois types de jouets en bois : voitures, camions et bateaux.</p>
+<table>
+<tr><th>Type de jouet</th><th>Voiture</th><th>Camion</th><th>Bateau</th></tr>
+<tr><td>Quantité de bois (kg)</td><td>2,5</td><td>1,2</td><td>0,8</td></tr>
+<tr><td>Heures de travail</td><td>4</td><td>3</td><td>2</td></tr>
+</table>
+<p>Après \(204\) heures de travail et en utilisant \(96\) kg de bois, l'artisan a fabriqué au total \(76\) jouets.</p>
+<p>On note \(x,y,z\) les nombres de voitures, de camions et de bateaux.</p>
+<p><strong>a)</strong> Montrer que la situation se traduit par :</p>
+\[
+(S)\quad
+\left\{
+\begin{aligned}
+2,5x+1,2y+0,8z&=96\\
+4x+3y+2z&=204\\
+x+y+z&=76.
+\end{aligned}
+\right.
+\]
+<p><strong>b)</strong> Montrer que le système est équivalent à \(AU=V\), avec</p>
+\[
+U=\begin{pmatrix}x\\y\\z\end{pmatrix},
+\qquad
+V=\begin{pmatrix}960\\204\\76\end{pmatrix}.
+\]
+<p><strong>c)</strong> Déterminer le nombre de voitures, le nombre de camions et le nombre de bateaux.</p>
+</div>
+<button class="answer-btn" onclick="toggleSolution('solution','this')">▶ Afficher la correction détaillée</button>
+<div id="solution" class="solution">
+<h2>Correction détaillée</h2>
+<h3>1.a — Calcul de \(\det(A)\)</h3>
+\[
+\det(A)=
+\begin{vmatrix}
+25&12&8\\
+4&3&2\\
+1&1&1
+\end{vmatrix}.
+\]
+<p>Développons suivant la première ligne :</p>
+\[
+=25\begin{vmatrix}3&2\\1&1\end{vmatrix}
+-12\begin{vmatrix}4&2\\1&1\end{vmatrix}
++8\begin{vmatrix}4&3\\1&1\end{vmatrix}.
+\]
+\[
+=25(3-2)-12(4-2)+8(4-3)
+\]
+\[
+=25-24+8=9.
+\]
+<div class="box">\[
+\boxed{\det(A)=9\neq0.}
+\]</div>
+
+<h3>1.b — Inversibilité</h3>
+<p>Comme \(\det(A)\neq0\), le théorème d'inversibilité donne :</p>
+\[
+\boxed{A\text{ est inversible}.}
+\]
+
+<h3>2 — Calcul de \(AB\)</h3>
+\[
+AB=
+\begin{pmatrix}
+25&12&8\\
+4&3&2\\
+1&1&1
+\end{pmatrix}
+\begin{pmatrix}
+1&-4&0\\
+-2&17&-18\\
+1&-13&27
+\end{pmatrix}.
+\]
+<p>On obtient, ligne par colonne :</p>
+\[
+AB=
+\begin{pmatrix}
+9&0&0\\
+0&9&0\\
+0&0&9
+\end{pmatrix}
+=9I_3.
+\]
+<p>Donc :</p>
+\[
+A\left(\frac19B\right)=I_3.
+\]
+Ainsi :
+\[
+\boxed{A^{-1}=\frac19B}.
+\]
+Donc
+\[
+\boxed{
+A^{-1}=
+\begin{pmatrix}
+\frac19&-\frac49&0\\
+-\frac29&\frac{17}{9}&-2\\
+\frac19&-\frac{13}{9}&3
+\end{pmatrix}.}
+\]
+
+<h3>3.a — Traduction du problème</h3>
+<p>On pose :</p>
+\[
+x=\text{nombre de voitures},\qquad
+y=\text{nombre de camions},\qquad
+z=\text{nombre de bateaux}.
+\]
+<p>La quantité totale de bois est \(96\) kg :</p>
+\[
+2,5x+1,2y+0,8z=96.
+\]
+<p>Le temps total est \(204\) heures :</p>
+\[
+4x+3y+2z=204.
+\]
+<p>Le nombre total de jouets est \(76\) :</p>
+\[
+x+y+z=76.
+\]
+<p>Donc :</p>
+\[
+\boxed{
+(S)\quad
+\left\{
+\begin{aligned}
+2,5x+1,2y+0,8z&=96\\
+4x+3y+2z&=204\\
+x+y+z&=76.
+\end{aligned}
+\right.}
+\]
+
+<h3>3.b — Passage à \(AU=V\)</h3>
+<p>Pour utiliser la matrice \(A\), on multiplie seulement la première équation par \(10\) :</p>
+\[
+25x+12y+8z=960.
+\]
+<p>Les deux autres équations restent inchangées. On obtient :</p>
+\[
+\left\{
+\begin{aligned}
+25x+12y+8z&=960\\
+4x+3y+2z&=204\\
+x+y+z&=76.
+\end{aligned}
+\right.
+\]
+<p>Avec</p>
+\[
+U=\begin{pmatrix}x\\y\\z\end{pmatrix},
+\qquad
+V=\begin{pmatrix}960\\204\\76\end{pmatrix},
+\]
+on a bien :</p>
+<div class="box">\[
+\boxed{AU=V}.
+\]</div>
+
+<h3>3.c — Détermination des quantités</h3>
+<p>Comme \(A\) est inversible :</p>
+\[
+U=A^{-1}V.
+\]
+Donc
+\[
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+=
+\frac19
+\begin{pmatrix}
+1&-4&0\\
+-2&17&-18\\
+1&-13&27
+\end{pmatrix}
+\begin{pmatrix}
+960\\204\\76
+\end{pmatrix}.
+\]
+<p>Calcul de \(x\) :</p>
+\[
+x=\frac{960-4(204)}9
+=\frac{960-816}{9}
+=\frac{144}{9}=16.
+\]
+<p>Calcul de \(y\) :</p>
+\[
+y=\frac{-2(960)+17(204)-18(76)}9
+=\frac{-1920+3468-1368}{9}
+=\frac{180}{9}=20.
+\]
+<p>Calcul de \(z\) :</p>
+\[
+z=\frac{960-13(204)+27(76)}9
+=\frac{960-2652+2052}{9}
+=\frac{360}{9}=40.
+\]
+<div class="box">\[
+\boxed{x=16,\qquad y=20,\qquad z=40.}
+\]</div>
+<p>L'artisan a donc fabriqué :</p>
+\[
+\boxed{16\text{ voitures},\quad20\text{ camions},\quad40\text{ bateaux}.}
+\]
+
+<h3>Vérification</h3>
+\[
+2,5(16)+1,2(20)+0,8(40)
+=40+24+32=96.
+\]
+\[
+4(16)+3(20)+2(40)=64+60+80=204.
+\]
+\[
+16+20+40=76.
+\]
+<p>Les trois informations de l'énoncé sont bien vérifiées.</p>
+</div>
+<div class="footer">Correction argumentée par le cours — Matrices et systèmes</div>
+</div></body></html>
