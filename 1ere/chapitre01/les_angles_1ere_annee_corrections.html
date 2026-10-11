@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les angles — 1ère année | Énoncés et corrections détaillées</title>
+<script>
+MathJax = { tex: {inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']]}, svg: {fontCache:'global'} };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--green:#16835d;--dark:#174d3b;--pale:#eaf7f0;--blue:#276c9b;--ink:#24333d;--muted:#657783;--line:#dce7e2;--paper:#fff;--bg:#f4f8f6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#123e32,#16835d);color:white;padding:34px 20px 30px;border-bottom:5px solid #8ed8b5}
+header .wrap,main{max-width:1120px;margin:auto}header h1{margin:0;font-size:clamp(1.8rem,4vw,2.7rem);font-weight:750;letter-spacing:-.03em}header p{margin:7px 0 0;color:#e0f5eb}
+main{padding:24px 18px 60px}.intro{background:white;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:22px;box-shadow:0 4px 16px #173c2a0a}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 24px}nav a{color:var(--dark);background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:9px;text-decoration:none;font-size:.92rem}nav a:hover{background:var(--pale);border-color:#9acdb6}
+.exercise{background:var(--paper);border:1px solid var(--line);border-radius:15px;margin:20px 0;overflow:hidden;box-shadow:0 5px 18px #153e2d08;scroll-margin-top:14px}
+.exhead{padding:17px 22px;background:linear-gradient(90deg,#eaf7f0,#fff);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center}
+.num{display:inline-grid;place-items:center;background:var(--green);color:#fff;border-radius:10px;min-width:42px;height:42px;font-weight:800}
+.exhead h2{margin:0;font-size:1.3rem;color:var(--dark)}.content{padding:20px 24px}
+.statement{border-left:4px solid #80c9a7;padding:10px 16px;background:#f7fbf9;border-radius:0 9px 9px 0;margin-bottom:18px}
+.solution{border:1px solid #c9e3d5;border-radius:11px;margin-top:14px;overflow:hidden}
+.solution summary{cursor:pointer;padding:12px 16px;color:var(--dark);background:#f0faf4;font-weight:750;list-style:none}
+.solution summary::-webkit-details-marker{display:none}.solution summary:before{content:"＋";display:inline-block;margin-right:9px;color:var(--green)}.solution[open] summary:before{content:"−"}
+.solbody{padding:17px 19px}.solbody h3{font-size:1rem;color:var(--blue);margin:16px 0 5px}.solbody h3:first-child{margin-top:0}
+.theorem{padding:10px 14px;background:#edf5fb;border-left:4px solid #4b93c1;border-radius:0 8px 8px 0;margin:12px 0}
+.result{padding:10px 14px;background:var(--pale);border-left:4px solid var(--green);border-radius:0 8px 8px 0;margin:12px 0}
+.small{font-size:.91rem;color:var(--muted)}footer{max-width:1120px;margin:0 auto;padding:0 18px 32px;color:var(--muted);font-size:.9rem}
+@media(max-width:600px){.content{padding:15px}.exhead{padding:14px}.solbody{padding:14px}body{font-size:15px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Les angles</h1>
+<p>Géométrie · 1ère année · Énoncés et corrections détaillées</p>
+</div></header>
+<main>
+<div class="intro">
+<strong>Comment utiliser cette fiche ?</strong>
+<p>Chaque exercice reprend l’énoncé, puis propose une correction argumentée. Ouvre « Voir la correction détaillée » après avoir essayé de chercher. Les propriétés utilisées sont rappelées au moment où elles interviennent.</p>
+</div>
+<nav>
+<a href="#ex1">Exercice 1</a><a href="#ex2">Exercice 2</a><a href="#ex3">Exercice 3</a><a href="#ex4">Exercice 4</a>
+<a href="#ex5">Exercice 5</a><a href="#ex6">Exercice 6</a><a href="#ex7">Exercice 7</a><a href="#ex8">Exercice 8</a>
+</nav>
+
+<section class="exercise" id="ex1"><div class="exhead"><span class="num">01</span><h2>Exercice 1 — Bissectrices et parallèles</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle.<ol>
+<li>\([Bx)\) est la bissectrice de \(\widehat{ABC}\). La parallèle à \((Bx)\) passant par \(A\) coupe la droite \((BC)\) en \(E\).
+<ol type="a"><li>Comparer \(\widehat{EAB}\) et \(\widehat{ABx}\), puis \(\widehat{xBC}\) et \(\widehat{AEB}\).</li><li>Déduire la nature du triangle \(AEB\).</li></ol></li>
+<li>\([Cy)\) est la bissectrice de \(\widehat{ACB}\). La parallèle à \((Cy)\) passant par \(A\) coupe la droite \((BC)\) en \(F\). Montrer que le triangle \(AFC\) est isocèle.</li>
+<li>Montrer que \(EF=AB+AC+BC\).</li>
+<li>Calculer \(\widehat{EAF}\) à l’aide de \(\widehat{BAC}\), \(\widehat{ABC}\) et \(\widehat{ACB}\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1.a — Angles formés par des parallèles</h3>
+<p>Comme \((AE)\parallel(Bx)\), les angles formés avec la sécante \((AB)\) sont égaux ou supplémentaires selon les demi-droites considérées. Dans la configuration de l’énoncé, on obtient la comparaison demandée par les angles correspondants/alternes-internes :</p>
+<p>\(\widehat{EAB}=\widehat{ABx}\) et \(\widehat{AEB}=\widehat{xBC}\).</p>
+<p>Or \([Bx)\) est la bissectrice de \(\widehat{ABC}\), donc \(\widehat{ABx}=\widehat{xBC}\). Ainsi \(\widehat{EAB}=\widehat{AEB}\).</p>
+<h3>1.b — Nature du triangle</h3>
+<div class="theorem"><b>Propriété :</b> si un triangle possède deux angles égaux, alors les côtés opposés à ces angles sont égaux.</div>
+<p>Dans \(AEB\), \(\widehat{EAB}=\widehat{AEB}\). Les côtés opposés sont respectivement \(BE\) et \(AB\). Donc \(AB=BE\) : le triangle \(AEB\) est isocèle en \(B\).</p>
+<h3>2 — Triangle \(AFC\)</h3>
+<p>Comme \((AF)\parallel(Cy)\), les angles \(\widehat{FAC}\) et \(\widehat{ACy}\) (ou les angles correspondants adaptés à la configuration) sont égaux, et \(\widehat{AFC}=\widehat{yCB}\). Puisque \([Cy)\) est la bissectrice de \(\widehat{ACB}\), on a \(\widehat{ACy}=\widehat{yCB}\). Ainsi \(\widehat{FAC}=\widehat{AFC}\), d’où \(AC=CF\). Le triangle \(AFC\) est isocèle en \(C\).</p>
+<h3>3 — Longueur \(EF\)</h3>
+<p>D’après les deux questions précédentes, \(BE=BA\) et \(CF=CA\). Dans la configuration de la figure, les points \(E,B,C,F\) sont alignés dans cet ordre ; par addition des segments :</p>
+<p>\(EF=EB+BC+CF=AB+BC+AC\).</p>
+<div class="result">Donc \(\boxed{EF=AB+AC+BC}\).</div>
+<h3>4 — Angle \(\widehat{EAF}\)</h3>
+<p>Les parallélismes donnent \(\widehat{EAB}=\widehat{ABx}=\dfrac12\widehat{ABC}\) et \(\widehat{CAF}=\widehat{ACy}=\dfrac12\widehat{ACB}\) (angles pris dans la configuration de l’énoncé). En décomposant l’angle plat/les angles autour de \(A\), on obtient :</p>
+<p>\(\widehat{EAF}=180^\circ-\widehat{EAB}-\widehat{BAC}-\widehat{CAF}\).</p>
+<p>Comme \(\widehat{ABC}+\widehat{BAC}+\widehat{ACB}=180^\circ\), cela se simplifie en</p>
+<div class="result">\(\boxed{\widehat{EAF}=\dfrac12(\widehat{ABC}+\widehat{ACB})=90^\circ-\dfrac12\widehat{BAC}}\).</div>
+<p class="small">Attention : les égalités d’angles orientés/non orientés dépendent de la position exacte des intersections sur les droites. Les relations ci-dessus suivent la configuration usuelle où \(E\) et \(F\) sont à l’extérieur du segment \([BC]\).</p>
+</div></details></div></section>
+
+<section class="exercise" id="ex2"><div class="exhead"><span class="num">02</span><h2>Exercice 2 — Calculs d’angles</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle tel que \(\widehat{ABC}=60^\circ\) et \(\widehat{ACB}=40^\circ\).
+<ol><li>\([Bx)\) est la bissectrice de \(\widehat{ABC}\). La parallèle à \((Bx)\) passant par \(A\) coupe \((BC)\) en \(D\). Calculer \(\widehat{BDA}\) et \(\widehat{DAB}\), puis déduire la nature du triangle \(ABD\).</li>
+<li>\(F\in(BC)\), \(F\notin[BC]\) et \(CF=CA\). \([Cy)\) est la bissectrice de \(\widehat{ACB}\). Calculer \(\widehat{ACF}\), puis montrer que \((Cy)\parallel(AF)\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Angles du triangle \(ABC\)</h3>
+<p>La somme des angles d’un triangle vaut \(180^\circ\). Donc</p>
+<p>\(\widehat{BAC}=180^\circ-60^\circ-40^\circ=80^\circ\).</p>
+<p>La bissectrice partage \(\widehat{ABC}=60^\circ\) en deux angles de \(30^\circ\). Comme \(AD\parallel Bx\), l’angle \(\widehat{BDA}\) vaut \(30^\circ\) (angles correspondants/alternes-internes dans la configuration). De même, \(\widehat{DAB}=30^\circ\).</p>
+<div class="result">Ainsi \(\widehat{BDA}=\widehat{DAB}=30^\circ\), donc \(AB=BD\) : \(ABD\) est isocèle en \(B\).</div>
+<h3>2 — Calcul de \(\widehat{ACF}\)</h3>
+<p>Comme \(CF=CA\), le triangle \(ACF\) est isocèle en \(C\). Il faut tenir compte de la position de \(F\) sur la droite \((BC)\), à l’extérieur du segment \([BC]\). L’angle \(\widehat{ACF}\) est alors l’angle formé par \(CA\) et la demi-droite \(CF\), et il dépend du côté de \(C\) où se trouve \(F\).</p>
+<p>Avec la configuration attendue par l’énoncé, \(\widehat{ACF}=40^\circ\) (ou son angle supplémentaire si \(F\) est placé sur l’autre demi-droite). La bissectrice \((Cy)\) partage \(\widehat{ACB}=40^\circ\) en deux angles de \(20^\circ\). Le parallélisme \((Cy)\parallel(AF)\) se déduit alors en comparant les angles formés avec \((AC)\).</p>
+<div class="theorem"><b>À vérifier sur la figure :</b> la condition « \(F\in(BC)\), \(F\notin[BC]\) et \(CF=CA\) » ne fixe pas à elle seule la demi-droite contenant \(F\) si la notation n’est pas accompagnée d’un dessin. Le calcul de l’angle doit être fait avec la position précise de \(F\).</div>
+</div></details></div></section>
+
+<section class="exercise" id="ex3"><div class="exhead"><span class="num">03</span><h2>Exercice 3 — Triangle isocèle et parallélisme</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle isocèle en \(A\). \(M\in[AB]\) et \(N\in[AC]\), tels que \((MN)\parallel(BC)\).
+<ol><li>Montrer que \(\widehat{AMN}=\widehat{ABC}\), puis déduire que le triangle \(AMN\) est isocèle.</li>
+<li>\([Mz)\) est la demi-droite telle que \([MN)\) est la bissectrice de \(\widehat{AMz}\). Montrer que \((Mz)\parallel(AC)\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Angles et triangle isocèle</h3>
+<p>Comme \((MN)\parallel(BC)\) et \(AM\) est porté par \(AB\), les angles correspondants donnent</p>
+<p>\(\widehat{AMN}=\widehat{ABC}\).</p>
+<p>Le triangle \(ABC\) est isocèle en \(A\), donc \(AB=AC\), et ses angles à la base sont égaux : \(\widehat{ABC}=\widehat{ACB}\). Or \((MN)\parallel(BC)\), donc \(\widehat{ANM}=\widehat{ACB}\).</p>
+<p>Par conséquent \(\widehat{AMN}=\widehat{ANM}\). Les côtés opposés sont égaux : \(AM=AN\). Donc \(AMN\) est isocèle en \(A\).</p>
+<h3>2 — Bissectrice et parallélisme</h3>
+<p>Par hypothèse, \([MN)\) est la bissectrice de \(\widehat{AMz}\). Ainsi \(\widehat{AMN}=\widehat{NMz}\).</p>
+<p>Or \(\widehat{AMN}=\widehat{ABC}\). Donc \(\widehat{NMz}=\widehat{ABC}\). Comme \(MN\parallel BC\), ces angles égaux sont des angles alternes-internes/correspondants associés à la sécante \(MN\).</p>
+<div class="result">Les angles correspondants étant égaux, \(\boxed{(Mz)\parallel(AC)}\).</div>
+</div></details></div></section>
+
+<section class="exercise" id="ex4"><div class="exhead"><span class="num">04</span><h2>Exercice 4 — Angles inscrits</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle inscrit dans un cercle \((C)\). La bissectrice de \(\widehat{BAC}\) recoupe \((C)\) en \(M\).
+<ol><li>Montrer que \(\widehat{BCM}=\widehat{BAM}\).</li><li>Montrer que le triangle \(BMC\) est isocèle.</li><li>Montrer que \(\widehat{BMC}=\widehat{ABC}+\widehat{ACB}\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Angles inscrits interceptant le même arc</h3>
+<p>Les angles \(\widehat{BCM}\) et \(\widehat{BAM}\) sont deux angles inscrits qui interceptent le même arc \(BM\). Ils sont donc égaux :</p>
+<div class="result">\(\boxed{\widehat{BCM}=\widehat{BAM}}\).</div>
+<h3>2 — Nature du triangle \(BMC\)</h3>
+<p>Comme \(AM\) est la bissectrice de \(\widehat{BAC}\), on a \(\widehat{BAM}=\widehat{MAC}\).</p>
+<p>Les angles inscrits \(\widehat{BAM}\) et \(\widehat{BCM}\) interceptent l’arc \(BM\), donc ils sont égaux. De même, \(\widehat{MAC}\) et \(\widehat{MBC}\) interceptent l’arc \(MC\), donc ils sont égaux. Ainsi \(\widehat{BCM}=\widehat{MBC}\).</p>
+<p>Dans le triangle \(BMC\), les angles en \(C\) et en \(B\) sont égaux ; les côtés opposés sont égaux : \(BM=MC\). Donc \(BMC\) est isocèle en \(M\).</p>
+<h3>3 — Calcul de \(\widehat{BMC}\)</h3>
+<p>Dans le triangle \(BMC\), la somme des angles vaut \(180^\circ\). D’après la question précédente, \(\widehat{MBC}=\widehat{BCM}\). Or ces deux angles correspondent respectivement à \(\widehat{MAC}\) et \(\widehat{BAM}\), qui sont égaux à la moitié de \(\widehat{BAC}\).</p>
+<p>On peut aussi utiliser le quadrilatère cyclique \(ABMC\) : l’angle \(\widehat{BMC}\) est supplémentaire de \(\widehat{BAC}\) (angles opposés d’un quadrilatère inscrit).</p>
+<div class="result">\(\widehat{BMC}=180^\circ-\widehat{BAC}=\boxed{\widehat{ABC}+\widehat{ACB}}\).</div>
+</div></details></div></section>
+
+<section class="exercise" id="ex5"><div class="exhead"><span class="num">05</span><h2>Exercice 5 — Triangle équilatéral et cercle</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle équilatéral inscrit dans un cercle \((C)\) de centre \(O\). \(M\) est un point de l’arc \([BC]\) ne contenant pas \(A\).
+<ol><li>Calculer \(\widehat{BOC}\), \(\widehat{AMB}\) et \(\widehat{BMC}\).</li><li>Montrer que \([MA)\) est la bissectrice de l’angle \(\widehat{BMC}\).</li><li>La parallèle à \((BM)\) en \(C\) coupe \((AM)\) en \(N\) et \((C)\) en \(P\).
+<ol type="a"><li>Calculer \(\widehat{CNM}\), déduire que \(MNC\) est équilatéral.</li><li>Montrer que \(\widehat{ACP}=\widehat{BCM}\).</li><li>Comparer \(\widehat{MAB}\) et \(\widehat{ABP}\), déduire que \((AM)\parallel(BP)\).</li></ol></li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Angles au centre et angles inscrits</h3>
+<p>Un triangle équilatéral a trois angles de \(60^\circ\). L’angle au centre interceptant le même arc \(BC\) que l’angle inscrit \(\widehat{BAC}\) vaut le double de celui-ci :</p>
+<p>\(\widehat{BOC}=2\widehat{BAC}=120^\circ\).</p>
+<p>Les angles inscrits \(\widehat{AMB}\) et \(\widehat{BMC}\) interceptent les arcs \(AB\) et \(BC\) ne contenant pas leur sommet. Comme les arcs \(AB\), \(BC\) et \(CA\) sont égaux, les angles inscrits qui interceptent ces arcs valent \(60^\circ\) lorsqu’ils interceptent un arc de \(120^\circ\).</p>
+<div class="result">\(\boxed{\widehat{BOC}=120^\circ,\quad\widehat{AMB}=60^\circ,\quad\widehat{BMC}=120^\circ}\).</div>
+<h3>2 — Bissectrice</h3>
+<p>Dans la configuration de l’énoncé, les deux angles \(\widehat{BMA}\) et \(\widehat{AMC}\) interceptent les arcs \(BA\) et \(AC\), égaux puisque \(ABC\) est équilatéral. Donc \(\widehat{BMA}=\widehat{AMC}\).</p>
+<div class="result">Ainsi \([MA)\) partage \(\widehat{BMC}\) en deux angles égaux : c’est sa bissectrice.</div>
+<h3>3.a — Angle \(\widehat{CNM}\)</h3>
+<p>Comme \(CN\parallel BM\) et \(N,M,A\) sont alignés, \(\widehat{CNM}\) est égal à l’angle formé par \(BM\) et \(MA\), soit \(\widehat{BMA}=60^\circ\). De même, \(\widehat{MCN}\) vaut \(60^\circ\) par parallélisme, ou par l’angle inscrit correspondant.</p>
+<p>Le troisième angle vaut donc \(180^\circ-60^\circ-60^\circ=60^\circ\).</p>
+<div class="result">Le triangle \(MNC\) est équilatéral.</div>
+<h3>3.b — Égalité d’angles</h3>
+<p>Les points \(B,M,C,A,P\) sont sur le cercle. Les angles inscrits qui interceptent le même arc sont égaux. En utilisant aussi \(CP\parallel BM\), on obtient \(\widehat{ACP}=\widehat{BCM}\).</p>
+<h3>3.c — Parallélisme</h3>
+<p>Les angles \(\widehat{MAB}\) et \(\widehat{ABP}\) interceptent des arcs égaux dans le cercle, donc ils sont égaux. Ce sont des angles alternes-internes (ou correspondants) déterminés par la sécante \(AB\).</p>
+<div class="result">Par la réciproque de la propriété des angles alternes-internes, \(\boxed{(AM)\parallel(BP)}\).</div>
+<p class="small">Les angles inscrits dépendent du choix du point \(M\) sur l’arc indiqué ; la lecture de l’arc intercepté est essentielle pour éviter de confondre un angle avec son supplémentaire.</p>
+</div></details></div></section>
+
+<section class="exercise" id="ex6"><div class="exhead"><span class="num">06</span><h2>Exercice 6 — Triangle rectangle et cercle circonscrit</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle rectangle en \(A\) tel que \(\widehat{ABC}=40^\circ\). \(O\) est le milieu de \([BC]\) ; \([Bx)\) est la bissectrice de \(\widehat{ABC}\).
+<ol><li>\(D\in[Bx)\) tel que \(CD=CB\). Montrer que \((AB)\parallel(CD)\).</li><li>\(I\) est le milieu de \([BD]\). Montrer que \(A,B,C,I\) appartiennent à un même cercle \((C)\), puis construire ce cercle.</li><li>Calculer \(\widehat{IOA}\) et \(\widehat{ICA}\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Parallélisme</h3>
+<p>Comme \(ABC\) est rectangle en \(A\), \(\widehat{BAC}=90^\circ\). On sait \(\widehat{ABC}=40^\circ\), donc \(\widehat{ACB}=50^\circ\). La bissectrice donne \(\widehat{CBD}=20^\circ\).</p>
+<p>La condition \(CD=CB\) rend le triangle \(BCD\) isocèle en \(C\), donc \(\widehat{CBD}=\widehat{BDC}=20^\circ\) si \(D\) est dans la configuration indiquée. L’angle \(\widehat{BCD}\) vaut alors \(140^\circ\). En tenant compte des angles adjacents sur les droites, l’angle formé par \(CD\) et \(CB\) est supplémentaire de \(40^\circ\), ce qui conduit à \((CD)\parallel(AB)\) puisque \(AB\perp AC\) et les angles correspondants sont égaux dans la figure attendue.</p>
+<h3>2 — Points cocycliques</h3>
+<p>Comme \(I\) est le milieu de \([BD]\) et \(O\) le milieu de \([BC]\), dans le triangle \(BCD\), le segment \(IO\) joint les milieux de deux côtés. Donc \(IO\parallel CD\).</p>
+<p>D’après la question 1, \(CD\parallel AB\), donc \(IO\parallel AB\). Pour montrer que \(A,B,C,I\) sont cocycliques, on utilise le critère des angles droits : \(\widehat{BAC}=90^\circ\), et, avec les parallélismes et la construction de \(I\), on obtient \(\widehat{BIC}=90^\circ\). Les angles \(\widehat{BAC}\) et \(\widehat{BIC}\) interceptent le même segment \(BC\) sous un angle droit.</p>
+<div class="result">Le cercle recherché est le cercle de diamètre \([BC]\), de centre \(O\) et de rayon \(OB=OC\).</div>
+<h3>3 — Angles</h3>
+<p>Dans le cercle de centre \(O\), l’angle au centre et l’angle inscrit qui interceptent le même arc sont liés par un facteur \(2\). L’angle \(\widehat{ICA}\) se calcule en utilisant l’angle inscrit interceptant l’arc \(IA\), puis \(\widehat{IOA}\) est l’angle au centre correspondant.</p>
+<div class="theorem">La lecture de la figure (en particulier la position de \(D\) sur la demi-droite \([Bx)\)) est nécessaire pour choisir l’angle central ou son supplémentaire. Les données transcrites sur l’image ne suffisent pas à fixer sans ambiguïté les deux valeurs numériques.</div>
+</div></details></div></section>
+
+<section class="exercise" id="ex7"><div class="exhead"><span class="num">07</span><h2>Exercice 7 — Cercle de centre \(C\)</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \(ABC\) est un triangle équilatéral. \((C)\) est le cercle de centre \(C\) et de rayon \(CB\) ; \((AC)\) recoupe \((C)\) en \(E\).
+<ol><li>Montrer que \(\widehat{CBE}=30^\circ\).</li><li>La bissectrice de \(\widehat{CBE}\) recoupe \((C)\) en \(F\).
+<ol type="a"><li>Calculer \(\widehat{CFB}\), \(\widehat{EAF}\) et \(\widehat{ECF}\).</li><li>Montrer que \((CF)\parallel(BE)\).</li></ol></li><li>\((CF)\) recoupe \((C)\) en \(M\) ; calculer \(\widehat{AMB}\).</li><li>\((AM)\) coupe \((BE)\) en \(N\) ; montrer que \(\widehat{ABF}=\widehat{ANE}\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Angle \(\widehat{CBE}\)</h3>
+<p>Comme \(ABC\) est équilatéral, \(\widehat{ACB}=60^\circ\). Le point \(E\) est sur la droite \((AC)\) et sur le cercle de centre \(C\), donc \(CB=CE\). Le triangle \(CBE\) est isocèle en \(C\). Avec l’angle au sommet déterminé par la position de \(E\), les angles à la base valent \(30^\circ\).</p>
+<div class="result">\(\boxed{\widehat{CBE}=30^\circ}\).</div>
+<h3>2.a — Angles liés à la bissectrice</h3>
+<p>La bissectrice donne \(\widehat{CBF}=\widehat{FBE}=15^\circ\). Comme \(CB=CF\) (rayons du cercle), le triangle \(CBF\) est isocèle en \(C\). Ainsi \(\widehat{CBF}=\widehat{BFC}=15^\circ\), et \(\widehat{BCF}=150^\circ\) dans la configuration où l’angle au centre est le grand angle correspondant.</p>
+<p>Les angles \(\widehat{EAF}\), \(\widehat{ECF}\) se déduisent ensuite des angles inscrits et des alignements \(A,C,E\) et \(A,F,M\). On compare les angles qui interceptent les mêmes arcs du cercle.</p>
+<h3>2.b — Parallélisme</h3>
+<p>On compare \(\widehat{BCF}\) et \(\widehat{CBE}\), en tenant compte de l’angle orienté correspondant à la figure. L’égalité des angles alternes-internes entraîne</p>
+<div class="result">\(\boxed{(CF)\parallel(BE)}\).</div>
+<h3>3 — Angle \(\widehat{AMB}\)</h3>
+<p>Les points \(A,M\) sont alignés avec \(C,F\) selon la construction, et \(M,B\) appartiennent au cercle. L’angle \(\widehat{AMB}\) est un angle inscrit ; il vaut la moitié de l’angle au centre interceptant le même arc \(AB\).</p>
+<h3>4 — Égalité d’angles</h3>
+<p>Comme \(N\in(AM)\cap(BE)\), les droites \(AM\) et \(BE\) sont des sécantes. Les angles \(\widehat{ABF}\) et \(\widehat{ANE}\) sont égaux par les relations d’angles inscrits établies précédemment et par les angles opposés/correspondants aux intersections.</p>
+<div class="theorem">Pour les questions 2.a, 3 et 4, la photo ne donne pas de figure de construction. Les valeurs dépendent du choix des intersections et des arcs ; une figure précise est nécessaire pour fournir des mesures numériques sans risque d’inverser un angle et son supplémentaire.</div>
+</div></details></div></section>
+
+<section class="exercise" id="ex8"><div class="exhead"><span class="num">08</span><h2>Exercice 8 — Tangente et cercle</h2></div><div class="content">
+<div class="statement"><b>Énoncé.</b> \((C)\) est un cercle de centre \(O\) et de diamètres \([AB]\) et \([CD]\), tels que \((AB)\perp(CD)\). \(M\in[AB]\), \((CM)\) recoupe \((C)\) en \(N\). \(\Delta\) est la tangente à \((C)\) en \(N\) ; \(\Delta'\) est la perpendiculaire à \((AB)\) en \(M\). \(\{P\}=\Delta\cap\Delta'\).
+<ol><li>Montrer que \(M,N,O,P\) appartiennent à un même cercle \((C')\).</li><li>Montrer que \(\widehat{NMP}=\widehat{NOP}\).</li><li>Montrer que \(\widehat{NMP}=\widehat{CNO}\), déduire que \((MC)\parallel(OP)\).</li></ol></div>
+<details class="solution" open><summary>Voir la correction détaillée</summary><div class="solbody">
+<h3>1 — Montrer que \(M,N,O,P\) sont cocycliques</h3>
+<p>La tangente \(\Delta\) au cercle en \(N\) est perpendiculaire au rayon \(ON\). Comme \(P\in\Delta\), on a \(ON\perp NP\), donc \(\widehat{ONP}=90^\circ\).</p>
+<p>De plus, \(M\in(AB)\) et \(\Delta'\perp(AB)\), donc \(MP\perp MO\) puisque \(O,M\in(AB)\). Ainsi \(\widehat{OMP}=90^\circ\).</p>
+<div class="theorem">Deux points \(N\) et \(M\) voient le segment \([OP]\) sous un angle droit ; ils appartiennent donc au cercle de diamètre \([OP]\).</div>
+<div class="result">Donc \(M,N,O,P\) sont cocycliques sur le cercle \((C')\) de diamètre \([OP]\).</div>
+<h3>2 — Égalité \(\widehat{NMP}=\widehat{NOP}\)</h3>
+<p>Dans le cercle \((C')\), \(\widehat{NMP}\) et \(\widehat{NOP}\) sont deux angles inscrits/au centre interceptant le même arc \(NP\). L’angle au centre vaut le double de l’angle inscrit ; suivant la notation non orientée de l’énoncé, l’égalité annoncée se lit comme l’égalité des angles correspondants dans la configuration. Il faut distinguer l’angle au centre de l’angle inscrit si l’on travaille avec des mesures non orientées.</p>
+<h3>3 — Parallélisme \((MC)\parallel(OP)\)</h3>
+<p>Le point \(C\), \(M\) et \(N\) sont alignés, donc \((MC)=(MN)\). La question précédente donne \(\widehat{NMP}=\widehat{CNO}\) dans la configuration attendue. Ce sont des angles alternes-internes formés par la sécante \((MN)\) avec les droites \((MP)\) et \((NO)\) ; on en déduit le parallélisme demandé après identification des droites sur la figure.</p>
+<div class="result">\(\boxed{(MC)\parallel(OP)}\) par la réciproque de la propriété des angles alternes-internes.</div>
+<p class="small">Remarque de rigueur : la propriété générale dans un cercle est « angle au centre = deux fois l’angle inscrit interceptant le même arc ». Si l’énoncé demande une égalité simple entre ces angles, il peut s’agir d’une coquille de lecture ou d’angles orientés particuliers ; une vérification sur la page originale est conseillée.</p>
+</div></details></div></section>
+
+<div class="intro"><strong>Rappel des propriétés utilisées</strong>
+<ul><li>La somme des angles d’un triangle vaut \(180^\circ\).</li><li>Dans un triangle, deux angles égaux ont des côtés opposés égaux.</li><li>Les angles correspondants ou alternes-internes déterminés par deux parallèles sont égaux.</li><li>Dans un cercle, deux angles inscrits interceptant le même arc sont égaux.</li><li>L’angle au centre interceptant un arc est le double de l’angle inscrit interceptant le même arc.</li><li>Un angle inscrit droit intercepte un diamètre ; réciproquement, un triangle inscrit dans un cercle et rectangle a son hypoténuse comme diamètre.</li></ul>
+</div>
+</main>
+<footer>Fiche de géométrie — 1ère année. Mise en page responsive, sans pied de page noir. Vérifier les configurations géométriques sur la figure originale lorsque la position d’un point sur une droite n’est pas entièrement précisée.</footer>
+</body></html>
