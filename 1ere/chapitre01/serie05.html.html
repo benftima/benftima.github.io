@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série 5 — 1ère année secondaire | Correction détaillée</title>
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[', '\\]'], ['$$', '$$']]},
+  svg: {fontCache: 'global'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{
+  --green:#176b52;--green2:#218563;--mint:#eaf7f1;--ink:#263746;
+  --muted:#627383;--line:#dce7e3;--paper:#ffffff;--bg:#f4f8f7;
+  --blue:#eaf2ff;--gold:#f2b84b;--shadow:0 8px 28px rgba(30,65,55,.08)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.7}
+header{background:linear-gradient(120deg,#124b3d,#218563);color:#fff;padding:30px 18px 26px}
+.hero{max-width:1050px;margin:auto}
+.eyebrow{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;opacity:.86;font-weight:700}
+h1{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.15;margin:.4rem 0 .7rem}
+.subtitle{margin:0;opacity:.92}
+.stars{color:#ffd36b;letter-spacing:3px;font-size:1.2rem;margin-top:12px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.meta span{border:1px solid #ffffff55;background:#ffffff12;border-radius:999px;padding:5px 12px;font-size:.9rem}
+main{max-width:1050px;margin:26px auto;padding:0 16px 34px}
+.notice{background:#fff;border:1px solid var(--line);border-left:5px solid var(--green2);border-radius:12px;padding:17px 20px;box-shadow:var(--shadow);margin-bottom:22px}
+.notice h2{margin:0 0 8px;color:var(--green);font-size:1.2rem}
+.exercise-title{display:flex;align-items:center;gap:12px;margin:28px 0 14px;color:var(--green);font-size:1.45rem}
+.exercise-title:after{content:"";height:1px;background:var(--line);flex:1}
+.question{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;margin:14px 0;box-shadow:var(--shadow)}
+.question h3{font-size:1.08rem;margin:0 0 12px;color:#174f42}
+.tag{display:inline-block;background:var(--mint);color:var(--green);border-radius:6px;padding:2px 8px;font-size:.82rem;font-weight:700;margin-right:7px}
+.step{border-left:3px solid #b7dfce;padding:5px 0 5px 15px;margin:10px 0}
+.result{background:#eaf7f1;border:1px solid #bfe4d2;border-radius:9px;padding:10px 14px;margin-top:12px;font-weight:700;color:#155a43}
+.note{background:#fff8e8;border-left:4px solid var(--gold);padding:11px 14px;border-radius:8px;margin:12px 0}
+.math{overflow-x:auto;padding:5px 0}
+footer{max-width:1050px;margin:0 auto;padding:0 16px 28px;color:var(--muted);font-size:.9rem}
+.footer-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+a{color:var(--green2);font-weight:700;text-decoration:none}a:hover{text-decoration:underline}
+@media(max-width:600px){header{padding:24px 16px}.question{padding:16px}.notice{padding:15px}.exercise-title{font-size:1.25rem}}
+@media print{body{background:#fff}.question,.notice{box-shadow:none;break-inside:avoid}header{background:#176b52!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<header>
+ <div class="hero">
+  <div class="eyebrow">Mathématiques · 1ère année secondaire</div>
+  <h1>Série 5 — Correction détaillée</h1>
+  <p class="subtitle">Devoir de contrôle n° 1 · Année scolaire 2026–2027</p>
+  <div class="stars" aria-label="Niveau cinq étoiles">★★★★★ <span style="color:#fff;font-size:.9rem;letter-spacing:0">Niveau : 5 étoiles</span></div>
+  <div class="meta"><span>Exercice 1 · 12 points</span><span>Correction expliquée</span><span>Ben Ftima Mohamed</span></div>
+ </div>
+</header>
+<main>
+<section class="notice">
+ <h2>Énoncé — Exercice 1 (12 points)</h2>
+ <div class="math">
+ <p><b>1.</b> \(n\) est un entier naturel. Soit \(A=5n+17\), \(B=2n+7\) et \(C=n+2\).</p>
+ <p>a) Montrer que \(A\) et \(B\) sont premiers entre eux.</p>
+ <p>b) Déterminer les valeurs possibles de \(n\) telles que \(\dfrac AC\in\mathbb N\).</p>
+ <p>c) Déterminer \(A\) sachant que \(B+C\in\{500;501;502\}\).</p>
+ <p><b>2.</b> \(a\) et \(b\) sont deux entiers naturels tels que \(a+b=102\) et la division euclidienne de \(a\) par \(7\) donne un quotient égal à \(b\) et un reste \(r\) non nul. Déterminer \(a\).</p>
+ <p><b>3.</b> a) Déterminer \(\operatorname{PGCD}(522;432)\), puis rendre \(\dfrac{522}{432}\) irréductible.<br>
+ b) Le nombre \(\dfrac{522}{432}\) est-il décimal ? Justifier.<br>
+ c) Sachant que \(\dfrac{522}{432}=1,2083\ldots\), déterminer son arrondi au centième puis au millième.</p>
+ <p><b>4.</b> a) Décomposer \(336\) et \(210\) en produits de facteurs premiers, puis déterminer \(\operatorname{PGCD}(336;210)\).<br>
+ b) En divisant \(347\) et \(223\) par un même entier naturel non nul \(a\), on obtient respectivement les restes \(11\) et \(13\). Déterminer \(a\) sachant que \(a&lt;20\).</p>
+ <p><b>5.</b> \(n\) est un entier naturel supérieur à \(1\). Soit \(X=2n+13\) et \(Y=4n+11\). Déterminer \(X\) et \(Y\) sachant que \(X\), \(Y\) et \(Y-X\) sont premiers.</p>
+ </div>
+</section>
+
+<h2 class="exercise-title">Correction pas à pas</h2>
+<section class="question">
+ <h3><span class="tag">1.a</span> Montrer que \(A\) et \(B\) sont premiers entre eux</h3>
+ <p>Posons \(d=\operatorname{PGCD}(A,B)\). Puisque \(d\) divise \(A\) et \(B\), il divise tous leurs multiples, donc :</p>
+ <div class="step math">\(d\mid 2A=10n+34\) et \(d\mid 5B=10n+35\).</div>
+ <p>Un diviseur commun divise la différence de ces deux nombres :</p>
+ <div class="step math">\[
+ d\mid(5B-2A)=(10n+35)-(10n+34)=1.
+ \]</div>
+ <p>Le seul diviseur naturel de \(1\) est \(1\). Ainsi :</p>
+ <div class="result">\(\boxed{\operatorname{PGCD}(A,B)=1}\) ; \(A\) et \(B\) sont premiers entre eux.</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">1.b</span> Déterminer \(n\) tel que \(\dfrac AC\in\mathbb N\)</h3>
+ <p>La condition signifie que \(C\) divise \(A\), autrement dit \(n+2\mid 5n+17\).</p>
+ <div class="step math">\[
+ 5n+17=5(n+2)+7.
+ \]</div>
+ <p>Comme \(n+2\) divise \(5(n+2)\), il doit aussi diviser \(7\) :</p>
+ <div class="step math">\(n+2\mid 7\).</div>
+ <p>Or \(n\in\mathbb N\), donc \(n+2\geq2\). Les seuls diviseurs positifs de \(7\) sont \(1\) et \(7\) ; la seule possibilité est donc \(n+2=7\).</p>
+ <div class="result">\(\boxed{n=5}\)</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">1.c</span> Déterminer \(A\)</h3>
+ <p>Calculons la somme :</p>
+ <div class="step math">\[
+ B+C=(2n+7)+(n+2)=3n+9=3(n+3).
+ \]</div>
+ <p>La somme \(B+C\) est donc divisible par \(3\). Parmi \(500\), \(501\) et \(502\), seul \(501\) est divisible par \(3\), car \(5+0+1=6\).</p>
+ <div class="step math">\[
+ 3n+9=501\Rightarrow3n=492\Rightarrow n=164.
+ \]</div>
+ <p>On remplace \(n\) dans l’expression de \(A\) :</p>
+ <div class="step math">\[
+ A=5\times164+17=820+17=837.
+ \]</div>
+ <div class="result">\(\boxed{A=837}\)</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">2</span> Déterminer \(a\)</h3>
+ <p>La division euclidienne de \(a\) par \(7\), de quotient \(b\) et de reste non nul \(r\), s’écrit :</p>
+ <div class="step math">\[
+ a=7b+r,\qquad 1\leq r\leq6.
+ \]</div>
+ <p>Or \(a+b=102\), donc \(a=102-b\). En substituant :</p>
+ <div class="step math">\[
+ 102-b=7b+r\Rightarrow102=8b+r.
+ \]</div>
+ <p>Effectuons la division euclidienne de \(102\) par \(8\) :</p>
+ <div class="step math">\[
+ 102=8\times12+6.
+ \]</div>
+ <p>On obtient \(b=12\) et \(r=6\), ce qui respecte bien \(1\leq r\leq6\). Ainsi :</p>
+ <div class="step math">\(a=102-12=90\).</div>
+ <div class="result">\(\boxed{a=90}\)</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">3.a</span> PGCD et fraction irréductible</h3>
+ <p>Appliquons l’algorithme d’Euclide :</p>
+ <div class="math">\[
+ \begin{aligned}
+ 522&=432\times1+90\\
+ 432&=90\times4+72\\
+ 90&=72\times1+18\\
+ 72&=18\times4+0
+ \end{aligned}
+ \]</div>
+ <p>Le dernier reste non nul est \(18\). Donc \(\operatorname{PGCD}(522;432)=18\).</p>
+ <p>On divise le numérateur et le dénominateur par \(18\) :</p>
+ <div class="math">\[
+ \frac{522}{432}=\frac{522\div18}{432\div18}=\frac{29}{24}.
+ \]</div>
+ <div class="result">\(\boxed{\operatorname{PGCD}(522;432)=18,\quad \dfrac{522}{432}=\dfrac{29}{24}}\)</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">3.b</span> La fraction est-elle décimale ?</h3>
+ <p>La fraction irréductible est \(\dfrac{29}{24}\), avec :</p>
+ <div class="math">\[
+ 24=2^3\times3.
+ \]</div>
+ <p>Une fraction irréductible possède une écriture décimale finie si et seulement si son dénominateur ne contient que les facteurs premiers \(2\) et/ou \(5\). Ici, le dénominateur contient le facteur \(3\).</p>
+ <div class="result">Donc \(\boxed{\dfrac{522}{432}\text{ n’est pas un nombre décimal}}\).</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">3.c</span> Arrondis</h3>
+ <p>On sait que \(\dfrac{522}{432}=1,208333\ldots\).</p>
+ <div class="step">Au centième : le chiffre des millièmes est \(8\), donc on arrondit \(1,20\) vers le haut : \(\boxed{1,21}\).</div>
+ <div class="step">Au millième : le chiffre suivant est \(3\), donc on conserve le millième : \(\boxed{1,208}\).</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">4.a</span> Décompositions et PGCD</h3>
+ <div class="step math">\[
+ 336=2^4\times3\times7,\qquad 210=2\times3\times5\times7.
+ \]</div>
+ <p>Les facteurs premiers communs, avec leurs plus petits exposants, sont \(2\), \(3\) et \(7\).</p>
+ <div class="math">\[
+ \operatorname{PGCD}(336;210)=2\times3\times7=42.
+ \]</div>
+ <div class="result">\(\boxed{\operatorname{PGCD}(336;210)=42}\)</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">4.b</span> Déterminer \(a&lt;20\)</h3>
+ <p>Les restes donnent :</p>
+ <div class="step math">\[
+ a\mid(347-11)=336,\qquad a\mid(223-13)=210.
+ \]</div>
+ <p>Ainsi, \(a\) est un diviseur commun de \(336\) et \(210\), donc un diviseur de leur PGCD \(42\). De plus, un reste est strictement inférieur au diviseur : \(a&gt;13\). Avec \(a&lt;20\), on cherche un diviseur de \(42\) compris strictement entre \(13\) et \(20\).</p>
+ <p>Les diviseurs de \(42\) sont \(1,2,3,6,7,14,21,42\). Le seul qui convient est \(14\).</p>
+ <div class="result">\(\boxed{a=14}\)</div>
+</section>
+
+<section class="question">
+ <h3><span class="tag">5</span> Déterminer \(X\) et \(Y\)</h3>
+ <p>On a \(X=2n+13\) et \(Y=4n+11\). Calculons leur différence :</p>
+ <div class="step math">\[
+ Y-X=(4n+11)-(2n+13)=2n-2=2(n-1).
+ \]</div>
+ <p>Le nombre \(Y-X\) est premier, mais il est aussi pair puisqu’il est égal à \(2(n-1)\). Le seul nombre premier pair est \(2\). Donc :</p>
+ <div class="step math">\[
+ 2(n-1)=2\Rightarrow n-1=1\Rightarrow n=2.
+ \]</div>
+ <p>On calcule alors :</p>
+ <div class="step math">\[
+ X=2\times2+13=17,\qquad Y=4\times2+11=19.
+ \]</div>
+ <p>Vérification : \(17\), \(19\) et \(19-17=2\) sont tous premiers.</p>
+ <div class="result">\(\boxed{n=2,\quad X=17,\quad Y=19}\)</div>
+</section>
+</main>
+<footer>
+ <div class="footer-card">
+  <div><strong>Ben Ftima Mohamed</strong><br><a href="https://benftima.github.io" target="_blank" rel="noopener">benftima.github.io</a></div>
+  <div>Contact : <strong>2621409061</strong><br>Mathématiques · 1ère année secondaire</div>
+ </div>
+</footer>
+</body>
+</html>
