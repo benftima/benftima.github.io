@@ -1,7 +1,131 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exercice 2 — Limites et continuité</title><link rel="stylesheet" href="../../../style.css">
-<style>.writing{height:340px;margin:20px 0;background-image:radial-gradient(circle,#929baa .4px,transparent .56px);background-size:4px 24px;background-position:left 18px;background-repeat:repeat;border-bottom:1px solid #e4e7ec}.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}</style></head><body>
-<nav class="site-nav"><div class="nav-in"><a class="brand" href="../../../../index.html">BEN<b>FTIMA</b></a><div class="nav-links"><a href="index.html">10 exercices</a></div></div></nav>
-<section class="hero"><div class="hero-in"><div class="kicker">Ben Ftima · Techniques · Limites et continuité</div><h1>Exercice 2</h1></div></section>
-<main class="container"><div class="notice"><b>Énoncé à ajouter</b><br>Cette page est préparée pour insérer l’énoncé de l’exercice 2, les formules utiles et une zone de rédaction guidée.</div>
-<h2>Rédaction de l’élève</h2><div class="writing"></div><div class="actions"><a class="btn" href="exercice-01.html">← Précédent</a><a class="btn" href="exercice-03.html">Suivant →</a></div></main>
-<footer>Ben Ftima Med · benftima.github.io · 21621409061</footer></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devoir libre 2 — Limites — 3ème Sciences, Technique et Mathématiques</title>
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(','\\)'], ['$','$']], displayMath: [['\\[','\\]'], ['$$','$$']]},
+  options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root{--green:#67b337;--green-dark:#57962d;--ink:#20252d;--muted:#5d718a;--line:#dce2e8}
+*{box-sizing:border-box}
+body{margin:0;background:#f1f3f5;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+.sheet{max-width:940px;margin:24px auto;background:#fff;padding:30px 38px;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 28px #18283a0d}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:0;padding-bottom:14px}
+.brand{font-size:24px;font-weight:900;letter-spacing:-.6px}.brand b{color:var(--green)}
+.meta{text-align:right;color:var(--muted);font-size:13px}
+h1{text-align:center;font-size:25px;margin:22px 0;color:var(--ink)}
+.exercise{border:1px solid var(--line);border-left:0;border-radius:10px;padding:18px 20px;margin:18px 0;break-inside:avoid}
+.ex-title{font-size:18px;font-weight:800;margin-bottom:12px}
+.tag{background:#eff8e9;color:#4d8b29;border-radius:5px;padding:2px 7px}
+.statement{margin-bottom:12px}
+.q{margin:13px 0 4px;font-size:15px}
+.math{margin:8px 0;text-align:center}
+.workspace{height:62px;margin:7px 0 5px;background-image:radial-gradient(circle,#9aa5b2 .42px,transparent .6px);background-size:4px 22px;background-position:left 17px;background-repeat:repeat;border-bottom:1px solid #edf0f3}
+.workspace.large{height:78px}
+.hint{font-size:8px;color:#5f6b79;line-height:1.3;margin-top:4px}
+.answer{font-size:6.5px;color:#687382;line-height:1.3;margin-top:3px}
+.not-seen{background:#fff0f0;border:1px solid #f3b8b8;border-left:4px solid #e77b7b;border-radius:7px;padding:10px 12px;margin:10px 0}
+.not-seen .flag{display:inline-block;background:#f8caca;color:#8b2929;font-size:11px;font-weight:800;border-radius:4px;padding:2px 6px;margin-right:6px}
+.limits-table{width:100%;border-collapse:collapse;margin:12px 0}
+.limits-table td{border:1px solid #9ba5b1;text-align:center;padding:12px 8px;width:33.33%}
+.limits-table .workspace{height:42px;margin:5px 0 0}
+footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);margin-top:24px;padding-top:10px;font-size:11px;color:var(--muted)}
+@media(max-width:650px){.sheet{margin:0;border-radius:0;padding:18px 15px}.brand{font-size:20px}h1{font-size:21px}.exercise{padding:14px 12px}.q{font-size:14px}.limits-table td{padding:8px 4px;font-size:12px}}
+@media print{@page{size:A4;margin:10mm}body{background:white}.sheet{max-width:none;margin:0;padding:0;border:0;border-radius:0;box-shadow:none}.workspace{background-image:radial-gradient(circle,#9aa5b2 .42px,transparent .6px)}}
+</style>
+</head>
+<body>
+<main class="sheet">
+<header>
+  <div><div class="brand">BEN<b>FTIMA</b></div><div style="font-size:12px">Mathématiques · 3ème Sciences / Technique / Mathématiques</div></div>
+  <div class="meta">3ème Sciences · Technique · Mathématiques</div>
+</header>
+<h1>Révision — Limites</h1>
+
+<section class="exercise">
+  <div class="ex-title"><span class="tag">Exercice 1</span> — Limites</div>
+  <div class="statement">On considère la fonction \(f\) définie sur \(\mathbb{R}\) par :</div>
+  <div class="math">\[
+  f(x)=
+  \begin{cases}
+  x^2-x & \text{si } x\leq 0,\\[3pt]
+  \dfrac{\sin x}{\sqrt{x}} & \text{si } x>0.
+  \end{cases}
+  \]</div>
+  <div class="q"><b>1.</b> Calculer \(\displaystyle\lim_{x\to 0^-}f(x)\).</div>
+  <div class="workspace"></div>
+  <div class="hint">Idée : lorsque \(x\leq0\), on utilise \(f(x)=x^2-x\).</div>
+  <div class="answer">Réponse : \(0\).</div>
+  <div class="not-seen"><span class="flag">À voir plus tard</span>
+    <div class="q"><b>2.</b> Calculer \(\displaystyle\lim_{x\to 0^+}f(x)\).</div>
+    <div class="hint">Idée : cette limite nécessite la limite usuelle \(\displaystyle\lim_{x\to0}\frac{\sin x}{x}=1\), qui n’a pas encore été étudiée.</div>
+  </div>
+  <div class="workspace large"></div>
+  <div class="hint">Indication : utiliser l’expression de \(f\) correspondant au côté considéré et les propriétés des limites usuelles.</div>
+  <div class="answer">Réponse : \(\lim_{x\to0^+}\frac{\sin x}{\sqrt{x}}=0\) et \(\lim_{x\to0^-}(x^2-x)=0\).</div>
+  <div class="q"><b>2.</b> Calculer \(\displaystyle\lim_{x\to-\infty}f(x)\).</div>
+  <div class="workspace"></div>
+  <div class="hint">Propriété : utiliser l’expression polynomiale de \(f\) lorsque \(x\leq0\).</div>
+  <div class="answer">Réponse : \(\lim_{x\to-\infty}(x^2-x)=+\infty\).</div>
+  <div class="q"><b>3.</b> Montrer que, pour tout \(x\in]0,+\infty[\), \(\displaystyle-\frac1{\sqrt{x}}\leq f(x)\leq\frac1{\sqrt{x}}\), puis en déduire \(\displaystyle\lim_{x\to+\infty}f(x)\).</div>
+  <div class="workspace large"></div>
+  <div class="hint">Propriété : \(-1\leq\sin x\leq1\). Pour conclure, utiliser le théorème des gendarmes.</div>
+  <div class="answer">Réponse : les deux bornes tendent vers \(0\), donc \(\lim_{x\to+\infty}f(x)=0\).</div>
+</section>
+
+<section class="exercise">
+  <div class="ex-title"><span class="tag">Exercice 2</span> — Limites</div>
+  <div class="statement">On considère la fonction \(f\) définie sur \(D=]-\infty,-1[\cup]-1,+\infty[\) par :</div>
+  <div class="math">\[\displaystyle f(x)=\frac{x^2}{x+1}.\]</div>
+  <div class="q"><b>1.</b> Calculer \(\displaystyle\lim_{x\to-1^-}f(x)\) et \(\displaystyle\lim_{x\to-1^+}f(x)\).</div>
+  <div class="workspace large"></div>
+  <div class="hint">Indication : étudier le signe du numérateur et du dénominateur lorsque \(x\) tend vers \(-1\) à gauche puis à droite.</div>
+  <div class="answer">Réponse : \(\lim_{x\to-1^-}f(x)=-\infty\) et \(\lim_{x\to-1^+}f(x)=+\infty\).</div>
+  <div class="q"><b>2.</b> Calculer \(\displaystyle\lim_{x\to+\infty}f(x)\) et \(\displaystyle\lim_{x\to-\infty}f(x)\).</div>
+  <div class="workspace large"></div>
+  <div class="hint">Propriété du cours : à l’infini, la limite d’une fonction rationnelle est celle du quotient de ses termes de plus haut degré.</div>
+  <div class="answer">Réponse : \(\frac{x^2}{x+1}\) a le comportement du quotient \(\frac{x^2}{x}=x\) à l’infini ; les limites sont \(+\infty\) en \(+\infty\) et \(-\infty\) en \(-\infty\).</div>
+</section>
+
+<section class="exercise">
+  <div class="ex-title"><span class="tag">Exercice 3</span> — Calculer les limites</div>
+  <table class="limits-table">
+    <tr>
+      <td>\(\displaystyle\lim_{x\to1}\frac{x^2+x-2}{x^2+7x-8}\)<div class="workspace"></div></td>
+      <td>\(\displaystyle\lim_{x\to1}\frac{\sqrt{2x+7}-3}{x-1}\)<div class="workspace"></div></td>
+      <td>\(\displaystyle\lim_{x\to+\infty}\left(\sqrt{2x+7}-\sqrt{2x}\right)\)<div class="workspace"></div></td>
+    </tr>
+    <tr>
+      <td>\(\displaystyle\lim_{x\to+\infty}\left(\sqrt{2x+11}-\sqrt{x}\right)\)<div class="workspace"></div></td>
+      <td>\(\displaystyle\lim_{x\to+\infty}\frac{\sqrt{x^2+2}-2x}{\sqrt{x+3}+x}\)<div class="workspace"></div></td>
+      <td class="not-seen"><span class="flag">À voir plus tard</span><br>\(\displaystyle\lim_{x\to\frac{\pi}{4}}\frac{2\sin x+\sqrt2}{x+\frac{\pi}{4}}\)<div class="workspace"></div><small>Nécessite la limite usuelle de \(\frac{\sin x}{x}\).</small></td>
+    </tr>
+  </table>
+  <div class="hint">Rappel : factorisation, multiplication par l’expression conjuguée et propriétés des limites usuelles peuvent être utiles selon l’expression.</div>
+  <div class="answer">Réponses (très petit) : 1) \(\frac{3}{9}=\frac13\) ; 2) \( \frac13\) ; 3) \(0\) ; 4) \(+\infty\) ; 5) \(-1\) ; 6) \(\sqrt2\).</div>
+</section>
+
+<section class="exercise">
+  <div class="ex-title"><span class="tag">Exercice 4</span> — Limite en \(+\infty\)</div>
+  <div class="statement">On considère la fonction \(f\) définie sur \(D=[0,+\infty[\) par :</div>
+  <div class="math">\[\displaystyle f(x)=x-2\sqrt{x}+2.\]</div>
+  <div class="q"><b>a.</b> Développer et réduire \((\sqrt{x}-1)^2\).</div>
+  <div class="workspace"></div>
+  <div class="hint">Rappel : \((a-b)^2=a^2-2ab+b^2\).</div>
+  <div class="answer">Réponse : \((\sqrt{x}-1)^2=x-2\sqrt{x}+1\).</div>
+  <div class="q"><b>b.</b> En déduire que \(\displaystyle\lim_{x\to+\infty}f(x)=+\infty\).</div>
+  <div class="workspace large"></div>
+  <div class="hint">Utiliser la forme obtenue à la question précédente. Aucun changement de variable n’est nécessaire.</div>
+  <div class="answer">Réponse : \(f(x)=x-2\sqrt{x}+2=(\sqrt{x}-1)^2+1\), donc \(\lim_{x\to+\infty}f(x)=+\infty\).</div>
+</section>
+
+<footer><span>Ben Ftima Med · benftima.github.io</span><span>21621409061</span></footer>
+</main>
+</body>
+</html>
