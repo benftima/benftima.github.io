@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série de trigonométrie — 3ème Sciences | Ben Ftima Med</title>
+<script>
+  MathJax = {
+    tex: {inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']]},
+    options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root { --ink:#202938; --blue:#243d66; --line:#aab5c5; --paper:#fff; --soft:#f2f5f9; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9edf2; color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.5; }
+.sheet { width:min(210mm,100%); min-height:297mm; margin:18px auto; padding:15mm 16mm 14mm; background:var(--paper); box-shadow:0 3px 18px #0002; }
+.topline { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; border-bottom:2px solid var(--blue); padding-bottom:8px; color:var(--blue); font-size:12px; font-weight:bold; }
+.brand { text-align:right; }
+.brand .site { display:block; font-size:11px; font-weight:normal; }
+h1 { text-align:center; font-size:25px; font-style:italic; margin:24px 0 4px; color:#182a49; }
+.subtitle { text-align:center; font-size:12px; margin-bottom:26px; }
+.exercise { margin:22px 0 26px; break-inside:avoid; }
+.exercise h2 { font-size:17px; text-decoration:underline; color:var(--blue); margin:0 0 10px; }
+.question { margin:10px 0 0; }
+.qtext { font-size:14px; }
+.workspace { height:72px; margin:6px 0 4px; background-image:radial-gradient(circle, #9aa3b1 0.42px, transparent 0.55px); background-size:4px 22px; background-position:left 17px; background-repeat:repeat; border-bottom:1px solid #e4e7ec; }
+.workspace.medium { height:92px; }
+.workspace.large { height:112px; }
+.hint { font-size:8px; line-height:1.25; color:#4d596b; margin-top:5px; }
+.answer { font-size:6.5px; line-height:1.2; color:#667080; margin-top:3px; }
+.subq { margin-left:20px; }
+.inline-items { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 18px; }
+.inline-items span { white-space:normal; }
+footer { border-top:1px solid var(--line); padding-top:8px; margin-top:30px; display:flex; justify-content:space-between; gap:12px; font-size:10px; color:var(--blue); }
+@media (max-width:600px) {
+ .sheet { margin:0; padding:22px 18px; width:100%; box-shadow:none; }
+ .topline { font-size:10px; }
+ h1 { font-size:22px; }
+ .qtext { font-size:13px; }
+ .workspace { height:76px; }
+ .workspace.medium { height:92px; }
+ .workspace.large { height:105px; }
+}
+@media print {
+ @page { size:A4; margin:0; }
+ body { background:white; }
+ .sheet { width:210mm; min-height:297mm; margin:0; padding:12mm 15mm 11mm; box-shadow:none; }
+ .exercise { break-inside:avoid; }
+ .workspace { border-bottom:1px solid #e4e7ec; background-image:radial-gradient(circle, #8f98a6 0.42px, transparent 0.55px); background-size:4px 22px; background-position:left 17px; background-repeat:repeat; }
+}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="topline">
+    <div>Cours de 3ème année<br>Sciences expérimentales</div>
+    <div class="brand">Ben Ftima Med<span class="site">benftima.github.io · 21621409061</span></div>
+  </header>
+  <h1>Exercices</h1>
+  <div class="subtitle">Trigonométrie — Séance du 21 octobre 2026<br><span style="font-size:10px">Rédige soigneusement sur les lignes pointillées en respectant l’alignement des lettres et des calculs.</span></div>
+
+  <section class="exercise">
+    <h2>Exercice 1</h2>
+    <div class="question">
+      <div class="qtext">1) Vérifier que \( \dfrac{5\pi}{12}=\dfrac{\pi}{6}+\dfrac{\pi}{4} \), puis calculer \( \cos\dfrac{5\pi}{12} \) et \( \sin\dfrac{5\pi}{12} \).</div>
+      <div class="workspace medium"></div>
+      <div class="hint">Théorème / formule à utiliser : \( \cos(a+b)=\cos a\cos b-\sin a\sin b \) et \( \sin(a+b)=\sin a\cos b+\cos a\sin b \).</div>
+      <div class="answer">Réponse : \( \cos\dfrac{5\pi}{12}=\dfrac{\sqrt6-\sqrt2}{4} \), \( \sin\dfrac{5\pi}{12}=\dfrac{\sqrt6+\sqrt2}{4} \).</div>
+    </div>
+    <div class="question">
+      <div class="qtext">2) Vérifier que \( \dfrac{11\pi}{12}=\dfrac{2\pi}{3}+\dfrac{\pi}{4} \), puis calculer \( \cos\dfrac{11\pi}{12} \) et \( \sin\dfrac{11\pi}{12} \).</div>
+      <div class="workspace medium"></div>
+      <div class="hint">Théorème / formule à utiliser : formules du cosinus et du sinus d’une somme ; valeurs remarquables de \( \dfrac{2\pi}{3} \) et \( \dfrac{\pi}{4} \).</div>
+      <div class="answer">Réponse : \( \cos\dfrac{11\pi}{12}=-\dfrac{\sqrt6+\sqrt2}{4} \), \( \sin\dfrac{11\pi}{12}=\dfrac{\sqrt6-\sqrt2}{4} \).</div>
+    </div>
+  </section>
+
+  <section class="exercise">
+    <h2>Exercice 2</h2>
+    <div class="qtext">Calculer \( \cos 2x \) dans chacun des cas suivants :</div>
+    <div class="question subq">
+      <div class="qtext inline-items"><span>a) \( \cos x=-\dfrac{\sqrt3}{3} \)</span><span>b) \( \cos x=\dfrac35 \)</span><span>c) \( \sin x=-\dfrac13 \)</span></div>
+      <div class="workspace large"></div>
+      <div class="hint">Théorème / formule à utiliser : \( \cos 2x=2\cos^2x-1 \) ou \( \cos 2x=1-2\sin^2x \).</div>
+      <div class="answer">Réponses : a) \( -\dfrac13 \) ; b) \( -\dfrac7{25} \) ; c) \( \dfrac79 \).</div>
+    </div>
+  </section>
+
+  <section class="exercise">
+    <h2>Exercice 3</h2>
+    <div class="question">
+      <div class="qtext">1) Réduire les expressions suivantes :</div>
+      <div class="subq qtext">a) \( A(x)=\cos 7x\sin 6x-\sin 7x\cos 6x \)</div>
+      <div class="subq qtext">b) \( B(x)=\cos x\cos 2x-\sin x\sin 2x \)</div>
+      <div class="subq qtext">c) \( C(x)=\cos 3x\sin 2x+\cos 2x\sin 3x \)</div>
+      <div class="workspace large"></div>
+      <div class="hint">Théorème / formule à utiliser : \( \sin(a-b)=\sin a\cos b-\cos a\sin b \), \( \cos(a+b)=\cos a\cos b-\sin a\sin b \), \( \sin(a+b)=\sin a\cos b+\cos a\sin b \).</div>
+      <div class="answer">Réponses : a) \( A(x)=-\sin x \) ; b) \( B(x)=\cos 3x \) ; c) \( C(x)=\sin 5x \).</div>
+    </div>
+    <div class="question">
+      <div class="qtext">2) Exprimer chacune des expressions suivantes en fonction de \( \sin x \) et \( \cos x \) :</div>
+      <div class="subq qtext">a) \( \sin\left(x-\dfrac{\pi}{3}\right) \)</div>
+      <div class="subq qtext">b) \( \sqrt2\cos\left(x+\dfrac{\pi}{4}\right) \)</div>
+      <div class="subq qtext">c) \( \sqrt2\sin\left(x-\dfrac{\pi}{4}\right) \)</div>
+      <div class="workspace large"></div>
+      <div class="hint">Théorème / formule à utiliser : formules du sinus et du cosinus d’une somme ou d’une différence, avec les valeurs remarquables en \( \dfrac{\pi}{3} \) et \( \dfrac{\pi}{4} \).</div>
+      <div class="answer">Réponses : a) \( \dfrac12\sin x-\dfrac{\sqrt3}{2}\cos x \) ; b) \( \cos x-\sin x \) ; c) \( \sin x-\cos x \).</div>
+    </div>
+    <div class="question">
+      <div class="qtext">3) Soit \(x\) un réel de l’intervalle \( \left]0;\dfrac{\pi}{2}\right[ \).</div>
+      <div class="subq qtext">a) Réduire l’écriture de l’expression : \( \sin 3x\cos x-\sin x\cos 3x \).</div>
+      <div class="workspace"></div>
+      <div class="hint">Théorème / formule à utiliser : \( \sin(a-b)=\sin a\cos b-\cos a\sin b \).</div>
+      <div class="answer">Réponse : \( \sin 3x\cos x-\sin x\cos 3x=\sin 2x \).</div>
+      <div class="subq qtext">b) En déduire que : \( \dfrac{\sin 3x}{\sin x}-\dfrac{\cos 3x}{\cos x}=2 \).</div>
+      <div class="workspace medium"></div>
+      <div class="hint">Théorème / formule à utiliser : mettre au même dénominateur, puis utiliser \( \sin 2x=2\sin x\cos x \). Sur l’intervalle donné, \( \sin x\ne0 \) et \( \cos x\ne0 \).</div>
+      <div class="answer">Réponse : \( \dfrac{\sin 3x\cos x-\cos 3x\sin x}{\sin x\cos x}=\dfrac{\sin 2x}{\sin x\cos x}=2 \).</div>
+    </div>
+  </section>
+
+  <section class="exercise">
+    <h2>Exercice 4</h2>
+    <div class="qtext">\(a\) et \(b\) sont deux réels de l’intervalle \( \left[0;\dfrac{\pi}{2}\right] \) tels que : \( \cos a=\dfrac35 \) et \( \sin b=\dfrac12 \).</div>
+    <div class="question">
+      <div class="qtext">1) Calculer \( \sin a \) et \( \cos b \).</div>
+      <div class="workspace medium"></div>
+      <div class="hint">Théorème / formule à utiliser : \( \sin^2 t+\cos^2 t=1 \). Comme \(a,b\in[0;\pi/2]\), les sinus et cosinus sont positifs.</div>
+      <div class="answer">Réponse : \( \sin a=\dfrac45 \), \( \cos b=\dfrac{\sqrt3}{2} \).</div>
+    </div>
+    <div class="question">
+      <div class="qtext">2) En déduire \( \cos(a+b) \) et \( \sin(a+b) \).</div>
+      <div class="workspace medium"></div>
+      <div class="hint">Théorème / formule à utiliser : \( \cos(a+b)=\cos a\cos b-\sin a\sin b \) et \( \sin(a+b)=\sin a\cos b+\cos a\sin b \).</div>
+      <div class="answer">Réponses : \( \cos(a+b)=\dfrac{3\sqrt3-4}{10} \), \( \sin(a+b)=\dfrac{4\sqrt3+3}{10} \).</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ben Ftima Med</span>
+    <span>benftima.github.io · 21621409061</span>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercice 1 — Limites | 3ème Technique | Ben Ftima Med</title>
+<script>
+MathJax = {
+  tex: {inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']]},
+  options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root { --ink:#202938; --blue:#243d66; --line:#aab5c5; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e9edf2; color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.5; }
+.sheet { width:min(210mm,100%); min-height:297mm; margin:18px auto; padding:13mm 15mm 12mm; background:#fff; box-shadow:0 3px 18px #0002; }
+.topline { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; border-bottom:2px solid var(--blue); padding-bottom:8px; color:var(--blue); font-size:12px; font-weight:bold; }
+.brand { text-align:right; }
+.brand .site { display:block; font-size:11px; font-weight:normal; }
+h1 { text-align:center; font-size:23px; font-style:italic; margin:19px 0 3px; color:#182a49; }
+.subtitle { text-align:center; font-size:12px; margin-bottom:19px; }
+.exercise-title { font-size:16px; font-weight:bold; text-align:left; direction:ltr; text-decoration:underline; color:var(--blue); margin-bottom:10px; }
+.statement { font-size:14px; direction:ltr; text-align:left; line-height:1.8; }
+.mathline { direction:ltr; text-align:center; margin:5px 0; font-size:16px; }
+.question { margin:13px 0 0; break-inside:avoid; }
+.qtext { font-size:13.5px; }
+.workspace { height:65px; margin:5px 0 4px; background-image:radial-gradient(circle, #929baa 0.4px, transparent 0.56px); background-size:4px 21px; background-position:left 16px; background-repeat:repeat; border-bottom:1px solid #e4e7ec; }
+.workspace.medium { height:76px; }
+.workspace.large { height:91px; }
+.hint { font-size:7.5px; line-height:1.25; color:#4d596b; margin-top:4px; }
+.answer { font-size:6px; line-height:1.2; color:#667080; margin-top:2px; }
+footer { border-top:1px solid var(--line); padding-top:7px; margin-top:19px; display:flex; justify-content:space-between; gap:12px; font-size:10px; color:var(--blue); }
+@media(max-width:600px) {
+ .sheet { margin:0; padding:19px 16px; width:100%; box-shadow:none; }
+ .topline { font-size:10px; }
+ h1 { font-size:20px; }
+ .statement { font-size:13px; }
+ .qtext { font-size:13px; }
+ .workspace { height:70px; }
+ .workspace.medium { height:80px; }
+ .workspace.large { height:90px; }
+}
+@media print {
+ @page { size:A4; margin:0; }
+ body { background:#fff; }
+ .sheet { width:210mm; min-height:297mm; margin:0; padding:11mm 14mm 10mm; box-shadow:none; }
+ .workspace { background-image:radial-gradient(circle, #929baa 0.4px, transparent 0.56px); background-size:4px 21px; background-position:left 16px; background-repeat:repeat; }
+}
+</style>
+</head>
+<body>
+<main class="sheet">
+<header class="topline">
+  <div>Cours de 3ème année<br>Technique</div>
+  <div class="brand">Ben Ftima Med<span class="site">benftima.github.io · 21621409061</span></div>
+</header>
+<h1>Exercice 1 — Limites</h1>
+<div class="subtitle">Séance du 21 octobre 2026<br><span style="font-size:10px">Rédige soigneusement sur les lignes pointillées.</span></div>
+
+<div class="exercise-title" style="direction:ltr;text-align:left">Exercice 1 : (8 points)</div>
+<div class="statement" style="direction:ltr;text-align:left">
+  Soit \(f\) la fonction numérique définie sur son ensemble de définition par :
+  <div class="mathline">\( \displaystyle f(x)=\frac{x^3}{x+1} \)</div>
+  On désigne par \((C_f)\) sa courbe représentative dans un repère orthonormé \((O;\vec i;\vec j)\).
+</div>
+
+<section class="question">
+  <div class="qtext">1) Déterminer l’ensemble de définition \(D_f\). <span style="font-size:10px;color:#687386">(0,5 pt)</span></div>
+  <div class="workspace"></div>
+  <div class="hint">Propriété : le dénominateur d’une fraction doit être non nul.</div>
+  <div class="answer">Réponse : \(D_f=\mathbb{R}\setminus\{-1\}\).</div>
+</section>
+
+<section class="question">
+  <div class="qtext">2) Calculer \( \displaystyle\lim_{x\to(-1)^-}f(x) \) et \( \displaystyle\lim_{x\to(-1)^+}f(x) \), puis donner une interprétation géométrique des résultats obtenus. <span style="font-size:10px;color:#687386">(1,5 pt)</span></div>
+  <div class="workspace large"></div>
+  <div class="hint">Méthode : étudier le signe du numérateur et celui du dénominateur de chaque côté de \(-1\). Interprétation géométrique : asymptote verticale éventuelle.</div>
+  <div class="answer">Réponse : \( \lim_{x\to-1^-}f(x)=+\infty \) et \( \lim_{x\to-1^+}f(x)=-\infty \). La droite \(x=-1\) est une asymptote verticale à \((C_f)\).</div>
+</section>
+
+<section class="question">
+  <div class="qtext">3) a) Calculer \( \displaystyle\lim_{x\to-\infty}f(x) \) et \( \displaystyle\lim_{x\to+\infty}f(x) \). <span style="font-size:10px;color:#687386">(1 pt)</span></div>
+  <div class="workspace medium"></div>
+  <div class="hint">Propriété du cours : à l’infini, la limite d’une fonction rationnelle est celle du quotient de ses termes de plus haut degré.</div>
+  <div class="answer">Réponse : \( \lim_{x\to-\infty}\frac{x^3}{x+1}=\lim_{x\to-\infty}\frac{x^3}{x}=\lim_{x\to-\infty}x^2=+\infty \). De même, \( \lim_{x\to+\infty}f(x)=+\infty \).</div>
+</section>
+
+<section class="question">
+  <div class="qtext">b) Calculer \( \displaystyle\lim_{x\to-\infty}\frac{f(x)}x \) et \( \displaystyle\lim_{x\to+\infty}\frac{f(x)}x \), puis donner une interprétation géométrique des résultats obtenus. <span style="font-size:10px;color:#687386">(1,5 pt)</span></div>
+  <div class="workspace large"></div>
+  <div class="hint">Propriété du cours : appliquer la règle des limites des fonctions rationnelles à l’infini en comparant les termes de plus haut degré. Pour l’interprétation, examiner si les limites sont finies.</div>
+  <div class="answer">Réponse : \( \frac{f(x)}x=\frac{x^2}{x+1} \). Ainsi, \( \lim_{x\to-\infty}\frac{f(x)}x=-\infty \) et \( \lim_{x\to+\infty}\frac{f(x)}x=+\infty \). Les limites ne sont pas finies : elles ne permettent pas d’obtenir une asymptote oblique de pente finie.</div>
+</section>
+
+<footer>
+  <span>Ben Ftima Med</span>
+  <span>benftima.github.io · 21621409061</span>
+</footer>
+</main>
+</body>
+</html>
