@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correction Activité 40 : Centre de gravité</title>
+    
+    <!-- Config et script MathJax 3 pour les formules LaTeX -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #292B2C;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h1 { color: #0275D8; text-align: center; margin-bottom: 5px; }
+        h2 { color: #0275D8; font-size: 1.25rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .bar { height: 3px; background: #0275D8; margin-bottom: 25px; }
+        
+        /* Grid natif à deux colonnes */
+        .row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+        @media (max-width: 768px) {
+            .row-2col { grid-template-columns: 1fr; }
+        }
+        
+        .construction { color: #D9534F; font-weight: bold; }
+        .boxed { border: 2px solid #0275D8; padding: 8px; background: #f4f9ff; border-radius: 5px; text-align: center; margin: 15px 0; font-weight: bold; }
+        .fig-box { text-align: center; margin-top: 20px; background: #fff; padding: 10px; }
+        svg { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Activité 40 : Centre de gravité d'un triangle</h1>
+    <div class="bar"></div>
+
+    <div class="row-2col">
+        <!-- ==================== COLONNE GAUCHE ==================== -->
+        <div class="col">
+            <h2>1) a) Exprimer $\vec{GA}$ en fonction de $\vec{GI}$</h2>
+            <p><span class="construction">Construction :</span> $I = \text{milieu}[BC]$, $J = \text{milieu}[AC]$, $D = \text{symétrique}(G)/I$.</p>
+            <ul>
+                <li>$I$ est le milieu commun de $[BC]$ et $[GD]$, donc <strong>$BDCG$ est un parallélogramme</strong>.</li>
+                <li>On a $(BG) \parallel (DC)$. Comme $B,G,J$ alignés, <strong>$(GJ) \parallel (DC)$</strong>.</li>
+                <li>Dans $ADC$, $(GJ)$ passe par le milieu $J$ de $[AC]$ et est $\parallel (DC)$. Donc <strong>$G$ est le milieu de $[AD]$</strong>.</li>
+            </ul>
+            <p>$$\vec{AG} = \vec{GD} \quad \text{et} \quad \vec{GD} = 2\vec{GI} \implies \vec{AG} = 2\vec{GI}$$</p>
+            <div class="boxed">$$\vec{GA} = -2\vec{GI}$$</div>
+
+            <!-- Figure SVG intégrée de manière transparente -->
+            <div class="fig-box">
+                <svg width="260" height="210" viewBox="0 0 280 240">
+                    <polygon points="110,10 10,180 260,180" fill="none" stroke="#0275D8" stroke-width="2"/>
+                    <line x1="110" y1="10" x2="135" y2="236" stroke="#D9534F" stroke-width="1.5" stroke-dasharray="4"/>
+                    <line x1="10" y1="180" x2="185" y2="95" stroke="#999" stroke-width="1" stroke-dasharray="4"/>
+                    <line x1="10" y1="180" x2="135" y2="236" stroke="#5CB85C" stroke-width="1.5" stroke-dasharray="4"/>
+                    <line x1="260" y1="180" x2="135" y2="236" stroke="#5CB85C" stroke-width="1.5" stroke-dasharray="4"/>
+                    <circle cx="110" cy="10" r="3" fill="#292B2C"/><text x="110" y="-5" text-anchor="middle">A</text>
+                    <circle cx="10" cy="180" r="3" fill="#292B2C"/><text x="-5" y="185">B</text>
+                    <circle cx="260" cy="180" r="3" fill="#292B2C"/><text x="270" y="185">C</text>
+                    <circle cx="135" cy="180" r="3" fill="#292B2C"/><text x="145" y="175">I</text>
+                    <circle cx="118" cy="123" r="3" fill="#292B2C"/><text x="103" y="125">G</text>
+                    <circle cx="135" cy="236" r="3" fill="#292B2C"/><text x="135" y="250" text-anchor="middle">D</text>
+                </svg>
+                <p style="font-size:0.8rem; color:#666; font-style:italic; margin-top:5px;">Figure 1 : Parallélogramme BDCG</p>
+            </div>
+        </div>
+
+        <!-- ==================== COLONNE DROITE ==================== -->
+        <div class="col">
+            <h2>1) b) En déduire la relation nulle</h2>
+            <ul>
+                <li>Par la règle du parallélogramme dans $BDCG$ : $\vec{GB} + \vec{GC} = \vec{GD}$</li>
+                <li>Comme $G$ est le milieu de $[AD]$ : $\vec{GA} + \vec{GD} = \vec{0}$</li>
+            </ul>
+            <p>$$\vec{GA} + (\vec{GB} + \vec{GC}) = \vec{GA} + \vec{GD} = \vec{0}$$</p>
+            <div class="boxed">$$\vec{GA} + \vec{GB} + \vec{GC} = \vec{0}$$</div>
+
+            <h2>2) Unicité du point G</h2>
+            <p>Soit $M$ un point du plan qui vérifie : $\vec{MA} + \vec{MB} + \vec{MC} = \vec{0}$. En injectant le point $G$ par la relation de Chasles :</p>
+            <p>$$(\vec{MG} + \vec{GA}) + (\vec{MG} + \vec{GB}) + (\vec{MG} + \vec{GC}) = \vec{0}$$</p>
+            <p>$$3\vec{MG} + \underbrace{(\vec{GA} + \vec{GB} + \vec{GC})}_{\vec{0} \text{ d'après la Q1.b}} = \vec{0}$$</p>
+            <p>$$3\vec{MG} = \vec{0} \implies \vec{MG} = \vec{0}$$</p>
+            <div class="boxed">M est confondu avec G</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
