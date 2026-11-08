@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercice 11 — Isométries du plan | 4ème Mathématiques</title>
+  <meta name="description" content="Correction progressive de l'exercice 11 page 52 : isométrie, points fixes et symétrie orthogonale.">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    :root {
+      --blue: #1769aa;
+      --blue-dark: #123b5d;
+      --blue-soft: #eaf4fb;
+      --red: #d9342b;
+      --green: #238636;
+      --ink: #263746;
+      --muted: #607080;
+      --line: #d9e3eb;
+      --paper: #ffffff;
+      --bg: #f3f6f8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .topbar {
+      background: var(--blue-dark); color: white; padding: 13px 22px;
+      box-shadow: 0 2px 8px #102a4330;
+    }
+    .topbar-inner, main { max-width: 1080px; margin: auto; }
+    .brand { font-weight: 750; letter-spacing: .2px; }
+    .brand small { color: #c9e4f7; font-weight: 500; margin-left: 12px; }
+    main { padding: 28px 18px 60px; }
+    .hero {
+      background: linear-gradient(120deg, #fff, #eaf4fb);
+      border: 1px solid #d7e6f1; border-radius: 16px;
+      padding: 28px clamp(18px, 4vw, 42px); margin-bottom: 24px;
+    }
+    .eyebrow { color: var(--blue); font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
+    h1 { color: var(--blue-dark); font-size: clamp(1.8rem, 4vw, 2.65rem); line-height: 1.15; margin: 8px 0 10px; }
+    .subtitle { color: var(--muted); margin: 0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .pill { background: white; border: 1px solid #cbdce8; border-radius: 999px; padding: 5px 12px; font-size: .86rem; color: var(--blue-dark); }
+    .toc {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 28px;
+    }
+    .toc a {
+      text-decoration: none; color: var(--blue-dark); background: white;
+      border: 1px solid var(--line); border-radius: 8px; padding: 7px 11px;
+      font-size: .9rem;
+    }
+    .toc a:hover { border-color: var(--blue); color: var(--blue); }
+    section {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 13px;
+      padding: 23px clamp(16px, 3vw, 30px); margin: 18px 0;
+      box-shadow: 0 3px 12px #193b5308;
+      scroll-margin-top: 18px;
+    }
+    h2 { color: var(--blue-dark); font-size: 1.35rem; margin: 0 0 14px; }
+    h3 { color: var(--blue); font-size: 1.05rem; margin: 18px 0 8px; }
+    p { margin: 9px 0; }
+    .statement { border-left: 4px solid var(--blue); background: #f6fafe; padding: 14px 17px; border-radius: 0 9px 9px 0; }
+    .red { color: var(--red); }
+    .green { color: var(--green); }
+    .blue { color: var(--blue); }
+    .ink { color: var(--ink); }
+    .mathbox {
+      overflow-x: auto; background: #fbfdff; border: 1px solid #dce8f1;
+      border-radius: 10px; padding: 14px 16px; margin: 12px 0;
+    }
+    .annot {
+      border-left: 4px solid var(--red); background: #fff8f7;
+      padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0;
+    }
+    .reason {
+      border-left: 4px solid var(--green); background: #f5fbf6;
+      padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0;
+    }
+    .step {
+      display: inline-grid; place-items: center; width: 27px; height: 27px;
+      border-radius: 50%; background: var(--blue); color: white;
+      font-weight: 750; font-size: .86rem; margin-right: 7px;
+    }
+    .conclusion {
+      border: 1px solid #b9d9ed; background: var(--blue-soft);
+      border-radius: 10px; padding: 16px 18px; color: var(--blue-dark);
+      font-weight: 650; margin-top: 15px;
+    }
+    .footer { text-align: center; color: var(--muted); font-size: .9rem; padding: 24px 10px 0; }
+    @media (max-width: 600px) {
+      main { padding: 17px 11px 40px; }
+      section { padding: 18px 14px; }
+      .brand small { display: block; margin: 2px 0 0; }
+      .mathbox { padding: 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner brand">Mathématiques <small>4ème Mathématiques · Bac 2027</small></div>
+  </header>
+
+  <main>
+    <header class="hero">
+      <div class="eyebrow">Géométrie — Transformations du plan</div>
+      <h1>Exercice 11 — Isométries du plan</h1>
+      <p class="subtitle">Correction détaillée · Page 52 · Étude d'une application définie par ses coordonnées</p>
+      <div class="meta">
+        <span class="pill">1. Montrer que \(f\) est une isométrie</span>
+        <span class="pill">2. Déterminer les points fixes</span>
+        <span class="pill">3. Reconnaître une symétrie orthogonale</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Sommaire">
+      <a href="#enonce">Énoncé</a>
+      <a href="#isometrie">1. Isométrie</a>
+      <a href="#points-fixes">2. Points fixes</a>
+      <a href="#conclusion">3. Nature de \(f\)</a>
+      <a href="#bilan">À retenir</a>
+    </nav>
+
+    <section id="enonce">
+      <h2>Énoncé</h2>
+      <p>Le plan \(P\) est rapporté à un repère orthonormé direct \((O,\vec i,\vec j)\).</p>
+      <p>Soit \(f\) l'application de \(P\) dans \(P\), qui à tout point \(M(x,y)\) associe le point \(M'(x',y')\) tel que :</p>
+      <div class="mathbox">
+        \[
+        \boxed{
+        \begin{cases}
+        x'=1-\sqrt2+\dfrac{1}{\sqrt2}x+\dfrac{1}{\sqrt2}y,\\[5pt]
+        y'=1+\dfrac{1}{\sqrt2}x-\dfrac{1}{\sqrt2}y.
+        \end{cases}}
+        \]
+      </div>
+      <ol>
+        <li>Montrer que \(f\) est une isométrie.</li>
+        <li>a. Déterminer l'ensemble des points fixes de \(f\).<br>b. En déduire que \(f\) est une symétrie orthogonale.</li>
+      </ol>
+    </section>
+
+    <section id="isometrie">
+      <h2><span class="step">1</span>Montrer que \(f\) est une isométrie</h2>
+      <p>Pour démontrer que \(f\) est une isométrie, on considère deux points quelconques du plan :</p>
+      <div class="mathbox">
+        \[
+        A(x_A,y_A),\qquad B(x_B,y_B).
+        \]
+        Leurs images par \(f\) sont notées :
+        \[
+        A'(x'_A,y'_A),\qquad B'(x'_B,y'_B).
+        \]
+      </div>
+      <p>Dans un repère orthonormé, la distance entre deux points se calcule à l'aide des coordonnées :</p>
+      <div class="mathbox">
+        \[
+        AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}.
+        \]
+      </div>
+
+      <h3>Calcul des coordonnées du vecteur \(\overrightarrow{A'B'}\)</h3>
+      <div class="mathbox">
+        \[
+        \overrightarrow{A'B'}=
+        \begin{pmatrix}
+        x'_B-x'_A\\
+        y'_B-y'_A
+        \end{pmatrix}.
+        \]
+      </div>
+      <p class="red">On remplace les coordonnées des images par leurs expressions :</p>
+      <div class="mathbox">
+        \[
+        \begin{aligned}
+        x'_B-x'_A
+        &=\left(1-\sqrt2+\frac{x_B+y_B}{\sqrt2}\right)
+        -\left(1-\sqrt2+\frac{x_A+y_A}{\sqrt2}\right)\\
+        &=\frac{1}{\sqrt2}(x_B-x_A)+\frac{1}{\sqrt2}(y_B-y_A),
+        \end{aligned}
+        \]
+        \[
+        \begin{aligned}
+        y'_B-y'_A
+        &=\left(1+\frac{x_B-y_B}{\sqrt2}\right)
+        -\left(1+\frac{x_A-y_A}{\sqrt2}\right)\\
+        &=\frac{1}{\sqrt2}(x_B-x_A)-\frac{1}{\sqrt2}(y_B-y_A).
+        \end{aligned}
+        \]
+      </div>
+      <div class="reason">
+        <strong class="green">On pose :</strong>
+        \[
+        X=x_B-x_A,\qquad Y=y_B-y_A.
+        \]
+        Ainsi,
+        \[
+        \overrightarrow{A'B'}=
+        \begin{pmatrix}
+        \dfrac{1}{\sqrt2}(X+Y)\\[3pt]
+        \dfrac{1}{\sqrt2}(X-Y)
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <h3>Calcul de la distance \(A'B'\)</h3>
+      <div class="mathbox">
+        \[
+        \begin{aligned}
+        A'B'
+        &=\sqrt{\left(\frac{X+Y}{\sqrt2}\right)^2+
+                    \left(\frac{X-Y}{\sqrt2}\right)^2}\\[4pt]
+        &=\sqrt{\frac12\left[(X+Y)^2+(X-Y)^2\right]}\\[4pt]
+        &=\sqrt{\frac12\left[
+        X^2+2XY+Y^2+X^2-2XY+Y^2\right]}\\[4pt]
+        &=\sqrt{\frac12(2X^2+2Y^2)}\\[4pt]
+        &=\sqrt{X^2+Y^2}.
+        \end{aligned}
+        \]
+      </div>
+      <p class="green">Les termes \(+2XY\) et \(-2XY\) s'annulent.</p>
+      <div class="mathbox">
+        \[
+        \begin{aligned}
+        A'B'
+        &=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\\
+        &=AB.
+        \end{aligned}
+        \]
+      </div>
+      <div class="conclusion">
+        Conclusion : pour tous points \(A\) et \(B\) du plan, \(A'B'=AB\).
+        Donc \(f\) conserve les distances : <span class="blue">\(f\) est une isométrie.</span>
+      </div>
+    </section>
+
+    <section id="points-fixes">
+      <h2><span class="step">2</span>Déterminer l'ensemble des points fixes de \(f\)</h2>
+      <p><strong>Définition.</strong> Un point \(M\) est un point fixe de \(f\) lorsque son image est lui-même :</p>
+      <div class="mathbox">
+        \[
+        f(M)=M\quad\Longleftrightarrow\quad
+        \begin{cases}
+        x'=x,\\
+        y'=y.
+        \end{cases}
+        \]
+      </div>
+      <p class="red">On remplace donc \(x'\) et \(y'\) par leurs expressions :</p>
+      <div class="mathbox">
+        \[
+        \boxed{
+        \begin{cases}
+        x=1-\sqrt2+\dfrac{1}{\sqrt2}(x+y),\\[5pt]
+        y=1+\dfrac{1}{\sqrt2}(x-y).
+        \end{cases}}
+        \]
+      </div>
+
+      <h3>Élimination des dénominateurs</h3>
+      <p>On multiplie les deux équations par \(\sqrt2\) :</p>
+      <div class="mathbox">
+        \[
+        \begin{cases}
+        \sqrt2\,x=\sqrt2-2+x+y,\\
+        \sqrt2\,y=\sqrt2+x-y.
+        \end{cases}
+        \]
+      </div>
+      <p>En regroupant les termes en \(x\) et en \(y\), on obtient :</p>
+      <div class="mathbox">
+        \[
+        \boxed{
+        \begin{cases}
+        \text{(I)}\quad (\sqrt2-1)x-y=\sqrt2-2,\\
+        \text{(II)}\quad x-(\sqrt2+1)y=-\sqrt2.
+        \end{cases}}
+        \]
+      </div>
+
+      <h3>Montrer que les deux équations sont équivalentes</h3>
+      <p class="red">On multiplie l'équation (II) par \(\sqrt2-1\) :</p>
+      <div class="mathbox">
+        \[
+        (\sqrt2-1)x-(\sqrt2-1)(\sqrt2+1)y
+        =-\sqrt2(\sqrt2-1).
+        \]
+        Or,
+        \[
+        (\sqrt2-1)(\sqrt2+1)=2-1=1
+        \]
+        et
+        \[
+        -\sqrt2(\sqrt2-1)=\sqrt2-2.
+        \]
+        Donc :
+        \[
+        (\sqrt2-1)x-y=\sqrt2-2.
+        \]
+      </div>
+      <div class="reason">
+        <strong class="green">On retrouve exactement l'équation (I).</strong>
+        Les deux équations représentent donc une seule et même droite.
+      </div>
+
+      <h3>Ensemble des points fixes</h3>
+      <div class="conclusion">
+        L'ensemble des points invariants de \(f\) est la droite \(D\) d'équation :
+        \[
+        \boxed{D:\;(\sqrt2-1)x-y=\sqrt2-2.}
+        \]
+      </div>
+    </section>
+
+    <section id="conclusion">
+      <h2><span class="step">3</span>En déduire que \(f\) est une symétrie orthogonale</h2>
+      <p>Nous avons établi deux propriétés :</p>
+      <ul>
+        <li>\(f\) est une isométrie : elle conserve les distances ;</li>
+        <li>l'ensemble de ses points fixes est une droite \(D\).</li>
+      </ul>
+      <div class="reason">
+        <strong class="green">Propriété du cours :</strong>
+        Une isométrie du plan qui fixe point par point une droite et qui n'est pas l'identité est la symétrie orthogonale d'axe cette droite.
+      </div>
+      <p>Or l'application \(f\) n'est pas l'identité. Par conséquent, \(f\) est la symétrie orthogonale d'axe \(D\).</p>
+      <div class="conclusion">
+        \[
+        \boxed{f=S_D\quad\text{où}\quad
+        D:\;(\sqrt2-1)x-y=\sqrt2-2.}
+        \]
+      </div>
+    </section>
+
+    <section id="bilan">
+      <h2>À retenir — Méthode de l'exercice</h2>
+      <ol>
+        <li>Pour montrer qu'une application est une isométrie, prendre deux points quelconques \(A,B\) et prouver que \(A'B'=AB\).</li>
+        <li>Pour déterminer les points fixes, résoudre le système \(x'=x,\;y'=y\).</li>
+        <li>Si l'ensemble des points fixes est une droite et si l'isométrie n'est pas l'identité, alors il s'agit d'une symétrie orthogonale d'axe cette droite.</li>
+      </ol>
+      <p class="annot"><strong class="red">Idée essentielle :</strong> la conservation des distances caractérise l'isométrie ; la droite des points fixes permet ici d'identifier l'axe de la symétrie.</p>
+    </section>
+
+    <footer class="footer">
+      Mathématiques · 4ème Mathématiques · Bac 2027<br>
+      <a href="https://benftima.github.io" style="color:var(--blue);text-decoration:none;font-weight:700">benftima.github.io</a>
+    </footer>
+  </main>
+</body>
+</html>
