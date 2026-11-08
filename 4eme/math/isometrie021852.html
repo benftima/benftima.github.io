@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercice 18 – Les isométries d’un carré</title>
+  <meta name="description" content="Exercice 18 sur les isométries qui laissent globalement invariant un carré, avec énoncé et correction côte à côte.">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      chtml: { scale: 1 },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    :root {
+      --blue: #172a83;
+      --cyan: #00bfe8;
+      --pale-blue: #eaf8fc;
+      --soft-red: #c94a55;
+      --text: #292929;
+      --paper: #ffffff;
+      --rule: #c5f0f8;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: #edf2f5; }
+    body {
+      margin: 0;
+      padding: 18px 12px 30px;
+      color: var(--text);
+      background: #edf2f5;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 10.2pt;
+      line-height: 1.29;
+    }
+
+    .document { width: 100%; }
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 22px;
+      padding: 9mm 10mm 10mm;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      box-shadow: 0 3px 16px rgba(18, 37, 70, .14);
+      overflow: hidden;
+    }
+
+    .top-banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 12mm;
+      margin: -1mm 0 4mm;
+      flex: 0 0 auto;
+    }
+    .top-banner::before,
+    .top-banner::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 31%;
+      border-top: 1px solid var(--blue);
+    }
+    .top-banner::before { left: 0; }
+    .top-banner::after { right: 0; }
+    .banner-title {
+      z-index: 1;
+      padding: 4px 23px 5px;
+      color: #fff;
+      background: var(--blue);
+      border: 2px solid var(--cyan);
+      border-radius: 20px;
+      font-size: 13pt;
+      line-height: 1.1;
+      font-weight: bold;
+      white-space: nowrap;
+      box-shadow: 0 0 0 1px #fff inset;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: minmax(0, .97fr) minmax(0, 1.03fr);
+      column-gap: 5mm;
+      flex: 1 1 auto;
+      align-items: stretch;
+      min-height: 0;
+    }
+    .column {
+      min-width: 0;
+      font-size: 9.3pt;
+      overflow-wrap: break-word;
+    }
+    .statement { padding-right: 1mm; }
+    .solution {
+      border-left: 1px solid var(--cyan);
+      padding-left: 3mm;
+    }
+
+    .column-title {
+      color: var(--blue);
+      font-weight: bold;
+      font-size: 11pt;
+      line-height: 1.25;
+      padding-bottom: 4px;
+      margin: 0 0 8px;
+      border-bottom: 1px solid var(--cyan);
+    }
+    .exercise-number {
+      display: inline-flex;
+      width: 8mm;
+      height: 8mm;
+      align-items: center;
+      justify-content: center;
+      margin-right: 5px;
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      outline: 1px solid var(--cyan);
+      outline-offset: -3px;
+      font-size: 15pt;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    p { margin: 0 0 5px; }
+    .question-title {
+      color: var(--blue);
+      font-weight: bold;
+      margin: 8px 0 3px;
+      font-size: 9.7pt;
+    }
+    ol, ul { margin: 3px 0 7px; padding-left: 18px; }
+    li { padding-left: 1px; margin: 0 0 3px; }
+    .dash-list { list-style: none; padding-left: 0; }
+    .dash-list li { position: relative; padding-left: 13px; margin-bottom: 5px; }
+    .dash-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+    }
+
+    .note-box, .result-box {
+      border: 1px solid var(--cyan);
+      border-radius: 6px;
+      background: var(--pale-blue);
+      padding: 7px 9px;
+      margin: 9px 0 7px;
+    }
+    .note-box strong, .result-box strong { color: var(--blue); }
+    .result-box { text-align: center; }
+    .result-box .big-result {
+      display: block;
+      font-size: 17pt;
+      font-weight: bold;
+      color: #111;
+      margin-top: 3px;
+    }
+
+    .math-small { font-size: 8.2pt; }
+    .angle-note {
+      font-size: 7.3pt;
+      line-height: 1.25;
+      margin: 1px 0 8px;
+      color: #333;
+    }
+    .angle-note em { color: var(--blue); }
+    .figure-wrap { text-align: center; margin: 7px auto 2px; }
+    .square-figure { width: min(100%, 73mm); height: auto; display: inline-block; }
+    .figure-caption { font-size: 8pt; margin: 3px 0 0; }
+    .equations { text-align: center; margin: 5px 0; }
+
+    .page-footer {
+      flex: 0 0 auto;
+      margin-top: auto;
+      padding-top: 9mm;
+      text-align: center;
+      color: var(--blue);
+      font-size: 9pt;
+    }
+    .footer-line {
+      display: inline-block;
+      width: 28%;
+      border-top: 1px solid var(--cyan);
+      vertical-align: middle;
+      margin: 0 8px 3px;
+    }
+    .footer-label {
+      display: inline-block;
+      padding: 2px 13px;
+      border: 1px solid var(--cyan);
+      border-radius: 16px;
+      font-weight: bold;
+      background: #fff;
+    }
+    .page-number { color: #333; font-size: 9pt; margin-top: 2px; }
+
+    @media (max-width: 850px) {
+      body { padding: 0; background: #fff; }
+      .sheet {
+        width: 100%;
+        min-height: 0;
+        margin: 0 auto 15px;
+        padding: 17px 16px 22px;
+        box-shadow: none;
+        border-bottom: 2px solid var(--rule);
+      }
+      .columns { grid-template-columns: 1fr; row-gap: 18px; }
+      .column { font-size: 10.5pt; }
+      .solution {
+        border-left: 0;
+        border-top: 2px solid var(--cyan);
+        padding: 13px 0 0;
+      }
+      .column-title { font-size: 12pt; }
+      .square-figure { width: min(100%, 90mm); }
+      .page-footer { padding-top: 18px; }
+      .footer-line { width: 22%; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 0; }
+      html, body { background: #fff; padding: 0; margin: 0; }
+      body { font-size: 10.2pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .sheet {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        margin: 0;
+        padding: 9mm 10mm 10mm;
+        box-shadow: none;
+        break-after: page;
+        page-break-after: always;
+      }
+      .sheet:last-child { break-after: auto; page-break-after: auto; }
+      .columns {
+        grid-template-columns: minmax(0, .97fr) minmax(0, 1.03fr);
+        column-gap: 5mm;
+      }
+      .column { font-size: 9.3pt; }
+      .solution {
+        border-left: 1px solid var(--cyan);
+        border-top: 0;
+        padding: 0 0 0 3mm;
+      }
+      .page-footer { padding-top: 9mm; }
+    }
+  </style>
+</head>
+<body>
+<main class="document">
+  <!-- PAGE 1 : énoncé de la page 52 et correction de la question 1 -->
+  <section class="sheet" aria-label="Page 1 : énoncé et correction de la question 1">
+    <header class="top-banner"><div class="banner-title">Exercices et problèmes</div></header>
+    <div class="columns">
+      <section class="column statement">
+        <h2 class="column-title"><span class="exercise-number">18</span> ÉNONCÉ – page 52</h2>
+        <p>Soit \(ABCD\) un carré direct de centre \(I\).</p>
+        <p>On se propose de déterminer les isométries du plan qui laissent globalement invariant le carré \(ABCD\).</p>
+        <p>Soit \(f\) une isométrie du plan qui laisse globalement invariant le carré \(ABCD\).</p>
+
+        <p class="question-title">1.</p>
+        <ol type="a">
+          <li>Montrer que \(f(I)=I\).</li>
+          <li>En déduire que \(f\) est soit l'identité du plan, soit une rotation de centre \(I\) et d'angle non nul, soit une symétrie orthogonale d'axe passant par \(I\).</li>
+        </ol>
+
+        <p class="question-title">2.</p>
+        <p>On suppose que \(f\) n'est pas une symétrie orthogonale. Montrer que :</p>
+        <ul class="dash-list">
+          <li>si \(f(A)=A\), alors \(f\) est l'identité ;</li>
+          <li>si \(f(A)=B\), alors \(f\) est la rotation de centre \(I\) et d'angle \(\dfrac{\pi}{2}\) ;</li>
+          <li>si \(f(A)=C\), alors \(f\) est la symétrie centrale de centre \(I\) ;</li>
+          <li>si \(f(A)=D\), alors \(f\) est la rotation de centre \(I\) et d'angle \(-\dfrac{\pi}{2}\).</li>
+        </ul>
+
+        <div class="note-box">
+          <strong>À garder en tête</strong><br>
+          Une isométrie conserve les distances. En particulier, elle conserve les longueurs des côtés et des diagonales du carré.
+        </div>
+      </section>
+
+      <section class="column solution">
+        <h2 class="column-title">CORRECTION – 1.</h2>
+        <p class="question-title">1.a. Montrer que \(f(I)=I\)</p>
+        <p><strong>1.</strong> Comme le carré est globalement invariant, \(f(A)\) et \(f(C)\) sont deux sommets du carré. Or \(AC\) est une diagonale et une isométrie conserve les distances :</p>
+        <div class="equations">\[f(A)f(C)=AC.\]</div>
+        <p>La distance \(AC\) est la longueur d'une diagonale. Les images \(f(A)\) et \(f(C)\) sont donc deux sommets opposés : le segment \([f(A)f(C)]\) est une des deux diagonales \([AC]\) ou \([BD]\).</p>
+        <p><strong>2.</strong> D'après le cours, une isométrie conserve le milieu d'un segment (elle conserve le barycentre de deux points). Comme \(I\) est le milieu de \([AC]\), son image \(f(I)\) est le milieu de \([f(A)f(C)]\).</p>
+        <p>Or les deux diagonales du carré ont le même milieu \(I\). Donc :</p>
+        <div class="equations">\[\boxed{f(I)=I.}\]</div>
+
+        <p class="question-title">1.b. Nature de \(f\)</p>
+        <p>On sait que \(f\) est une isométrie et que \(f(I)=I\).</p>
+        <p>D'après le théorème de classification des isométries ayant un point fixe, \(f\) est :</p>
+        <ul class="dash-list">
+          <li>soit l'identité ;</li>
+          <li>soit une rotation de centre \(I\) ;</li>
+          <li>soit une symétrie orthogonale dont l'axe passe par \(I\).</li>
+        </ul>
+        <div class="note-box">
+          On a obtenu exactement les trois possibilités demandées à la question 1.b.
+        </div>
+        <figure class="figure-wrap">
+          <svg class="square-figure" viewBox="0 0 400 350" role="img" aria-label="Carré ABCD, centre I, diagonales et axes Delta 1 et Delta 2">
+            <line x1="200" y1="20" x2="200" y2="323" stroke="#00bfe8" stroke-width="2.5" stroke-dasharray="8 6" />
+            <line x1="45" y1="165" x2="355" y2="165" stroke="#c94a55" stroke-width="2.5" stroke-dasharray="8 6" />
+            <rect x="80" y="45" width="240" height="240" fill="none" stroke="#222" stroke-width="2.5" />
+            <line x1="80" y1="285" x2="320" y2="45" stroke="#172a83" stroke-width="2.3" />
+            <line x1="320" y1="285" x2="80" y2="45" stroke="#172a83" stroke-width="2.3" />
+            <circle cx="200" cy="165" r="3.7" fill="#172a83" />
+            <circle cx="80" cy="285" r="3" fill="#222"/><circle cx="320" cy="285" r="3" fill="#222"/>
+            <circle cx="320" cy="45" r="3" fill="#222"/><circle cx="80" cy="45" r="3" fill="#222"/>
+            <g font-family="Georgia,serif" font-size="19" fill="#222">
+              <text x="58" y="307">A</text><text x="328" y="307">B</text>
+              <text x="328" y="39">C</text><text x="58" y="39">D</text>
+              <text x="183" y="185">I</text>
+              <text x="209" y="23" fill="#00a8d0">Δ₂</text>
+              <text x="354" y="164" fill="#c94a55">Δ₁</text>
+            </g>
+          </svg>
+        </figure>
+      </section>
+    </div>
+    <footer class="page-footer">
+      <span class="footer-line"></span><span class="footer-label">Isométries du plan</span><span class="footer-line"></span>
+      <div class="page-number">1</div>
+    </footer>
+  </section>
+
+  <!-- PAGE 2 : suite de l'énoncé et correction des questions 2 à 4 -->
+  <section class="sheet" aria-label="Page 2 : suite de l'énoncé et correction des questions 2 à 4">
+    <header class="top-banner"><div class="banner-title">Exercices et problèmes</div></header>
+    <div class="columns">
+      <section class="column statement">
+        <h2 class="column-title"><span class="exercise-number">18</span> SUITE DE L'ÉNONCÉ – page 53</h2>
+        <p class="question-title">3.</p>
+        <p>On suppose que \(f\) est une symétrie orthogonale. Montrer que :</p>
+        <ul class="dash-list">
+          <li>si \(f(A)=A\), alors \(f\) est la symétrie orthogonale d'axe \((IA)\) ;</li>
+          <li>si \(f(A)=B\), alors \(f\) est la symétrie orthogonale d'axe \(\Delta_2\), où \(\Delta_2\) désigne la médiatrice du segment \([DC]\) ;</li>
+          <li>si \(f(A)=C\), alors \(f\) est la symétrie orthogonale d'axe \((IB)\) ;</li>
+          <li>si \(f(A)=D\), alors \(f\) est la symétrie orthogonale d'axe \(\Delta_1\), où \(\Delta_1\) désigne la médiatrice du segment \([CB]\).</li>
+        </ul>
+        <p class="question-title">4.</p>
+        <p>Conclure.</p>
+
+        <figure class="figure-wrap">
+          <svg class="square-figure" viewBox="0 0 400 350" role="img" aria-label="Carré ABCD, centre I, diagonales et axes Delta 1 et Delta 2">
+            <line x1="200" y1="20" x2="200" y2="323" stroke="#00bfe8" stroke-width="2.5" stroke-dasharray="8 6" />
+            <line x1="45" y1="165" x2="355" y2="165" stroke="#c94a55" stroke-width="2.5" stroke-dasharray="8 6" />
+            <rect x="80" y="45" width="240" height="240" fill="none" stroke="#222" stroke-width="2.5" />
+            <line x1="80" y1="285" x2="320" y2="45" stroke="#172a83" stroke-width="2.3" />
+            <line x1="320" y1="285" x2="80" y2="45" stroke="#172a83" stroke-width="2.3" />
+            <circle cx="200" cy="165" r="3.7" fill="#172a83" />
+            <circle cx="80" cy="285" r="3" fill="#222"/><circle cx="320" cy="285" r="3" fill="#222"/>
+            <circle cx="320" cy="45" r="3" fill="#222"/><circle cx="80" cy="45" r="3" fill="#222"/>
+            <g font-family="Georgia,serif" font-size="19" fill="#222">
+              <text x="58" y="307">A</text><text x="328" y="307">B</text>
+              <text x="328" y="39">C</text><text x="58" y="39">D</text>
+              <text x="183" y="185">I</text>
+              <text x="209" y="23" fill="#00a8d0">Δ₂</text>
+              <text x="354" y="164" fill="#c94a55">Δ₁</text>
+            </g>
+          </svg>
+        </figure>
+
+        <div class="note-box">
+          <strong>Lecture de la figure</strong><br>
+          Les droites \((IA)\) et \((IB)\) sont les deux diagonales du carré. Les droites \(\Delta_1\) et \(\Delta_2\) sont les médiatrices de deux côtés du carré.
+        </div>
+      </section>
+
+      <section class="column solution">
+        <h2 class="column-title">CORRECTION – 2. et 3.</h2>
+        <p class="question-title">2. Cas où \(f\) n'est pas une symétrie orthogonale</p>
+        <p>D'après la question 1.b, \(f\) est l'identité ou une rotation de centre \(I\).</p>
+        <p>Comme \(ABCD\) est un carré direct, les angles orientés donnent :</p>
+        <ul class="dash-list">
+          <li>\(f(A)=A\) : seule l'identité fixe \(A\) ;</li>
+          <li>\(f(A)=B\) : l'angle de rotation est \(+\dfrac{\pi}{2}\) ;</li>
+          <li>\(f(A)=C\) : l'angle est \(\pi\) ; c'est la symétrie centrale de centre \(I\) ;</li>
+          <li>\(f(A)=D\) : l'angle de rotation est \(-\dfrac{\pi}{2}\).</li>
+        </ul>
+        <p class="angle-note"><em>Angles orientés utiles (carré direct) :</em>
+          \((\overrightarrow{IA},\overrightarrow{IB})=\dfrac{\pi}{2}\),
+          \((\overrightarrow{IA},\overrightarrow{IC})=\pi\),
+          \((\overrightarrow{IA},\overrightarrow{ID})=-\dfrac{\pi}{2}\).
+        </p>
+
+        <p class="question-title">3. Cas où \(f\) est une symétrie orthogonale</p>
+        <p><strong>Rappel :</strong> l'axe d'une symétrie qui envoie un point \(M\) sur \(M'\ne M\) est la médiatrice du segment \([MM']\).</p>
+        <ul class="dash-list">
+          <li>\(f(A)=A\) : l'axe passe par \(A\) et par \(I\), donc c'est \((IA)\).</li>
+          <li>\(f(A)=B\) : l'axe est la médiatrice de \([AB]\). Dans le carré, c'est aussi la médiatrice de \([DC]\), donc \(\Delta_2\).</li>
+          <li>\(f(A)=C\) : l'axe est la médiatrice de la diagonale \([AC]\). C'est l'autre diagonale \((IB)\).</li>
+          <li>\(f(A)=D\) : l'axe est la médiatrice de \([AD]\). C'est aussi la médiatrice de \([CB]\), donc \(\Delta_1\).</li>
+        </ul>
+
+        <p class="question-title">4. Conclusion</p>
+        <p><strong>Quatre isométries directes :</strong></p>
+        <div class="equations">\[\mathrm{Id},\quad R_{(I,\pi/2)},\quad R_{(I,\pi)},\quad R_{(I,-\pi/2)}.\]</div>
+        <p><strong>Quatre isométries indirectes :</strong></p>
+        <div class="equations">\[S_{(IA)},\quad S_{\Delta_2},\quad S_{(IB)},\quad S_{\Delta_1}.\]</div>
+
+        <div class="result-box">
+          <strong>Le carré possède donc exactement</strong>
+          <span class="big-result">\(4+4=8\) isométries.</span>
+        </div>
+      </section>
+    </div>
+    <footer class="page-footer">
+      <span class="footer-line"></span><span class="footer-label">Isométries du plan</span><span class="footer-line"></span>
+      <div class="page-number">2</div>
+    </footer>
+  </section>
+</main>
+</body>
+</html>
