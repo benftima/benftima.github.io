@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activité 2 — Rotation et carré</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--blue:#174f91;--pale:#e5f0fa;--ink:#20242a;--line:#b8cde0}*{box-sizing:border-box}body{margin:0;background:#eef2f6;color:var(--ink);font:16px/1.5 Georgia,'Times New Roman',serif}.page{max-width:1120px;margin:24px auto;padding:28px 34px;background:white;box-shadow:0 3px 18px #152b4518}header{text-align:center;border-bottom:3px double var(--blue);padding-bottom:13px;margin-bottom:18px}.kicker{color:var(--blue);font:700 14px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}h1{font-size:27px;margin:5px 0}.subtitle{color:var(--blue);font-weight:bold}h2{font-size:19px;color:var(--blue);border-bottom:1px solid var(--line);padding-bottom:5px;margin:18px 0 9px}h3{font-size:16px;margin:13px 0 5px}.box{border:1px solid var(--blue);background:var(--pale);padding:12px 15px;margin:12px 0;border-radius:5px}.result{border-left:4px solid var(--blue);background:#f1f7fc;padding:8px 12px;margin:10px 0}.columns{display:grid;grid-template-columns:1fr 1fr;gap:28px}p{margin:7px 0}.math{overflow-x:auto}ol{padding-left:23px}li{margin:5px 0}figure{margin:20px auto 10px;text-align:center;border:1px solid var(--line);padding:12px;border-radius:5px}figure svg{width:min(100%,650px);height:auto}figcaption{font-size:13px;color:#5b6570;margin-top:8px}footer{margin-top:20px;border-top:2px solid var(--blue);padding-top:10px;text-align:center;color:var(--blue);font-weight:bold}@media(max-width:760px){.page{margin:0;padding:18px 15px;box-shadow:none}.columns{grid-template-columns:1fr;gap:8px}h1{font-size:23px}}@media print{body{background:white}.page{margin:0;max-width:none;box-shadow:none;padding:12mm}}
+</style></head><body><main class="page">
+<header><div class="kicker">Chapitre 2 — Isométries du plan</div><h1>Activité 2 : Rotation et conservation des distances</h1><div class="subtitle">Démontrer que le quadrilatère \(AHOK\) est un carré</div></header>
+<section class="box"><b style="color:var(--blue)">Énoncé</b>
+<p>Soit \(ABC\) un triangle rectangle en \(A\) tel que \[(\overrightarrow{AB},\overrightarrow{AC})\equiv\frac{\pi}{2}\ [2\pi].\] \(H\) est le pied de la hauteur issue de \(A\), et \(D\) l’image de \(C\) par la rotation \(r\) de centre \(A\) et d’angle \(\dfrac{\pi}{2}\).</p>
+<p>On désigne par \(O\) le pied de la hauteur issue de \(D\) dans le triangle \(DCB\), et par \(K\) le pied de la hauteur issue de \(A\) dans le triangle \(DAO\).</p><ol><li>Montrer que \(r\) transforme la droite \((CB)\) en la droite \((DO)\) et le triangle \(AHC\) en le triangle \(AKD\).</li><li>En déduire que \(AHOK\) est un carré.</li></ol></section>
+<div class="columns"><section>
+<h2>I. Première question</h2><h3>1. Image de la droite \((CB)\)</h3>
+<p>Puisque \(H\) est le pied de la hauteur issue de \(A\),</p><div class="math">\[(AH)\perp(BC).\]</div>
+<p>Puisque \(O\) est le pied de la hauteur issue de \(D\),</p><div class="math">\[(DO)\perp(CB).\]</div>
+<p>Comme \((BC)=(CB)\), les droites \((AH)\) et \((DO)\) sont parallèles :</p><div class="result math">\[(AH)\parallel(DO).\]</div>
+<p>La rotation \(r\), d’angle \(\dfrac{\pi}{2}\), transforme la droite \((CB)\) en une droite perpendiculaire à \((CB)\). De plus, \(r(C)=D\) : cette droite image passe donc par \(D\).</p><p>Or la droite passant par \(D\) et perpendiculaire à \((CB)\) est précisément \((DO)\).</p><div class="result math">\[\boxed{r((CB))=(DO)}\]</div>
+<h3>2. Image du point \(H\)</h3><p>Puisque \(H\in(CB)\) et \(r((CB))=(DO)\), on a</p><div class="math">\[r(H)\in(DO).\]</div>
+<p>D’autre part, l’image de la droite \((AH)\) par la rotation est une droite passant par \(A\) et perpendiculaire à \((DO)\).</p><p>Or \((AK)\) est également la droite passant par \(A\) et perpendiculaire à \((DO)\). Par unicité de la perpendiculaire :</p><div class="math">\[\boxed{r((AH))=(AK)}\]</div>
+<p>Donc \(r(H)\in(AK)\). Finalement,</p><div class="result math">\[r(H)\in(AK)\cap(DO)=\{K\}.\qquad\boxed{r(H)=K}\]</div>
+<h3>3. Image du triangle \(AHC\)</h3><p>On connaît les images des trois sommets :</p><div class="math">\[r(A)=A,\qquad r(H)=K,\qquad r(C)=D.\]</div><div class="result math">\[\boxed{r(\triangle AHC)=\triangle AKD}\]</div>
+</section><section>
+<h2>II. Deuxième question</h2><h3>1. Montrons que \(AHOK\) est un parallélogramme</h3>
+<p>On sait que</p><div class="math">\[(AH)\perp(BC),\qquad(DO)\perp(BC).\]</div><p>Donc \((AH)\parallel(DO)\). Comme \(O,K\in(DO)\),</p><div class="math">\[(AH)\parallel(OK).\]</div>
+<p>D’autre part, \(AK\perp DO\) et \(BC\perp DO\). Donc \((AK)\parallel(BC)\). Comme \(H,O\in(BC)\),</p><div class="math">\[(AK)\parallel(HO).\]</div><p>Les côtés opposés du quadrilatère \(AHOK\) sont parallèles.</p><div class="result math">\[\boxed{AHOK\text{ est un parallélogramme}}\]</div>
+<h3>2. Montrons que \(AHOK\) est un rectangle</h3><p>Comme \(H,O\in(BC)\), la droite \((HO)\) est la même que \((BC)\). Or \((AH)\perp(BC)\), donc</p><div class="math">\[(AH)\perp(HO).\]</div><p>Le parallélogramme \(AHOK\) possède un angle droit. Ainsi,</p><div class="result math">\[\boxed{AHOK\text{ est un rectangle}}\]</div>
+<h3>3. Montrons que \(AHOK\) est un carré</h3><p>D’après la première question, \(r(A)=A\) et \(r(H)=K\). Une rotation conserve les distances :</p><div class="math">\[AH=r(A)r(H)=AK.\]</div><p>Le rectangle \(AHOK\) possède donc deux côtés consécutifs égaux.</p><div class="box math">\[\boxed{\boldsymbol{AHOK\text{ est un carré}}}\]</div>
+</section></div>
+<figure><svg viewBox="-3.8 -0.55 8.5 4.35" role="img" aria-label="Figure géométrique avec les points A, B, C, D, H, O et K"><defs><style>.ln{stroke:#252a30;stroke-width:.025;fill:none}.bl{stroke:#174f91;stroke-width:.04;fill:none}.rd{stroke:#bd4141;stroke-width:.025;fill:none;stroke-dasharray:.09 .06}.pt{fill:#174f91}.lb{font: .19px Arial,sans-serif;fill:#174f91}</style></defs><g transform="scale(1,-1)">
+<path class="ln" d="M0 0 L4 0 L0 3 Z M-3 0 L0 3 L4 0"/><path class="bl" d="M-3 0 L-.48 3.36"/><path class="rd" d="M0 0 L1.44 1.92 M0 0 L-1.92 1.44"/><path class="bl" stroke-width=".06" d="M0 0 L1.44 1.92 L-.48 3.36 L-1.92 1.44 Z"/>
+<path class="bl" d="M1.296 1.728 L1.536 1.548 L1.728 1.692 M-.288 3.104 L-.096 3.248 L-.24 3.44 M-1.632 1.224 L-1.488 1.416 L-1.68 1.56"/>
+<g class="pt"><circle cx="0" cy="0" r=".055"/><circle cx="4" cy="0" r=".055"/><circle cx="0" cy="3" r=".055"/><circle cx="-3" cy="0" r=".055"/><circle cx="1.44" cy="1.92" r=".055"/><circle cx="-.48" cy="3.36" r=".055"/><circle cx="-1.92" cy="1.44" r=".055"/></g>
+<g class="lb"><text x="-.22" y="-.18">A</text><text x="4.08" y="-.16">B</text><text x="-.22" y="3.22">C</text><text x="-3.2" y="-.16">D</text><text x="1.55" y="1.9">H</text><text x="-.55" y="3.62">O</text><text x="-2.18" y="1.42">K</text></g></g></svg><figcaption>Schéma de la configuration : le quadrilatère \(AHOK\) est mis en évidence en bleu. Les sept points sont indiqués.</figcaption></figure>
+<div class="box"><b style="color:var(--blue)">Bilan à retenir</b><ol><li>La rotation permet d’identifier les images des droites et des points.</li><li>L’intersection des droites \((AK)\) et \((DO)\) permet d’établir \(r(H)=K\).</li><li>La conservation des distances donne \(AH=AK\).</li><li>Un rectangle ayant deux côtés consécutifs égaux est un carré.</li></ol></div>
+<footer>Fin de la correction — Chapitre : Isométries du plan</footer></main></body></html>
